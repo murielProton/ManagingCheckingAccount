@@ -202,25 +202,10 @@ Créer un document Tableur Open Office tous les 15 du mois dans le dossier D/Fin
 Le nommer 'CompteCourant'AAAA-MM.
 Tous les 15 du mois il reprendra toute la donnée enregistrer sur le mois précédent.
 Un bouton dans l'application permet de le mettre à jour.
-String 'Bilan Mensuel'
+| String 'Bilan Mensuel + MOIS + YYYY'  |
+-----------------------------------------
+| String 'Date' | String 'Titre' | String 'Débit' | String 'Crédit' | String 'Total Banque avant exercice : '+ Float chiffre de la banque |
+| Date Fromat jj/mm/yyyy | String 'Type + (N° de chèque si existant) + Name' | Float Ammount when négatif | Float Amount when positif |
+| String 'Total' |  | |  | Float Somme des Montant de l'exercisse | String 'Total Banque après exercice : '+ Float chiffre de la banque | |
 
-
-
-
-String 'Date' 
-String 'Titre'
-String 'Montant'
-String 'Total Banque avant exercice : '+ Float chiffre de la banque
-
-Date Fromat jj/mm/yyyy
-String 
-'Type + (N° de chèque si existant) + Name'
-Float
-Ammount
-
-
-String 'Total'
-
-Float Somme des Montant de l'exercisse
-String 'Total Banque après exercice : '+ Float chiffre de la banque
 
