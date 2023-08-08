@@ -131,12 +131,11 @@ Mettre à jour un document Tableur Open Office tous les 15 du mois dans le dossi
 Le nommer 'Salaire'AAAA-MM.\
 Tous les 15 du mois il reprendra toute la donnée enregistrer sur le mois précédent.\
 Un bouton dans l'application permet de le mettre à jour.\
-Titre du tableau -> String 'Revenue de l'Année + Année concernée en chiffre'\ 
+Titre du tableau :  String 'Revenue de l'Année + Année concernée en chiffre'\ 
 | String 'Mois' | String Salaire | String CAF | String Pole Emplois |
 |---------------|----------------|------------|---------------------|
 | String | Float  + € |Float  + €|Float  + €|
-| Le nom du mois |Salaire du mois concerné|total des payements CAF du mois|total des payements PE du mois|
-| ordre chronologique | Si pas de donnée pour ce mois entrer 0€|Si pas de donnée pour ce mois entrer 0€|Si pas de donnée pour ce mois entrer 0€|
+| Le nom du mois ordre chronologique |Salaire du mois concerné; Si pas de donnée pour ce mois entrer 0€|total des payements CAF du mois. Si pas de donnée pour ce mois entrer 0€|total des payements PE du mois. Si pas de donnée pour ce mois entrer 0€|
 | String | Float | Float | Float |
 |Total + Année concernée en chiffre|Somme de tous les salaires déjà payés cette année.|Somme de tous les payements de la CAF de cette année|Somme de tous les payements de la PE de cette année|
 | String | Float | Float | Float |
@@ -147,42 +146,25 @@ Le nommer 'DepensesParThèmes'AAAA.\
 Un bouton dans l'application permet de le mettre à jour.\
 Un bouton permet de le créer pendant l'année. Dans ce cas il s'agit de toutes les données de l'année en cours.\
 Un autre bouton permet de mettre à jour celui de l'année pas en cours mais, ce bouton nécessite de préciser l'année visée par l'utilisateur.\
-Titre du tableau String 'Dépense par Thème sur l'Année + année concernée en chiffre'\
+Titre du tableau : String 'Dépense par Thème sur l'Année + année concernée en chiffre'\
 |String 'Mois'|String 'Thèmes', autant de colonnes qu'il y a de thèmes.|...|Total des dépenses mensuelles|
 |-------------|--------------------------------------------------------|---|-----------------------------|
-|String|--------------------------------------------------------|---|-----------------------------|
-|-------------|--------------------------------------------------------|---|-----------------------------|
-|-------------|--------------------------------------------------------|---|-----------------------------|
-|-------------|--------------------------------------------------------|---|-----------------------------|
-
-Le nom du mois en toute lettre et classé dans l'ordre de Janvier à Décembre
-Float
-Total des montant sur ce thème du mois et de l'année concernée
-
-Float
-Total de l'ensemble des payement dans le mois.
-String 'Total par Thème'
-Float 
-Total de l'ensemble des payements sur le thème visée sur l'année
-
-Float 
-Total de l'ensemble des payements du mois sur l'année
-String 'Moyenne annuelle des payements par Thèmes'
-Float
-Total des dépenses annuelle sur le thème, divisé par le nombres de mois écoulés sur l'année en cours.
-
-Float 
-Total des dépenses annuelle divisé par nombre de mois écoulés sur l'année en cours.
+|   String    |Float + €|---|Float + €|
+|nom du mois classé dans l'ordre de Janvier à Décembre|Total des montants sur ce thème concernant ce moi de cette année|---|Total de l'ensemble des payements du mois.|
+|String|Float + €|---|Float + €|
+|'Total par Thème'|Total de l'ensemble des payements dans l'année, par thème.|---|Total Anuel des dépenses|
+|String|Float|---|Float + €|
+| 'Moyenne annuelle des payements par Thèmes'|Moyenne de l'ensemble des payements dans l'année, par thème.|---|Moyenne mensuelle des dépenses|
 
 ### Bilan mensuel
 Créer un document Tableur Open Office tous les 15 du mois dans le dossier D/Finance/
 Le nommer 'CompteCourant'AAAA-MM.
 Tous les 15 du mois il reprendra toute la donnée enregistrer sur le mois précédent.
 Un bouton dans l'application permet de le mettre à jour.
-| String 'Bilan Mensuel + MOIS + YYYY'  |
------------------------------------------
+Titre du tableau : String 'Bilan Mensuel + MOIS + YYYY'
 | String 'Date' | String 'Titre' | String 'Débit' | String 'Crédit' | String 'Total Banque avant exercice : '+ Float chiffre de la banque |
-| Date Fromat jj/mm/yyyy | String 'Type + (N° de chèque si existant) + Name' | Float Ammount when négatif | Float Amount when positif |
-| String 'Total' |  | |  | Float Somme des Montant de l'exercisse | String 'Total Banque après exercice : '+ Float chiffre de la banque | |
+|---------------|---------------|--------------- | ---------------|---------------|
+| Date Fromat jj/mm/yyyy | String 'Type + (N° de chèque si existant) + Name' | Float Ammount SI négatif +€. Nombres toujours négatifs | Float Amount Si positif +€ nombre toujours Positif |
+| String 'Total' |  |Total de toutes les dépenses du mois, avec Foat +€ négatif|Total de toutes les entrées du mois, avec Foat +€ positif| Float Somme (Total Banque + Total des Crédits + Total débit) +€ | String 'Total Banque après exercice : '+ Float chiffre de la banque +€ | |
 
 
