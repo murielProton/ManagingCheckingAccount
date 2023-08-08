@@ -41,7 +41,7 @@ Si le Type de payement est Chèque un champs N° de Chèque apparaît. \
 >- Caluire et Cuire Travaux
 >- Caluire et Cuire Loyer
 >- Caluire et Cuire Charges
->- Caluire et Cuire Impôts Fonciers
+>- Caluire et Cuire Taxe Foncière
 >- Meyzieu Travaux
 >- Meyzieu Eau
 >- Meyzieu Gaz

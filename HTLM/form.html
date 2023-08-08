@@ -13,21 +13,75 @@
     <br>
     <label for="type-of-payements">Choisissez un type de payements :</label>
         <select name="types" id="type-of-payements">
-        <option value="">--choississez parmi--</option>
-        <option value="Salary">Salaire</option>
-        <option value="Transfer">Virement</option>
-        <option value="IPT">TIP</option>
-        <option value="Direct Debit">Prélèvement Automatique</option>
-        <option value="Withdrawal">Retrait</option>
-        <option value="Credit Card">Carte bancaire</option>
-        <option value="Cashing Check">Encaissement Chèque</option>
-        <option value="Cashing Cash">Encaissement Espèces</option>
-        <option value="Check">Chèque</option>
-        <option value="Cash">Espèces</option>
+            <option value="">--choississez parmi--</option>
+            <option value="salary">Salaire</option>
+            <option value="transfer">Virement</option>
+            <option value="IPT">TIP</option>
+            <option value="direct-debit">Prélèvement Automatique</option>
+            <option value="withdrawal">Retrait</option>
+            <option value="credit-card">Carte bancaire</option>
+            <option value="cashing-check">Encaissement Chèque</option>
+            <option value="cashing-cash">Encaissement Espèces</option>
+            <option value="check">Chèque</option>
+            <option value="cash">Espèces</option>
         </select>   
     <br>
-    <label for="Check Number">N° de Chèque</label>
-    <input type="text" required pattern="[0-9\.]+" maxlength="7">
+    <label for="check-number">N° de Chèque</label>
+    <input type="text" required pattern="[0-9\.]+" maxlength="7" id="check-number" name="check-number">
+    <br>
+    <label for="name">Nom ( débiteur / magasin / créditeur)</label>
+    <input type="text" maxlength="50" id="name" name="name" value="Librairie Vivement Dimanche Croix Rousse">
+    <br>
+    <label for="amount">Montant</label>
+    <input type="text" required pattern="[0-9\.]+" maxlength="7" id="amount" name="amount" value="€">
+    <br>
+    <br>
+    <label for="theme">Thème :</label>
+        <select name="theme" id="theme">
+            <option value="food">Alimentaire</option>
+            <option value="leisure">Loisir</option>
+            <option value="travels">Voyages</option>
+            <optgroup label="Santé">
+                <option value="health-muriel">Muriel</option>
+                <option value="health-pathrick">Patrick</option>
+            </optgroup>
+            <optgroup label="TCL">
+                <option value="TCL-muriel">Muriel</option>
+                <option value="TCL-pathrick">Patrick</option>
+            </optgroup>
+            <optgroup label="Vêtements">
+                <option value="clothing-muriel">Muriel</option>
+                <option value="clothing-pathrick">Patrick</option>
+            </optgroup>
+            <optgroup label="Meyzieu">
+                <option value="meyzieu-water">Eau</option>
+                <option value="meyzieu-gas">Gaz</option>
+                <option value="meyzieu-electricity">Electricité</option>
+                <option value="meyzieu-fire-wood">Bois de chauffe</option>
+                <option value="meyzieu-loan">Prêt Immobilier</option>
+                <option value="meyzieu-insurance">Assurance</option>
+                <option value="meyzieu-boiler">Entretient Chaudière</option>
+                <option value="meyzieu-chemeney-sweeping">Ramonage</option>
+                <option value="meyzieu-domestic-appliances">Électroménager ( four, machine à laver le linge, mixeur, aspirateur … )</option>
+                <option value="meyzieu-furniture">Mobilier</option>
+                <option value="meyzieu-taxes">Taxe Foncière</option>
+                <option value="meyzieu-construction-work">Travaux</option>
+            <optgroup label="Caluire et Cuire">
+                <option value="caluire-et-cuire-construction-work">Travaux</option>
+                <option value="caluire-et-cuire-rent">Loyer</option>
+                <option value="caluire-et-cuire-costs">Charges</option>
+                <option value="caluire-et-cuire-taxes">Taxe Foncière</option>
+            </optgroup>
+        </select>   
+    <br>
+    <br>
+    <label for="author">Autheur :</label>
+        <select name="author" id="author">
+            <option value="">--choississez parmi--</option>
+            <option value="muriel">Muriel</option>
+            <option value="pathrick">Patrick</option>
+            <option value="both">Les deux</option>
+        </select>   
     <br>
     <br>
     <input type="submit" value="Submit"><br>
