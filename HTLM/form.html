@@ -1,0 +1,38 @@
+ <!DOCTYPE html>
+<html>
+<head>
+<title>Formulaire d'enregistrement de dépenses</title>
+</head>
+<body>
+
+<h1>My First Heading</h1>
+<p>Formulaire pour entrer une dépense</p>
+<form action="/action_page.php">
+    <label for="date">Date :</label><br>
+    <input type="date" id="date" name="date">
+    <br>
+    <label for="type-of-payements">Choisissez un type de payements :</label>
+        <select name="types" id="type-of-payements">
+        <option value="">--choississez parmi--</option>
+        <option value="Salary">Salaire</option>
+        <option value="Transfer">Virement</option>
+        <option value="IPT">TIP</option>
+        <option value="Direct Debit">Prélèvement Automatique</option>
+        <option value="Withdrawal">Retrait</option>
+        <option value="Credit Card">Carte bancaire</option>
+        <option value="Cashing Check">Encaissement Chèque</option>
+        <option value="Cashing Cash">Encaissement Espèces</option>
+        <option value="Check">Chèque</option>
+        <option value="Cash">Espèces</option>
+        </select>   
+    <br>
+    <label for="Check Number">N° de Chèque</label>
+    <input type="text" required pattern="[0-9\.]+" maxlength="7">
+    <br>
+    <br>
+    <input type="submit" value="Submit"><br>
+</form> 
+
+
+</body>
+</html> 
