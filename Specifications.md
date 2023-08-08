@@ -2,7 +2,7 @@
 ## Général
 Data base SQL\
 serveur SQL local\
-1 table SQL\
+1 table SQL par année, afin de pouvoir faire des array moins grand lors des manipulation.\
 1 seul formulaire HTML avec JavaScript pour le rendre UIX et dynamique.\
 Rendus Tableau 3 tableaux Open office.\
 3 rendus : Salaire, Dépense par Thème, Bilan mensuel\
@@ -82,7 +82,8 @@ Tous les montants sont positifs. Salaire et Virement n'y figurent pas. Il classe
 Dans le cas de Thème Construciton Work, Costs, Porperty Taxe, Water, Gaz, Electricity, Insurance, Boiler, Chimney Sweeping, Home Appliance et Furniture, loan il est obligatoire d'indiqué qui à payer : Patrick ou Muriel.\
 #### Condition Chèque
 Si c'est un payement par chèque le N° du chèque est obligatoire.\
-
+### Création de table SQL avec Java
+Tous les ans création d'une nouvelle table SQL avec Java.
 ### Objets Java
 #### Entry : 
 - Date LocalDate 
