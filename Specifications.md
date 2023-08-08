@@ -126,63 +126,35 @@ Si c'est un payement par chèque le N° du chèque est obligatoire.\
 ## Rendu
 Tous les rendus sont en Tableur Open Office.\
 ### Salaire
-Créer un document Tableur Open Office tous les 15 du mois dans le dossier D/Fianance/\
+Créer ce document tous les 31 décembres de chaques année.\
+Mettre à jour un document Tableur Open Office tous les 15 du mois dans le dossier D/Fianance/\
 Le nommer 'Salaire'AAAA-MM.\
 Tous les 15 du mois il reprendra toute la donnée enregistrer sur le mois précédent.\
 Un bouton dans l'application permet de le mettre à jour.\
-| String 'Revenue de l'Année + Année concernée en chiffre' |
+Titre du tableau -> String 'Revenue de l'Année + Année concernée en chiffre'\ 
 | String 'Mois' | String Salaire | String CAF | String Pole Emplois |
-| String Le nom du mois en toute lettre et classé dans l'ordre de Janvier à Décembre | 
-Float + € uniquement du mois concerné. Si pas de donnée pour ce mois entrer 0€ |||
-| String Total ||||
-
-
-
-
-
-
-
-Float + € 
-Total de tous les payements de la CAF sur le mois concerné.
-Si pas de donnée pour ce mois entrer 0€
-Float + €
- Total de tous les payements de PE sur le mois concerné.
-Si pas de donnée pour ce mois entrer 0€
-Float 
-Salaire + Payements CAF + Payement PD du mois
-String
-'Total + Année concernée en chiffre'
-Float 
-Somme de tous les salaires déjà payés cette année.
-Float 
-Somme de tous les payements de la CAF de cette année
-Float 
-Somme de tous les payements de PE déjà payés cette année.
-Float 
-Somme de l'ensemble des payements et salaires de cette année.
-String
-'Moyenne Mensuelle'
-Float 
-Total des Salaire de tous les mois divisé par le nombre de mois déjà finis dans l'année en cours.
-Float 
-Total des payements de tous les mois divisé par le nombre de mois déjà finis dans l'année en cours.
-Float 
-Total des payements de tous les mois divisé par le nombre de mois déjà finis dans l'année en cours.
-Float 
-Total de toutes les cellules de cette colonne divisé par le nombre de mois déjà écoulés dans l'année en cours.
-
+|---------------|----------------|------------|---------------------|
+| String | Float  + € |Float  + €|Float  + €|
+| Le nom du mois |Salaire du mois concerné|total des payements CAF du mois|total des payements PE du mois|
+| ordre chronologique | Si pas de donnée pour ce mois entrer 0€|Si pas de donnée pour ce mois entrer 0€|Si pas de donnée pour ce mois entrer 0€|
+| String | Float | Float | Float |
+|Total + Année concernée en chiffre|Somme de tous les salaires déjà payés cette année.|Somme de tous les payements de la CAF de cette année|Somme de tous les payements de la PE de cette année|
+| String | Float | Float | Float |
+|'Moyenne Mensuelle'|Somme des Salaires / nombres de mois déjà écoulés|Somme des payements CAF / nombres de mois déjà écoulés| Somme des payements PE / nombres de mois déjà écoulés |
 ### Dépense par Thème
-Créer un document Tableur Open Office tous les ans dans le dossier D/Finance/
-Le nommer 'DepensesParThèmes'AAAA.
-Un bouton dans l'application permet de le mettre à jour.
-Un bouton permet de le créer pendant l'année. Dans ce cas il s'agit de toutes les données de l'année en cours.
-Un autre bouton permet de mettre à jour celui de l'année pas en cours mais, ce bouton nécessite de préciser l'année visée par l'utilisateur.
-String 'Dépense par Thème sur l'Année + année concernée en chiffre'
-String 'Mois'
-String 'Thèmes', autant de colonnes qu'il y a de thèmes.
-...
-Total des dépenses mensuelles
-String
+Créer un document Tableur Open Office tous les ans dans le dossier D/Finance\
+Le nommer 'DepensesParThèmes'AAAA.\
+Un bouton dans l'application permet de le mettre à jour.\
+Un bouton permet de le créer pendant l'année. Dans ce cas il s'agit de toutes les données de l'année en cours.\
+Un autre bouton permet de mettre à jour celui de l'année pas en cours mais, ce bouton nécessite de préciser l'année visée par l'utilisateur.\
+Titre du tableau String 'Dépense par Thème sur l'Année + année concernée en chiffre'\
+|String 'Mois'|String 'Thèmes', autant de colonnes qu'il y a de thèmes.|...|Total des dépenses mensuelles|
+|-------------|--------------------------------------------------------|---|-----------------------------|
+|String|--------------------------------------------------------|---|-----------------------------|
+|-------------|--------------------------------------------------------|---|-----------------------------|
+|-------------|--------------------------------------------------------|---|-----------------------------|
+|-------------|--------------------------------------------------------|---|-----------------------------|
+
 Le nom du mois en toute lettre et classé dans l'ordre de Janvier à Décembre
 Float
 Total des montant sur ce thème du mois et de l'année concernée
