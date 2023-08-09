@@ -128,7 +128,7 @@ Tous les ans création d'une nouvelle table SQL avec Java.
 Tous les rendus sont en Tableur Open Office.\
 ### Salaire
 Créer ce document tous les 31 décembres de chaques année.\
-Mettre à jour un document Tableur Open Office tous les 15 du mois dans le dossier D/Fianance/\
+Mettre à jour un document Tableur Open Office tous les 15 du mois dans le dossier approprié\
 Le nommer 'Salaire'AAAA-MM.\
 Tous les 15 du mois il reprendra toute la donnée enregistrer sur le mois précédent.\
 Un bouton dans l'application permet de le mettre à jour.\
@@ -142,7 +142,7 @@ Titre du tableau :  String 'Revenue de l'Année + Année concernée en chiffre'\
 | String | Float | Float | Float |
 |'Moyenne Mensuelle'|Somme des Salaires / nombres de mois déjà écoulés|Somme des payements CAF / nombres de mois déjà écoulés| Somme des payements PE / nombres de mois déjà écoulés |
 ### Dépense par Thème
-Créer un document Tableur Open Office tous les ans dans le dossier D/Finance\
+Créer un document Tableur Open Office tous les ans dans le dossier approprié\
 Le nommer 'DepensesParThèmes'AAAA.\
 Un bouton dans l'application permet de le mettre à jour.\
 Un bouton permet de le créer pendant l'année. Dans ce cas il s'agit de toutes les données de l'année en cours.\
@@ -158,7 +158,7 @@ Titre du tableau : String 'Dépense par Thème sur l'Année + année concernée 
 | 'Moyenne annuelle des payements par Thèmes'|Moyenne de l'ensemble des payements dans l'année, par thème.|---|Moyenne mensuelle des dépenses|
 
 ### Bilan mensuel
-Créer un document Tableur Open Office tous les 15 du mois dans le dossier D/Finance/
+Créer un document Tableur Open Office tous les 15 du mois dans le dossier approprié.
 Le nommer 'CompteCourant'AAAA-MM.
 Tous les 15 du mois il reprendra toute la donnée enregistrer sur le mois précédent.
 Un bouton dans l'application permet de le mettre à jour.
