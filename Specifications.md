@@ -16,8 +16,8 @@ Plusieurs colonnes :
 - Auteur 
 
 ## Formulaire HTML
-### Règles à mettre en place avec JavaScript
 Tous les labels sont en Français.\
+### Règles à mettre en place avec JavaScript
 Le champ Auteur apparaît et est obligatoire que lorsqu'il s'agit d'un sous thème : Travaux, Charges, Impôts Fonciers, Eau, Gaz, Électricité, Prêt Immobilier, Bois de chauffe, Assurance, Entretient Chaudière, Ramonage, Électroménager, Mobilier.\
 Le champ N° de chèque apparaît et est obligatoire si le type de payement est par Chèque.\
 Si le Type de payement est Chèque un champs N° de Chèque apparaît. \

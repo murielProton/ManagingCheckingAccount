@@ -51,7 +51,7 @@
 
     <div class="horizontal-container">
         <div class="horizontal-subcontainer-for-4"></div>
-        <div class="horizontal-subcontainer-for-4 hide-on-conditions">
+        <div id="display-if-check" class="horizontal-subcontainer-for-4 display-if-check">
             <label for="check-number" >N° de Chèque</label>
             <input type="text" required pattern="[0-9\.]+" maxlength="7" id="check-number" name="check-number">
         </div>
@@ -61,8 +61,8 @@
 
     <div class="horizontal-container">
         <div class="horizontal-subcontainer-for-2">
-            <label for="theme">Thème :</label>
-            <select name="theme" id="theme">
+            <label for="theme">Thème :
+            <select name="theme" id="theme" class="theme">
                 <option value="food">Alimentaire</option>
                 <option value="leisure">Loisir</option>
                 <option value="travels">Voyages</option>
@@ -80,7 +80,7 @@
                 </optgroup>
                 <optgroup label="Meyzieu">
                     <option value="meyzieu-water">Eau</option>
-                    <option value="meyzieu-gas">Gaz</option>
+                    <option value="meyzieu-gass">Gaz</option>
                     <option value="meyzieu-electricity">Electricité</option>
                     <option value="meyzieu-fire-wood">Bois de chauffe</option>
                     <option value="meyzieu-loan">Prêt Immobilier</option>
@@ -98,8 +98,9 @@
                     <option value="caluire-et-cuire-taxes">Taxe Foncière</option>
                 </optgroup>
             </select>
+        </label>
         </div>    
-        <div class="horizontal-subcontainer-for-2 hide-on-conditions">
+        <div class="horizontal-subcontainer-for-2 display-if-theme-maches">
             <label for="author">Autheur :</label>
                 <select name="author" id="author">
                     <option value="">--choississez parmi--</option>
@@ -113,6 +114,7 @@
     <input type="submit" value="Submit"><br>
 </form> 
 
-
+<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="../JavaScript/formManager.js"></script>
 </body>
 </html> 
