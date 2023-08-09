@@ -23,7 +23,7 @@
 
         <div class="horizontal-subcontainer-for-4">
             <label for="type-of-payements">Choisissez un type de payements :</label>
-                <select name="types" id="type-of-payements">
+                <select name="types" id="type-of-payements" class="type-of-payements">
                     <option value="">--choississez parmi--</option>
                     <option value="salary">Salaire</option>
                     <option value="transfer">Virement</option>
@@ -51,7 +51,7 @@
 
     <div class="horizontal-container">
         <div class="horizontal-subcontainer-for-4"></div>
-        <div id="display-if-check" class="horizontal-subcontainer-for-4 display-if-check">
+        <div class="horizontal-subcontainer-for-4 display-if-check">
             <label for="check-number" >N° de Chèque</label>
             <input type="text" required pattern="[0-9\.]+" maxlength="7" id="check-number" name="check-number">
         </div>

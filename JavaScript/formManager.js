@@ -23,12 +23,31 @@ function doeseThemeValueMaches(themeValue){
   }
 }
 
-const selectElementForEvent = document.querySelector(".theme");
-console.log("je suis ici1 = "+selectElementForEvent);
-selectElementForEvent.addEventListener("change", (event) =>{
+function isTypeValueCheque(typeValue){
+
+  if(typeValue == "check"){
+    return true;
+  } else {
+    return false;
+  }
+}
+
+const selectElementForEvent1 = document.querySelector(".theme");
+selectElementForEvent1.addEventListener("change", (event) =>{
     var themeValue = event.target.value;
     var divToShow = $(".display-if-theme-maches");
     if(doeseThemeValueMaches(themeValue)){
+      divToShow.show();
+    }else{
+      divToShow.hide();
+    }
+});
+
+const selectElementForEvent2 = document.querySelector(".type-of-payements");
+selectElementForEvent2.addEventListener("change", (event) =>{
+    var typeValue = event.target.value;
+    var divToShow = $(".display-if-check");
+    if(isTypeValueCheque(typeValue)){
       divToShow.show();
     }else{
       divToShow.hide();
