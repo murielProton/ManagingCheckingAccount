@@ -1,0 +1,25 @@
+/* natives */
+div{
+    border-radius: 5%;
+}
+/* class to display horizontaly */
+.horizontal-container{
+    width:100%;
+    display:flex;
+    justify-content: space-around;
+}
+.horizontal-subcontainer-for-4{
+    width:20%;
+    float:left;
+    margin: 1%;
+}
+
+.horizontal-subcontainer-for-2{
+    width:42%;
+    float:left;
+    margin: 3%;
+}
+/* class to display on conditions */
+.hide-on-conditions{
+    display:none;
+}
