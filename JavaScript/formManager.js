@@ -32,21 +32,36 @@ function isTypeValueCheque(typeValue){
   }
 }
 
+function isThemeValuePresent(typeValue){
+
+  if(typeValue == "present"){
+    return true;
+  } else {
+    return false;
+  }
+}
+
 const selectElementForEvent1 = document.querySelector(".theme");
 selectElementForEvent1.addEventListener("change", (event) =>{
     var themeValue = event.target.value;
-    var divToShow = $(".display-if-theme-maches");
+    var divCheckNumber = $(".display-if-theme-matches");
+    var divBeneficiary = $(".display-if-theme-present");
     if(doeseThemeValueMaches(themeValue)){
-      divToShow.show();
+      divCheckNumber.show();
+      divBeneficiary.hide();
+    }else if (isThemeValuePresent(themeValue)){
+      divBeneficiary.show();
+      divCheckNumber.hide();
     }else{
-      divToShow.hide();
+      divCheckNumber.hide();
+      divBeneficiary.hide();
     }
 });
 
 const selectElementForEvent2 = document.querySelector(".type-of-payements");
 selectElementForEvent2.addEventListener("change", (event) =>{
     var typeValue = event.target.value;
-    var divToShow = $(".display-if-check");
+    var divToShow = $(".display-if-type-check");
     if(isTypeValueCheque(typeValue)){
       divToShow.show();
     }else{

@@ -23,3 +23,40 @@ function testDoeseThemeValueMachesFalse(){
   console.log("success !")
   return true;
 }
+function testIsTypeValueChequeTrue(){
+  var themeValue = "check"
+  if (isTypeValueCheque(themeValue)){
+    console.log("success !")
+    return true;
+  }
+  console.log("failure");
+  return false;
+}
+function testIsTypeValueChequeFalse(){
+  var themeValue = "basilique"
+  if (isTypeValueCheque(themeValue)){
+    console.log("failure");
+    return false;
+  }
+  console.log("success !")
+  return true;
+}
+
+function testIsTypeValuePresentTrue(){
+  var themeValue = "present"
+  if (isTypeValuePresent(themeValue)){
+    console.log("success !")
+    return true;
+  }
+  console.log("failure");
+  return false;
+}
+function testIsTypeValuePresentFalse(){
+  var themeValue = "basilique"
+  if (isTypeValuePresent(themeValue)){
+    console.log("failure");
+    return false;
+  }
+  console.log("success !")
+  return true;
+}

@@ -19,17 +19,14 @@ div{
     float:left;
     margin: 3%;
 }
-/* Id to display on conditions *//*
-#display-if-check{
-    display:none;
-}
-#display-if-theme-maches{
-    display:none;
-}*/
+
 /* class to display on conditions */
-.display-if-check{
+.display-if-type-check{
     display:none;
 }
-.display-if-theme-maches{
+.display-if-theme-matches{
+    display:none;
+}
+.display-if-theme-present{
     display:none;
 }
