@@ -30,13 +30,27 @@ Version problems -> https://mvnrepository.com/artifact/
 There is always the option to see the code of Baeldung -> https://github.com/eugenp/tutorials/tree/master/spring-boot-modules/spring-boot-bootstrap
 
 # Specificities about the POM file
-SNPASHOT in a version means it is currently under developpement.
-RELEASE in a version means it is a stable version.
-You can use a parent version for a POM, but it has to be on your computer. At my stage of experience, it seams to me better to developp it myself to gain som perspective.
-
+- SNPASHOT in a version means it is currently under developpement.
+- RELEASE in a version means it is a stable version.
+- You can use a parent version for a POM, but it has to be on your computer. At my stage of experience, it seams to me better to developp it myself to gain som perspective.
+- If a parent is added in the pom.xml, the child, will inherit of the ```<modelVersion>```, ```<artifactId>```, ```<groupId>```. 
+- With or without a parent the .pom, will need a ```<name>```.
+- ```<properties>``` stands for variable instanciation, that you access with ```${variable.name}```.
+- Minimal requirement for a pom.xml is :
+```<project> ```
+```     <modelVersion></modelVersion>``` -> the last pom format version
+```     <groupId></groupId>```-> unique, identifies one and only package java
+```     <artifactId></artifactId>```-> the project name
+```     <version></version>``` -> the project version, maven manages it. Add SNAPSHOT to define it's developpement state.
+```</project> ```
+- usefull tutorial : https://gayerie.dev/epsi-b3-javaee/javaee_web/maven.html
 # How to run the App
 ## Launch the server for the WEB application : 
 1. command line : ``` & 'C:\Program Files\Java\jdk-20\bin\java.exe' '@C:\Users\<path for this file>\AppData\Local\Temp\cp_cmmf7wa8zzm4xwcel20luttw0.argfile' 'com.example.Application'
 configurer le pom mvn install -f "c:\<path for my workspace>\workspace\account_management\pom.xml" ```
+2. URL in WEB browther : localhost:8081
 ## End the server process
 CTRL + C
+
+# Git
+- in a java project, .gitignore must contain ```target/``` folder

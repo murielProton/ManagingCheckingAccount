@@ -15,4 +15,10 @@ public class SimpleController {
         model.addAttribute("appName", appName);
         return "home";
     }
+
+    @GetMapping("/account-form")
+    public String accountForm(Model model) {
+        model.addAttribute("appName", appName);
+        return "account-form";
+    }
 }

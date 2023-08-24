@@ -1,0 +1,128 @@
+ <!DOCTYPE html>
+<html>
+<head>
+    <title>Formulaire d'enregistrement de dépenses</title>
+    <meta charset="UTF-8">
+    <link href="../CSS/formLayout.css" rel="stylesheet">
+</head>
+<body>
+    
+    <div th:insert="menu :: menu"></div>
+
+<h3 class:"title">Formulaire de dépenses</h3>
+
+
+<p>Formulaire pour entrer une dépense</p>
+
+
+<form action="/action_page.php">
+    <div class="horizontal-container">
+
+        <div class="horizontal-subcontainer-for-4">
+            <label for="date">Date :</label><br>
+            <input type="date" id="date" name="date" required>
+        </div>
+
+        <div class="horizontal-subcontainer-for-4">
+            <label for="type-of-payements">Choisissez un type de payements :</label>
+                <select id="type-of-payements" name="types" class="type-of-payements" required>
+                    <option value="">--choississez parmi--</option>
+                    <option value="salary">Salaire</option>
+                    <option value="transfer">Virement</option>
+                    <option value="IPT">TIP</option>
+                    <option value="direct-debit">Prélèvement Automatique</option>
+                    <option value="withdrawal">Retrait</option>
+                    <option value="credit-card">Carte bancaire</option>
+                    <option value="cashing-check">Encaissement Chèque</option>
+                    <option value="cashing-cash">Encaissement Espèces</option>
+                    <option value="check">Chèque</option>
+                    <option value="cash">Espèces</option>
+                </select>   
+        </div>
+
+        <div class="horizontal-subcontainer-for-4">
+            <label for="name">Nom ( débiteur / magasin / créditeur)</label>
+            <input type="text" id="name" name="name" maxlength="50" value="Librairie Vivement Dimanche Croix Rousse">
+        </div>
+
+        <div class="horizontal-subcontainer-for-4">    
+            <label for="amount">Montant</label>
+            <input type="text" id="amount" name="amount" pattern="[0-9\.]+" maxlength="10" value="€" required>
+        </div>    
+    </div>
+
+    <div class="horizontal-container">
+        <div class="horizontal-subcontainer-for-4"></div>
+        <div class="horizontal-subcontainer-for-4 display-if-type-check">
+            <label for="check-number">N° de Chèque</label>
+            <input type="text" id="check-number" name="check-number" pattern="[0-9\.]+" maxlength="7">
+        </div>
+        <div class="horizontal-subcontainer-for-4"></div>
+        <div class="horizontal-subcontainer-for-4"></div>
+    </div>
+
+    <div class="horizontal-container">
+        <div class="horizontal-subcontainer-for-2">
+            <label for="theme">Thème :
+            <select id="theme" name="theme" class="theme" required>
+                <option value="food">Alimentaire</option>
+                <option value="leisure">Loisir</option>
+                <option value="travels">Voyages</option>
+                <option value="other">Autre</option>
+                <option value="present">Cadeau</option>
+                <optgroup label="Santé">
+                    <option value="health-muriel">Muriel</option>
+                    <option value="health-pathrick">Patrick</option>
+                </optgroup>
+                <optgroup label="TCL">
+                    <option value="TCL-muriel">Muriel</option>
+                    <option value="TCL-pathrick">Patrick</option>
+                </optgroup>
+                <optgroup label="Vêtements">
+                    <option value="clothing-muriel">Muriel</option>
+                    <option value="clothing-pathrick">Patrick</option>
+                </optgroup>
+                <optgroup label="Meyzieu">
+                    <option value="meyzieu-water">Eau</option>
+                    <option value="meyzieu-gass">Gaz</option>
+                    <option value="meyzieu-electricity">Electricité</option>
+                    <option value="meyzieu-fire-wood">Bois de chauffe</option>
+                    <option value="meyzieu-loan">Prêt Immobilier</option>
+                    <option value="meyzieu-insurance">Assurance</option>
+                    <option value="meyzieu-boiler">Entretient Chaudière</option>
+                    <option value="meyzieu-chemeney-sweeping">Ramonage</option>
+                    <option value="meyzieu-domestic-appliances">Électroménager (four, lave linge, mixeur, aspirateur …)</option>
+                    <option value="meyzieu-furniture">Mobilier</option>
+                    <option value="meyzieu-taxes">Taxe Foncière</option>
+                    <option value="meyzieu-construction-work">Travaux</option>
+                <optgroup label="Caluire et Cuire">
+                    <option value="caluire-et-cuire-construction-work">Travaux</option>
+                    <option value="caluire-et-cuire-rent">Loyer</option>
+                    <option value="caluire-et-cuire-costs">Charges</option>
+                    <option value="caluire-et-cuire-taxes">Taxe Foncière</option>
+                </optgroup>
+            </select>
+        </label>
+        </div>    
+        <div class="horizontal-subcontainer-for-2 display-if-theme-matches">
+            <label for="author">Autheur :</label>
+                <select id="author" name="author">
+                    <option value="">--choississez parmi--</option>
+                    <option value="muriel">Muriel</option>
+                    <option value="pathrick">Patrick</option>
+                    <option value="both">Les deux</option>
+                </select>
+        </div>
+        <div class="horizontal-subcontainer-for-2 display-if-theme-present">
+            <label for="beneficiary">Destinataire :</label>
+            <input type="text" id="beneficiary" name="beneficiary" maxlength="50" value="Nommez le/la destinataire">
+        </div>
+    </div>
+    <br>
+    <input type="submit" value="Submit"><br>
+</form> 
+
+<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="../JavaScript/formManager.js"></script>
+</body>
+</html> 

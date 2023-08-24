@@ -1,7 +1,16 @@
 <html>
 <head><title>Home Page</title></head>
 <body>
-<h1>Hello !</h1>
-<p>Welcome to <span th:text="${appName}">Our App</span></p>
+    <div>
+        <h1>Hello !</h1>
+        <p>Welcome to <span th:text="${appName}">Our App</span></p>
+        <div th:insert="menu :: menu"></div>
+        <h4>achivements</h4>
+        <ul>
+            <li>I'm using SpringBoot</li>
+            <li>I'm using Thymleaf, which permits my menue to be vectorise.</li>
+            <li>From all html pages I can return to this home page, with no error.</li>
+        </ul>
+    </div>
 </body>
 </html>
