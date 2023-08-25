@@ -54,3 +54,27 @@ CTRL + C
 
 # Git
 - in a java project, .gitignore must contain ```target/``` folder
+
+# How to file different classes
+src
+    |--> main
+        |--> java/ com/ example
+                    |--> config
+                    |--> controller //Mapping for the HTML files URL -> file name
+                    |--> models
+                        |--> dto (Data Transfer Objects) //This holds the DTO classes
+                        |--> dao (Data Access Object) //This holds the Database classes
+                        |--> pojo (plain old java object)
+                        |--> entity //This holds Data model classes
+                    |--> exception
+                    |--> repository //This holds the classes that get data from HTML
+        |--> resources
+            |--> META-INF
+            |--> static
+                |--> css
+                |--> javascript
+            |--> templates //This holds HTML files
+    |--> test/ java/ com/ example
+
+
+cf : https://stackoverflow.com/questions/59965015/springboot-where-to-put-internal-container-classes

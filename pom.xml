@@ -39,6 +39,12 @@
         <artifactId>spring-boot-starter-security</artifactId> 
         <version>${spring-boot.version}</version>
     </dependency>
+
+  <dependency>
+    <groupId>org.springframework.data</groupId>
+    <artifactId>spring-data-commons</artifactId>
+    <version>${spring-boot.version}</version>
+  </dependency>
 </dependencies>
 <properties>
     <maven-war-plugin.version>3.3.2</maven-war-plugin.version>
