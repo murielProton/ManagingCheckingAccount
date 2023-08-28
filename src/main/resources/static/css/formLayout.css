@@ -25,13 +25,24 @@ div{
     margin: 3%;
 }
 
+.horizontal-subcontainer-for-3{
+    width:30%;
+    float:left;
+    margin: 3%;
+}
 /* class to display on conditions */
 .display-if-type-check{
     display:none;
 }
-.display-if-theme-matches{
+.display-if-theme-matches-author{
     display:none;
 }
 .display-if-theme-present{
+    display:none;
+}
+.display-if-theme-matches-themesub{
+    display:none;
+}
+.display-if-theme-rent{
     display:none;
 }

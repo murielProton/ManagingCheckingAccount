@@ -22,7 +22,33 @@ Tous les labels sont en Français.\
 Le champ Auteur apparaît et est obligatoire que lorsqu'il s'agit d'un sous thème : Travaux, Charges, Impôts Fonciers, Eau, Gaz, Électricité, Prêt Immobilier, Bois de chauffe, Assurance, Entretient Chaudière, Ramonage, Électroménager, Mobilier.\
 Le champ N° de chèque apparaît et est obligatoire si le type de payement est par Chèque.\
 Si le Type de payement est Chèque un champs N° de Chèque apparaît. \
-Si le Thème est Caluire et Cuire loyer champs Locataire apparaît. \
+Si le sous Thème est Caluire et Cuire loyer champs Locataire apparaît. \
+Si le thème général est l'un des suivants :
+- santé
+- TCL
+- Vêtements
+- Caluire et Cuire
+- Meyzieu
+Le champs sous thème apparaît.
+Dans le cas où le thème général est santé, TCL ou Vêtements ; la liste de sous thème est limité à Muriel et Patrick. \
+Dans le cas où le thème général est Caluire et Cuire ; la liste de sous thème est limité à :
+- Travaux
+- Loyer
+- Charges
+- Taxe Foncière \
+Dans le cas où le thème général est Meyzieu ; la liste de sous thème est limité à :
+- Eau
+- Gaz
+- Electricité
+- bois de chauffe
+- ramonage
+- prêt immobilier
+- Assurance
+- Entretien Chaudière
+- Electroménager
+- Taxe Foncière
+- Taxe d'Habitation
+- Travaux \
 ### Liste des champs par ordre d'apparition
 - Date pick date
 - Type menu déroulant à choix multiple <select> with <option>  : 

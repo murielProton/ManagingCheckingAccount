@@ -62,60 +62,65 @@
     </div>
 
     <div class="horizontal-container">
-        <div class="horizontal-subcontainer-for-2">
-            <label for="theme">Thème :
-            <select id="theme" name="theme" class="theme" required>
-                <option value="food">Alimentaire</option>
-                <option value="leisure">Loisir</option>
-                <option value="travels">Voyages</option>
-                <option value="other">Autre</option>
-                <option value="present">Cadeau</option>
-                <optgroup label="Santé">
-                    <option value="health-muriel">Muriel</option>
-                    <option value="health-pathrick">Patrick</option>
-                </optgroup>
-                <optgroup label="TCL">
-                    <option value="TCL-muriel">Muriel</option>
-                    <option value="TCL-pathrick">Patrick</option>
-                </optgroup>
-                <optgroup label="Vêtements">
-                    <option value="clothing-muriel">Muriel</option>
-                    <option value="clothing-pathrick">Patrick</option>
-                </optgroup>
-                <optgroup label="Meyzieu">
-                    <option value="meyzieu-water">Eau</option>
-                    <option value="meyzieu-gass">Gaz</option>
-                    <option value="meyzieu-electricity">Electricité</option>
-                    <option value="meyzieu-fire-wood">Bois de chauffe</option>
-                    <option value="meyzieu-loan">Prêt Immobilier</option>
-                    <option value="meyzieu-insurance">Assurance</option>
-                    <option value="meyzieu-boiler">Entretient Chaudière</option>
-                    <option value="meyzieu-chemeney-sweeping">Ramonage</option>
-                    <option value="meyzieu-domestic-appliances">Électroménager (four, lave linge, mixeur, aspirateur …)</option>
-                    <option value="meyzieu-furniture">Mobilier</option>
-                    <option value="meyzieu-taxes">Taxe Foncière</option>
-                    <option value="meyzieu-construction-work">Travaux</option>
-                <optgroup label="Caluire et Cuire">
-                    <option value="caluire-et-cuire-construction-work">Travaux</option>
-                    <option value="caluire-et-cuire-rent">Loyer</option>
-                    <option value="caluire-et-cuire-costs">Charges</option>
-                    <option value="caluire-et-cuire-taxes">Taxe Foncière</option>
-                </optgroup>
-            </select>
-        </label>
-        </div>    
-        <div class="horizontal-subcontainer-for-2 display-if-theme-matches">
-            <label for="author">Autheur :</label>
+        <div class="horizontal-subcontainer-for-2 horizontal-subcontainer-for-3">
+            <label for="theme-general">Thème général :
+                <select id="theme-general" name="theme-general" class="theme-general" required>
+                    <option value="">--choississez parmi--</option>
+                    <option value="food">Alimentaire</option>
+                    <option value="leisure">Loisir</option>
+                    <option value="travels">Voyages</option>
+                    <option value="other">Autre</option>
+                    <option value="present">Cadeau</option>
+                    <option value="health">Santé</option>
+                    <option value="tcl">TCL</option>
+                    <option value="clothing">Vêtements</option>
+                    <option value="meyzieu">Meyzieu</option>
+                    <option value="caluire-et-cuire">Caluire et Cuire</option>
+                    <option value="stationary">Papeterie</option>
+                    <option value="computer">Informatique</option>
+                </select>
+            </label>
+        </div> 
+        <div class="horizontal-subcontainer-for-2 horizontal-subcontainer-for-3 display-if-theme-matches-themesub theme-sub">
+            <label for="theme-sub">Sous thème :</label>
+                <select id="theme-sub" name="theme-sub">
+                    <option value="">--choississez parmi--</option>
+                    <option value="contstruction-work">Travaux</option>
+                    <option value="rent">Loyer</option>
+                    <option value="costs">Charges (coprpopriété ...)</option>
+                    <option value="housing-taxe">Taxe d'habitation</option>
+                    <option value="property-taxe">Taxe de Propriété</option>
+                    <option value="water">Eau</option>
+                    <option value="gass">Gaz</option>
+                    <option value="electricity">Electricité</option>
+                    <option value="loan">Emprun</option>
+                    <option value="fire-wood">Bois de chauffe</option>
+                    <option value="insurance">Assurance</option>
+                    <option value="boiler">Chaudière</option>
+                    <option value="cheminey-sweeping">Ramonage</option>                    
+                    <option value="home-appliance">Electroménager</option>
+                    <option value="furniture">Mobilier</option>
+                    <option value="muriel">Muriel</option>
+                    <option value="patrick">Patrick</option>
+                </select>
+        </div>
+           
+        <div class="horizontal-subcontainer-for-3 display-if-theme-matches-author">
+            <label for="author">Auteur :</label>
                 <select id="author" name="author">
                     <option value="">--choississez parmi--</option>
                     <option value="muriel">Muriel</option>
-                    <option value="pathrick">Patrick</option>
+                    <option value="patrick">Patrick</option>
                     <option value="both">Les deux</option>
                 </select>
         </div>
         <div class="horizontal-subcontainer-for-2 display-if-theme-present">
             <label for="beneficiary">Destinataire :</label>
             <input type="text" id="beneficiary" name="beneficiary" maxlength="50" value="Nommez le/la destinataire">
+        </div>
+        <div class="display-if-theme-rent">
+            <label for="tentant">Locataire :</label>
+            <input type="text" id="tentant" name="tentant" maxlength="50" value="Nommez le/la locataire">
         </div>
     </div>
     <br>
