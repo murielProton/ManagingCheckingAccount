@@ -87,11 +87,22 @@ Tous les ans création d'une nouvelle table SQL avec Java.
 ### Objets Java
 #### Entry : 
 - Date LocalDate 
-- Type String
+- Type TypeOfPayment (enum)
 - Name String
 - Amount in € float 
-- Theme String
-- Author (Patrick ou Muriel) String
+- Theme (enum)
+- Author (Patrick ou Muriel) (enum)
+#### TypeOfPayment
+- Salary
+- Payment ( dans le cas ou le montant est crédité sur mon compte )
+- TIP
+- Automatic-drawdown
+- Withdrawal
+- Credit Card
+- Cheque-cashing
+- Cashing
+- Cheque
+- Cash
 #### Author 
 - Patrick
 - Muriel

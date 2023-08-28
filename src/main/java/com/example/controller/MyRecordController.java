@@ -18,10 +18,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import com.example.model.entity.MyRecord;
 import com.example.repository.MyRecordRepository;
 import com.example.exception.MyRecordIdMismatchException;
 import com.example.exception.MyRecordNotFoundException;
+import com.example.model.entities.MyRecord;
 
 @RestController
 @RequestMapping("/api/myRecords")

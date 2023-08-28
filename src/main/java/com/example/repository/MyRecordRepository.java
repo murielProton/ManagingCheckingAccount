@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.example.model.entity.MyRecord;
+import com.example.model.entities.MyRecord;
 
 public interface MyRecordRepository extends CrudRepository<MyRecord, Long>{
     MyRecord findById(long id);

@@ -10,7 +10,7 @@ import org.junit.Test;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 
-import com.example.model.entity.MyRecord;
+import com.example.model.entities.MyRecord;
 
 import io.restassured.RestAssured;
 import io.restassured.response.Response;

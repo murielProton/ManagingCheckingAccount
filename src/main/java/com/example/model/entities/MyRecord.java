@@ -1,17 +1,19 @@
-package com.example.model.entity;
+package com.example.model.entities;
 
 import java.util.Date;
+
+import com.example.model.enums.TypeOfPayment;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+
 
 @Entity 
-@Getter @Setter
+@Data
 public class MyRecord {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -21,7 +23,7 @@ public class MyRecord {
     private Date dateOfTransaction;
 
     @Column(nullable = true, unique = false)
-    private String typeTransaction;
+    private TypeOfPayment typeTransaction;
 
     @Column(nullable = true, unique = false)
     private String name;
