@@ -16,6 +16,8 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import com.example.controller.TypeOfTransactionEnumMapingController;
 import com.example.model.enums.Author;
+import com.example.model.enums.ThemeGeneral;
+import com.example.model.enums.ThemeSub;
 import com.example.model.enums.TypeOfTransaction;
 
 
@@ -39,5 +41,16 @@ public class EnumMappingIntegrationTest {
             .andExpect(status().isOk())
             .andExpect(content().string(Author.MURIEL.name()));
     }
-
+    @Test
+    public void whenPassingLowerCaseEnumConstant_thenConvert_ThemeGeneral() throws Exception {
+        mockMvc.perform(get("/enummapping/ThemeGeneral/get?themeGeneral=caluire_et_cuire"))
+            .andExpect(status().isOk())
+            .andExpect(content().string(ThemeGeneral.CALUIRE_ET_CUIRE.name()));
+    }
+    @Test
+    public void whenPassingLowerCaseEnumConstant_thenConvert_ThemeSub() throws Exception {
+        mockMvc.perform(get("/enummapping/ThemeSub/get?themeSub=construction_work"))
+            .andExpect(status().isOk())
+            .andExpect(content().string(ThemeSub.CONSTRUCTION_WORK.name()));
+    }
 }
