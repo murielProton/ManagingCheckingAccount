@@ -81,7 +81,8 @@ src
 cf : https://stackoverflow.com/questions/59965015/springboot-where-to-put-internal-container-classes
 
 # Enum types
-http://localhost:8081/enummapping/get?typeOfTransaction=TIP
+http://localhost:8081/enummapping/TypeOfTransaction/get?typeOfTransaction=TIP
+http://localhost:8081/enummapping/Author/get?author=both
 
 # Tests classes
 To run MyRecordHTMLCrudTest.java with success please run application server.

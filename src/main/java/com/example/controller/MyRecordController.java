@@ -22,6 +22,7 @@ import com.example.repository.MyRecordRepository;
 import com.example.exception.MyRecordIdMismatchException;
 import com.example.exception.MyRecordNotFoundException;
 import com.example.model.entities.MyRecord;
+import com.example.model.enums.Author;
 
 @RestController
 @RequestMapping("/api/myRecords")
@@ -40,7 +41,7 @@ public class MyRecordController {
     @GetMapping("/createDummy")
     public MyRecord createDummy() {
         MyRecord myDummy = new MyRecord();
-        myDummy.setAuthor("Dummy author");
+        myDummy.setAuthor(Author.BOTH);
         myDummy.setName("Dummy name");
         myDummy.setDateOfTransaction(new Date());
         myDummy.setAmount(0f);

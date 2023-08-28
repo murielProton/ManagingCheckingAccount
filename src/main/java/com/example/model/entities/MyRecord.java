@@ -2,6 +2,7 @@ package com.example.model.entities;
 
 import java.util.Date;
 
+import com.example.model.enums.Author;
 import com.example.model.enums.TypeOfTransaction;
 
 import jakarta.persistence.Column;
@@ -35,6 +36,6 @@ public class MyRecord {
     private String theme;
 
     @Column(nullable = true, unique = false)
-    private String author;
+    private Author author;
 
 }

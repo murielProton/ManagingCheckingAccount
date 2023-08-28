@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 
 import com.example.model.entities.MyRecord;
+import com.example.model.enums.Author;
 
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
@@ -23,7 +24,7 @@ public class MyRecordHTMLCrudTest {
 
   private MyRecord createRandomRecord() {
       MyRecord myDummy = new MyRecord();
-      myDummy.setAuthor("Dummy author");
+      myDummy.setAuthor(Author.BOTH);
       myDummy.setName("Dummy name");
       myDummy.setDateOfTransaction(new Date());
       myDummy.setAmount(0f);
@@ -105,7 +106,7 @@ public class MyRecordHTMLCrudTest {
     MyRecord myRecord = createRandomRecord();
     String location = createMyRecordAsUri(myRecord);
     myRecord.setId(Long.parseLong(location.split("api/myRecords/")[1]));
-    myRecord.setAuthor("newAuthor");
+    myRecord.setAuthor(Author.PATRICK);
     Response response = RestAssured.given()
       .contentType(MediaType.APPLICATION_JSON_VALUE)
       .body(myRecord)

@@ -13,7 +13,8 @@ Plusieurs colonnes :
 - Nom du débiteur / magasin / nom du créditeur
 - Montant en € Mandatory
 - Thème Mandatory
-- Auteur 
+- Auteur
+- Locataire
 
 ## Formulaire HTML
 Tous les labels sont en Français.\
@@ -21,6 +22,7 @@ Tous les labels sont en Français.\
 Le champ Auteur apparaît et est obligatoire que lorsqu'il s'agit d'un sous thème : Travaux, Charges, Impôts Fonciers, Eau, Gaz, Électricité, Prêt Immobilier, Bois de chauffe, Assurance, Entretient Chaudière, Ramonage, Électroménager, Mobilier.\
 Le champ N° de chèque apparaît et est obligatoire si le type de payement est par Chèque.\
 Si le Type de payement est Chèque un champs N° de Chèque apparaît. \
+Si le Thème est Caluire et Cuire loyer champs Locataire apparaît. \
 ### Liste des champs par ordre d'apparition
 - Date pick date
 - Type menu déroulant à choix multiple <select> with <option>  : 
@@ -80,6 +82,8 @@ Condition 01 : Pour le rendu du Bilan Mensuel, si le Type est Salaire ou Vireme
 Tous les montants sont positifs. Salaire et Virement n'y figurent pas. Il classe toutes les sortie d'argent par thème est sous thèmes.\
 #### Condition Qui a payer
 Dans le cas de Thème Construciton Work, Costs, Porperty Taxe, Water, Gaz, Electricity, Insurance, Boiler, Chimney Sweeping, Home Appliance et Furniture, loan il est obligatoire d'indiqué qui à payer : Patrick ou Muriel.\
+#### Condition sub Theme Loyer
+Dans le cas de Thème est Caluire et Cuire rent il est obligatoire d'indiqué le prénom et le nom du locataire.\
 #### Condition Chèque
 Si c'est un payement par chèque le N° du chèque est obligatoire.\
 ### Création de table SQL avec Java
@@ -92,6 +96,7 @@ Tous les ans création d'une nouvelle table SQL avec Java.
 - Amount in € float 
 - Theme (enum)
 - Author (Patrick ou Muriel) (enum)
+- Locataire String
 #### TypeTransaction
 - Salary
 - Payment ( dans le cas ou le montant est crédité sur mon compte )
@@ -106,7 +111,9 @@ Tous les ans création d'une nouvelle table SQL avec Java.
 #### Author 
 - Patrick
 - Muriel
-#### Theme :
+- Both
+#### Theme = General Theme + Sub Theme
+#### General Theme :
 - Caluire et Cuire 
 - Meyzieu
 - Montplat 

@@ -15,6 +15,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.example.controller.TypeOfTransactionEnumMapingController;
+import com.example.model.enums.Author;
 import com.example.model.enums.TypeOfTransaction;
 
 
@@ -27,10 +28,16 @@ public class EnumMappingIntegrationTest {
     private MockMvc mockMvc;
 
     @Test
-    public void whenPassingLowerCaseEnumConstant_thenConvert() throws Exception {
-        mockMvc.perform(get("/enummapping/get?typeOfTransaction=tip"))
+    public void whenPassingLowerCaseEnumConstant_thenConvert_TypeOfTransaction() throws Exception {
+        mockMvc.perform(get("/enummapping/TypeOfTransaction/get?typeOfTransaction=tip"))
             .andExpect(status().isOk())
             .andExpect(content().string(TypeOfTransaction.TIP.name()));
+    }
+    @Test
+    public void whenPassingLowerCaseEnumConstant_thenConvert_Author() throws Exception {
+        mockMvc.perform(get("/enummapping/Author/get?author=muriel"))
+            .andExpect(status().isOk())
+            .andExpect(content().string(Author.MURIEL.name()));
     }
 
 }
