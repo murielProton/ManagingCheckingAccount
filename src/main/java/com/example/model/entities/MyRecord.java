@@ -2,7 +2,7 @@ package com.example.model.entities;
 
 import java.util.Date;
 
-import com.example.model.enums.TypeOfPayment;
+import com.example.model.enums.TypeOfTransaction;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -23,7 +23,7 @@ public class MyRecord {
     private Date dateOfTransaction;
 
     @Column(nullable = true, unique = false)
-    private TypeOfPayment typeTransaction;
+    private TypeOfTransaction typeTransaction;
 
     @Column(nullable = true, unique = false)
     private String name;
