@@ -18,7 +18,18 @@ Plusieurs colonnes :
 
 ## Formulaire HTML
 Tous les labels sont en Français.\
-### Règles à mettre en place avec JavaScript
+
+### Liste des champs par ordre d'apparition
+- Date pick date
+- Type menu déroulant à choix multiple <select> with <option>  : Salaire, Virement ( dans le cas ou le montant est crédité sur mon compte ), TIP, Prélèvement Automatique, Retrait, Carte bancaire, Encaissement Chèque, Encaissement Espèces, Chèque, Espèces.\
+- N° de Chèque number\
+- Nom ( débiteur / magasin / créditeur) text libre 50 caractères maximum\
+- Montant en € number \
+- Thème général menu déroulant à choix multiple : Caluire et Cuire, Meyzieu, Santé, Alimentaire, Loisir, Voyages, TCL, Vêtements, Papeterie, Informatique, Montplat.\
+- Sous thème : Loyer, Charges, Travaux, Eau, Gaz, Prêt Immobilier, Electricité, Bois de chauffe, Impôts Fonciers, Taxe d'Habitation, Assurance, Entretient Chaudière, Ramonage, Électroménager, Mobilier, Patrick, Muriel.\
+- Auteur : Patrick, Muriel.\
+- Locataire text.\
+### Règles à mettre en place avec JavaScript et JQuery
 Le champ Auteur apparaît et est obligatoire que lorsqu'il s'agit d'un sous thème : Travaux, Charges, Impôts Fonciers, Eau, Gaz, Électricité, Prêt Immobilier, Bois de chauffe, Assurance, Entretient Chaudière, Ramonage, Électroménager, Mobilier.\
 Le champ N° de chèque apparaît et est obligatoire si le type de payement est par Chèque.\
 Si le Type de payement est Chèque un champs N° de Chèque apparaît. \
@@ -49,53 +60,6 @@ Dans le cas où le thème général est Meyzieu ; la liste de sous thème est li
 - Taxe Foncière
 - Taxe d'Habitation
 - Travaux \
-### Liste des champs par ordre d'apparition
-- Date pick date
-- Type menu déroulant à choix multiple <select> with <option>  : 
->- Salaire
->- Virement ( dans le cas ou le montant est crédité sur mon compte )
->- TIP
->- Prélèvement Automatique
->- Retrait
->- Carte bancaire
->- Encaissement Chèque
->- Encaissement Espèces
->- Chèque
->- Espèces
-- N° de Chèque number
-- Nom ( débiteur / magasin / créditeur) text libre 50 caractères maximum
-- Montant en € number 
-- Thème menu déroulant à choix multiple <select> with <optgroup> tags 
->- Caluire et Cuire Travaux
->- Caluire et Cuire Loyer
->- Caluire et Cuire Charges
->- Caluire et Cuire Taxe Foncière
->- Meyzieu Travaux
->- Meyzieu Eau
->- Meyzieu Gaz
->- Meyzieu Prêt Immobilier
->- Meyzieu Electricité
->- Meyzieu Bois de chauffe
->- Meyzieu Impôts Fonciers
->- Meyzieu Assurance
->- Meyzieu Entretient Chaudière
->- Meyzieu Ramonage
->- Meyzieu Électroménager ( four, machine à laver le linge, mixeur, aspirateur … )
->- Meyzieu Mobilier
->- Santé Patrick
->- Santé Muriel
->- Alimentaire
->- Loisir
->- Voyages
->- TCL Muriel
->- TCL Patrick
->- Vêtements Patrick
->- Vêtements Muriel
->- Papeterie
->- Informatique
-- Auteur :
->- Patrick
->- Muriel
 ## Backend Java
 ### Conditions 
 #### Condition Rendu Salaire
