@@ -23,6 +23,9 @@ import com.example.exception.MyRecordIdMismatchException;
 import com.example.exception.MyRecordNotFoundException;
 import com.example.model.entities.MyRecord;
 import com.example.model.enums.Author;
+import com.example.model.enums.ThemeGeneral;
+import com.example.model.enums.ThemeSub;
+import com.example.model.enums.TypeOfTransaction;
 
 @RestController
 @RequestMapping("/api/myRecords")
@@ -59,14 +62,19 @@ public class MyRecordController {
           .orElseThrow(MyRecordNotFoundException::new);
     }
 
-    @GetMapping("/date/{dateOfTransaction}")
-    public List<MyRecord> findByTitle(@PathVariable Date dateOfTransaction) {
+    @GetMapping("/date/{date-of-transaction}")
+    public List<MyRecord> findByDateOfTransaction(@PathVariable Date dateOfTransaction) {
         return repository.findByDateOfTransaction(dateOfTransaction);
     }
 
-    @GetMapping("/type/{typeTransaction}")
-    public List<MyRecord> findByTypeTransaction(@PathVariable String typeTransaction) {
+    @GetMapping("/type/{type-of-transaction}")
+    public List<MyRecord> findByTypeTransaction(@PathVariable TypeOfTransaction typeTransaction) {
         return repository.findByTypeTransaction(typeTransaction);
+    }
+
+    @GetMapping("/check-number/{check-number}")
+    public List<MyRecord> findByCheckNumber(@PathVariable String checkNumber) {
+        return repository.findByCheckNumber(checkNumber);
     }
 
     @GetMapping("/name/{name}")
@@ -75,22 +83,36 @@ public class MyRecordController {
     }
 
     @GetMapping("/amount/{amount}")
-    public List<MyRecord> findByName(@PathVariable Float amount){
+    public List<MyRecord> findByAmount(@PathVariable Float amount){
         return repository.findByAmount(amount);
     }
     
-    @GetMapping("/theme/{theme}")
-    public List<MyRecord> findByTheme(@PathVariable String theme){
-        return repository.findByTheme(theme);
+    @GetMapping("/theme-general/{theme-general}")
+    public List<MyRecord> findByThemeGeneral(@PathVariable ThemeGeneral themeGeneral){
+        return repository.findByThemeGeneral(themeGeneral);
+    }
+    @GetMapping("/beneficiary/{beneficiary}")
+    public List<MyRecord> findByBeneficiary(@PathVariable String beneficiary){
+        return repository.findByBeneficiary(beneficiary);
+    }
+
+    @GetMapping("/theme-sub/{theme-sub}")
+    public List<MyRecord> findByThemeSub(@PathVariable ThemeSub themeSub){
+        return repository.findByThemeSub(themeSub);
+    }
+
+    @GetMapping("/tenant/{tenant}")
+    public List<MyRecord> findByTenant(@PathVariable String tenant){
+        return repository.findByTenant(tenant);
     }
     
     @GetMapping("/author/{author}")
-    public List<MyRecord> findByAuthor(@PathVariable String author){
+    public List<MyRecord> findByAuthor(@PathVariable Author author){
         return repository.findByAuthor(author);
     }
 
     @PutMapping("/{id}")
-    public MyRecord updateBook(@RequestBody MyRecord myRecord, @PathVariable Long id) {
+    public MyRecord updateMyRecord(@RequestBody MyRecord myRecord, @PathVariable Long id) {
         if (myRecord.getId() != id) {
           throw new MyRecordIdMismatchException();
         }
@@ -105,6 +127,4 @@ public class MyRecordController {
           .orElseThrow(MyRecordNotFoundException::new);
         repository.deleteById(id);
     }
-
-
 }

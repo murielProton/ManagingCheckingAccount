@@ -11,7 +11,7 @@ import com.example.model.enums.ThemeSub;
 @RestController
 @RequestMapping("enummapping")
 public class ThemeSubEnumMappingController {
-    @GetMapping("/ThemeSub/get")
+    @GetMapping("/theme-sub/get")
     public String getByTheme(@RequestParam(required = false) ThemeSub themeSub){
         return themeSub.name();
     }

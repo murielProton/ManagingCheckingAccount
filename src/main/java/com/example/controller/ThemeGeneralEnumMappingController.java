@@ -10,7 +10,7 @@ import com.example.model.enums.ThemeGeneral;
 @RestController
 @RequestMapping("enummapping")
 public class ThemeGeneralEnumMappingController {
-    @GetMapping("/ThemeGeneral/get")
+    @GetMapping("/theme-general/get")
     public String getByTheme(@RequestParam(required = false) ThemeGeneral themeGeneral){
         return themeGeneral.name();
     }

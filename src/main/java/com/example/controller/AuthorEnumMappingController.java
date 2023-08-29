@@ -10,7 +10,7 @@ import com.example.model.enums.Author;
 @RestController
 @RequestMapping("enummapping")
 public class AuthorEnumMappingController {
-    @GetMapping("/Author/get")
+    @GetMapping("/author/get")
     public String getByAuthor(@RequestParam(required = false) Author author){
         return author.name();
     }

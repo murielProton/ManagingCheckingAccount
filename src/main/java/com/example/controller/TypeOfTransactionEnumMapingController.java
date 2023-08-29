@@ -11,7 +11,7 @@ import com.example.model.enums.TypeOfTransaction;
 @RequestMapping("enummapping")
 public class TypeOfTransactionEnumMapingController{
 
-    @GetMapping("/TypeOfTransaction/get")
+    @GetMapping("/type-of-transaction/get")
     public String getByTypeOfTransaction(@RequestParam(required = false) TypeOfTransaction typeOfTransaction){
         return typeOfTransaction.name();
     }
