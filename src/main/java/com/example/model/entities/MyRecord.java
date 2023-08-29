@@ -2,8 +2,7 @@ package com.example.model.entities;
 
 import java.util.Date;
 
-import com.example.model.enums.Author;
-import com.example.model.enums.TypeOfTransaction;
+import com.example.model.enums.*;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -26,6 +25,9 @@ public class MyRecord {
     @Column(nullable = true, unique = false)
     private TypeOfTransaction typeTransaction;
 
+    @Column(nullable = true, unique = true)
+    private String checkNumber;
+
     @Column(nullable = true, unique = false)
     private String name;
 
@@ -33,7 +35,16 @@ public class MyRecord {
     private Float amount;
 
     @Column(nullable = true, unique = false)
-    private String theme;
+    private ThemeGeneral themeGeneral;
+
+    @Column(nullable = true, unique = false)
+    private String beneficiary;
+    
+    @Column(nullable = true, unique = false)
+    private ThemeSub themeSub;
+
+    @Column(nullable = true, unique = false)
+    private String tenant;
 
     @Column(nullable = true, unique = false)
     private Author author;

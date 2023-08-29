@@ -80,7 +80,7 @@ selectElementForEvent1.addEventListener("change", (event) =>{
     }
 });
 
-const selectElementForEvent2 = document.querySelector(".type-of-payements");
+const selectElementForEvent2 = document.querySelector(".type-of-transactions");
 selectElementForEvent2.addEventListener("change", (event) =>{
     var typeValue = event.target.value;
     var divToShow = $(".display-if-type-check");
