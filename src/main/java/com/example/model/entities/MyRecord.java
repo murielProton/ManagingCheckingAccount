@@ -25,19 +25,19 @@ public class MyRecord {
     @Column(nullable = false, unique = false)
     private Date dateOfTransaction;
 
-    @Column(nullable = true, unique = false)
+    @Column(nullable = false, unique = false)
     private TypeOfTransaction typeTransaction;
 
     @Column(nullable = true, unique = true)
     private String checkNumber;
 
-    @Column(nullable = true, unique = false)
+    @Column(nullable = false, unique = false)
     private String name;
 
     @Column(nullable = false, unique = false)
     private Float amount;
 
-    @Column(nullable = true, unique = false)
+    @Column(nullable = false, unique = false)
     private ThemeGeneral themeGeneral;
 
     @Column(nullable = true, unique = false)

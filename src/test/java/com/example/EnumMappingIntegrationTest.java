@@ -31,26 +31,27 @@ public class EnumMappingIntegrationTest {
 
     @Test
     public void whenPassingLowerCaseEnumConstant_thenConvert_TypeOfTransaction() throws Exception {
-        mockMvc.perform(get("/enummapping/TypeOfTransaction/get?typeOfTransaction=tip"))
+        mockMvc.perform(get("/enummapping/type-of-transaction/get?typeOfTransaction=tip"))
             .andExpect(status().isOk())
             .andExpect(content().string(TypeOfTransaction.TIP.name()));
     }
     @Test
-    public void whenPassingLowerCaseEnumConstant_thenConvert_Author() throws Exception {
-        mockMvc.perform(get("/enummapping/Author/get?author=muriel"))
-            .andExpect(status().isOk())
-            .andExpect(content().string(Author.MURIEL.name()));
-    }
-    @Test
     public void whenPassingLowerCaseEnumConstant_thenConvert_ThemeGeneral() throws Exception {
-        mockMvc.perform(get("/enummapping/ThemeGeneral/get?themeGeneral=caluire_et_cuire"))
+        mockMvc.perform(get("/enummapping/theme-general/get?themeGeneral=travel"))
             .andExpect(status().isOk())
-            .andExpect(content().string(ThemeGeneral.CALUIRE_ET_CUIRE.name()));
+            .andExpect(content().string(ThemeGeneral.TRAVEL.name()));
     }
     @Test
     public void whenPassingLowerCaseEnumConstant_thenConvert_ThemeSub() throws Exception {
-        mockMvc.perform(get("/enummapping/ThemeSub/get?themeSub=construction_work"))
+        mockMvc.perform(get("/enummapping/theme-sub/get?themeSub=construction_work"))
             .andExpect(status().isOk())
             .andExpect(content().string(ThemeSub.CONSTRUCTION_WORK.name()));
     }
+    @Test
+    public void whenPassingLowerCaseEnumConstant_thenConvert_Author() throws Exception {
+        mockMvc.perform(get("/enummapping/author/get?author=muriel"))
+            .andExpect(status().isOk())
+            .andExpect(content().string(Author.MURIEL.name()));
+    }
+
 }

@@ -12,6 +12,8 @@ import org.springframework.http.MediaType;
 
 import com.example.model.entities.MyRecord;
 import com.example.model.enums.Author;
+import com.example.model.enums.ThemeGeneral;
+import com.example.model.enums.TypeOfTransaction;
 
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
@@ -28,6 +30,8 @@ public class MyRecordHTMLCrudTest {
       myDummy.setName("Dummy name");
       myDummy.setDateOfTransaction(new Date());
       myDummy.setAmount(0f);
+      myDummy.setTypeTransaction(TypeOfTransaction.WITHDRAWAL);
+      myDummy.setThemeGeneral(ThemeGeneral.FOOD);
       return myDummy;
   }
 
@@ -95,7 +99,7 @@ public class MyRecordHTMLCrudTest {
 
   @Test
   public void whenGetNotExistRecordById_thenNotFound() {
-      Response response = RestAssured.get(API_ROOT + "/12");
+      Response response = RestAssured.get(API_ROOT + "/102");
       
       assertEquals(HttpStatus.NOT_FOUND.value(), response.getStatusCode());
   }
@@ -117,7 +121,7 @@ public class MyRecordHTMLCrudTest {
     response = RestAssured.get(location);
     
     assertEquals(HttpStatus.OK.value(), response.getStatusCode());
-    assertEquals("newAuthor", response.jsonPath()
+    assertEquals("PATRICK", response.jsonPath()
       .get("author"));
 }
     //Test Delete Methode
