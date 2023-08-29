@@ -102,8 +102,8 @@
 | Unique        |                                   | NO                    | NO                  |
 | Required      | NO                                | NO                    | NO                  |
 | Name          |                                   |                       |           id        |
-| Type          |                                   |                       |                     |
-| Auto generated|                                   |                       |                     |
+| Type          |                                   |                       | INT(50)             |
+| Auto generated|                                   |                       | YES                 |
 | Nullable      |                                   |                       | NO                  |
 | Unique        |                                   |                       | YES                 |
 | Required      |                                   |                       | YES                 |
