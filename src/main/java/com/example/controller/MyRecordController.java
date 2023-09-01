@@ -48,6 +48,8 @@ public class MyRecordController {
         myDummy.setName("Dummy name");
         myDummy.setDateOfTransaction(new Date());
         myDummy.setAmount(0f);
+        myDummy.setThemeGeneral(ThemeGeneral.CALUIRE_ET_CUIRE);
+        myDummy.setTypeTransaction(TypeOfTransaction.CASH);
         return repository.save(myDummy);
     }
 

@@ -14,6 +14,8 @@ import com.example.model.enums.TypeOfTransaction;
 public interface MyRecordRepository extends CrudRepository<MyRecord, Long>{
     MyRecord findById(long id);
 
+    List<MyRecord> findAll();
+
     List<MyRecord> findByDateOfTransaction(Date dateOfTransaction);
 
     List<MyRecord> findByTypeTransaction(TypeOfTransaction typeTransaction);

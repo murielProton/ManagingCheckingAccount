@@ -23,18 +23,18 @@ function testDoeseThemeValueMachesFalse(){
   console.log("success !")
   return true;
 }
-function testIsTypeValueChequeTrue(){
+function testIsTypeValueCheckTrue(){
   var themeValue = "check"
-  if (isTypeValueCheque(themeValue)){
+  if (isTypeValueCheck(themeValue)){
     console.log("success !")
     return true;
   }
   console.log("failure");
   return false;
 }
-function testIsTypeValueChequeFalse(){
+function testIsTypeValueCheckFalse(){
   var themeValue = "basilique"
-  if (isTypeValueCheque(themeValue)){
+  if (isTypeValueCheck(themeValue)){
     console.log("failure");
     return false;
   }

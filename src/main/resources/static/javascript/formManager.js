@@ -45,7 +45,7 @@ function isThemeSubValueRent(themeSubValue){
   }
 }
 
-function isTypeValueCheque(typeValue){
+function isTypeValueCheck(typeValue){
 
   if(typeValue == "check"){
     return true;
@@ -84,7 +84,7 @@ const selectElementForEvent2 = document.querySelector(".type-of-transactions");
 selectElementForEvent2.addEventListener("change", (event) =>{
     var typeValue = event.target.value;
     var divToShow = $(".display-if-type-check");
-    if(isTypeValueCheque(typeValue)){
+    if(isTypeValueCheck(typeValue)){
       divToShow.show();
     }else{
       divToShow.hide();

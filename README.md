@@ -2,6 +2,7 @@
 Usefull tools to manage my checking accounts, and loose less time checking my banc statements. Using Java, HTML and SQL.
 # Help and tutorials
 For the framework Spring Boot, and to work with the design pattern MVC : https://www.baeldung.com/spring-boot-start
+For SQL mySQL : https://www.tutorialspoint.com/mysql
 
 # Dificulties
 ## Defining a simple application.properties
@@ -19,6 +20,42 @@ src/main/resources
 This means you nead to create META-INF/additional-spring-configuration-metadata.json. 
 - Click on the lightbold, the propriety will be added to the JSON file.
 Unfortunatly it has been uncorectly coded. You need to pars it. I got help frome : https://jsonlint.com/
+### spring.jpa.defer-datasource-initialization
+This is a JPA-specific property that Hibernate uses for DDL generation provided by SpringBoot.
+It is nested in application.properties of this project.
+- create – Hibernate first drops existing tables and then creates new tables.
+- update – The object model created based on the mappings (annotations or XML) is compared with the existing schema, and then Hibernate updates the schema according to the diff. It never deletes the existing tables or columns even if they are no longer required by the application.
+-  create-drop – similar to create, with the addition that Hibernate will drop the database after all operations are completed; typically used for unit testing
+- validate – Hibernate only validates whether the tables and columns exist; otherwise, it throws an exception.
+- none – This value effectively turns off the DDL generation.
+
+### spring.sql.init.mode
+It is nested in application.properties of this project.
+
+- always – always initialize the database
+- embedded – always initialize if an embedded database is in use. This is the default if the property value is not specified.
+- never – never initialize the database
+### Alteration for SQL or mySQL
+we need to switch from H2 datasupervision to SQL/mySQL for the database.
+So comment lines :
+- ```spring.datasource.driver-class-name=org.h2.Driver```
+- ```spring.datasource.url=jdbc:h2:mem:bootapp;DB_CLOSE_DELAY=-1```
+- ```spring.datasource.username=sa```
+- ```spring.datasource.password=```
+- ```spring.jpa.database-platform=org.hibernate.dialect.H2Dialect```
+- ```spring.jpa.hibernate.ddl-auto=update```
+- ```spring.jpa.defer-datasource-initialization=true```
+- ```spring.h2.console.enabled=true```
+- ```spring.sql.init.mode=always```
+Add folowing lines :
+- ```spring.jpa.hibernate.ddl-auto=update```
+- ```spring.datasource.url=jdbc:mysql://127.0.0.1:3307/<name_of_database>```
+- ```spring.datasource.username=<user name>```
+- ```spring.datasource.password=<password>```
+- ```spring.jpa.database-platform=org.hibernate.dialect.MySQL8Dialect```
+- ```spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver```
+- ```spring.jpa.show-sql: true```
+## pom.xml file
 *** How do I make sure tha my pom.wml is correcty encoded ? ***
 1. mvn install
 2. tab PROBLEMS in VS Code "Malformed POM"
@@ -83,6 +120,9 @@ cf : https://stackoverflow.com/questions/59965015/springboot-where-to-put-intern
 # Enum types
 http://localhost:8081/enummapping/TypeOfTransaction/get?typeOfTransaction=TIP
 http://localhost:8081/enummapping/Author/get?author=both
-
+To ensure that the SQL dabase set the columns as ENUM types, add this tag to all the enum() fields in MyRecord.java : ```@Enumerated(EnumType.STRING)```.
 # Tests classes
 To run MyRecordHTMLCrudTest.java with success please run application server.
+
+
+

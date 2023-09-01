@@ -94,9 +94,9 @@ Tous les ans création d'une nouvelle table SQL avec Java.
 - Automatic-drawdown
 - Withdrawal
 - Credit Card
-- Cheque-cashing
+- Check-cashing
 - Cashing
-- Cheque
+- Check
 - Cash
 #### Author 
 - Patrick

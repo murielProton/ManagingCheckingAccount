@@ -9,6 +9,8 @@ import com.example.model.enums.TypeOfTransaction;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -26,6 +28,7 @@ public class MyRecord {
     private Date dateOfTransaction;
 
     @Column(nullable = false, unique = false)
+    @Enumerated(EnumType.STRING)
     private TypeOfTransaction typeTransaction;
 
     @Column(nullable = true, unique = true)
@@ -38,18 +41,21 @@ public class MyRecord {
     private Float amount;
 
     @Column(nullable = false, unique = false)
+     @Enumerated(EnumType.STRING)
     private ThemeGeneral themeGeneral;
 
     @Column(nullable = true, unique = false)
     private String beneficiary;
     
     @Column(nullable = true, unique = false)
+    @Enumerated(EnumType.STRING)
     private ThemeSub themeSub;
 
     @Column(nullable = true, unique = false)
     private String tenant;
 
     @Column(nullable = true, unique = false)
+    @Enumerated(EnumType.STRING)
     private Author author;
 
 }
