@@ -86,6 +86,7 @@ There is always the option to see the code of Baeldung -> https://github.com/eug
 1. command line : ``` & 'C:\Program Files\Java\jdk-20\bin\java.exe' '@C:\Users\<path for this file>\AppData\Local\Temp\cp_cmmf7wa8zzm4xwcel20luttw0.argfile' 'com.example.Application'
 configurer le pom mvn install -f "c:\<path for my workspace>\workspace\account_management\pom.xml" ```
 2. URL in WEB browther : localhost:8081
+localhost:8081/MyRecordBeanController/resources/templates/templateWEB/index-bean-my-record.xhtml
 ## End the server process
 CTRL + C
 

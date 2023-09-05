@@ -25,7 +25,7 @@ Tous les labels sont en Français.\
 - N° de Chèque number\
 - Nom ( débiteur / magasin / créditeur) text libre 50 caractères maximum\
 - Montant en € number \
-- Thème général menu déroulant à choix multiple : Caluire et Cuire, Meyzieu, Santé, Alimentaire, Loisir, Voyages, TCL, Vêtements, Papeterie, Informatique, Montplat.\
+- Thème général menu déroulant à choix multiple : Caluire et Cuire, Meyzieu, Santé, Alimentaire, Loisir, Voyages, TCL, Vêtements, Papeterie, Informatique, Montplat, Patrick, Muriel.\
 - Sous thème : Loyer, Charges, Travaux, Eau, Gaz, Prêt Immobilier, Electricité, Bois de chauffe, Impôts Fonciers, Taxe d'Habitation, Assurance, Entretient Chaudière, Ramonage, Électroménager, Mobilier, Patrick, Muriel.\
 - Auteur : Patrick, Muriel.\
 - Locataire text.\
