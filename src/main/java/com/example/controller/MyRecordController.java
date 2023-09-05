@@ -63,7 +63,7 @@ public class MyRecordController {
         return repository.findById(id)
           .orElseThrow(MyRecordNotFoundException::new);
     }
-
+/*/
     @GetMapping("/date/{date-of-transaction}")
     public List<MyRecord> findByDateOfTransaction(@PathVariable Date dateOfTransaction) {
         return repository.findByDateOfTransaction(dateOfTransaction);
@@ -111,7 +111,7 @@ public class MyRecordController {
     @GetMapping("/author/{author}")
     public List<MyRecord> findByAuthor(@PathVariable Author author){
         return repository.findByAuthor(author);
-    }
+    }*/
 
     @PutMapping("/{id}")
     public MyRecord updateMyRecord(@RequestBody MyRecord myRecord, @PathVariable Long id) {

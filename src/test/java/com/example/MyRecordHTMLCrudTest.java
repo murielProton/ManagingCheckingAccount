@@ -25,7 +25,7 @@ public class MyRecordHTMLCrudTest {
   private static final String API_ROOT
     = "http://localhost:8081/api/myRecords";
 
-  private MyRecord createRandomRecord() {
+  public static MyRecord createRandomRecord() {
       MyRecord myDummy = new MyRecord();
       myDummy.setAuthor(Author.BOTH);
       myDummy.setName("Dummy name");
@@ -76,7 +76,7 @@ public class MyRecordHTMLCrudTest {
       assertEquals(HttpStatus.OK.value(), response.getStatusCode());
   }
 
-  @Test
+  /*@Test
   public void whenGetRecordsByTitle_thenOK() {
       MyRecord myRecord = createRandomRecord();
       createMyRecordAsUri(myRecord);
@@ -86,7 +86,7 @@ public class MyRecordHTMLCrudTest {
       assertEquals(HttpStatus.OK.value(), response.getStatusCode());
       assertTrue(response.as(List.class)
         .size() > 0);
-  }
+  }*/
   @Test
   public void whenGetCreatedMyRecordById_thenOK() {
       MyRecord myRecord = createRandomRecord();
