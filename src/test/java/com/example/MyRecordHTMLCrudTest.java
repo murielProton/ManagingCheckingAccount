@@ -110,7 +110,7 @@ public class MyRecordHTMLCrudTest {
   public void whenUpdateCreatedMyRecord_thenUpdated() {
     MyRecord myRecord = createRandomRecord();
     String location = createMyRecordAsUri(myRecord);
-    myRecord.setId(Long.parseLong(location.split("api/myRecords/")[1]));
+    myRecord.setId(10000);
     myRecord.setAuthor(Author.PATRICK);
     Response response = RestAssured.given()
       .contentType(MediaType.APPLICATION_JSON_VALUE)

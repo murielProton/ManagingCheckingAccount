@@ -1,5 +1,13 @@
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head><title>Home Page</title></head>
+<head>
+    
+    <meta charset="utf-8">
+    <title>Home Page</title>
+    
+</head>
+<!--TODO folow https://www.codejava.net/frameworks/spring-boot/user-registration-and-login-tutorial
+and make it work-->
 <body>
     <div>
         <h1>Hello !</h1>
@@ -19,6 +27,10 @@
             <li>Adding SQL database, with mySQL depedencies</li>
             <li>file .properties set for SQL and Thymeleaf</li>
         </ul>
+    </div>
+    <div>
+        <h1>Welcome to <span th:text="${appName}"></h1>
+        <h3><a th:href="/@{/myRecords}">List of records</a></h3>
     </div>
 </body>
 </html>

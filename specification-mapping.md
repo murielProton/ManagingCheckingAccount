@@ -1,12 +1,12 @@
 # Mapping HTML -> java -> SQL
 | N° |               |                HTML               |         java          |        SQL          |
 |----|---------------|-----------------------------------|-----------------------|---------------------|
-| 01 | Name          |                                   |          id           |      java_id        |
-|    | Type          |                                   | long                  | INT(10)             |
-|    | Auto generated|                                   | YES                   | NO                  |
-|    | Nullable      |                                   | NO                    | NO                  |
-|    | Unique        |                                   | YES                   | YES                 |
-|    | Required      |                                   | YES                   | YES                 |
+| 01 | Name          |                                   |          id           |                     |
+|    | Type          |                                   | Integer               |                     |
+|    | Auto generated|                                   | YES                   |                     |
+|    | Nullable      |                                   | NO                    |                     |
+|    | Unique        |                                   | YES                   |                     |
+|    | Required      |                                   | YES                   |                     |
 | 02 | Name          |               Date                |   dateOfTransaction   | date_of_transaction |
 |    | Label         | date                              |                       |                     |
 |    | id            | date                              |                       |                     |
@@ -33,7 +33,7 @@
 |    |               | display-if-type-check             |                       |                     |
 |    | Type          | text                              | String                | TEXT(50)            |
 |    | Nullable      | YES                               | YES                   | YES                 |
-|    |    | Unique        |                                   | YES                   | YES                 |
+|    | Unique        |                                   | YES                   | YES                 |
 |    | Required      | NO                                | NO                    | NO                  |
 | 05 | Name          |                 Nom               |          name         |         name        |
 |    | Label         | name                              |                       |                     |

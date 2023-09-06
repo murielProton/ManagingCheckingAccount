@@ -16,7 +16,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Data;
-
  
 
 @Entity 
@@ -25,7 +24,7 @@ import lombok.Data;
 public class MyRecord {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Integer id;
 
     @Column(nullable = false, unique = false)
     private Date dateOfTransaction;

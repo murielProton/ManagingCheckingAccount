@@ -59,7 +59,7 @@ public class MyRecordController {
     }
 
     @GetMapping("/{id}")
-    public MyRecord findById(@PathVariable Long id) {
+    public MyRecord findById(@PathVariable Integer id) {
         return repository.findById(id)
           .orElseThrow(MyRecordNotFoundException::new);
     }
@@ -114,7 +114,7 @@ public class MyRecordController {
     }*/
 
     @PutMapping("/{id}")
-    public MyRecord updateMyRecord(@RequestBody MyRecord myRecord, @PathVariable Long id) {
+    public MyRecord updateMyRecord(@RequestBody MyRecord myRecord, @PathVariable Integer id) {
         if (myRecord.getId() != id) {
           throw new MyRecordIdMismatchException();
         }
@@ -124,7 +124,7 @@ public class MyRecordController {
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id) {
+    public void delete(@PathVariable Integer id) {
         repository.findById(id)
           .orElseThrow(MyRecordNotFoundException::new);
         repository.deleteById(id);

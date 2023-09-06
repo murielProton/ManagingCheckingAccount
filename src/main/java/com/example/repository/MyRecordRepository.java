@@ -12,6 +12,6 @@ import com.example.model.entities.MyRecord;
 //import com.example.model.enums.ThemeSub;
 //import com.example.model.enums.TypeOfTransaction;
  
-public interface MyRecordRepository extends JpaRepository<MyRecord, Long>{
+public interface MyRecordRepository extends JpaRepository<MyRecord, Integer>{
     
 }
