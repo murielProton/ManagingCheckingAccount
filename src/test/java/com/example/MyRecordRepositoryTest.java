@@ -17,6 +17,7 @@ import com.example.model.enums.Author;
 import com.example.model.enums.ThemeGeneral;
 import com.example.model.enums.TypeOfTransaction;
 import com.example.repository.MyRecordRepository;
+import com.example.resources.MyRecordDataFactory;
 import com.example.MyRecordHTMLCrudTest;
  
 @DataJpaTest
@@ -32,7 +33,7 @@ public class MyRecordRepositoryTest {
     @Test
     public void testCreateUser() {
 
-        MyRecord myRecordForTest = repo.save(MyRecordHTMLCrudTest.createRandomRecord());
+        MyRecord myRecordForTest = repo.save(MyRecordDataFactory.createOneMyRecordForTesting());
         
         MyRecord existsMyRecord = entityManager.find(MyRecord.class, myRecordForTest.getId());
         

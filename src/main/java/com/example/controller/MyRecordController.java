@@ -41,18 +41,6 @@ public class MyRecordController {
         return repository.save(myRecord);
     }
 
-    @GetMapping("/createDummy")
-    public MyRecord createDummy() {
-        MyRecord myDummy = new MyRecord();
-        myDummy.setAuthor(Author.BOTH);
-        myDummy.setName("Dummy name");
-        myDummy.setDateOfTransaction(new Date());
-        myDummy.setAmount(0f);
-        myDummy.setThemeGeneral(ThemeGeneral.CALUIRE_ET_CUIRE);
-        myDummy.setTypeTransaction(TypeOfTransaction.CASH);
-        return repository.save(myDummy);
-    }
-
     @GetMapping
     public Iterable<MyRecord> findAll() {
         return repository.findAll();
@@ -63,7 +51,7 @@ public class MyRecordController {
         return repository.findById(id)
           .orElseThrow(MyRecordNotFoundException::new);
     }
-/*/
+
     @GetMapping("/date/{date-of-transaction}")
     public List<MyRecord> findByDateOfTransaction(@PathVariable Date dateOfTransaction) {
         return repository.findByDateOfTransaction(dateOfTransaction);
@@ -111,11 +99,11 @@ public class MyRecordController {
     @GetMapping("/author/{author}")
     public List<MyRecord> findByAuthor(@PathVariable Author author){
         return repository.findByAuthor(author);
-    }*/
+    }
 
     @PutMapping("/{id}")
     public MyRecord updateMyRecord(@RequestBody MyRecord myRecord, @PathVariable Integer id) {
-        if (myRecord.getId() != id) {
+        if (!myRecord.getId().equals(id)) {
           throw new MyRecordIdMismatchException();
         }
         repository.findById(id)
@@ -128,5 +116,10 @@ public class MyRecordController {
         repository.findById(id)
           .orElseThrow(MyRecordNotFoundException::new);
         repository.deleteById(id);
+    }
+
+    @DeleteMapping("/purgeDatabase")
+    public void purgeDatabase() {
+        repository.deleteAll();
     }
 }
