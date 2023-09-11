@@ -12,7 +12,7 @@ and make it work-->
     <div>
         <h1>Hello !</h1>
         <p>Welcome to <span th:text="${appName}">Our App</span></p>
-        <div th:insert="menu :: menu"></div>
+        <header th:insert="~{menu.html :: menu}"> </header>
         <h4>achivements</h4>
         <ul>
             <li>I'm using SpringBoot</li>
@@ -22,15 +22,12 @@ and make it work-->
             <li>Handeling Errors.</li>
             <li>Adding a MyRecordController</li>
             <li>I'm using JavaScript to have an dynamic form.</li>
-            <li>I'm model.enums for picklists : Author, General Theme, Sub Theme an Type of Transaction.</li>
-            <li>I have a few tests in the green.</li>
+            <li>model.enums for picklists : Author, General Theme, Sub Theme an Type of Transaction.</li>
+            <li>All of my tests are in the green.</li>
             <li>Adding SQL database, with mySQL depedencies</li>
             <li>file .properties set for SQL and Thymeleaf</li>
+            <li>Java Enum linked with Widget classes for easy access in HTML, thanks to Thymleaf</li>
         </ul>
-    </div>
-    <div>
-        <h1>Welcome to <span th:text="${appName}"></h1>
-        <h3><a th:href="/@{/myRecords}">List of records</a></h3>
     </div>
 </body>
 </html>

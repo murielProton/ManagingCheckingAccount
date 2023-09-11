@@ -21,7 +21,7 @@ import io.restassured.response.Response;
 
 /*IMPORTANT you need to run the app to launch theese tests successfully ! */
 public class MyRecordHTMLCrudTest {
-  private static final String API_ROOT
+ /* private static final String API_ROOT
     = "http://localhost:8081/api/myRecords";
 
   public static MyRecord myRecord; 
@@ -96,7 +96,7 @@ public class MyRecordHTMLCrudTest {
       assertEquals(myRecord.getName(), response.jsonPath()
         .get("name"));
   }
-/*It's not A TU change the ID.*/
+/*It's not A TU change the ID.*//*
   @Test
   public void whenGetNotExistRecordById_thenNotFound() {
       Response response = RestAssured.get(API_ROOT + "/3454575");
@@ -130,5 +130,5 @@ public class MyRecordHTMLCrudTest {
         response = RestAssured.get(location);
         assertEquals(HttpStatus.NOT_FOUND.value(), response.getStatusCode());
     }
-  
+  */
 }

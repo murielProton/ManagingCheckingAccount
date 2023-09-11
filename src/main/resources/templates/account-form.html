@@ -7,128 +7,15 @@
 </head>
 <body>
     
-    <div th:insert="menu :: menu"></div>
+    <header th:insert="~{menu.html :: menu}"> </header>
 
-<h3 class:"title">Formulaire de dépenses</h3>
-
-
-<p>Formulaire pour entrer une dépense</p>
+    <h3 class:"title">Formulaire de dépenses</h3>
 
 
-<form action="/action_page.php">
-    <div class="horizontal-container">
+    <p>Formulaire pour entrer une dépense</p>
 
-        <div class="horizontal-subcontainer-for-4">
-            <label for="date">Date :</label><br>
-            <input type="date" id="date" name="date" required>
-        </div>
 
-        <div class="horizontal-subcontainer-for-4">
-            <label for="type-of-transactions">Choisissez un type de transactions :</label>
-                <select id="type-of-transactions" name="types" class="type-of-transactions" required>
-                    <option value="">--choississez parmi--</option>
-                    <option value="salary">Salaire</option>
-                    <option value="transfer">Virement</option>
-                    <option value="IPT">TIP</option>
-                    <option value="direct-debit">Prélèvement Automatique</option>
-                    <option value="withdrawal">Retrait</option>
-                    <option value="credit-card">Carte bancaire</option>
-                    <option value="cashing-check">Encaissement Chèque</option>
-                    <option value="cashing-cash">Encaissement Espèces</option>
-                    <option value="check">Chèque</option>
-                    <option value="cash">Espèces</option>
-                </select>   
-        </div>
-
-        <div class="horizontal-subcontainer-for-4">
-            <label for="name">Nom ( débiteur / magasin / créditeur)</label>
-            <input type="text" id="name" name="name" maxlength="50" value="Librairie Vivement Dimanche Croix Rousse" required>
-        </div>
-
-        <div class="horizontal-subcontainer-for-4">    
-            <label for="amount">Montant</label>
-            <input type="text" id="amount" name="amount" pattern="[0-9\.]+" maxlength="10" value="€" required>
-        </div>    
-    </div>
-
-    <div class="horizontal-container">
-        <div class="horizontal-subcontainer-for-4"></div>
-        <div class="horizontal-subcontainer-for-4 display-if-type-check">
-            <label for="check-number">N° de Chèque</label>
-            <input type="text" id="check-number" name="check-number" pattern="[0-9\.]+" maxlength="7">
-        </div>
-        <div class="horizontal-subcontainer-for-4"></div>
-        <div class="horizontal-subcontainer-for-4"></div>
-    </div>
-
-    <div class="horizontal-container">
-        <div class="horizontal-subcontainer-for-2 horizontal-subcontainer-for-3">
-            <label for="theme-general">Thème général :
-                <select id="theme-general" name="theme-general" class="theme-general" required>
-                    <option value="">--choississez parmi--</option>
-                    <option value="food">Alimentaire</option>
-                    <option value="leisure">Loisir</option>
-                    <option value="travels">Voyages</option>
-                    <option value="other">Autre</option>
-                    <option value="present">Cadeau</option>
-                    <option value="health">Santé</option>
-                    <option value="tcl">TCL</option>
-                    <option value="clothing">Vêtements</option>
-                    <option value="meyzieu">Meyzieu</option>
-                    <option value="caluire-et-cuire">Caluire et Cuire</option>
-                    <option value="stationary">Papeterie</option>
-                    <option value="computer">Informatique</option>
-                    <option value="other">Autre</option>
-                </select>
-            </label>
-        </div> 
-        <div class="horizontal-subcontainer-for-2 horizontal-subcontainer-for-3 display-if-theme-matches-themesub theme-sub">
-            <label for="theme-sub">Sous thème :</label>
-                <select id="theme-sub" name="theme-sub">
-                    <option value="">--choississez parmi--</option>
-                    <option value="contstruction-work">Travaux</option>
-                    <option value="rent">Loyer</option>
-                    <option value="costs">Charges (coprpopriété ...)</option>
-                    <option value="housing-taxe">Taxe d'habitation</option>
-                    <option value="property-taxe">Taxe de Propriété</option>
-                    <option value="water">Eau</option>
-                    <option value="gass">Gaz</option>
-                    <option value="electricity">Electricité</option>
-                    <option value="loan">Emprun</option>
-                    <option value="fire-wood">Bois de chauffe</option>
-                    <option value="insurance">Assurance</option>
-                    <option value="boiler">Chaudière</option>
-                    <option value="cheminey-sweeping">Ramonage</option>                    
-                    <option value="home-appliance">Electroménager</option>
-                    <option value="furniture">Mobilier</option>
-                    <option value="muriel">Muriel</option>
-                    <option value="patrick">Patrick</option>
-                    <option value="income-taxe">Impôt sur le Revenu</option>
-                </select>
-        </div>
-           
-        <div class="horizontal-subcontainer-for-3 display-if-theme-matches-author">
-            <label for="author">Auteur :</label>
-                <select id="author" name="author">
-                    <option value="">--choississez parmi--</option>
-                    <option value="muriel">Muriel</option>
-                    <option value="patrick">Patrick</option>
-                    <option value="both">Les deux</option>
-                </select>
-        </div>
-        <div class="horizontal-subcontainer-for-2 display-if-theme-present">
-            <label for="beneficiary">Destinataire :</label>
-            <input type="text" id="beneficiary" name="beneficiary" maxlength="50" value="Nommez le/la destinataire">
-        </div>
-        <div class="horizontal-subcontainer-for-3 display-if-theme-rent">
-            <label for="tentant">Locataire :</label>
-            <input type="text" id="tentant" name="tentant" maxlength="50" value="Nommez le/la locataire">
-        </div>
-    </div>
-    <br>
-    <input type="submit" value="Submit"><br>
-</form> 
-<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
-<script type="text/javascript"  th:src="@{/javascript/formManager.js}"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script type="text/javascript"  th:src="@{/javascript/formManager.js}"></script>
 </body>
 </html> 
