@@ -14,6 +14,23 @@
 
     <p>Formulaire pour entrer une dépense</p>
 
+        <form th:action="@{/process-account-form}" th:object="${myRecord}" method="post">
+            <div class="horizontal-container">
+                <div class="horizontal-subcontainer-for-4">
+                    <label class="date">date de la transaction : </label>
+                    <div class="date">
+                        <input type="date" th:field="*{dateOfTransaction}" class="dateOfTransaction" required/>
+                    </div>
+                </div>
+                <div class="horizontal-subcontainer-for-4"></div> 
+                <div class="horizontal-subcontainer-for-4"></div> 
+                <div class="horizontal-subcontainer-for-4"></div>
+                <div>
+                    <button type="submit" class="btn">register</button>
+                </div>
+            </div>
+        </form>
+
 
     <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
     <script type="text/javascript"  th:src="@{/javascript/formManager.js}"></script>
