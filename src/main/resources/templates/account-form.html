@@ -11,7 +11,9 @@
 
     <h3 class:"title">Formulaire de dépenses</h3>
 
-<!-- TOD folow tutorial https://www.baeldung.com/thymeleaf-enums-->
+<!-- TODO folow tutorial https://www.baeldung.com/thymeleaf-enums -->
+<!-- TODO correct javascript so it will work with thymeleaf enums. -->
+
     <p>Formulaire pour entrer une dépense</p>
 
         <form th:action="@{/process-account-form}" th:object="${myRecord}" method="post">
@@ -23,7 +25,8 @@
                     </div>
                 </div>
                 <div class="horizontal-subcontainer-for-4">
-                    <select name="typeOfTransaction" required>type de transaction 
+                    <label class="typeOfTransaction">type de transaction : </label>
+                    <select name="typeOfTransaction" required>
                         <option th:each="typeOfTransactionOpt : ${T(com.example.model.enums.TypeOfTransaction).values()}" 
                             th:value="${typeOfTransactionOpt}" th:text="${typeOfTransactionOpt}"></option>
                     </select>
@@ -31,14 +34,66 @@
                 <div class="horizontal-subcontainer-for-4">
                     <label class="name">nom de l'entreprise, créditeur, commentaires ... : </label>
                     <div class="name">
-                        <input type="name" th:field="*{name}" class="name" required/>
+                        <input type="text" th:field="*{name}" class="name" required/>
                     </div>
                 </div> 
-                <div class="horizontal-subcontainer-for-4"></div>
-                <div>
-                    <button type="submit" class="btn">register</button>
+                <div class="horizontal-subcontainer-for-4">
+                    <label class="amount">montant (en euro 0,00) : </label>
+                    <div class="amount">
+                        <input type="text" th:field="*{amount}" pattern="[0-9\.]+" maxlength="10" value="€" required>
+                    </div>
                 </div>
             </div>
+            <div class="horizontal-container">
+                <div class="horizontal-subcontainer-for-4"></div>
+                <div class="horizontal-subcontainer-for-4 display-if-type-check">
+                    <label class="check-number">n° de chèque : </label>
+                    <div class="check-number">
+                        <input type="check-number" th:field="*{checkNumber}" class="check-number"/>
+                    </div>
+                </div>
+                <div class="horizontal-subcontainer-for-4"></div>
+                <div class="horizontal-subcontainer-for-4"></div>
+            </div>
+            <div class="horizontal-container">
+                <div class="horizontal-subcontainer-for-2 horizontal-subcontainer-for-3">
+                    <label class="theme-general">thème : </label>
+                    <select name="theme-general" required>
+                        <option th:each="themeGeneral : ${T(com.example.model.enums.ThemeGeneral).values()}" 
+                            th:value="${themeGeneral}" th:text="${themeGeneral}"></option>
+                    </select>
+                </div>
+                <div class="horizontal-subcontainer-for-2 horizontal-subcontainer-for-3 display-if-theme-matches-themesub theme-sub">
+                    <label class="theme-sub">sous thème : </label>
+                    <select name="theme-sub" required>
+                        <option th:each="themeSub : ${T(com.example.model.enums.ThemeSub).values()}" 
+                            th:value="${themeSub}" th:text="${themeSub}"></option>
+                    </select>
+                </div>
+                <div class="horizontal-subcontainer-for-3 display-if-theme-matches-author">
+                    <label class="author">auteur : </label>
+                    <select name="author" required>
+                        <option th:each="author : ${T(com.example.model.enums.Author).values()}" 
+                            th:value="${author}" th:text="${author}"></option>
+                    </select>
+                </div>
+                <div class="horizontal-subcontainer-for-2 display-if-theme-present">
+                    <label class="beneficiary">bénéficiaire : </label>
+                    <div class="beneficiary">
+                        <input type="text" th:field="*{beneficiary}" maxlength="50">
+                    </div>
+                </div>
+                <div class="horizontal-subcontainer-for-3 display-if-theme-rent">
+                    <label class="tenant">locataire : </label>
+                    <div class="tenant">
+                        <input type="text" th:field="*{tenant}">
+                    </div>
+                </div>
+            </div>
+            <div>
+                <button type="submit" class="btn">register</button>
+            </div>
+            
         </form>
 
 
