@@ -3,7 +3,7 @@
 <head>
     <title>Formulaire d'enregistrement de dépenses</title>
     <meta charset="UTF-8">
-    <link href="../static/css/formLayout.css" th:href="@{/css/formLayout.css}" rel="stylesheet" />
+    <link th:href="@{/css/formLayout.css}" rel="stylesheet" />
 </head>
 <body>
     
@@ -26,7 +26,7 @@
                 </div>
                 <div class="horizontal-subcontainer-for-4">
                     <label class="typeOfTransaction">type de transaction : </label>
-                    <select name="typeOfTransaction" required>
+                    <select name="typeOfTransaction" class="type-of-transactions" required>
                         <option th:each="typeOfTransactionOpt : ${T(com.example.model.enums.TypeOfTransaction).values()}" 
                             th:value="${typeOfTransactionOpt}" th:text="${typeOfTransactionOpt}"></option>
                     </select>
@@ -58,14 +58,14 @@
             <div class="horizontal-container">
                 <div class="horizontal-subcontainer-for-2 horizontal-subcontainer-for-3">
                     <label class="theme-general">thème : </label>
-                    <select name="theme-general" required>
+                    <select name="theme-general" class="theme-general" required>
                         <option th:each="themeGeneral : ${T(com.example.model.enums.ThemeGeneral).values()}" 
                             th:value="${themeGeneral}" th:text="${themeGeneral}"></option>
                     </select>
                 </div>
                 <div class="horizontal-subcontainer-for-2 horizontal-subcontainer-for-3 display-if-theme-matches-themesub theme-sub">
                     <label class="theme-sub">sous thème : </label>
-                    <select name="theme-sub" required>
+                    <select name="theme-sub" id="theme-sub" required>
                         <option th:each="themeSub : ${T(com.example.model.enums.ThemeSub).values()}" 
                             th:value="${themeSub}" th:text="${themeSub}"></option>
                     </select>

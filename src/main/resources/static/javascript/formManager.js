@@ -1,9 +1,9 @@
 function doeseThemeGeneralValueMaches(themeGeneralValue){
-  const arrayOfThemes =["meyzieu",
-                        "caluire-et-cuire",
-                        "health",
-                        "tcl",
-                        "clothing"
+  const arrayOfThemes =["MEYZIEU",
+                        "CALUIRE_ET_CUIRE",
+                        "HEALTH",
+                        "TCL",
+                        "CLOTHING"
                       ];
   if(arrayOfThemes.includes(themeGeneralValue)){
     return true;
@@ -13,20 +13,20 @@ function doeseThemeGeneralValueMaches(themeGeneralValue){
 }
 
 function doeseThemeSubValueMaches(themeSubValue){
-  const arrayOfThemes =["contstruction-work",
-                        "costs",
-                        "housing-taxe",
-                        "property-taxe",
-                        "water",
-                        "gass",
-                        "electricity",
-                        "loan",
-                        "fire-wood",
-                        "insurance",
-                        "boiler",
-                        "cheminey-sweeping",
-                        "home-appliance",
-                        "furniture"
+  const arrayOfThemes =["CONSTRUCTION_WORK",
+                        "COSTS",
+                        "HOUSING_TAXE",
+                        "PROPERTY_TAXE",
+                        "WATER",
+                        "GASS",
+                        "ELECTRICITY",
+                        "LOAN",
+                        "FIRE_WOOD",
+                        "INSURANCE",
+                        "BOILER",
+                        "CHIMNEY_SWEEPING",
+                        "HOME_APPLIANCE",
+                        "FURNITURE"
                       ];
   if(arrayOfThemes.includes(themeSubValue)){
     return true;
@@ -35,32 +35,19 @@ function doeseThemeSubValueMaches(themeSubValue){
   }
 }
 function isThemeSubValueRent(themeSubValue){
-  console.log("I Am in isThemeSubValueRent()"); 
-  if(themeSubValue == "rent"){
-    console.log("I Am in isThemeSubValueRent() TRUE");
+  if(themeSubValue == "RENT"){
     return true;
   } else {
-    console.log("I Am in isThemeSubValueRent() FALSE");
     return false;
   }
 }
 
 function isTypeValueCheck(typeValue){
-
-  if(typeValue == "check"){
-    return true;
-  } else {
-    return false;
-  }
+  return "CHECK" == typeValue;
 }
 
 function isThemeValuePresent(typeValue){
-
-  if(typeValue == "present"){
-    return true;
-  } else {
-    return false;
-  }
+    return (typeValue == "PRESENT");
 }
 
 const selectElementForEvent1 = document.querySelector(".theme-general");

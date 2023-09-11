@@ -30,8 +30,6 @@ import com.example.model.enums.TypeOfTransaction;
 @RestController
 @RequestMapping("/api/myRecords")
 public class MyRecordController {
-    @Value("${spring.application.name}")
-    String appName;
     @Autowired
     private MyRecordRepository repository;
 
