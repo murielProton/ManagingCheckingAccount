@@ -30,11 +30,18 @@ public class SimpleController {
 
     @PostMapping("/process-account-form")
     public String processAccountForm(MyRecord myRecord) {
-        
-        myRecordRepository.save(myRecord);
+
+            //TODO if save OK return sucess page if not return failure page with the correcte message of error.
+            myRecordRepository.save(myRecord);
+
         
         return "success";
     }
-
+    
+    @PostMapping("/success")
+    public String viewSuccess() {
+        
+        return "/success";
+    }
 
 }

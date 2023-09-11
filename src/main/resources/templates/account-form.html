@@ -11,7 +11,7 @@
 
     <h3 class:"title">Formulaire de dépenses</h3>
 
-
+<!-- TOD folow tutorial https://www.baeldung.com/thymeleaf-enums-->
     <p>Formulaire pour entrer une dépense</p>
 
         <form th:action="@{/process-account-form}" th:object="${myRecord}" method="post">
@@ -22,8 +22,18 @@
                         <input type="date" th:field="*{dateOfTransaction}" class="dateOfTransaction" required/>
                     </div>
                 </div>
-                <div class="horizontal-subcontainer-for-4"></div> 
-                <div class="horizontal-subcontainer-for-4"></div> 
+                <div class="horizontal-subcontainer-for-4">
+                    <select name="typeOfTransaction" required>type de transaction 
+                        <option th:each="typeOfTransactionOpt : ${T(com.example.model.enums.TypeOfTransaction).values()}" 
+                            th:value="${typeOfTransactionOpt}" th:text="${typeOfTransactionOpt}"></option>
+                    </select>
+                </div> 
+                <div class="horizontal-subcontainer-for-4">
+                    <label class="name">nom de l'entreprise, créditeur, commentaires ... : </label>
+                    <div class="name">
+                        <input type="name" th:field="*{name}" class="name" required/>
+                    </div>
+                </div> 
                 <div class="horizontal-subcontainer-for-4"></div>
                 <div>
                     <button type="submit" class="btn">register</button>
