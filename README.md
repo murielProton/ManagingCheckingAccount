@@ -3,6 +3,8 @@ Usefull tools to manage my checking accounts, and loose less time checking my ba
 # Help and tutorials
 For the framework Spring Boot, and to work with the design pattern MVC : https://www.baeldung.com/spring-boot-start
 For SQL mySQL : https://www.tutorialspoint.com/mysql
+To transcribe Enums classes to HTML using Thymleaf : https://www.baeldung.com/thymeleaf-enums
+To bind HTML to database SQL using Thymleaf : https://www.codejava.net/frameworks/spring-boot/user-registration-and-login-tutorial
 
 # Dificulties
 ## Defining a simple application.properties
