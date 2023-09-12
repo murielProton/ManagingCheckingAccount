@@ -12,7 +12,6 @@
     <h3 class:"title">Formulaire de dépenses</h3>
 
 <!-- TODO folow tutorial https://www.baeldung.com/thymeleaf-enums -->
-<!-- TODO correct javascript so it will work with thymeleaf enums. -->
 
     <p>Formulaire pour entrer une dépense</p>
 
@@ -57,22 +56,22 @@
             </div>
             <div class="horizontal-container">
                 <div class="horizontal-subcontainer-for-2 horizontal-subcontainer-for-3">
-                    <label class="theme-general">thème : </label>
+                    <label>thème : </label>
                     <select name="theme-general" class="theme-general" required>
                         <option th:each="themeGeneral : ${T(com.example.model.enums.ThemeGeneral).values()}" 
                             th:value="${themeGeneral}" th:text="${themeGeneral}"></option>
                     </select>
                 </div>
-                <div class="horizontal-subcontainer-for-2 horizontal-subcontainer-for-3 display-if-theme-matches-themesub theme-sub">
-                    <label class="theme-sub">sous thème : </label>
-                    <select name="theme-sub" id="theme-sub" required>
+                <div class="horizontal-subcontainer-for-2 horizontal-subcontainer-for-3 display-if-theme-matches-themesub">
+                    <label>sous thème : </label>
+                    <select name="theme-sub" id="theme-sub">
                         <option th:each="themeSub : ${T(com.example.model.enums.ThemeSub).values()}" 
                             th:value="${themeSub}" th:text="${themeSub}"></option>
                     </select>
                 </div>
                 <div class="horizontal-subcontainer-for-3 display-if-theme-matches-author">
-                    <label class="author">auteur : </label>
-                    <select name="author" required>
+                    <label>auteur : </label>
+                    <select name="author">
                         <option th:each="author : ${T(com.example.model.enums.Author).values()}" 
                             th:value="${author}" th:text="${author}"></option>
                     </select>
