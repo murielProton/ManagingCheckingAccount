@@ -31,20 +31,16 @@ public class SimpleController {
         return "/account-form";
     }
 
-    @PostMapping("/process-account-form")
-    public String processAccountForm(@Validated MyRecord myRecord, BindingResult result, Model model) {
-
-            //TODO if save OK return sucess page if not return failure page with the correcte message of error.
-            myRecordRepository.save(myRecord);
-
-        
-        return "success";
-    }
-    
     @PostMapping("/success")
     public String viewSuccess() {
         
         return "/success";
+    }
+
+    @GetMapping("/all-records")
+    public String showAll(Model model) {
+        model.addAttribute("myRecords", myRecordRepository.findAll());
+        return "/all-records";
     }
 
 }

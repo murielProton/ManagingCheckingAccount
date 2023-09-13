@@ -65,13 +65,14 @@ public class MyRecordController {
         repository.save(myRecord);
         System.out.println("Success !");
 
-        return "success";
+        return "/success";
     }
 
-    @GetMapping
+    @GetMapping("/all-of-my-records")
     public Iterable<MyRecord> findAll() {
         return repository.findAll();
     }
+
 
     @GetMapping("/{id}")
     public MyRecord findById(@PathVariable Integer id) {
