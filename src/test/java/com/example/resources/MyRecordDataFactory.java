@@ -16,7 +16,7 @@ public  class MyRecordDataFactory {
         myDummy.setName("Dummy name");
         myDummy.setDateOfTransaction(new Date());
         myDummy.setAmount(0f);
-        myDummy.setTypeTransaction(TypeOfTransaction.WITHDRAWAL);
+        myDummy.setTypeOfTransaction(TypeOfTransaction.WITHDRAWAL);
         myDummy.setThemeGeneral(ThemeGeneral.FOOD);
         return myDummy;
     }

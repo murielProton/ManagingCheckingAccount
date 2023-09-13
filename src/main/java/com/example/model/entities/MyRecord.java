@@ -6,6 +6,7 @@ import com.example.model.enums.Author;
 import com.example.model.enums.ThemeGeneral;
 import com.example.model.enums.ThemeSub;
 import com.example.model.enums.TypeOfTransaction;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -26,12 +27,13 @@ public class MyRecord {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
+    @JsonFormat(pattern="yyyy-MM-dd")
     @Column(nullable = false, unique = false)
     private Date dateOfTransaction;
 
     @Column(nullable = false, unique = false)
     @Enumerated(EnumType.STRING)
-    private TypeOfTransaction typeTransaction;
+    private TypeOfTransaction typeOfTransaction;
 
     @Column(nullable = true, unique = true)
     private String checkNumber;

@@ -15,7 +15,7 @@
 |    | Nullable      | NO                                | NO                    | NO                  |
 |    | Unique        |                                   | NO                    | NO                  |
 |    | Required      | YES                               | YES                   | YES                 |
-| 03 | Name          |       type de transaction         |    typeTransaction    | type_of_transaction |
+| 03 | Name          |       type de transaction         |    typeOfTransaction    | type_of_transaction |
 |    | Label         | type-of-transactions              |                       |                     |
 |    | id            | type-of-transactions              |                       |                     |
 |    | div class     | horizontal-subcontainer-for-4     |                       |                     |

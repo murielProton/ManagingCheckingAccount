@@ -13,7 +13,7 @@
 
     <p>Formulaire pour entrer une dépense</p>
 
-        <form th:action="@{/process-account-form}" th:object="${myRecord}" method="post">
+        <form th:action="@{/api/myRecords/addANewRecord}" th:object="${myRecord}" method="post">
             <div class="horizontal-container">
                 <div class="horizontal-subcontainer-for-4">
                     <label class="date">date de la transaction : </label>
@@ -55,14 +55,14 @@
             <div class="horizontal-container">
                 <div class="horizontal-subcontainer-for-2 horizontal-subcontainer-for-3">
                     <label>thème : </label>
-                    <select name="theme-general" class="theme-general" required>
+                    <select name="ThemeGeneral" class="theme-general" required>
                         <option th:each="themeGeneral : ${T(com.example.model.enums.ThemeGeneral).values()}" 
                             th:value="${themeGeneral}" th:text="${themeGeneral}"></option>
                     </select>
                 </div>
                 <div class="horizontal-subcontainer-for-2 horizontal-subcontainer-for-3 display-if-theme-matches-themesub">
                     <label>sous thème : </label>
-                    <select name="theme-sub" id="theme-sub">
+                    <select name="ThemeSub" id="theme-sub">
                         <option th:each="themeSub : ${T(com.example.model.enums.ThemeSub).values()}" 
                             th:value="${themeSub}" th:text="${themeSub}"></option>
                     </select>
@@ -73,22 +73,25 @@
                         <option th:each="author : ${T(com.example.model.enums.Author).values()}" 
                             th:value="${author}" th:text="${author}"></option>
                     </select>
+
                 </div>
                 <div class="horizontal-subcontainer-for-2 display-if-theme-present">
                     <label class="beneficiary">bénéficiaire : </label>
                     <div class="beneficiary">
                         <input type="text" th:field="*{beneficiary}" maxlength="50">
+
                     </div>
                 </div>
                 <div class="horizontal-subcontainer-for-3 display-if-theme-rent">
                     <label class="tenant">locataire : </label>
                     <div class="tenant">
                         <input type="text" th:field="*{tenant}">
+
                     </div>
                 </div>
             </div>
             <div>
-                <button type="submit" class="btn">register</button>
+                <button type="submit" class="btn" value="Add MyRecord">register</button>
             </div>
             
         </form>

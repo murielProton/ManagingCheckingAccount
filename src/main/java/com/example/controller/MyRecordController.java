@@ -1,17 +1,21 @@
 package com.example.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -19,6 +23,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.example.repository.MyRecordRepository;
+
+import jakarta.servlet.http.HttpServletRequest;
+
 import com.example.exception.MyRecordIdMismatchException;
 import com.example.exception.MyRecordNotFoundException;
 import com.example.model.entities.MyRecord;
@@ -30,13 +37,35 @@ import com.example.model.enums.TypeOfTransaction;
 @RestController
 @RequestMapping("/api/myRecords")
 public class MyRecordController {
-    @Autowired
+
     private MyRecordRepository repository;
 
-    @PostMapping
+    @Autowired
+    public MyRecordController(MyRecordRepository repository) {
+        this.repository = repository;
+    }
+
+    // to ensure the binding between HTML date and Java Date type
+    @InitBinder
+    public void initBinder(HttpServletRequest request, ServletRequestDataBinder binder)
+    {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        dateFormat.setLenient(false);
+        binder.registerCustomEditor(Date.class, null,  new CustomDateEditor(dateFormat, true));
+    }
+
+    @PostMapping("/addANewRecord")
     @ResponseStatus(HttpStatus.CREATED)
-    public MyRecord create(@RequestBody MyRecord myRecord) {
-        return repository.save(myRecord);
+    public String addRecord(@Validated MyRecord myRecord, BindingResult result, Model model) {
+        System.out.println("add a new Record");
+        if (result.hasErrors()){
+            System.out.println("adding a new Record has failed");
+            return "account-form "+ result;
+        }
+        repository.save(myRecord);
+        System.out.println("Success !");
+
+        return "success";
     }
 
     @GetMapping
@@ -56,8 +85,8 @@ public class MyRecordController {
     }
 
     @GetMapping("/type/{type-of-transaction}")
-    public List<MyRecord> findByTypeTransaction(@PathVariable TypeOfTransaction typeTransaction) {
-        return repository.findByTypeTransaction(typeTransaction);
+    public List<MyRecord> findByTypeOfTransaction(@PathVariable TypeOfTransaction typeOfTransaction) {
+        return repository.findByTypeOfTransaction(typeOfTransaction);
     }
 
     @GetMapping("/check-number/{check-number}")

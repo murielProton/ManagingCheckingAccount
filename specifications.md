@@ -87,7 +87,7 @@ Tous les ans création d'une nouvelle table SQL avec Java.
 - Theme (enum)
 - Author (Patrick ou Muriel) (enum)
 - Locataire String
-#### TypeTransaction
+#### TypeOfTransaction
 - Salary
 - Payment ( dans le cas ou le montant est crédité sur mon compte )
 - TIP

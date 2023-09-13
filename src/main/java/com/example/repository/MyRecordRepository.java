@@ -7,7 +7,8 @@ import java.util.List;
 //import java.util.List;
 
 //import org.springframework.data.repository.CrudRepository; 
-import org.springframework.data.jpa.repository.JpaRepository;
+//import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
 
 import com.example.model.entities.MyRecord;
 import com.example.model.enums.Author;
@@ -15,11 +16,11 @@ import com.example.model.enums.ThemeGeneral;
 import com.example.model.enums.ThemeSub;
 import com.example.model.enums.TypeOfTransaction;
  
-public interface MyRecordRepository extends JpaRepository<MyRecord, Integer>{
+public interface MyRecordRepository extends CrudRepository<MyRecord, Integer>{
 
     List<MyRecord> findByDateOfTransaction(Date dateOfTransaction);
 
-    List<MyRecord> findByTypeTransaction(TypeOfTransaction typeTransaction);
+    List<MyRecord> findByTypeOfTransaction(TypeOfTransaction typeOfTransaction);
 
     List<MyRecord> findByCheckNumber(String checkNumber);
 
