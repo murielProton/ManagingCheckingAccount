@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Business rules</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+    
+    <header th:insert="~{menu.html :: menu}"> </header>
+
+    <h1 class:"title">Business rules</h1>
+    <p>All renderings and views will be in french.</p>
+    <p>In Enum types CHOOSE will not be an option.</p>
+
+
+    <div>
+        <h2>The rules behind the different fields</h2>
+        <div id="date-of-transaction">
+            <h3>Date Of Transaction</h3>
+            <p>JSON Format yyyy-MM-dd</p>
+            <p>Java type : Date</p>
+            <p>Java variable name : dateOfTransaction</p>
+            <p>MANDATORY</p>
+
+        </div>
+        <div id="type-of-transaction">
+            <h3>Type Of Transaction</h3>
+            <p>Java type : Enum</p>
+            <p>Java variable name : TypeOfTransaction</p>
+            <p>MANDATORY</p>
+            <P>If the type of transaction is set to 'CHECK', then the field 'checkNumber' is mandatory.</P>
+            <P>If the type of transaction is set to 'SALARY', then the picklist of the field 'themeGeneral' is [Muriel, Patrick].</P>
+            <P>If the type of transaction is not set to 'SALARY', then the picklist of the field 'themeGeneral' does not contain [Muriel, Patrick].</P>
+
+        </div>
+        <div id="check-number">
+            <h3>Check Number</h3>
+            <p>Java type : String</p>
+            <p>Java variable name : checkNumber</p>
+            <p>MANDATORY : Only when the field 'TypeOfTransaction' is set to 'CHECK'</p>
+            <p>UNIQUE</p>
+            <p>pattern : length superior to 7 digit, maximum 10 digits, composed only of digits.</p>
+            
+        </div>
+        <div id="name">
+            <h3>Name</h3>
+            <p>Java type : String</p>
+            <p>Java variable name : name</p>
+            <p>MANDATORY</p>
+        </div>
+        <div id="amount">
+            <h3>Amount</h3>
+            <p>Java type : Float</p>
+            <p>Java variable name : amount</p>
+            <p>MANDATORY</p>
+            <p>pattern : maximum length 10 digits, composed only of digits, must contain '.'.</p>
+
+        </div>
+        <div id="theme-general">
+            <h3>Theme General</h3>
+            <p>Java type : Enum</p>
+            <p>Java variable name : themeGeneral</p>
+            <p>MANDATORY</p>
+            <p>If the field 'TypeOfTransaction' is set to 'SALARY', the picklist only contains [Muriel, Patrick].</p>
+            <p>If the field 'TypeOfTransaction' is not set to 'SALARY', the picklist doese not contain [Muriel, Patrick].</p>
+            <p>If theme general is set to 'PRESENT', the field 'beneficiary' is mandatory, but the 'ThemeSub' is not.</p>
+            <p>If theme general is set to [CALUIRE_ET_CUIRE, MEYZIEU, HEALTH, TCL, CLOTHING, INCOME_TAXE], the field 'ThemeSub' is mandatory.</p>
+            <p>If theme general is set to [HEALTH, TCL, CLOTHING, , COMPUTER], the picklist of the field 'ThemSub' contains [Muriel, Patrick, Both, HouseHold]</p>
+            <p>If theme general is set to 'CALUIRE_ET_CUIRE', the picklist of the field 'ThemSub' contains [INSURANCE, RENT, COSTS, CONSTRUCTION_WORK, WATER, GASS, ELECTRICITY, PROPERTY_TAXE, BOILER].</p>
+            <p>If theme general is set to 'MEYZIEU', the picklist of the field 'ThemSub' contains [CHIMNEY_SWEEPING, HOME_APPLIANCE, FURNITURE, FIRE_WOOD, INSURANCE, LOAN, COSTS, HOUSING_TAXE, CONSTRUCTION_WORK, WATER, GASS, ELECTRICITY, PROPERTY_TAXE, BOILER].</p>
+        </div>
+        <div id="beneficiary">
+            <h3>Beneficiary</h3>
+            <p>Java type : String</p>
+            <p>Java variable name : beneficiary</p>
+            <p>MANDATORY : Only when the field 'themeGeneral' is set to 'PRESENT'</p>
+        </div>
+        <div id="theme-sub">
+            <h3>Theme Sub</h3>
+            <p>Java type : Enum</p>
+            <p>Java variable name : themeSub</p>
+            <p>MANDATORY : Only when the field 'themeGeneral' is set to [CALUIRE_ET_CUIRE, MEYZIEU, HEALTH, TCL, CLOTHING, INCOME_TAXE, COMPUTER]</p>
+            <p>If theme general is set to [CALUIRE_ET_CUIRE, MEYZIEU, HEALTH, TCL, CLOTHING, INCOME_TAXE], the field 'ThemeSub' is mandatory.</p>
+            <p>If theme general is set to [HEALTH, TCL, CLOTHING, INCOME_TAXE, COMPUTER], the picklist of the field 'ThemSub' contains [Muriel, Patrick, Both, HouseHold]</p>
+            <p>If theme general is set to 'CALUIRE_ET_CUIRE', the picklist of the field 'ThemSub' contains [INSURANCE, RENT, COSTS, CONSTRUCTION_WORK, WATER, GASS, ELECTRICITY, PROPERTY_TAXE, BOILER].</p>
+            <p>If theme general is set to 'MEYZIEU', the picklist of the field 'ThemSub' contains [CHIMNEY_SWEEPING, HOME_APPLIANCE, FURNITURE, FIRE_WOOD, INSURANCE, LOAN, COSTS, HOUSING_TAXE, CONSTRUCTION_WORK, WATER, GASS, ELECTRICITY, PROPERTY_TAXE, BOILER].</p>
+        </div>
+        <div id="tenant">
+            <h3>Tenant</h3>
+            <p>Java type : String</p>
+            <p>Java variable name : tenant</p>
+            <p>MANDATORY  : Only if the field ThemSub is set to 'RENT'.</p>
+        </div>
+        <div id="author">
+            <h3>Author</h3>
+            <p>Java type : Enum</p>
+            <p>Java variable name : author</p>
+            <p>MANDATORY  : Only the field 'themeSub' is set to [CHIMNEY_SWEEPING, HOME_APPLIANCE, FURNITURE, FIRE_WOOD, INSURANCE, LOAN, COSTS, HOUSING_TAXE, CONSTRUCTION_WORK, WATER, GASS, ELECTRICITY, PROPERTY_TAXE, BOILER].</p>
+        </div>
+    </div>
+</body>
+</html>
