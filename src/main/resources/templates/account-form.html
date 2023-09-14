@@ -43,7 +43,7 @@
             </div>
             <div class="horizontal-container">
                 <div class="horizontal-subcontainer-for-4"></div>
-                <div class="horizontal-subcontainer-for-4 display-if-type-check">
+                <div id="div-check-number" class="horizontal-subcontainer-for-4">
                     <label class="check-number">n° de chèque : </label>
                     <div class="check-number">
                         <input type="check-number" th:field="*{checkNumber}" class="check-number"/>
@@ -60,14 +60,14 @@
                             th:value="${themeGeneral}" th:text="${themeGeneral}"></option>
                     </select>
                 </div>
-                <div class="horizontal-subcontainer-for-2 horizontal-subcontainer-for-3 display-if-theme-matches-themesub">
+                <div id="div-theme-sub" class="horizontal-subcontainer-for-2 horizontal-subcontainer-for-3">
                     <label>sous thème : </label>
                     <select name="ThemeSub" id="theme-sub">
                         <option th:each="themeSub : ${T(com.example.model.enums.ThemeSub).values()}" 
                             th:value="${themeSub}" th:text="${themeSub}"></option>
                     </select>
                 </div>
-                <div class="horizontal-subcontainer-for-3 display-if-theme-matches-author">
+                <div id="div-author" class="horizontal-subcontainer-for-3">
                     <label>auteur : </label>
                     <select name="author">
                         <option th:each="author : ${T(com.example.model.enums.Author).values()}" 
@@ -75,14 +75,14 @@
                     </select>
 
                 </div>
-                <div class="horizontal-subcontainer-for-2 display-if-theme-present">
+                <div id="div-beneficiary" class="horizontal-subcontainer-for-2">
                     <label class="beneficiary">bénéficiaire : </label>
                     <div class="beneficiary">
                         <input type="text" th:field="*{beneficiary}" maxlength="50">
 
                     </div>
                 </div>
-                <div class="horizontal-subcontainer-for-3 display-if-theme-rent">
+                <div id="div-tenant" class="horizontal-subcontainer-for-3">
                     <label class="tenant">locataire : </label>
                     <div class="tenant">
                         <input type="text" th:field="*{tenant}">

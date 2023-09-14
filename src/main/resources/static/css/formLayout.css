@@ -30,19 +30,19 @@ div{
     float:left;
     margin: 3%;
 }
-/* class to display on conditions */
-.display-if-type-check{
+/* class and id to display on conditions */
+#div-check-number{
     display:none;
 }
-.display-if-theme-matches-author{
+#div-author{
     display:none;
 }
-.display-if-theme-present{
+#div-beneficiary{
     display:none;
 }
-.display-if-theme-matches-themesub{
+#div-theme-sub{
     display:none;
 }
-.display-if-theme-rent{
+#div-tenant{
     display:none;
 }
