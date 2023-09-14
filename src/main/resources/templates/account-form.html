@@ -24,6 +24,7 @@
                 <div class="horizontal-subcontainer-for-4">
                     <label class="typeOfTransaction">type de transaction : </label>
                     <select name="typeOfTransaction" class="type-of-transactions" required>
+                        <option value="">Please Select</option>
                         <option th:each="typeOfTransactionOpt : ${T(com.example.model.enums.TypeOfTransaction).values()}" 
                             th:value="${typeOfTransactionOpt}" th:text="${typeOfTransactionOpt}"></option>
                     </select>
@@ -56,6 +57,7 @@
                 <div class="horizontal-subcontainer-for-2 horizontal-subcontainer-for-3">
                     <label>thème : </label>
                     <select name="ThemeGeneral" class="theme-general" required>
+                        <option value="">Please Select</option>
                         <option th:each="themeGeneral : ${T(com.example.model.enums.ThemeGeneral).values()}" 
                             th:value="${themeGeneral}" th:text="${themeGeneral}"></option>
                     </select>
@@ -63,6 +65,7 @@
                 <div id="div-theme-sub" class="horizontal-subcontainer-for-2 horizontal-subcontainer-for-3">
                     <label>sous thème : </label>
                     <select name="ThemeSub" id="theme-sub">
+                        <option value="">Please Select</option>
                         <option th:each="themeSub : ${T(com.example.model.enums.ThemeSub).values()}" 
                             th:value="${themeSub}" th:text="${themeSub}"></option>
                     </select>
@@ -70,6 +73,7 @@
                 <div id="div-author" class="horizontal-subcontainer-for-3">
                     <label>auteur : </label>
                     <select name="author">
+                        <option value="">Please Select</option>
                         <option th:each="author : ${T(com.example.model.enums.Author).values()}" 
                             th:value="${author}" th:text="${author}"></option>
                     </select>
