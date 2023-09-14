@@ -1,4 +1,7 @@
 /* natives */
+body {
+    color: #181818;
+}
 h3 {
     font-family: sans-serif;
     font-size: 1.5em;
@@ -45,4 +48,32 @@ div{
 }
 #div-tenant{
     display:none;
+}
+
+
+/* nav bar */
+#menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #f2cfa1;
+    background-color: #faebd7;
+  }
+  
+.menu-a {
+    float: left;
+    display: block;
+    color: #666;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+  
+.menu-a:hover {
+    background-color: #f7e3c8 !important;
+}
+  
+.menu-a.active {
+    background-color: #f2cfa1 ;
 }

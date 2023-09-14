@@ -5,11 +5,11 @@
         <meta charset="UTF-8">
     </head>
     <body>
-      <div th:fragment="menu">
-            <a href="/">home</a>
-            <a href="/business-rules">business rules</a>
-            <a href="/account-form">account form</a>
-            <a href="/all-records">all records</a>
+      <div id="menu" th:fragment="menu">
+            <a th:class="'menu-a '+${(#ctx.springRequestContext.requestUri == '/') ? 'active' : ''}" href="/">home</a>
+            <a th:class="'menu-a '+${(#ctx.springRequestContext.requestUri == '/business-rules') ? 'active' : ''}" href="/business-rules">business rules</a>
+            <a th:class="'menu-a '+${(#ctx.springRequestContext.requestUri == '/account-form') ? 'active' : ''}" href="/account-form">account form</a>
+            <a th:class="'menu-a '+${(#ctx.springRequestContext.requestUri == '/all-records') ? 'active' : ''}" href="/all-records">all records</a>
 
       </div>   
     </body>

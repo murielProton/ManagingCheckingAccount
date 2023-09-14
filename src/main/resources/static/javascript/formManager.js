@@ -69,9 +69,9 @@ selectElementForEvent1.addEventListener("change", (event) =>{
       divThemeSub.hide();
       divAuthor.hide();
     }else if(isThemeGeneralMeyzieu(themeGeneralValue)){
-        divAuthor.show();
-        divThemeSub.show();
-        divBeneficiary.hide();
+      divAuthor.show();
+      divThemeSub.show();
+      divBeneficiary.hide();
     }else if(doeseThemeGeneralValueMaches(themeGeneralValue)) {
       divThemeSub.show();
       divBeneficiary.hide();
