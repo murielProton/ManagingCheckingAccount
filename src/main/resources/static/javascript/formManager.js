@@ -58,42 +58,71 @@ function isThemeValuePresent(typeValue){
     return (typeValue == "PRESENT");
 }
 
+function clearChildren(currentParent){
+  currentParent.children().find('input,select').each(function(){
+    $(this).val('');
+ });
+ currentParent.find('input,select').each(function(){
+  $(this).val('');
+});
+}
+
 const selectElementForEvent1 = document.querySelector(".theme-general");
 selectElementForEvent1.addEventListener("change", (event) =>{
     var themeGeneralValue = event.target.value;
     var divBeneficiary = $("#div-beneficiary");
     var divThemeSub =$("#div-theme-sub");
     var divAuthor =$("#div-author");
+    var divTenant =$("#div-tenant")
+
+    //Hide div and clear it's value, this is the second master branch of decision. It needs to clear and hide all selects depending on it.
+    divThemeSub.hide();
+    clearChildren(divThemeSub);
+    divAuthor.hide();
+    clearChildren(divAuthor);
+    divBeneficiary.hide();
+    clearChildren(divBeneficiary);
+    divTenant.hide();
+    clearChildren(divTenant);
+    //
+
     if(isThemeValuePresent(themeGeneralValue)){
       divBeneficiary.show();
-      divThemeSub.hide();
-      divAuthor.hide();
     }else if(isThemeGeneralMeyzieu(themeGeneralValue)){
       divAuthor.show();
       divThemeSub.show();
-      divBeneficiary.hide();
     }else if(doeseThemeGeneralValueMaches(themeGeneralValue)) {
       divThemeSub.show();
-      divBeneficiary.hide();
-      divAuthor.hide();
-//TODO why is this logic flowed ?
-      
-
-    }else{
-      divThemeSub.hide();
-      divBeneficiary.hide();
-      divAuthor.hide();
     }
 });
 
 const selectElementForEvent2 = document.querySelector(".type-of-transactions");
 selectElementForEvent2.addEventListener("change", (event) =>{
     var typeValue = event.target.value;
-    var divToShow = $("#div-check-number");
+    var divCheckNumber = $("#div-check-number");
+    var divBeneficiary = $("#div-beneficiary");
+    var divThemeSub =$("#div-theme-sub");
+    var divAuthor =$("#div-author");
+    var divTenant =$("#div-tenant");
+    var divThemeGeneral =$("#div-theme-general");
+
+    //Hide div and clear it's value
+    //Clear all divs because this is the first branch of seclection process. Each time its value changes all the underlings must be cleared.
+    divCheckNumber.hide();
+    clearChildren(divCheckNumber);
+    divBeneficiary.hide();
+    clearChildren(divBeneficiary);
+    divThemeSub.hide();
+    clearChildren(divThemeSub);
+    divAuthor.hide();
+    clearChildren(divAuthor);
+    divTenant.hide();
+    clearChildren(divTenant);
+    //WARNING MUST NOT HIDE THEME GENERAL AS IT IS ALWAYS REQUIRED.
+    clearChildren(divThemeGeneral);
+
     if(isTypeValueCheck(typeValue)){
-      divToShow.show();
-    }else{
-      divToShow.hide();
+      divCheckNumber.show();
     }
 });
 
@@ -103,13 +132,14 @@ selectElementForEvent3.addEventListener("change", (event) =>{
     var themeSubValue = event.target.value;
     var divTenant =$("#div-tenant")
 
+    //Hide div and clear it's value
+    divTenant.hide();
+    clearChildren(divTenant);
+    
     if (isThemeSubValueRent(themeSubValue)){
       console.log("I Am in selectElementForEvent3() display div Tenant");
 
       divTenant.show();
-    }else{
-      console.log("I Am in selectElementForEvent3() hide all");
-
-      divTenant.hide();
     }
+
 });
