@@ -1,5 +1,7 @@
 package com.example.controller;
 
+import java.util.*;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -11,6 +13,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 
 import com.example.model.entities.MyRecord;
+import com.example.model.enums.Author;
+import com.example.model.enums.ThemeGeneral;
+import com.example.model.enums.ThemeSub;
+import com.example.model.enums.TypeOfTransaction;
 import com.example.repository.MyRecordRepository;
 
 
@@ -28,6 +34,30 @@ public class SimpleController {
     @GetMapping("/account-form")
     public String viewAccountForm(Model model) {
         model.addAttribute("myRecord", new MyRecord());
+
+        // Sort enums when displayed
+        List<Author> authorList = Arrays.asList(Author.values())
+        .stream()
+        .sorted(Comparator.comparing(Author::name))
+        .toList();
+        model.addAttribute("authorList",authorList);
+
+        List<ThemeGeneral> themeGeneralList = Arrays.asList(ThemeGeneral.values()).stream()
+        .sorted(Comparator.comparing(ThemeGeneral::name))
+        .toList();
+        model.addAttribute("themeGeneralList",themeGeneralList);
+
+        List<ThemeSub> themeSublList = Arrays.asList(ThemeSub.values()).stream()
+        .sorted(Comparator.comparing(ThemeSub::name))
+        .toList();
+        model.addAttribute("themeSublList",themeSublList);
+
+        List<TypeOfTransaction> typeOfTransactionList = Arrays.asList(TypeOfTransaction.values()).stream()
+        .sorted(Comparator.comparing(TypeOfTransaction::name))
+        .toList();
+        model.addAttribute("typeOfTransactionList",typeOfTransactionList);
+
+
         return "/account-form";
     }
 
