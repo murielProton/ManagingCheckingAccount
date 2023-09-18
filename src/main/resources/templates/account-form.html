@@ -26,7 +26,7 @@
                     <select name="typeOfTransaction" class="type-of-transactions" required>
                         <option value="">Please Select</option>
                         <option th:each="typeOfTransactionOpt : ${typeOfTransactionList}" 
-                            th:value="${typeOfTransactionOpt}" th:text="${typeOfTransactionOpt}"></option>
+                            th:value="${typeOfTransactionOpt}" th:text="${typeOfTransactionOpt.getDisplayValue()}"></option>
                     </select>
                 </div> 
                 <div class="horizontal-subcontainer-for-4">
@@ -59,7 +59,7 @@
                     <select name="ThemeGeneral" class="theme-general" required>
                         <option value="">Please Select</option>
                         <option th:each="themeGeneral : ${themeGeneralList}" 
-                            th:value="${themeGeneral}" th:text="${themeGeneral}"></option>
+                            th:value="${themeGeneral}" th:text="${themeGeneral.getDisplayValue}"></option>
                     </select>
                 </div>
                 <div id="div-theme-sub" class="horizontal-subcontainer-for-2 horizontal-subcontainer-for-3">
@@ -67,7 +67,7 @@
                     <select name="ThemeSub" id="theme-sub">
                         <option value="">Please Select</option>
                         <option th:each="themeSub : ${themeSublList}" 
-                            th:value="${themeSub}" th:text="${themeSub}"></option>
+                            th:value="${themeSub}" th:text="${themeSub.getDisplayValue}"></option>
                     </select>
                 </div>
                 <div id="div-author" class="horizontal-subcontainer-for-3">
@@ -75,7 +75,7 @@
                     <select name="author">
                         <option value="">Please Select</option>
                         <option th:each="author : ${authorList}" 
-                            th:value="${author}" th:text="${author}"></option>
+                            th:value="${author}" th:text="${author.getDisplayValue}"></option>
                     </select>
 
                 </div>

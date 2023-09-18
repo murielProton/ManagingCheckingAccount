@@ -19,7 +19,7 @@ import com.example.model.enums.ThemeSub;
 import com.example.model.enums.TypeOfTransaction;
 import com.example.repository.MyRecordRepository;
 
-
+//TODO https://www.baeldung.com/thymeleaf-enums
 @Controller
 public class SimpleController {
 
@@ -35,25 +35,30 @@ public class SimpleController {
     public String viewAccountForm(Model model) {
         model.addAttribute("myRecord", new MyRecord());
 
+        ThemeGeneral themeGeneral;
+
         // Sort enums when displayed
         List<Author> authorList = Arrays.asList(Author.values())
         .stream()
-        .sorted(Comparator.comparing(Author::name))
+        .sorted(Comparator.comparing(Author::getDisplayValue))
         .toList();
         model.addAttribute("authorList",authorList);
 
-        List<ThemeGeneral> themeGeneralList = Arrays.asList(ThemeGeneral.values()).stream()
-        .sorted(Comparator.comparing(ThemeGeneral::name))
+        List<ThemeGeneral> themeGeneralList = Arrays.asList(ThemeGeneral.values())
+        .stream()
+        .sorted(Comparator.comparing(ThemeGeneral::getDisplayValue))
         .toList();
         model.addAttribute("themeGeneralList",themeGeneralList);
 
-        List<ThemeSub> themeSublList = Arrays.asList(ThemeSub.values()).stream()
-        .sorted(Comparator.comparing(ThemeSub::name))
+        List<ThemeSub> themeSublList = Arrays.asList(ThemeSub.values())
+        .stream()
+        .sorted(Comparator.comparing(ThemeSub::getDisplayValue))
         .toList();
         model.addAttribute("themeSublList",themeSublList);
 
-        List<TypeOfTransaction> typeOfTransactionList = Arrays.asList(TypeOfTransaction.values()).stream()
-        .sorted(Comparator.comparing(TypeOfTransaction::name))
+        List<TypeOfTransaction> typeOfTransactionList = Arrays.asList(TypeOfTransaction.values())
+        .stream()
+        .sorted(Comparator.comparing(TypeOfTransaction::getDisplayValue))
         .toList();
         model.addAttribute("typeOfTransactionList",typeOfTransactionList);
 

@@ -1,10 +1,6 @@
 package com.example.model.enums;
 
-public enum ThemeSub {
-
-    BOTH("les deux"), 
-    HOUSEHOLD("Foyer"), 
-    RENT("Loyer"), 
+public enum ThemeSubForMeyzieu {
     CONSTRUCTION_WORK("Travaux"), 
     COSTS("Charges"), 
     PROPERTY_TAXE("Impôt foncier"), 
@@ -12,19 +8,17 @@ public enum ThemeSub {
     WATER("Eau"), 
     GASS("Gaz"), 
     ELECTRICITY("Electricité"), 
-    LOAN("Emprun"), 
+    LOAN("Prêt immobilier"), 
     FIRE_WOOD("Bois de chauffe"), 
     INSURANCE("Assurance"), 
     BOILER("Chaudière"), 
     CHIMNEY_SWEEPING("Ramonage"), 
     HOME_APPLIANCE("Electroménager"), 
-    FURNITURE("Mobilier"), 
-    PATRICK("Patrick"), 
-    MURIEL("Muriel");
+    FURNITURE("Mobilier");
     
     private final String displayValue;
     
-    private ThemeSub(String displayValue) {
+    private ThemeSubForMeyzieu(String displayValue) {
         this.displayValue = displayValue;
     }
     
@@ -32,3 +26,5 @@ public enum ThemeSub {
         return displayValue;
     }
 }
+
+
