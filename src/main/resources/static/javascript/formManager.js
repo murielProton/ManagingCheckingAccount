@@ -40,6 +40,18 @@ function doeseThemeGeneralValueMachesWhenTOTSalary(themeGeneralValue){
                       ];
   return(arrayOfThemes.includes(themeGeneralValue));
 }
+
+function doeseThemeGeneralValueMachesListToDefThemeSub(themeGeneralValue){
+  const arrayOfThemes =["HEALTH",
+                        "TCL",
+                        "CLOTHING",
+                        "TRAVEL",
+                        "LEISURE",
+                        'INCOME_TAXE',
+                        'COMPUTER'
+                      ];
+  return(arrayOfThemes.includes(themeGeneralValue));
+}
 function isThemeGeneralMeyzieu(themeGeneral){
   if(themeGeneral == 'MEYZIEU'){
     return true;
@@ -68,6 +80,14 @@ function doeseThemeSubValueMaches(themeSubValue){
   } else {
     return false;
   }
+}
+function doeseThemeSubValueMachesPersonae(themeSubValue){
+  const arrayOfThemes =["BOTH",
+                        "HOUSEHOLD",
+                        "PATRICK",
+                        "MURIEL"
+                      ];
+  return(arrayOfThemes.includes(themeSubValue))
 }
 function isThemeSubValueRent(themeSubValue){
   if(themeSubValue == "RENT"){
@@ -149,16 +169,22 @@ selectElementForEvent2.addEventListener("change", (event) =>{
     //WARNING MUST NOT HIDE THEME GENERAL AS IT IS ALWAYS REQUIRED.
     clearChildren(divThemeGeneral);
 
+    
     if(isTypeValueCheck(typeValue)){
       divCheckNumber.show();
     }
+
+    $('.hideDisable').each(function() {
+      $( this ).prop('disabled', false);
+    });
+
     if(isTypeOfTransactionSalary(typeValue)){
       $('.hideDisable').each(function() {
         if(doeseThemeGeneralValueMachesWhenTOTSalary($( this ).val())){
           $( this ).prop('disabled', true);
           console.log("On hide  " +$( this ));
         }else{
-          console.log("On ignire  " +$( this ).val());
+          console.log("On ignore.");
         }
       });
     }
