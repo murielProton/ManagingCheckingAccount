@@ -24,7 +24,7 @@
                 <div class="horizontal-subcontainer-for-4">
                     <label class="typeOfTransaction">type de transaction : </label>
                     <select name="typeOfTransaction" class="type-of-transactions" required>
-                        <option value="">Please Select</option>
+                        <option value="">Selectioner</option>
                         <option th:each="typeOfTransactionOpt : ${typeOfTransactionList}" 
                             th:value="${typeOfTransactionOpt}" th:text="${typeOfTransactionOpt.getDisplayValue()}"></option>
                     </select>
@@ -57,15 +57,15 @@
                 <div id="div-theme-general" class="horizontal-subcontainer-for-2 horizontal-subcontainer-for-3">
                     <label>thème : </label>
                     <select name="ThemeGeneral" class="theme-general" required>
-                        <option value="">Please Select</option>
+                        <option value="">Selectioner</option>
                         <option th:each="themeGeneral : ${themeGeneralList}" 
-                            th:value="${themeGeneral}" th:text="${themeGeneral.getDisplayValue}"></option>
+                            th:value="${themeGeneral}" th:text="${themeGeneral.getDisplayValue}"></opt>
                     </select>
                 </div>
                 <div id="div-theme-sub" class="horizontal-subcontainer-for-2 horizontal-subcontainer-for-3">
                     <label>sous thème : </label>
                     <select name="ThemeSub" id="theme-sub">
-                        <option value="">Please Select</option>
+                        <option value="">Selectioner</option>
                         <option th:each="themeSub : ${themeSublList}" 
                             th:value="${themeSub}" th:text="${themeSub.getDisplayValue}"></option>
                     </select>
@@ -73,7 +73,7 @@
                 <div id="div-author" class="horizontal-subcontainer-for-3">
                     <label>auteur : </label>
                     <select name="author">
-                        <option value="">Please Select</option>
+                        <option value="">Selectioner</option>
                         <option th:each="author : ${authorList}" 
                             th:value="${author}" th:text="${author.getDisplayValue}"></option>
                     </select>
@@ -99,7 +99,6 @@
             </div>
             
         </form>
-
 
     <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
     <script type="text/javascript"  th:src="@{/javascript/formManager.js}"></script>

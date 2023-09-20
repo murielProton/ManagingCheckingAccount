@@ -34,9 +34,7 @@ public class SimpleController {
     @GetMapping("/account-form")
     public String viewAccountForm(Model model) {
         model.addAttribute("myRecord", new MyRecord());
-
-        ThemeGeneral themeGeneral;
-
+        
         // Sort enums when displayed
         List<Author> authorList = Arrays.asList(Author.values())
         .stream()
@@ -50,11 +48,11 @@ public class SimpleController {
         .toList();
         model.addAttribute("themeGeneralList",themeGeneralList);
 
-        List<ThemeSub> themeSublList = Arrays.asList(ThemeSub.values())
+        List<ThemeSub> themeSubList = Arrays.asList(ThemeSub.values())
         .stream()
         .sorted(Comparator.comparing(ThemeSub::getDisplayValue))
         .toList();
-        model.addAttribute("themeSublList",themeSublList);
+        model.addAttribute("themeSublList",themeSubList);
 
         List<TypeOfTransaction> typeOfTransactionList = Arrays.asList(TypeOfTransaction.values())
         .stream()
