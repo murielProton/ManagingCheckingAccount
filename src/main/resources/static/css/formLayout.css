@@ -77,3 +77,7 @@ div{
 .menu-a.active {
     background-color: #f2cfa1 ;
 }
+
+select option[disabled].hideDisable {
+    display: none;
+}

@@ -19,7 +19,6 @@ import com.example.model.enums.ThemeSub;
 import com.example.model.enums.TypeOfTransaction;
 import com.example.repository.MyRecordRepository;
 
-//TODO https://www.baeldung.com/thymeleaf-enums
 @Controller
 public class SimpleController {
 

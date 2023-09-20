@@ -1,3 +1,13 @@
+
+
+function isTypeOfTransactionSalary(typeOfTransaction){
+  
+  if(typeOfTransaction == "SALARY"){
+    return true;
+  } 
+  return false;
+}
+
 function doeseThemeGeneralValueMaches(themeGeneralValue){
   const arrayOfThemes =["MEYZIEU",
                         "CALUIRE_ET_CUIRE",
@@ -12,6 +22,23 @@ function doeseThemeGeneralValueMaches(themeGeneralValue){
   } else {
     return false;
   }
+}
+function doeseThemeGeneralValueMachesWhenTOTSalary(themeGeneralValue){
+  const arrayOfThemes =["MEYZIEU",
+                        "CALUIRE_ET_CUIRE",
+                        'MONTPLAT',
+                        "HEALTH",
+                        'FOOD',
+                        "TCL",
+                        "CLOTHING",
+                        "TRAVEL",
+                        "LEISURE",
+                        'STATIONARY',
+                        'INCOME_TAXE',
+                        'PRESENT',
+                        'COMPUTER'
+                      ];
+  return(arrayOfThemes.includes(themeGeneralValue));
 }
 function isThemeGeneralMeyzieu(themeGeneral){
   if(themeGeneral == 'MEYZIEU'){
@@ -98,6 +125,7 @@ selectElementForEvent1.addEventListener("change", (event) =>{
 
 const selectElementForEvent2 = document.querySelector(".type-of-transactions");
 selectElementForEvent2.addEventListener("change", (event) =>{
+    var selectOptionsToHide =[] ;
     var typeValue = event.target.value;
     var divCheckNumber = $("#div-check-number");
     var divBeneficiary = $("#div-beneficiary");
@@ -123,6 +151,16 @@ selectElementForEvent2.addEventListener("change", (event) =>{
 
     if(isTypeValueCheck(typeValue)){
       divCheckNumber.show();
+    }
+    if(isTypeOfTransactionSalary(typeValue)){
+      $('.hideDisable').each(function() {
+        if(doeseThemeGeneralValueMachesWhenTOTSalary($( this ).val())){
+          $( this ).prop('disabled', true);
+          console.log("On hide  " +$( this ));
+        }else{
+          console.log("On ignire  " +$( this ).val());
+        }
+      });
     }
 });
 

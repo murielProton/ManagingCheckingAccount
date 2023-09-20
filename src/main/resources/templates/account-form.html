@@ -58,7 +58,7 @@
                     <label>thème : </label>
                     <select name="ThemeGeneral" class="theme-general" required>
                         <option value="">Selectioner</option>
-                        <option th:each="themeGeneral : ${themeGeneralList}" 
+                        <option class="hideDisable" th:each="themeGeneral : ${themeGeneralList}" 
                             th:value="${themeGeneral}" th:text="${themeGeneral.getDisplayValue}"></opt>
                     </select>
                 </div>
