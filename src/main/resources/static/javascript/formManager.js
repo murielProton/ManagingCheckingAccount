@@ -28,17 +28,17 @@ function doeseThemeGeneralValueMaches(themeGeneralValue){
 function doeseThemeGeneralValueMachesWhenTOTSalary(themeGeneralValue){
   const arrayOfThemes =["MEYZIEU",
                         "CALUIRE_ET_CUIRE",
-                        'MONTPLAT',
+                        "MONTPLAT",
                         "HEALTH",
-                        'FOOD',
+                        "FOOD",
                         "TCL",
                         "CLOTHING",
                         "TRAVEL",
                         "LEISURE",
-                        'STATIONARY',
-                        'INCOME_TAXE',
-                        'PRESENT',
-                        'COMPUTER'
+                        "STATIONARY",
+                        "INCOME_TAXE",
+                        "PRESENT",
+                        "COMPUTER"
                       ];
   return(arrayOfThemes.includes(themeGeneralValue));
 }
@@ -49,19 +49,19 @@ function doeseThemeGeneralValueMachesListToDefThemeSub(themeGeneralValue){
                         "CLOTHING",
                         "TRAVEL",
                         "LEISURE",
-                        'INCOME_TAXE',
-                        'COMPUTER'
+                        "INCOME_TAXE",
+                        "COMPUTER"
                       ];
   console.log("theme general value " + themeGeneralValue);
   console.log("boolean " + arrayOfThemes.includes(themeGeneralValue));
   return(arrayOfThemes.includes(themeGeneralValue));
 }
+
 function isThemeGeneralMeyzieu(themeGeneral){
-  if(themeGeneral == 'MEYZIEU'){
-    return true;
-  } else {
-    return false;
-  }
+  return (themeGeneral == "MEYZIEU");
+}
+function isThemeGeneralCaluireEtCuire(themeGeneral){
+  return (themeGeneral == "CALUIRE_ET_CUIRE");
 }
 function doeseThemeSubValueMaches(themeSubValue){
   const arrayOfThemes =["CONSTRUCTION_WORK",
@@ -84,6 +84,18 @@ function doeseThemeSubValueMaches(themeSubValue){
   } else {
     return false;
   }
+}
+function doeseThemeSubValueMachesListForCaluireEtCuire(themeSubValue){
+  const arrayOfThemes =["CONSTRUCTION_WORK",
+                        "COSTS",
+                        "PROPERTY_TAXE",
+                        "INSURANCE",
+                        "BOILER",
+                        "CHIMNEY_SWEEPING",
+                        "HOME_APPLIANCE",
+                        "RENT"
+                      ];
+  return(arrayOfThemes.includes(themeSubValue));
 }
 function doeseThemeSubValueMachesPersonae(themeSubValue){
   const arrayOfThemes =["BOTH",
@@ -110,7 +122,7 @@ function isThemeValuePresent(typeValue){
 }
 
 function clearChildren(currentParent){
-  currentParent.children().find('input,select').each(function(){
+  currentParent.children().find("input,select").each(function(){
     $(this).val('');
  });
  currentParent.find('input,select').each(function(){
@@ -154,13 +166,20 @@ selectElementForEvent1.addEventListener("change", (event) =>{
         $('.enum-sub-theme').each(function() {
           if(!doeseThemeSubValueMachesPersonae($( this ).val())){
             $( this ).prop('disabled', true);
+          }else{
+           /* console.log("We ignore.");*/
+          }
+        });
+      }else if(isThemeGeneralCaluireEtCuire(themeGeneralValue)){
+        $('.enum-sub-theme').each(function(){
+          if(!doeseThemeSubValueMachesListForCaluireEtCuire($(this).val())){
+            $( this ).prop('disabled', true);
             console.log("We hide.");
           }else{
             console.log("We ignore.");
           }
-        });
+        })
       }
-      
     }
 });
 
