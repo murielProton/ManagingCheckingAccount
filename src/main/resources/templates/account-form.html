@@ -58,7 +58,7 @@
                     <label>thème : </label>
                     <select name="ThemeGeneral" class="theme-general" required>
                         <option value="">Selectioner</option>
-                        <option class="hideDisable" th:each="themeGeneral : ${themeGeneralList}" 
+                        <option class="enum-theme-general" th:each="themeGeneral : ${themeGeneralList}" 
                             th:value="${themeGeneral}" th:text="${themeGeneral.getDisplayValue}"></opt>
                     </select>
                 </div>
@@ -66,7 +66,7 @@
                     <label>sous thème : </label>
                     <select name="ThemeSub" id="theme-sub">
                         <option value="">Selectioner</option>
-                        <option th:each="themeSub : ${themeSublList}" 
+                        <option class="enum-sub-theme" th:each="themeSub : ${themeSublList}" 
                             th:value="${themeSub}" th:text="${themeSub.getDisplayValue}"></option>
                     </select>
                 </div>

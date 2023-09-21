@@ -15,7 +15,9 @@ function doeseThemeGeneralValueMaches(themeGeneralValue){
                         "TCL",
                         "CLOTHING",
                         "TRAVEL",
-                        "LEISURE"
+                        "LEISURE",
+                        "INCOME_TAXE",
+                        "COMPUTER"
                       ];
   if(arrayOfThemes.includes(themeGeneralValue)){
     return true;
@@ -50,6 +52,8 @@ function doeseThemeGeneralValueMachesListToDefThemeSub(themeGeneralValue){
                         'INCOME_TAXE',
                         'COMPUTER'
                       ];
+  console.log("theme general value " + themeGeneralValue);
+  console.log("boolean " + arrayOfThemes.includes(themeGeneralValue));
   return(arrayOfThemes.includes(themeGeneralValue));
 }
 function isThemeGeneralMeyzieu(themeGeneral){
@@ -133,6 +137,10 @@ selectElementForEvent1.addEventListener("change", (event) =>{
     clearChildren(divTenant);
     //
 
+    $('.enum-sub-theme').each(function() {
+      $( this ).prop('disabled', false);
+    });
+
     if(isThemeValuePresent(themeGeneralValue)){
       divBeneficiary.show();
     }else if(isThemeGeneralMeyzieu(themeGeneralValue)){
@@ -140,6 +148,19 @@ selectElementForEvent1.addEventListener("change", (event) =>{
       divThemeSub.show();
     }else if(doeseThemeGeneralValueMaches(themeGeneralValue)) {
       divThemeSub.show();
+
+      if(doeseThemeGeneralValueMachesListToDefThemeSub(themeGeneralValue)){
+        console.log("selectElementForEvent1 + themeGeneralValue "+themeGeneralValue);
+        $('.enum-sub-theme').each(function() {
+          if(!doeseThemeSubValueMachesPersonae($( this ).val())){
+            $( this ).prop('disabled', true);
+            console.log("We hide.");
+          }else{
+            console.log("We ignore.");
+          }
+        });
+      }
+      
     }
 });
 
@@ -174,17 +195,16 @@ selectElementForEvent2.addEventListener("change", (event) =>{
       divCheckNumber.show();
     }
 
-    $('.hideDisable').each(function() {
+    $('.enum-theme-general').each(function() {
       $( this ).prop('disabled', false);
     });
 
     if(isTypeOfTransactionSalary(typeValue)){
-      $('.hideDisable').each(function() {
+      $('.enum-theme-general').each(function() {
         if(doeseThemeGeneralValueMachesWhenTOTSalary($( this ).val())){
           $( this ).prop('disabled', true);
-          console.log("On hide  " +$( this ));
         }else{
-          console.log("On ignore.");
+          /*console.log("On ignore.");*/
         }
       });
     }

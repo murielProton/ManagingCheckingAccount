@@ -77,7 +77,11 @@ div{
 .menu-a.active {
     background-color: #f2cfa1 ;
 }
+/* hide the options in select that are note valid in certain conditions (see formManager.js)*/
+select option[disabled].enum-theme-general {
+    display: none;
+}
 
-select option[disabled].hideDisable {
+select option[disabled].enum-sub-theme {
     display: none;
 }
