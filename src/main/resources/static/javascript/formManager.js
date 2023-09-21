@@ -63,7 +63,7 @@ function isThemeGeneralMeyzieu(themeGeneral){
 function isThemeGeneralCaluireEtCuire(themeGeneral){
   return (themeGeneral == "CALUIRE_ET_CUIRE");
 }
-function doeseThemeSubValueMaches(themeSubValue){
+function doeseThemeSubValueMachesMeyzieu(themeSubValue){
   const arrayOfThemes =["CONSTRUCTION_WORK",
                         "COSTS",
                         "HOUSING_TAXE",
@@ -79,12 +79,9 @@ function doeseThemeSubValueMaches(themeSubValue){
                         "HOME_APPLIANCE",
                         "FURNITURE"
                       ];
-  if(arrayOfThemes.includes(themeSubValue)){
-    return true;
-  } else {
-    return false;
-  }
+  return (arrayOfThemes.includes(themeSubValue));
 }
+
 function doeseThemeSubValueMachesListForCaluireEtCuire(themeSubValue){
   const arrayOfThemes =["CONSTRUCTION_WORK",
                         "COSTS",
@@ -155,12 +152,9 @@ selectElementForEvent1.addEventListener("change", (event) =>{
 
     if(isThemeValuePresent(themeGeneralValue)){
       divBeneficiary.show();
-    }else if(isThemeGeneralMeyzieu(themeGeneralValue)){
-      divAuthor.show();
-      divThemeSub.show();
     }else if(doeseThemeGeneralValueMaches(themeGeneralValue)) {
       divThemeSub.show();
-
+      console.log("theme générale "+themeGeneralValue);
       if(doeseThemeGeneralValueMachesListToDefThemeSub(themeGeneralValue)){
         console.log("selectElementForEvent1 + themeGeneralValue "+themeGeneralValue);
         $('.enum-sub-theme').each(function() {
@@ -173,6 +167,17 @@ selectElementForEvent1.addEventListener("change", (event) =>{
       }else if(isThemeGeneralCaluireEtCuire(themeGeneralValue)){
         $('.enum-sub-theme').each(function(){
           if(!doeseThemeSubValueMachesListForCaluireEtCuire($(this).val())){
+            $( this ).prop('disabled', true);
+          }else{
+           /* console.log("We ignore.");*/
+          }
+        })
+      }else if(isThemeGeneralMeyzieu(themeGeneralValue)){
+        console.log("the theme general is MEYZIEU");
+        divAuthor.show();
+        divThemeSub.show();
+        $('.enum-sub-theme').each(function(){
+          if(!doeseThemeSubValueMachesMeyzieu($(this).val())){
             $( this ).prop('disabled', true);
             console.log("We hide.");
           }else{
