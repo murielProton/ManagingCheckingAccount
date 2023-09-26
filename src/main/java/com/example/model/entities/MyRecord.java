@@ -2,6 +2,7 @@ package com.example.model.entities;
 
 import java.util.Date;
 
+import com.example.customvalidator.CheckNumberConstraint;
 import com.example.model.enums.Author;
 import com.example.model.enums.ThemeGeneral;
 import com.example.model.enums.ThemeSub;
@@ -36,6 +37,7 @@ public class MyRecord {
     private TypeOfTransaction typeOfTransaction;
 
     @Column(nullable = true, unique = true)
+    @CheckNumberConstraint
     private String checkNumber;
 
     @Column(nullable = false, unique = false)

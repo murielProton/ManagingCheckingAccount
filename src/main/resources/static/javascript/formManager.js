@@ -173,15 +173,14 @@ selectElementForEvent1.addEventListener("change", (event) =>{
           }
         })
       }else if(isThemeGeneralMeyzieu(themeGeneralValue)){
-        console.log("the theme general is MEYZIEU");
         divAuthor.show();
         divThemeSub.show();
+
         $('.enum-sub-theme').each(function(){
           if(!doeseThemeSubValueMachesMeyzieu($(this).val())){
             $( this ).prop('disabled', true);
-            console.log("We hide.");
           }else{
-            console.log("We ignore.");
+           /* console.log("We ignore.");*/
           }
         })
       }
