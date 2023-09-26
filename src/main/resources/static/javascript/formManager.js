@@ -88,7 +88,6 @@ function doeseThemeSubValueMachesListForCaluireEtCuire(themeSubValue){
                         "PROPERTY_TAXE",
                         "INSURANCE",
                         "BOILER",
-                        "CHIMNEY_SWEEPING",
                         "HOME_APPLIANCE",
                         "RENT"
                       ];

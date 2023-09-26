@@ -74,6 +74,12 @@ public class SimpleController {
         model.addAttribute("myRecords", myRecordRepository.findAll());
         return "/all-records";
     }
+
+    @GetMapping("/salaries")
+    public String showAllSalaries(Model model) {
+        model.addAttribute("myRecords", myRecordRepository.findAllIncomes());
+        return "/salaries";
+    }
     @GetMapping("/business-rules")
     public String showBusinessRules() {
         return "/business-rules";

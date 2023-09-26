@@ -72,7 +72,10 @@ public class MyRecordController {
     public Iterable<MyRecord> findAll() {
         return repository.findAll();
     }
-
+    @GetMapping("/salaries")
+    Object findAllIncomes() {
+        return repository.findAllIncomes();
+    }
 
     @GetMapping("/{id}")
     public MyRecord findById(@PathVariable Integer id) {

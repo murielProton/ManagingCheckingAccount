@@ -3,12 +3,8 @@ package com.example.repository;
 import java.util.Date;
 import java.util.List;
 
-//import java.util.Date;
-//import java.util.List;
-
-//import org.springframework.data.repository.CrudRepository; 
-//import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.CrudRepository; 
+import org.springframework.data.jpa.repository.Query;
 
 import com.example.model.entities.MyRecord;
 import com.example.model.enums.Author;
@@ -37,5 +33,9 @@ public interface MyRecordRepository extends CrudRepository<MyRecord, Integer>{
     List<MyRecord> findByTenant(String tenant);
 
     List<MyRecord> findByAuthor(Author author);
+
+    @Query(value = "SELECT * FROM account_records WHERE type_of_transaction = \"Salary\" OR \"Payment\" ORDER BY date_of_transaction",
+           nativeQuery = true)
+    List<MyRecord> findAllIncomes();
     
 }

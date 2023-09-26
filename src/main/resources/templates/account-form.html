@@ -1,7 +1,7 @@
  <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Formulaire d'enregistrement de dépenses</title>
+    <title>Formulaire des transsactions</title>
     <meta charset="UTF-8">
     <link th:href="@{/css/formLayout.css}" rel="stylesheet" />
 </head>
@@ -9,9 +9,9 @@
     
     <header th:insert="~{menu.html :: menu}"> </header>
 
-    <h3 class:"title">Formulaire de dépenses</h3>
+    <h3 class:"title">Formulaire des transsactions</h3>
 
-    <p>Formulaire pour entrer une dépense</p>
+    <p>Formulaire pour entrer une nouvelle transaction</p>
 
         <form th:action="@{/api/myRecords/addANewRecord}" th:object="${myRecord}" method="post">
             <div class="horizontal-container">
