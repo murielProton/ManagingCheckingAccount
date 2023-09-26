@@ -27,7 +27,7 @@
                         <td colspan="2"> aucun enregistrements disponibles </td>
                     </tr>
                     <tr th:each="currentRecord : ${myRecords}">
-                        <td><span th:text="${currentRecord.dateOfTransaction}"> date </span></td>
+                        <td><span th:text="${#dates.format(currentRecord.dateOfTransaction, 'dd-MM-yyyy')}"> date </span></td>
                         <td><span th:text="${currentRecord.typeOfTransaction}"> type de transaction </span></td>
                         <td><span th:text="${currentRecord.checkNumber}"> n° de Chèque </span></td>
                         <td><span th:text="${currentRecord.name}"> label </span></td>

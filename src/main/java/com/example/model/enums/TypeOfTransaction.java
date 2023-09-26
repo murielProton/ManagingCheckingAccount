@@ -8,7 +8,7 @@ public enum TypeOfTransaction {
     WITHDRAWAL("Retrait"), 
     CREDIT_CARD("CB"), 
     CHECK_CASHING("Encaissement de chèque"), 
-    CASHING("Espèces"), 
+    CASHING("Encaissement"), 
     CHECK("Chèque"), 
     CASH("Monnaie");
 

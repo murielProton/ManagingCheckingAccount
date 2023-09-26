@@ -9,11 +9,14 @@
             <table>
                 <thead>
                     <tr>
-                        <th> date </th>
-                        <th> type de transaction</th>
+                        <th> année </th>  
+                        <th> mois </th>
                         <th> montant </th>
-                        <th> label </th>
-                        <th> Salarié </th>                        
+                        <th> type de transaction</th>
+                        <th> salarié </th>
+                        <th> sous thème </th>
+                        <th> label </th>       
+                        <th> locataire </th>             
                     </tr>
                 </thead>
                 <tbody>
@@ -21,11 +24,14 @@
                         <td colspan="2"> aucun enregistrements disponibles </td>
                     </tr>
                     <tr th:each="currentRecord : ${myRecords}">
-                        <td><span th:text="${currentRecord.dateOfTransaction}"> date </span></td>
-                        <td><span th:text="${currentRecord.typeOfTransaction}"> type de transaction </span></td>                        
+                        <td><span th:text="${#dates.year(currentRecord.dateOfTransaction)}"> year </span></td>
+                        <td><span th:text="${#dates.monthName(currentRecord.dateOfTransaction)}"> month </span></td>
                         <td><span th:text="${currentRecord.amount}"> amount </span></td>
+                        <td><span th:text="${currentRecord.typeOfTransaction}"> type de transaction </span></td>                        
+                        <td><span th:text="${currentRecord.themeGeneral}"> type de transaction </span></td>
+                        <td><span th:text="${currentRecord.themeSub}"> sous thème </span></td>
                         <td><span th:text="${currentRecord.name}"> label </span></td>
-                        <td><span th:text="${currentRecord.themeGeneral}"> thème </span></td>
+                        <td><span th:text="${currentRecord.tenant}"> locataire </span></td>
                     </tr>
                 </tbody>
             </table>

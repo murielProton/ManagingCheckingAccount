@@ -82,3 +82,29 @@ select option[disabled].enum-theme-general {
 select option[disabled].enum-sub-theme {
     display: none;
 }
+
+/* Table layouts */
+table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+table td, table th {
+    border: 1px solid  #f2cfa1;
+    padding: 8px;
+}
+
+table tr:nth-child(even){
+    background-color:  #faebd7;
+}
+
+table tr:hover {
+    background-color:  #f2cfa1;
+}
+
+table th {
+padding-top: 12px;
+padding-bottom: 12px;
+text-align: left;
+background-color:  #f2cfa1;
+}
