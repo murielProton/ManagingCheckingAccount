@@ -56,6 +56,7 @@ div{
     overflow: hidden;
     border: 1px solid #f2cfa1;
     background-color: #faebd7;
+    margin-bottom: 7%;
   }
   
 .menu-a {
@@ -103,8 +104,14 @@ table tr:hover {
 }
 
 table th {
-padding-top: 12px;
-padding-bottom: 12px;
-text-align: left;
-background-color:  #f2cfa1;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color:  #f2cfa1;
+}
+.standard-td {
+    text-align: left;
+}
+#amount-td{
+    text-align: right !important;
 }
