@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.domain.Sort;
+import org.antlr.v4.runtime.atn.SemanticContext.AND;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.query.Param;
@@ -45,5 +46,15 @@ public interface MyRecordRepository extends CrudRepository<MyRecord, Integer>{
             "",
            nativeQuery = true)
     List<MyRecord> findAllIncomes();
+
+    @Query(value = "SELECT * FROM account_records WHERE type_of_transaction = \"Salary\" AND YEAR(date_of_transaction) = :yearYYYY ORDER BY date_of_transaction;\n" +//
+            "", 
+           nativeQuery = true)
+    List<MyRecord> findSalariesOfYear(@Param("yearYYYY") Integer yearYYYY);
     
+    @Query(value = "SELECT * FROM account_records WHERE type_of_transaction = \"Salary\" AND YEAR(date_of_transaction) = :yearYYYY AND theme_general = :uperCasseMurielOrPatrick ORDER BY date_of_transaction;", 
+           nativeQuery = true)
+    List<MyRecord> findSalariesOfYearByWorker(@Param("yearYYYY") Integer yearYYYY, @Param("uperCasseMurielOrPatrick") String uperCasseMurielOrPatrick);
 }
+
+    

@@ -1,12 +1,11 @@
 /* natives */
+
+
 body {
     color: #181818;
     font-family: sans-serif;
 }
 
-div{
-    border-radius: 5%;
-}
 /* class to display horizontaly */
 .horizontal-container{
     width:100%;
@@ -114,4 +113,21 @@ table th {
 }
 #amount-td{
     text-align: right !important;
+}
+/*form to display all incomes*/
+.div-income-form{
+    border-radius: 5%;
+    margin-bottom: 5%;
+}
+.container-of-div-income-form {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+}
+.div-button{
+    float : right;
+}
+.title{
+    font-weight: bold;
 }

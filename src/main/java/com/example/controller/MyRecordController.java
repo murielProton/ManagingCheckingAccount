@@ -65,14 +65,14 @@ public class MyRecordController {
         repository.save(myRecord);
         System.out.println("Success !");
 
-        return "/success";
+        return "account-form";
     }
 
     @GetMapping("/all-of-my-records")
     public Iterable<MyRecord> findAll() {
         return repository.findAll();
     }
-    @GetMapping("/salaries")
+    @GetMapping("/all-incomes")
     Object findAllIncomes() {
         return repository.findAllIncomes();
     }

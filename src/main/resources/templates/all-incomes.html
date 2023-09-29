@@ -1,22 +1,28 @@
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title>List of All Records</title>
+        <title>List of all incomes</title>
         <meta charset="UTF-8">
         <link th:href="@{/css/formLayout.css}" rel="stylesheet" />
     </head>
-        <body>
-            <header th:insert="~{menu.html :: menu}"> </header>
+    <body>
+        <header th:insert="~{menu.html :: menu}"> </header>
+
+        <div class="title">
+            <h1> Incomes </h1>
+        </div>
+
             <table>
                 <thead>
                     <tr>
-                        <th> année </th>  
-                        <th> mois </th>
-                        <th> montant </th>
-                        <th> type de transaction</th>
-                        <th> salarié </th>
-                        <th> sous thème </th>
-                        <th> label </th>       
-                        <th> locataire </th>             
+                          <!-- TODO https://www.primefaces.org/showcase/ui/data/datatable/filter.xhtml?jfwid=f200b -->
+                        <th> année </th>  <!-- TODO  nothing. -->
+                        <th> mois </th> <!-- TODO  order DESC or ASC. -->
+                        <th> montant </th>  <!-- TODO  order DESC or ASC. -->
+                        <th> type de transaction</th> <!-- TODO  filter  'SALARY' or Others. -->
+                        <th> source de revenu </th> <!-- TODO  filter  'MURIEL' or 'PATRICK' or 'Caluire et CUIRE'. -->
+                        <th> sous thème </th><!-- TODO  filter  'RENT' or or Others. -->
+                        <th> label </th> <!-- TODO  order DESC or ASC. -->      
+                        <th> locataire </th> <!-- TODO  order DESC or ASC. -->            
                     </tr>
                 </thead>
                 <tbody>
@@ -25,15 +31,17 @@
                     </tr>
                     <tr th:each="currentRecord : ${myRecords}">
                         <td class="standard-td"><span th:text="${#dates.year(currentRecord.dateOfTransaction)}"> year </span></td>
-                        <td class="standard-td"<span th:text="${#dates.monthName(currentRecord.dateOfTransaction)}"> month </span></td>
+                        <td class="standard-td"></td><span th:text="${#dates.monthName(currentRecord.dateOfTransaction)}"> month </span></td>
                         <td id="amount-td"><span th:text="${#numbers.formatDecimal(currentRecord.amount, 1, 'WHITESPACE', 2, 'COMMA')}"> amount </span></td>
                         <td class="standard-td"><span th:text="${currentRecord.typeOfTransaction}"> type de transaction </span></td>                        
-                        <td class="standard-td"><span th:text="${currentRecord.themeGeneral}"> type de transaction </span></td>
+                        <td class="standard-td"><span th:text="${currentRecord.themeGeneral}"> salarié </span></td>
                         <td class="standard-td"><span th:text="${currentRecord.themeSub}"> sous thème </span></td>
                         <td class="standard-td"><span th:text="${currentRecord.name}"> label </span></td>
                         <td class="standard-td"><span th:text="${currentRecord.tenant}"> locataire </span></td>
                     </tr>
                 </tbody>
+
             </table>
-        </body>
+        
+    </body>
 </html>

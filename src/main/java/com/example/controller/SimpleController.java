@@ -63,11 +63,6 @@ public class SimpleController {
         return "/account-form";
     }
 
-    @PostMapping("/success")
-    public String viewSuccess() {
-        
-        return "/success";
-    }
 
     @GetMapping("/all-records")
     public String showAll(Model model) {
@@ -75,11 +70,12 @@ public class SimpleController {
         return "/all-records";
     }
 
-    @GetMapping("/salaries")
-    public String showAllSalaries(Model model) {
+    @GetMapping("/all-incomes")
+    public String showAllIncomes(Model model) {
         model.addAttribute("myRecords", myRecordRepository.findAllIncomes());
-        return "/salaries";
+        return "/all-incomes";
     }
+
     @GetMapping("/business-rules")
     public String showBusinessRules() {
         return "/business-rules";
