@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition 
+                xmlns:h="jakarta.faces.html"
+                xmlns:f="jakarta.faces.core"
+                xmlns:ui="jakarta.faces.facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pe="http://primefaces.org/ui/extensions"
+                xmlns:o="http://omnifaces.org/ui"
+                xmlns:sec="https://joinfaces.org/security"
+                template="/template.xhtml">
+    <ui:define name="content" >
+        <div class="ui-g">
+            
+            <div class="ui-g-1"></div>
+            <div class="ui-g-10">
+                <p:dataTable id="records" var="record" value="#{accountFormBean.list}" rowKey="#{record.id}" allowUnsorting="true" sortMode="multiple">
+                    <f:facet name="header">
+                        List des records
+                    </f:facet>
+
+                    <p:column headerText="Date">
+                        <h:outputText value="#{record.dateOfTransaction}" >
+                            <f:convertDateTime pattern = "yyyy-mm-dd" />
+                        </h:outputText>
+                    </p:column>
+                    <p:column headerText="Type" sortBy="#{record.typeTransaction.name}" filterBy="#{record.typeTransaction.name}">
+                        <h:outputText value="#{record.typeTransaction.name}" />
+                    </p:column>
+                    <p:column headerText="Numéro de chèque" sortBy="#{record.checkNumber}" filterBy="#{record.checkNumber}">
+                        <h:outputText value="#{record.checkNumber}" />
+                    </p:column>
+                    <p:column headerText="Nom" sortBy="#{record.name}" filterBy="#{record.name}">
+                        <h:outputText value="#{record.name}" />
+                    </p:column>
+                    <p:column headerText="montant">
+                        <h:outputText value="#{record.amount}" />
+                    </p:column>
+                    <p:column headerText="Thème">
+                        <h:outputText value="#{record.themeGeneral.name}" />
+                    </p:column>
+                    <p:column headerText="Sous-Thème">
+                        <h:outputText value="#{record.themeSub.name}" />
+                    </p:column>
+                    <p:column headerText="Bénficiare">
+                        <h:outputText value="#{record.beneficiary}" />
+                    </p:column>
+                    <p:column headerText="locataire">
+                        <h:outputText value="#{record.tenant}" />
+                    </p:column>
+                    <p:column headerText="Auteur">
+                        <h:outputText value="#{record.author.name}" />
+                    </p:column>
+                </p:dataTable>
+            </div>
+            <div class="ui-g-1"></div>
+        </div>
+    </ui:define>
+</ui:composition>

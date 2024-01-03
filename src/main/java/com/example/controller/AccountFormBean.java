@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -36,15 +37,18 @@ public class AccountFormBean implements Serializable {
 
     private MyRecord currentRecord; 
 
+    private List<MyRecord> list;
+
     @PostConstruct
     public void init(){
-
-        //currentRecord = repository.findAll().get(0);
         currentRecord = new MyRecord();
         log.info("init 1 currentRecord -> {} ", currentRecord);
+        list = repository.findAll();
     }
     public void save(){
         repository.save(currentRecord);
+        // Rechargement de la liste en full
+        list = repository.findAll();
     }
     public List<TypeOfTransaction> getAllTypeOfTransaction(){
         return Arrays.asList(TypeOfTransaction.values());
@@ -54,6 +58,12 @@ public class AccountFormBean implements Serializable {
     }
      public List<ThemeSub> getAllThemeSub(){
         return Arrays.asList(ThemeSub.values());
+    }
+    public List<ThemeSub> getMatchThemeSub(ThemeGeneral general){
+        log.info("Récupération du sous thème pour {}", general);
+        return Arrays.asList(ThemeSub.values()).stream()
+            .filter(sub -> sub.getListGenerals().contains(general))
+            .collect(Collectors.toList());
     }
 
      public List<Author> getAllAuthor(){

@@ -10,10 +10,13 @@
                 xmlns:sec="https://joinfaces.org/security"
                 template="/template.xhtml">
     <ui:define name="content" >
-        <p:outputLabel id="labelAccountFour" value="Enter a new record." />
 
         <div class="ui-g">
+            <div class="ui-g-3"></div>
             <div class="ui-g-6">
+                
+                <h2>Enter a new record</h2>
+
                 <p:outputLabel class="date" value="Date :" />
                 <p:datePicker class="date" for="date" value="#{accountFormBean.currentRecord.dateOfTransaction}" inline="false"/>
                 
@@ -35,18 +38,23 @@
 
                 <p:outputLabel class="theme-general" value="thème général :" />
                 <p:selectOneMenu id="theme-general" value="#{accountFormBean.currentRecord.themeGeneral}">
+                    <p:ajax update="contentForm"  process="@this"/>
+                    <f:selectItem itemLabel="A saissir" itemValue=""/>
                     <f:selectItems value="#{accountFormBean.getAllThemeGeneral()}" var="themeg"
                     itemLabel="#{themeg.name}" itemValue="#{themeg}"/>
                 </p:selectOneMenu>
+                
+                <p:outputPanel id="panelThemeSub" rendered="#{accountFormBean.currentRecord.themeGeneral != null}">
+                    <p:outputLabel class="themeSub" value="Sous thème :" />
+                    <p:selectOneMenu id="themeSub" value="#{accountFormBean.currentRecord.themeSub}">
+                        <f:selectItems value="#{accountFormBean.getMatchThemeSub(accountFormBean.currentRecord.themeGeneral)}" var="themeSub"
+                        itemLabel="#{themeSub.name}" itemValue="#{themeSub}"/>
+                    </p:selectOneMenu>
+                </p:outputPanel>
 
                 <p:outputLabel class="beneficiary" value="Bénéficiaire :" />
                 <p:inputText class="beneficiary" for="beneficiary" value="#{accountFormBean.currentRecord.beneficiary}"/>
 
-                <p:outputLabel class="themeSub" value="Sous thème :" />
-                <p:selectOneMenu id="themeSub" value="#{accountFormBean.currentRecord.themeSub}">
-                    <f:selectItems value="#{accountFormBean.getAllThemeSub()}" var="themeSub"
-                    itemLabel="#{themeSub.name}" itemValue="#{themeSub}"/>
-                </p:selectOneMenu>
                 
                 <p:outputLabel class="tenant" value="Locataire :" />
                 <p:inputText class="tenant" for="tenant" value="#{accountFormBean.currentRecord.tenant}"/>
@@ -59,6 +67,7 @@
 
                 <p:commandButton value="add a new reccord" action="#{accountFormBean.save()}" update=":contentForm"/>
             </div>
+            <div class="ui-g-3"></div>
         </div>
     </ui:define>
 </ui:composition>
