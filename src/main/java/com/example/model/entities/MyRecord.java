@@ -24,6 +24,7 @@ public class MyRecord {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    // WARNING Date Type is depreciated since java 8
     @Column(nullable = false, unique = false)
     private Date dateOfTransaction;
 

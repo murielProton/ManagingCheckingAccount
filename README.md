@@ -8,6 +8,7 @@ Usefull tools to manage my checking accounts, and loose less time checking my ba
 # Help
 - Help to find the correct versions of depedencies for Spring-boot version 3.1.2 : https://docs.spring.io/spring-boot/docs/current/reference/html/
 - Help for version problems : https://mvnrepository.com/artifact/
+- Documentation for PrimeFaces : https://primefaces.github.io/primefaces/12_0_0/#/?id=main
 
 
 # Dificulties
