@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition 
+                xmlns:h="jakarta.faces.html"
+                xmlns:f="jakarta.faces.core"
+                xmlns:ui="jakarta.faces.facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pe="http://primefaces.org/ui/extensions"
+                xmlns:o="http://omnifaces.org/ui"
+                xmlns:sec="https://joinfaces.org/security"
+                template="/templates.xhtml">
+    <ui:define name="content" >
+        <p:outputLabel id="labelRoleAdmin" value="Choose your starter as an ADMIN New" />
+        <div class="ui-g">
+            <div class="ui-g-6">
+                <p:outputLabel for="input2" value="Currency"/>
+                <p:inputNumber id="input2" value="#{indexBean.input2}" symbol=" CHF"
+                                symbolPosition="s" decimalSeparator="," thousandSeparator="." />
+                <p:outputLabel for="input3" value="Currency"/>
+                <p:inputNumber id="input3" value="#{indexBean.input3}" symbol=" CHF"
+                                symbolPosition="s" decimalSeparator="," thousandSeparator="." />
+                <p:commandButton value="update" action="#{indexBean.changed()}" update=":contentForm"/>
+            </div>
+            <div class="ui-g-6">
+            </div>
+            
+        </div>
+    </ui:define>
+</ui:composition>
