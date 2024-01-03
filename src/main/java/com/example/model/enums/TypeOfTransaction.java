@@ -1,5 +1,23 @@
 package com.example.model.enums;
 
+import lombok.Getter;
+
 public enum TypeOfTransaction {
-    SALARY, PAYMENT, TIP, AUTOMATIC_DRAWDOWN, WITHDRAWAL, CREDIT_CARD, CHECK_CASHING, CASHING, CHECK, CASH
+    SALARY("Salaire"), 
+    PAYMENT("Virement"), 
+    TIP("TIP"), 
+    AUTOMATIC_DRAWDOWN("Prélèvement automatique"), 
+    WITHDRAWAL("Retrait"), 
+    CREDIT_CARD("CB"), 
+    CHECK_CASHING("Encaissement de chèque"),
+    CASHING("Encaissement"),
+    CHECK("Chèque"), 
+    CASH("Liquide");
+
+    private @Getter String name;
+
+    private TypeOfTransaction(String name){
+        this.name= name;
+    }
+
 }
