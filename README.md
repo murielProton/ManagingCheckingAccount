@@ -1,8 +1,14 @@
 # ManagingCheckingAccount
 Usefull tools to manage my checking accounts, and loose less time checking my banc statements. Using Java, HTML and SQL.
-# Help and tutorials
-For the framework Spring Boot, and to work with the design pattern MVC : https://www.baeldung.com/spring-boot-start
-For SQL mySQL : https://www.tutorialspoint.com/mysql
+# Tutorials
+- Tutorial for the framework Spring Boot, and to work with the design pattern MVC : https://www.baeldung.com/spring-boot-start and https://github.com/eugenp/tutorials/tree/master/spring-boot-modules/spring-boot-bootstrap
+- Tutorial for SQL mySQL : https://www.tutorialspoint.com/mysql
+- Tutorial to combine Spring Boot, PrimeFaces and mySQL database : http://joinfaces.org/
+- Tutorial for Maven : https://gayerie.dev/epsi-b3-javaee/javaee_web/maven.html
+# Help
+- Help to find the correct versions of depedencies for Spring-boot version 3.1.2 : https://docs.spring.io/spring-boot/docs/current/reference/html/
+- Help for version problems : https://mvnrepository.com/artifact/
+
 
 # Dificulties
 ## Defining a simple application.properties
@@ -63,8 +69,6 @@ Add folowing lines :
 4. run my main methode.
 
 While executing thoese 4 commands, a few errors will appear. Do not fret. Keep calm, try to mend them.
-Version problems -> https://mvnrepository.com/artifact/
-There is always the option to see the code of Baeldung -> https://github.com/eugenp/tutorials/tree/master/spring-boot-modules/spring-boot-bootstrap
 
 # Specificities about the POM file
 - SNPASHOT in a version means it is currently under developpement.
@@ -80,8 +84,7 @@ There is always the option to see the code of Baeldung -> https://github.com/eug
 ```     <artifactId></artifactId>```-> the project name
 ```     <version></version>``` -> the project version, maven manages it. Add SNAPSHOT to define it's developpement state.
 ```</project> ```
-- usefull tutorial : https://gayerie.dev/epsi-b3-javaee/javaee_web/maven.html
-- usefull website to find the correct versions of depedencies for Spring-boot version 3.1.2 : https://docs.spring.io/spring-boot/docs/current/reference/html/dependency-versions.html
+dependency-versions.html
 # How to run the App
 ## Launch the server for the WEB application : 
 1. command line : ``` & 'C:\Program Files\Java\jdk-20\bin\java.exe' '@C:\Users\<path for this file>\AppData\Local\Temp\cp_cmmf7wa8zzm4xwcel20luttw0.argfile' 'com.example.Application'
@@ -110,14 +113,14 @@ src
                     |--> repository //This holds the classes that get data from HTML
         |--> resources
             |--> META-INF
-            |--> static
+            |--> resources
                 |--> css
                 |--> javascript
-            |--> templates //This holds HTML files
+                |-- and all the .xhtml files 
     |--> test/ java/ com/ example
 
 
-cf : https://stackoverflow.com/questions/59965015/springboot-where-to-put-internal-container-classes
+cf : https://github.com/joinfaces
 
 # Enum types
 http://localhost:8081/enummapping/TypeOfTransaction/get?typeOfTransaction=TIP
