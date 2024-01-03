@@ -81,6 +81,7 @@ There is always the option to see the code of Baeldung -> https://github.com/eug
 ```     <version></version>``` -> the project version, maven manages it. Add SNAPSHOT to define it's developpement state.
 ```</project> ```
 - usefull tutorial : https://gayerie.dev/epsi-b3-javaee/javaee_web/maven.html
+- usefull website to find the correct versions of depedencies for Spring-boot version 3.1.2 : https://docs.spring.io/spring-boot/docs/current/reference/html/dependency-versions.html
 # How to run the App
 ## Launch the server for the WEB application : 
 1. command line : ``` & 'C:\Program Files\Java\jdk-20\bin\java.exe' '@C:\Users\<path for this file>\AppData\Local\Temp\cp_cmmf7wa8zzm4xwcel20luttw0.argfile' 'com.example.Application'
