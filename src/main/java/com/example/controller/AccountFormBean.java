@@ -68,17 +68,33 @@ public class AccountFormBean implements Serializable {
             .collect(Collectors.toList());
     }
 
-     public List<Author> getAllAuthor(){
+    public List<Author> getAllAuthor(){
         return Arrays.asList(Author.values());
-     }
-     public boolean showFieldAuthor(){
+    }
+    public boolean showFieldAuthor(){
         /** The field 'Author' appears if ThemeSub value is in the folowing list : CONSTRUCTION_WORK, COSTS, PROPERTY_TAXES, WATER, GASS, 
-         * ELECTRICITY, LOAN, FIRE_WOOD, INSURANCE, BOILER, CHIMNEY_SWEEPING, HOME_APPLIANCE, FURNITURE.\
-         * Front style="display: block" or style="display: none"
+         * ELECTRICITY, LOAN, FIRE_WOOD, INSURANCE, BOILER, CHIMNEY_SWEEPING, HOME_APPLIANCE, FURNITURE.
          * **/
         if(currentRecord.getThemeSub()==null){
             return true;
         }
-        return !currentRecord.getThemeSub().isAuthorHide();
+        return currentRecord.getThemeSub().isAuthorRendered();
+    }
+    public boolean showFieldTenant(){
+        /** The field 'tenant' appears if ThemeSub value is value is in RENT.
+         * **/
+        if(currentRecord.getThemeSub()==null){
+            return false;
+        }
+        return currentRecord.getThemeSub().isTenantRendered();
+    }
+    public boolean showFieldCheckNumber(){
+        /** The field 'checkNumber' appears if TypeOfTransaction value is in CHECK.
+         * **/
+        if(currentRecord.getTypeTransaction()==null){
+            return false;
+        }
+        return currentRecord.getTypeTransaction().isCheckRendered();
      }
+
 }

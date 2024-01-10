@@ -11,31 +11,34 @@ import lombok.Getter;
          * ELECTRICITY, LOAN, FIRE_WOOD, INSURANCE, BOILER, CHIMNEY_SWEEPING, HOME_APPLIANCE, FURNITURE.\
          * **/
 public enum ThemeSub {
-    NULL("", Arrays.asList(ThemeGeneral.values()), true),
-    RENT("Loyer", Arrays.asList(CALUIRE_ET_CUIRE), true),
-    CONSTRUCTION_WORK("Travaux",Arrays.asList(CALUIRE_ET_CUIRE, MEZIEU), false),
-    COSTS("Coût",Arrays.asList(CALUIRE_ET_CUIRE, MEZIEU), false),
-    PROPERTY_TAXES("Taxe foncière",Arrays.asList(CALUIRE_ET_CUIRE, MEZIEU), false),
-    WATER("Eau",Arrays.asList(CALUIRE_ET_CUIRE, MEZIEU), false),
-    GASS("Gaz",Arrays.asList(CALUIRE_ET_CUIRE, MEZIEU), false),
-    ELECTRICITY("Electircité",Arrays.asList(CALUIRE_ET_CUIRE, MEZIEU), false),
-    LOAN("Prêt",Arrays.asList(MEZIEU), false),
-    FIRE_WOOD("Bois de chauffe",Arrays.asList(MEZIEU), false),
-    INSURANCE("Assurance",Arrays.asList(CALUIRE_ET_CUIRE, MEZIEU), false),
-    BOILER("Chaudière",Arrays.asList(CALUIRE_ET_CUIRE, MEZIEU), false),
-    CHIMNEY_SWEEPING("Ramonage",Arrays.asList(CALUIRE_ET_CUIRE, MEZIEU), false),
-    HOME_APPLIANCE("Electroménager",Arrays.asList(CALUIRE_ET_CUIRE, MEZIEU), false),
-    FURNITURE("Mobilier",Arrays.asList(CALUIRE_ET_CUIRE, MEZIEU, MONTPLAT), false),
-    PATRICK("Patrick",Arrays.asList(CLOTHING, LEISURE,HEALTH,TCL,STATIONARY,INCOME_TAXE), false),
-    MURIEL("Muriel",Arrays.asList(CLOTHING, LEISURE, HEALTH,TCL,STATIONARY,INCOME_TAXE), false);
+    NULL("", Arrays.asList(ThemeGeneral.values()), true, false),
+    RENT("Loyer", Arrays.asList(CALUIRE_ET_CUIRE), false, true),
+    CONSTRUCTION_WORK("Travaux",Arrays.asList(CALUIRE_ET_CUIRE, MEZIEU), false, false),
+    COSTS("Coût",Arrays.asList(CALUIRE_ET_CUIRE, MEZIEU), true, false),
+    PROPERTY_TAXES("Taxe foncière",Arrays.asList(CALUIRE_ET_CUIRE, MEZIEU), true, false),
+    WATER("Eau",Arrays.asList(CALUIRE_ET_CUIRE, MEZIEU), true, false),
+    GASS("Gaz",Arrays.asList(CALUIRE_ET_CUIRE, MEZIEU), true, false),
+    ELECTRICITY("Electircité",Arrays.asList(CALUIRE_ET_CUIRE, MEZIEU), true, false),
+    LOAN("Prêt",Arrays.asList(MEZIEU), true, false),
+    FIRE_WOOD("Bois de chauffe",Arrays.asList(MEZIEU), true, false),
+    INSURANCE("Assurance",Arrays.asList(CALUIRE_ET_CUIRE, MEZIEU), true, false),
+    BOILER("Chaudière",Arrays.asList(CALUIRE_ET_CUIRE, MEZIEU), true, false),
+    CHIMNEY_SWEEPING("Ramonage",Arrays.asList(CALUIRE_ET_CUIRE, MEZIEU), true, false),
+    HOME_APPLIANCE("Electroménager",Arrays.asList(CALUIRE_ET_CUIRE, MEZIEU), true, false),
+    FURNITURE("Mobilier",Arrays.asList(CALUIRE_ET_CUIRE, MEZIEU, MONTPLAT), true, false),
+    PATRICK("Patrick",Arrays.asList(CLOTHING, LEISURE,HEALTH,TCL,STATIONARY,INCOME_TAXE), true, false),
+    MURIEL("Muriel",Arrays.asList(CLOTHING, LEISURE, HEALTH,TCL,STATIONARY,INCOME_TAXE), true, false);
 
     private @Getter String name;
     private @Getter List<ThemeGeneral> listGenerals;
-       private @Getter boolean authorHide;
+    private @Getter boolean authorRendered;
+    private @Getter boolean tenantRendered;
 
-    private ThemeSub(String name, List<ThemeGeneral> list, boolean authorHide){
+    private ThemeSub(String name, List<ThemeGeneral> list, boolean authorRendered, boolean tenantRendered){
         this.name = name;
         this.listGenerals = list;
-        this.authorHide = authorHide;
+        this.authorRendered = authorRendered;
+        this.tenantRendered = tenantRendered;
+
     }
 }

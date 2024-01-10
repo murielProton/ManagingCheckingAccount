@@ -22,12 +22,15 @@
                 
                 <p:outputLabel class="type-of-transaction" value="Type de transaction :" />
                 <p:selectOneMenu id="typeTransaction" value="#{accountFormBean.currentRecord.typeTransaction}">
+                    <p:ajax update="contentForm"  process="@this"/>
                     <f:selectItems value="#{accountFormBean.getAllTypeOfTransaction()}" var="type"
                     itemLabel="#{type.name}" itemValue="#{type}"/>
                 </p:selectOneMenu>
 
-                <p:outputLabel class="checkNumber" value="Numéro du chèque :" />
-                <p:inputText class="checkNumber" for="checkNumber" value="#{accountFormBean.currentRecord.checkNumber}"/>
+                <p:outputPanel id="panelCheckNumber" rendered="#{accountFormBean.showFieldCheckNumber()}">
+                    <p:outputLabel class="checkNumber" value="Numéro du chèque :" />
+                    <p:inputText class="checkNumber" for="checkNumber" value="#{accountFormBean.currentRecord.checkNumber}"/>
+                </p:outputPanel>
 
                 <p:outputLabel class="name" value="Nom ( débiteur / magasin / créditeur) :" />
                 <p:inputText class="name" for="name" value="#{accountFormBean.currentRecord.name}"/>
@@ -56,9 +59,10 @@
                 <p:outputLabel class="beneficiary" value="Bénéficiaire :" />
                 <p:inputText class="beneficiary" for="beneficiary" value="#{accountFormBean.currentRecord.beneficiary}"/>
 
-                
-                <p:outputLabel class="tenant" value="Locataire :" />
-                <p:inputText class="tenant" for="tenant" value="#{accountFormBean.currentRecord.tenant}"/>
+                <p:outputPanel id="panelTenant" rendered="#{accountFormBean.showFieldTenant()}">
+                    <p:outputLabel class="tenant" value="Locataire :" />
+                    <p:inputText class="tenant" for="tenant" value="#{accountFormBean.currentRecord.tenant}"/>
+                </p:outputPanel>
 
                 <p:outputPanel rendered="#{accountFormBean.showFieldAuthor()}">
                     <p:outputLabel class="author" value="Auteur de la transaction ou créditeur :" />
