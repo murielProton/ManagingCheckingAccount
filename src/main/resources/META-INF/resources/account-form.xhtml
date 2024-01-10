@@ -47,6 +47,7 @@
                 <p:outputPanel id="panelThemeSub" rendered="#{accountFormBean.currentRecord.themeGeneral != null}">
                     <p:outputLabel class="themeSub" value="Sous thème :" />
                     <p:selectOneMenu id="themeSub" value="#{accountFormBean.currentRecord.themeSub}">
+                        <p:ajax update="contentForm"  process="@this"/>
                         <f:selectItems value="#{accountFormBean.getMatchThemeSub(accountFormBean.currentRecord.themeGeneral)}" var="themeSub"
                         itemLabel="#{themeSub.name}" itemValue="#{themeSub}"/>
                     </p:selectOneMenu>
@@ -59,11 +60,13 @@
                 <p:outputLabel class="tenant" value="Locataire :" />
                 <p:inputText class="tenant" for="tenant" value="#{accountFormBean.currentRecord.tenant}"/>
 
-                <p:outputLabel class="author" value="Auteur de la transaction ou créditeur :" />
-                <p:selectOneMenu id="author" value="#{accountFormBean.currentRecord.author}">
-                    <f:selectItems value="#{accountFormBean.getAllAuthor()}" var="author"
-                    itemLabel="#{author.name}" itemValue="#{author}"/>
-                </p:selectOneMenu>
+                <p:outputPanel rendered="#{accountFormBean.showFieldAuthor()}">
+                    <p:outputLabel class="author" value="Auteur de la transaction ou créditeur :" />
+                    <p:selectOneMenu id="author" value="#{accountFormBean.currentRecord.author}">
+                        <f:selectItems value="#{accountFormBean.getAllAuthor()}" var="author"
+                        itemLabel="#{author.name}" itemValue="#{author}"/>
+                    </p:selectOneMenu>
+                </p:outputPanel>
 
                 <p:commandButton value="add a new reccord" action="#{accountFormBean.save()}" update=":contentForm"/>
             </div>

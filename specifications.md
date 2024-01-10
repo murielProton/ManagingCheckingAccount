@@ -29,7 +29,7 @@ Tous les labels sont en Français.\
 - Sous thème : Loyer, Charges, Travaux, Eau, Gaz, Prêt Immobilier, Electricité, Bois de chauffe, Impôts Fonciers, Taxe d'Habitation, Assurance, Entretient Chaudière, Ramonage, Électroménager, Mobilier, Patrick, Muriel.\
 - Auteur : Patrick, Muriel.\
 - Locataire text.\
-### Règles à mettre en place avec JavaScript et JQuery
+### Règles d'affichage très faciles à mettre en place grace joinfaces / primefaces
 Le champ Auteur apparaît et est obligatoire que lorsqu'il s'agit d'un sous thème : Travaux, Charges, Impôts Fonciers, Eau, Gaz, Électricité, Prêt Immobilier, Bois de chauffe, Assurance, Entretient Chaudière, Ramonage, Électroménager, Mobilier.\
 Le champ N° de chèque apparaît et est obligatoire si le type de payement est par Chèque.\
 Si le Type de payement est Chèque un champs N° de Chèque apparaît. \

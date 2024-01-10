@@ -2,6 +2,9 @@ package com.example.model.enums;
 
 import lombok.Getter;
 
+        /** The field 'Check Number' appears if TypeOfTransaction value is CHECK.\
+         * **/
+
 public enum TypeOfTransaction {
     SALARY("Salaire"), 
     PAYMENT("Virement"), 

@@ -39,6 +39,8 @@ public class AccountFormBean implements Serializable {
 
     private List<MyRecord> list;
 
+    private String display = "none";
+
     @PostConstruct
     public void init(){
         currentRecord = new MyRecord();
@@ -68,5 +70,15 @@ public class AccountFormBean implements Serializable {
 
      public List<Author> getAllAuthor(){
         return Arrays.asList(Author.values());
+     }
+     public boolean showFieldAuthor(){
+        /** The field 'Author' appears if ThemeSub value is in the folowing list : CONSTRUCTION_WORK, COSTS, PROPERTY_TAXES, WATER, GASS, 
+         * ELECTRICITY, LOAN, FIRE_WOOD, INSURANCE, BOILER, CHIMNEY_SWEEPING, HOME_APPLIANCE, FURNITURE.\
+         * Front style="display: block" or style="display: none"
+         * **/
+        if(currentRecord.getThemeSub()==null){
+            return true;
+        }
+        return !currentRecord.getThemeSub().isAuthorHide();
      }
 }

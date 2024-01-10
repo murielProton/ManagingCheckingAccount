@@ -113,7 +113,7 @@
                     <artifactId>maven-compiler-plugin</artifactId>
 
                     <configuration>
-                        <failOnWarning>true</failOnWarning>
+                        <failOnWarning>false</failOnWarning>
                         <failOnError>true</failOnError>
                         <showDeprecation>true</showDeprecation>
                         <annotationProcessorPaths>

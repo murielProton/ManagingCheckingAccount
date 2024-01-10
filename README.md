@@ -91,7 +91,7 @@ dependency-versions.html
 1. command line : ``` & 'C:\Program Files\Java\jdk-20\bin\java.exe' '@C:\Users\<path for this file>\AppData\Local\Temp\cp_cmmf7wa8zzm4xwcel20luttw0.argfile' 'com.example.Application'
 configurer le pom mvn install -f "c:\<path for my workspace>\workspace\account_management\pom.xml" ```
 2. URL in WEB browther : localhost:8081
-localhost:8081/MyRecordBeanController/resources/templates/templateWEB/index-bean-my-record.xhtml
+http://localhost:8081/account-form.faces
 ## End the server process
 CTRL + C
 
@@ -114,10 +114,10 @@ src
                     |--> repository //This holds the classes that get data from HTML
         |--> resources
             |--> META-INF
-            |--> resources
-                |--> css
-                |--> javascript
-                |-- and all the .xhtml files 
+                |--> resources
+                    |--> css
+                    |--> javascript
+                    |-- and all the .xhtml files 
     |--> test/ java/ com/ example
 
 
