@@ -18,10 +18,18 @@
                 <h2>Enter a new record</h2>
 
                 <p:outputLabel class="date" value="Date :" />
-                <p:datePicker class="date" for="date" value="#{accountFormBean.currentRecord.dateOfTransaction}" inline="false"/>
+                <p:datePicker class="date" for="date"  required="true"
+                                value="#{accountFormBean.currentRecord.dateOfTransaction}" inline="false"/>
+                                
+                <p:outputLabel for="amount" value="Montant de la transaction"/>
+                <p:inputNumber id="amount" required="true" value="#{accountFormBean.currentRecord.amount}" symbol=" CHF"
+                                symbolPosition="s" decimalSeparator="," thousandSeparator="." />
+                
+                <p:outputLabel class="name" value="Nom ( débiteur / magasin / créditeur) :" />
+                <p:inputText class="name" for="name" required="true" value="#{accountFormBean.currentRecord.name}"/>
                 
                 <p:outputLabel class="type-of-transaction" value="Type de transaction :" />
-                <p:selectOneMenu id="typeTransaction" value="#{accountFormBean.currentRecord.typeTransaction}">
+                <p:selectOneMenu id="typeTransaction" required="true" value="#{accountFormBean.currentRecord.typeTransaction}">
                     <p:ajax update="contentForm"  process="@this"/>
                     <f:selectItems value="#{accountFormBean.getAllTypeOfTransaction()}" var="type"
                     itemLabel="#{type.name}" itemValue="#{type}"/>
@@ -32,20 +40,28 @@
                     <p:inputText class="checkNumber" for="checkNumber" value="#{accountFormBean.currentRecord.checkNumber}"/>
                 </p:outputPanel>
 
-                <p:outputLabel class="name" value="Nom ( débiteur / magasin / créditeur) :" />
-                <p:inputText class="name" for="name" value="#{accountFormBean.currentRecord.name}"/>
+                <p:outputPanel rendered="#{accountFormBean.showFieldAuthor()}">
+                    <p:outputLabel class="author" value="Auteur de la transaction ou créditeur :" />
+                    <p:selectOneMenu id="author" value="#{accountFormBean.currentRecord.author}">
+                        <f:selectItems value="#{accountFormBean.getAllAuthor()}" var="author"
+                        itemLabel="#{author.name}" itemValue="#{author}"/>
+                    </p:selectOneMenu>
+                </p:outputPanel>
                 
-                <p:outputLabel for="amount" value="Montant de la transaction"/>
-                <p:inputNumber id="amount" value="#{accountFormBean.currentRecord.amount}" symbol=" CHF"
-                                symbolPosition="s" decimalSeparator="," thousandSeparator="." />
+                <p:outputPanel id="panelBeneficiary" rendered="#{accountFormBean.showFieldBeneficiary()}">
+                    <p:outputLabel class="beneficiary" value="Bénéficiaire :" />
+                    <p:inputText class="beneficiary" for="beneficiary" value="#{accountFormBean.currentRecord.beneficiary}"/>
+                </p:outputPanel>
 
-                <p:outputLabel class="theme-general" value="thème général :" />
-                <p:selectOneMenu id="theme-general" value="#{accountFormBean.currentRecord.themeGeneral}">
-                    <p:ajax update="contentForm"  process="@this"/>
-                    <f:selectItem itemLabel="A saissir" itemValue=""/>
-                    <f:selectItems value="#{accountFormBean.getAllThemeGeneral()}" var="themeg"
-                    itemLabel="#{themeg.name}" itemValue="#{themeg}"/>
-                </p:selectOneMenu>
+                <p:outputPanel id="panelThemeGeneral" rendered="#{accountFormBean.showFieldThemeGeneral()}">
+                    <p:outputLabel class="theme-general" value="thème général :" />
+                    <p:selectOneMenu id="theme-general" value="#{accountFormBean.currentRecord.themeGeneral}">
+                        <p:ajax update="contentForm"  process="@this"/>
+                        <f:selectItem itemLabel="A saissir" itemValue=""/>
+                        <f:selectItems value="#{accountFormBean.getAllThemeGeneral()}" var="themeg"
+                        itemLabel="#{themeg.name}" itemValue="#{themeg}"/>
+                    </p:selectOneMenu>
+                </p:outputPanel>
                 
                 <p:outputPanel id="panelThemeSub" rendered="#{accountFormBean.currentRecord.themeGeneral != null}">
                     <p:outputLabel class="themeSub" value="Sous thème :" />
@@ -56,21 +72,12 @@
                     </p:selectOneMenu>
                 </p:outputPanel>
 
-                <p:outputLabel class="beneficiary" value="Bénéficiaire :" />
-                <p:inputText class="beneficiary" for="beneficiary" value="#{accountFormBean.currentRecord.beneficiary}"/>
-
                 <p:outputPanel id="panelTenant" rendered="#{accountFormBean.showFieldTenant()}">
                     <p:outputLabel class="tenant" value="Locataire :" />
                     <p:inputText class="tenant" for="tenant" value="#{accountFormBean.currentRecord.tenant}"/>
                 </p:outputPanel>
 
-                <p:outputPanel rendered="#{accountFormBean.showFieldAuthor()}">
-                    <p:outputLabel class="author" value="Auteur de la transaction ou créditeur :" />
-                    <p:selectOneMenu id="author" value="#{accountFormBean.currentRecord.author}">
-                        <f:selectItems value="#{accountFormBean.getAllAuthor()}" var="author"
-                        itemLabel="#{author.name}" itemValue="#{author}"/>
-                    </p:selectOneMenu>
-                </p:outputPanel>
+
 
                 <p:commandButton value="add a new reccord" action="#{accountFormBean.save()}" update=":contentForm"/>
             </div>

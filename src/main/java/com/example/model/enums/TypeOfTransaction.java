@@ -6,24 +6,28 @@ import lombok.Getter;
          * **/
 
 public enum TypeOfTransaction {
-    SALARY("Salaire", false), 
-    PAYMENT("Virement", false), 
-    TIP("TIP", false), 
-    AUTOMATIC_DRAWDOWN("Prélèvement automatique", false), 
-    WITHDRAWAL("Retrait", false), 
-    CREDIT_CARD("CB", false), 
-    CHECK_CASHING("Encaissement de chèque",false),
-    CASHING("Encaissement",false),
-    CHECK("Chèque",true), 
-    CASH("Liquide",false);
+    SALARY("Salaire", true, false, false),
+    PAYMENT("Virement", true, true, false),
+    TIP("TIP", false, true, false),
+    AUTOMATIC_DRAWDOWN("Prélèvement automatique",false, true, false),
+    WITHDRAWAL("Retrait", false, false, false),
+    CREDIT_CARD("CB", false, true, false),
+    CHECK_CASHING("Encaissement de chèque", true, true, false),
+    CASHING("Encaissement", true, true, false),
+    CHECK("Chèque", false, true, true),
+    CASH("Liquide", false, true, false);
 
     private @Getter String name;
-    private @Getter boolean checkRendered;
+    private @Getter boolean income;
+    private @Getter boolean themeGeneralRendered;
+    private @Getter boolean checkNumberRendered;
 
 
-    private TypeOfTransaction(String name, boolean checkRendered){
+    private TypeOfTransaction(String name, boolean income, boolean themeGeneralRendered, boolean checkNumberRendered){
         this.name= name;
-        this.checkRendered = checkRendered;
+        this.income= income;
+        this.themeGeneralRendered = themeGeneralRendered;
+        this.checkNumberRendered=checkNumberRendered;
     }
 
 }

@@ -41,7 +41,7 @@ public class MyRecord {
     @Column(nullable = false, unique = false)
     private Float amount;
 
-    @Column(nullable = false, unique = false)
+    @Column(nullable = true, unique = false)
      @Enumerated(EnumType.STRING)
     private ThemeGeneral themeGeneral;
 

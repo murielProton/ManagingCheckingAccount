@@ -58,7 +58,7 @@ public class AccountFormBean implements Serializable {
     public List<ThemeGeneral> getAllThemeGeneral(){
         return Arrays.asList(ThemeGeneral.values());
     }
-     public List<ThemeSub> getAllThemeSub(){
+    public List<ThemeSub> getAllThemeSub(){
         return Arrays.asList(ThemeSub.values());
     }
     public List<ThemeSub> getMatchThemeSub(ThemeGeneral general){
@@ -72,13 +72,30 @@ public class AccountFormBean implements Serializable {
         return Arrays.asList(Author.values());
     }
     public boolean showFieldAuthor(){
-        /** The field 'Author' appears if ThemeSub value is in the folowing list : CONSTRUCTION_WORK, COSTS, PROPERTY_TAXES, WATER, GASS, 
-         * ELECTRICITY, LOAN, FIRE_WOOD, INSURANCE, BOILER, CHIMNEY_SWEEPING, HOME_APPLIANCE, FURNITURE.
-         * **/
-        if(currentRecord.getThemeSub()==null){
+        if(currentRecord.getTypeTransaction()==null){
             return true;
         }
-        return currentRecord.getThemeSub().isAuthorRendered();
+        return !currentRecord.getTypeTransaction().isIncome();
+    }
+    public boolean showFieldBeneficiary(){
+        if(currentRecord.getTypeTransaction()==null){
+            return false;
+        }
+        return currentRecord.getTypeTransaction().isIncome();
+    }
+    public boolean showFieldCheckNumber(){
+        /** The field 'checkNumber' appears if TypeOfTransaction value is in CHECK.
+         * **/
+        if(currentRecord.getTypeTransaction()==null){
+            return false;
+        }
+        return currentRecord.getTypeTransaction().isCheckNumberRendered();
+    }
+    public boolean showFieldThemeGeneral(){
+        if(currentRecord.getTypeTransaction()==null){
+            return false;
+        }
+        return currentRecord.getTypeTransaction().isThemeGeneralRendered();
     }
     public boolean showFieldTenant(){
         /** The field 'tenant' appears if ThemeSub value is value is in RENT.
@@ -88,13 +105,8 @@ public class AccountFormBean implements Serializable {
         }
         return currentRecord.getThemeSub().isTenantRendered();
     }
-    public boolean showFieldCheckNumber(){
-        /** The field 'checkNumber' appears if TypeOfTransaction value is in CHECK.
-         * **/
-        if(currentRecord.getTypeTransaction()==null){
-            return false;
-        }
-        return currentRecord.getTypeTransaction().isCheckRendered();
-     }
+
+
+
 
 }
