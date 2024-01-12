@@ -21,15 +21,14 @@ public enum ThemeSub {
     ELECTRICITY("Electircité",Arrays.asList(CALUIRE_ET_CUIRE, MEZIEU), true, false),
     LOAN("Prêt",Arrays.asList(MEZIEU), true, false),
     FIRE_WOOD("Bois de chauffe",Arrays.asList(MEZIEU), true, false),
-    INSURANCE("Assurance",Arrays.asList(CALUIRE_ET_CUIRE, MEZIEU), true, false),
+    INSURANCE("Assurance",Arrays.asList(CALUIRE_ET_CUIRE, MEZIEU,TRAVEL, OTHER), true, false),
     BOILER("Chaudière",Arrays.asList(CALUIRE_ET_CUIRE, MEZIEU), true, false),
-    CHIMNEY_SWEEPING("Ramonage",Arrays.asList(CALUIRE_ET_CUIRE, MEZIEU), true, false),
+    CHIMNEY_SWEEPING("Ramonage",Arrays.asList(MONTPLAT, MEZIEU), true, false),
     HOME_APPLIANCE("Electroménager",Arrays.asList(CALUIRE_ET_CUIRE, MEZIEU), true, false),
     FURNITURE("Mobilier",Arrays.asList(CALUIRE_ET_CUIRE, MEZIEU, MONTPLAT), true, false),
     INTERNET_SUBSCRIPTION("Abonnement à Internet",Arrays.asList(CALUIRE_ET_CUIRE, MEZIEU), true, false),
-    STREAMING_MEDIA_SUBSCRIPTION("Abonnement à une plateforme de streaming",Arrays.asList(CALUIRE_ET_CUIRE, MEZIEU), true, false),
-    PATRICK("Patrick",Arrays.asList(CLOTHING, LEISURE,HEALTH,TCL,STATIONARY,INCOME_TAXE), true, false),
-    MURIEL("Muriel",Arrays.asList(CLOTHING, LEISURE, HEALTH,TCL,STATIONARY,INCOME_TAXE), true, false);
+    STREAMING_MEDIA_SUBSCRIPTION("Abonnement à une plateforme de streaming",Arrays.asList(CALUIRE_ET_CUIRE, MEZIEU), true, false)
+    ;
 
     private @Getter String name;
     private @Getter List<ThemeGeneral> listGenerals;

@@ -44,6 +44,7 @@ public class AccountFormBean implements Serializable {
     @PostConstruct
     public void init(){
         currentRecord = new MyRecord();
+        currentRecord.setTypeTransaction(TypeOfTransaction.SALARY);
         log.info("init 1 currentRecord -> {} ", currentRecord);
         list = repository.findAll();
     }
@@ -84,10 +85,11 @@ public class AccountFormBean implements Serializable {
         return !currentRecord.getTypeTransaction().isIncome();
     }
     public boolean showFieldBeneficiary(){
-        if(currentRecord.getTypeTransaction()==null){
-            return false;
-        }
-        return currentRecord.getTypeTransaction().isIncome();
+        log.info(" in showFieldBeneficiary with {}, {}", currentRecord.getTypeTransaction(), currentRecord.getThemeGeneral());
+        return 
+            (currentRecord.getTypeTransaction()!=null && currentRecord.getTypeTransaction().isIncome())
+            || (currentRecord.getThemeGeneral()!=null && currentRecord.getThemeGeneral().isBeneficiaryRendered())
+        ;
     }
     public boolean showFieldCheckNumber(){
         /** The field 'checkNumber' appears if TypeOfTransaction value is in CHECK.
@@ -98,6 +100,12 @@ public class AccountFormBean implements Serializable {
         return currentRecord.getTypeTransaction().isCheckNumberRendered();
     }
     public boolean showFieldThemeGeneral(){
+        if(currentRecord.getTypeTransaction()==null){
+            return false;
+        }
+        return currentRecord.getTypeTransaction().isThemeGeneralRendered();
+    }
+    public boolean showFieldThemeSub(){
         if(currentRecord.getTypeTransaction()==null){
             return false;
         }

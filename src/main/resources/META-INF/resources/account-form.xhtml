@@ -48,11 +48,6 @@
                     </p:selectOneMenu>
                 </p:outputPanel>
                 
-                <p:outputPanel id="panelBeneficiary" rendered="#{accountFormBean.showFieldBeneficiary()}">
-                    <p:outputLabel class="beneficiary" value="Bénéficiaire :" />
-                    <p:inputText class="beneficiary" for="beneficiary" value="#{accountFormBean.currentRecord.beneficiary}"/>
-                </p:outputPanel>
-
                 <p:outputPanel id="panelThemeGeneral" rendered="#{accountFormBean.showFieldThemeGeneral()}">
                     <p:outputLabel class="theme-general" value="thème général :" />
                     <p:selectOneMenu id="theme-general" value="#{accountFormBean.currentRecord.themeGeneral}">
@@ -63,13 +58,18 @@
                     </p:selectOneMenu>
                 </p:outputPanel>
                 
-                <p:outputPanel id="panelThemeSub" rendered="#{accountFormBean.currentRecord.themeGeneral != null}">
+                <p:outputPanel id="panelThemeSub" rendered="#{accountFormBean.showFieldThemeSub()}">
                     <p:outputLabel class="themeSub" value="Sous thème :" />
                     <p:selectOneMenu id="themeSub" value="#{accountFormBean.currentRecord.themeSub}">
                         <p:ajax update="contentForm"  process="@this"/>
                         <f:selectItems value="#{accountFormBean.getMatchThemeSub(accountFormBean.currentRecord.themeGeneral)}" var="themeSub"
                         itemLabel="#{themeSub.name}" itemValue="#{themeSub}"/>
                     </p:selectOneMenu>
+                </p:outputPanel>
+
+                <p:outputPanel id="panelBeneficiary" rendered="#{accountFormBean.showFieldBeneficiary()}">
+                    <p:outputLabel class="beneficiary" value="Bénéficiaire :" />
+                    <p:inputText class="beneficiary" for="beneficiary" value="#{accountFormBean.currentRecord.beneficiary}"/>
                 </p:outputPanel>
 
                 <p:outputPanel id="panelTenant" rendered="#{accountFormBean.showFieldTenant()}">
