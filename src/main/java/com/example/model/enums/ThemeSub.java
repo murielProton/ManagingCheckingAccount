@@ -26,6 +26,8 @@ public enum ThemeSub {
     CHIMNEY_SWEEPING("Ramonage",Arrays.asList(CALUIRE_ET_CUIRE, MEZIEU), true, false),
     HOME_APPLIANCE("Electroménager",Arrays.asList(CALUIRE_ET_CUIRE, MEZIEU), true, false),
     FURNITURE("Mobilier",Arrays.asList(CALUIRE_ET_CUIRE, MEZIEU, MONTPLAT), true, false),
+    INTERNET_SUBSCRIPTION("Abonnement à Internet",Arrays.asList(CALUIRE_ET_CUIRE, MEZIEU), true, false),
+    STREAMING_MEDIA_SUBSCRIPTION("Abonnement à une plateforme de streaming",Arrays.asList(CALUIRE_ET_CUIRE, MEZIEU), true, false),
     PATRICK("Patrick",Arrays.asList(CLOTHING, LEISURE,HEALTH,TCL,STATIONARY,INCOME_TAXE), true, false),
     MURIEL("Muriel",Arrays.asList(CLOTHING, LEISURE, HEALTH,TCL,STATIONARY,INCOME_TAXE), true, false);
 

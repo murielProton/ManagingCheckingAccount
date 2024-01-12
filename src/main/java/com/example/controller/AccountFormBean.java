@@ -61,6 +61,12 @@ public class AccountFormBean implements Serializable {
     public List<ThemeSub> getAllThemeSub(){
         return Arrays.asList(ThemeSub.values());
     }
+    public List<ThemeGeneral> getMatchThemeGeneral(TypeOfTransaction typeOfTransaction){
+        log.info("Récupération du thème général pour {}", typeOfTransaction);
+        return Arrays.asList(ThemeGeneral.values()).stream()
+            .filter(themeGeneral -> typeOfTransaction.getListGenerals().contains(themeGeneral))
+            .collect(Collectors.toList());
+    }
     public List<ThemeSub> getMatchThemeSub(ThemeGeneral general){
         log.info("Récupération du sous thème pour {}", general);
         return Arrays.asList(ThemeSub.values()).stream()

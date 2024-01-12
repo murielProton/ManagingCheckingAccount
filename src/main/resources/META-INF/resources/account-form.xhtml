@@ -58,7 +58,7 @@
                     <p:selectOneMenu id="theme-general" value="#{accountFormBean.currentRecord.themeGeneral}">
                         <p:ajax update="contentForm"  process="@this"/>
                         <f:selectItem itemLabel="A saissir" itemValue=""/>
-                        <f:selectItems value="#{accountFormBean.getAllThemeGeneral()}" var="themeg"
+                        <f:selectItems value="#{accountFormBean.getMatchThemeGeneral(accountFormBean.currentRecord.typeTransaction)}" var="themeg"
                         itemLabel="#{themeg.name}" itemValue="#{themeg}"/>
                     </p:selectOneMenu>
                 </p:outputPanel>

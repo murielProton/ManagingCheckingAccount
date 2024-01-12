@@ -3,6 +3,7 @@ package com.example.model.enums;
 import lombok.Getter;
 
 public enum ThemeGeneral {
+    NULL(""),
     CALUIRE_ET_CUIRE("Caluire et Cuire"), 
     MEZIEU("Meyzieu"), 
     MONTPLAT("Montplat"), 
@@ -14,7 +15,9 @@ public enum ThemeGeneral {
     CLOTHING("Vêtement(s)"), 
     STATIONARY("Papetterie"), 
     OTHER("Autres"), 
-    INCOME_TAXE("Impôt sur le revenu");
+    PRESENT("Cadeau(x)"),
+    INCOME_TAXE("Impôt sur le revenu"),
+    TELEPHONE_SUBSCRIPTION("Abonnement téléphonique");
 
     private @Getter String name;
 
