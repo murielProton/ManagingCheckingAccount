@@ -1,9 +1,8 @@
 package com.example.controller;
 
 import java.io.Serializable;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import org.springframework.stereotype.Component;
 
@@ -21,7 +20,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class UtilsBean implements Serializable {
 
-    public static final String DATE_PATTERN = "yyyy-MM-dd";
+    public static final String DATE_PATTERN = "dd/MM/yyyy";
     public static final String TIME_ZONE = "Europe/Paris";
 
     public static final String CURRENCY_PATTERN = "#,##0.00 ¤";
@@ -53,10 +52,9 @@ public class UtilsBean implements Serializable {
         return LOCALE_COUNTRY;
     }
 
-    public static String customFormatDate(Date date) {
+    public static String customFormatDate(LocalDate date) {
 	    if (date != null) {
-	        DateFormat format = new SimpleDateFormat(DATE_PATTERN);
-	        return format.format(date);
+            return date.format(DateTimeFormatter.ofPattern(DATE_PATTERN));
 	    }
 	    return "";
     }

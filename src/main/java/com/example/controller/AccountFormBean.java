@@ -29,15 +29,13 @@ import lombok.extern.slf4j.Slf4j;
 @Named
 @ViewScoped
 @Slf4j
-public class AccountFormBean extends UtilsBean  implements Serializable {
+public class AccountFormBean extends UtilsBean implements Serializable {
 
     private LocalDate dateDefaultValue = LocalDate.now();
     @Autowired
     private MyRecordRepository repository;
 
     private MyRecord currentRecord; 
-
-    private List<MyRecord> list;
 
     private String display = "none";
 
@@ -46,12 +44,10 @@ public class AccountFormBean extends UtilsBean  implements Serializable {
         currentRecord = new MyRecord();
         currentRecord.setTypeTransaction(TypeOfTransaction.SALARY);
         log.info("init 1 currentRecord -> {} ", currentRecord);
-        list = repository.findAll();
     }
     public void save(){
         repository.save(currentRecord);
         // Rechargement de la liste en full
-        list = repository.findAll();
     }
     public List<TypeOfTransaction> getAllTypeOfTransaction(){
         return Arrays.asList(TypeOfTransaction.values());

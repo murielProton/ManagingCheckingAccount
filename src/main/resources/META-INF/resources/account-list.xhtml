@@ -14,16 +14,17 @@
             
             <div class="ui-g-1"></div>
             <div class="ui-g-10">
-                <p:dataTable id="records" var="record" value="#{accountFormBean.list}" rowKey="#{record.id}" allowUnsorting="true" sortMode="multiple">
+                <p:dataTable widgetVar="recordsTable" id="records" var="record" value="#{accountListBean.list}" rowKey="#{record.id}" allowUnsorting="true" sortMode="multiple">
                     <f:facet name="header">
                         List des transactions
                     </f:facet>
-                    <p:column headerText="Date"
+                    <p:column headerText="Date" field="date"
                             sortBy="#{accountListBean.customFormatDate(record.dateOfTransaction)}" 
-                            filterBy="#{accountListBean.customFormatDate(record.dateOfTransaction)}" filterMatchMode="contains"> 
-                        <h:outputText value="#{record.dateOfTransaction}" >
-                            <f:convertDateTime pattern = "#{accountListBean.datePattern}" timeZone="#{accountListBean.timeZone}" />
-                        </h:outputText>
+                            filterBy="#{record.dateOfTransaction}" filterMatchMode="between"> 
+                        <f:facet name="filter">
+                            <p:datePicker selectionMode="range" onchange="PF('recordsTable').filter()"/>
+                        </f:facet>
+                        <h:outputText value="#{accountListBean.customFormatDate(record.dateOfTransaction)}" />
                     </p:column>
                     <p:column headerText="Type" 
                             sortBy="#{record.typeTransaction.name}" 

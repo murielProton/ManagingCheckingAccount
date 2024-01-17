@@ -1,6 +1,6 @@
 package com.example.model.entities;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import com.example.model.enums.Author;
 import com.example.model.enums.ThemeGeneral;
@@ -24,9 +24,8 @@ public class MyRecord {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    // WARNING Date Type is depreciated since java 8
     @Column(nullable = false, unique = false)
-    private Date dateOfTransaction;
+    private LocalDate dateOfTransaction;
 
     @Column(nullable = false, unique = false)
     @Enumerated(EnumType.STRING)
