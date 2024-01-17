@@ -29,7 +29,7 @@ import lombok.extern.slf4j.Slf4j;
 @Named
 @ViewScoped
 @Slf4j
-public class AccountFormBean implements Serializable {
+public class AccountFormBean extends UtilsBean  implements Serializable {
 
     private LocalDate dateDefaultValue = LocalDate.now();
     @Autowired

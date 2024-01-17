@@ -16,41 +16,68 @@
             <div class="ui-g-10">
                 <p:dataTable id="records" var="record" value="#{accountFormBean.list}" rowKey="#{record.id}" allowUnsorting="true" sortMode="multiple">
                     <f:facet name="header">
-                        List des records
+                        List des transactions
                     </f:facet>
-
-                    <p:column headerText="Date">
+                    <p:column headerText="Date"
+                            sortBy="#{accountListBean.customFormatDate(record.dateOfTransaction)}" 
+                            filterBy="#{accountListBean.customFormatDate(record.dateOfTransaction)}" filterMatchMode="contains"> 
                         <h:outputText value="#{record.dateOfTransaction}" >
-                            <f:convertDateTime pattern = "yyyy-mm-dd" />
+                            <f:convertDateTime pattern = "#{accountListBean.datePattern}" timeZone="#{accountListBean.timeZone}" />
                         </h:outputText>
                     </p:column>
-                    <p:column headerText="Type" sortBy="#{record.typeTransaction.name}" filterBy="#{record.typeTransaction.name}">
+                    <p:column headerText="Type" 
+                            sortBy="#{record.typeTransaction.name}" 
+                            filterBy="#{record.typeTransaction.name}">
                         <h:outputText value="#{record.typeTransaction.name}" />
                     </p:column>
-                    <p:column headerText="Numéro de chèque" sortBy="#{record.checkNumber}" filterBy="#{record.checkNumber}">
+                    <p:column headerText="Numéro de chèque" 
+                            sortBy="#{record.checkNumber}" 
+                            filterBy="#{record.checkNumber}">
                         <h:outputText value="#{record.checkNumber}" />
                     </p:column>
-                    <p:column headerText="Nom" sortBy="#{record.name}" filterBy="#{record.name}">
+                    <p:column headerText="Nom" 
+                            sortBy="#{record.name}" 
+                            filterBy="#{record.name}">
                         <h:outputText value="#{record.name}" />
                     </p:column>
-                    <p:column headerText="montant">
-                        <h:outputText value="#{record.amount}" />
+                    <p:column headerText="montant"
+                            sortBy="#{record.amount}" 
+                            filterBy="#{record.amount}">
+                        <h:outputText value="#{record.amount}">
+                            <f:convertNumber pattern ="#{accountListBean.currencyPattern}"
+                                            type ="currency"
+                                            locale="#{accountListBean.localeCountry}"
+                                            currencyCode = "#{accountListBean.currencyCode}"
+                                            currencySymbol="#{accountListBean.currencySymbol}"
+                                            groupingUsed="true"/>
+                        </h:outputText>
                     </p:column>
-                    <p:column headerText="Thème">
+                    <p:column headerText="Thème"
+                            sortBy="#{record.themeGeneral.name}"
+                            filterBy="#{record.themeGeneral.name}">
                         <h:outputText value="#{record.themeGeneral.name}" />
                     </p:column>
-                    <p:column headerText="Sous-Thème">
+                    <p:column headerText="Sous-Thème"
+                            sortBy="#{record.themeSub.name}"
+                            filterBy="#{record.themeSub.name}">
                         <h:outputText value="#{record.themeSub.name}" />
                     </p:column>
-                    <p:column headerText="Bénficiare">
-                        <h:outputText value="#{record.beneficiary}" />
-                    </p:column>
-                    <p:column headerText="locataire">
-                        <h:outputText value="#{record.tenant}" />
-                    </p:column>
-                    <p:column headerText="Auteur">
+                    <p:column headerText="Auteur"
+                            sortBy="#{record.author.name}"
+                            filterBy="#{record.author.name}">
                         <h:outputText value="#{record.author.name}" />
                     </p:column>
+                    <p:column headerText="Bénficiare"
+                            sortBy="#{record.beneficiary}"
+                            filterBy="#{record.beneficiary}">
+                        <h:outputText value="#{record.beneficiary}" />
+                    </p:column>
+                    <p:column headerText="locataire"
+                            sortBy="#{record.tenant}"
+                            filterBy="#{record.tenant}">
+                        <h:outputText value="#{record.tenant}" />
+                    </p:column>
+
                 </p:dataTable>
             </div>
             <div class="ui-g-1"></div>
