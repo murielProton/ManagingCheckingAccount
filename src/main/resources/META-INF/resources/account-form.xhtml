@@ -22,15 +22,15 @@
                                 value="#{accountFormBean.currentRecord.dateOfTransaction}" inline="false"/>
                                 
                 <p:outputLabel for="amount" value="Montant de la transaction"/>
-                <p:inputNumber id="amount" required="true" value="#{accountFormBean.currentRecord.amount}" symbol=" CHF"
-                                symbolPosition="s" decimalSeparator="," thousandSeparator="." />
+                <p:inputNumber id="amount" required="true" value="#{accountFormBean.currentRecord.amount}" symbol="€"
+                                symbolPosition="s" decimalSeparator="," thousandSeparator=" " />
                 
                 <p:outputLabel class="name" value="Nom ( débiteur / magasin / créditeur) :" />
                 <p:inputText class="name" for="name" required="true" value="#{accountFormBean.currentRecord.name}"/>
                 
                 <p:outputLabel class="type-of-transaction" value="Type de transaction :" />
                 <p:selectOneMenu id="typeTransaction" required="true" value="#{accountFormBean.currentRecord.typeTransaction}">
-                    <p:ajax update="contentForm"  process="@this"/>
+                    <p:ajax update="contentForm"  process="@form" listener="#{accountFormBean.onTypeOfTransactionChange}"/>
                     <f:selectItems value="#{accountFormBean.getAllTypeOfTransaction()}" var="type"
                     itemLabel="#{type.name}" itemValue="#{type}"/>
                 </p:selectOneMenu>
@@ -51,7 +51,7 @@
                 <p:outputPanel id="panelThemeGeneral" rendered="#{accountFormBean.showFieldThemeGeneral()}">
                     <p:outputLabel class="theme-general" value="thème général :" />
                     <p:selectOneMenu id="theme-general" value="#{accountFormBean.currentRecord.themeGeneral}">
-                        <p:ajax update="contentForm"  process="@this"/>
+                        <p:ajax update="contentForm"  process="@form" listener="#{accountFormBean.onThemeGeneralChange}"/>
                         <f:selectItem itemLabel="A saissir" itemValue=""/>
                         <f:selectItems value="#{accountFormBean.getMatchThemeGeneral(accountFormBean.currentRecord.typeTransaction)}" var="themeg"
                         itemLabel="#{themeg.name}" itemValue="#{themeg}"/>
@@ -61,7 +61,7 @@
                 <p:outputPanel id="panelThemeSub" rendered="#{accountFormBean.showFieldThemeSub()}">
                     <p:outputLabel class="themeSub" value="Sous thème :" />
                     <p:selectOneMenu id="themeSub" value="#{accountFormBean.currentRecord.themeSub}">
-                        <p:ajax update="contentForm"  process="@this"/>
+                        <p:ajax update="contentForm"  process="@form"  listener="#{accountFormBean.onThemeSubChange}" />
                         <f:selectItems value="#{accountFormBean.getMatchThemeSub(accountFormBean.currentRecord.themeGeneral)}" var="themeSub"
                         itemLabel="#{themeSub.name}" itemValue="#{themeSub}"/>
                     </p:selectOneMenu>
@@ -78,8 +78,8 @@
                 </p:outputPanel>
 
 
+                <p:commandButton value="enregistrer une nouvelle transaction" action="#{accountFormBean.save()}" update=":contentForm"/>
 
-                <p:commandButton value="add a new reccord" action="#{accountFormBean.save()}" update=":contentForm"/>
             </div>
             <div class="ui-g-3"></div>
         </div>

@@ -41,13 +41,34 @@ public class AccountFormBean extends UtilsBean implements Serializable {
 
     @PostConstruct
     public void init(){
-        currentRecord = new MyRecord();
-        currentRecord.setTypeTransaction(TypeOfTransaction.SALARY);
+        initRecord();
         log.info("init 1 currentRecord -> {} ", currentRecord);
     }
+
+    private void initRecord() {
+        currentRecord = new MyRecord();
+        currentRecord.setTypeTransaction(TypeOfTransaction.SALARY);
+    }
+    
+    public void onTypeOfTransactionChange(){
+        currentRecord.setThemeGeneral(null);
+        currentRecord.setThemeSub(null);
+        currentRecord.setBeneficiary(null);
+        currentRecord.setTenant(null);
+        
+    }
+    public void onThemeGeneralChange() {
+      currentRecord.setThemeSub(null);
+      currentRecord.setBeneficiary(null);
+      currentRecord.setTenant(null);
+    }
+    public void onThemeSubChange() {
+        currentRecord.setBeneficiary(null);
+        currentRecord.setTenant(null);
+      }
     public void save(){
         repository.save(currentRecord);
-        // Rechargement de la liste en full
+        initRecord();
     }
     public List<TypeOfTransaction> getAllTypeOfTransaction(){
         return Arrays.asList(TypeOfTransaction.values());
