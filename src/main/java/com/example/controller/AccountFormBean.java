@@ -35,7 +35,7 @@ public class AccountFormBean extends UtilsBean implements Serializable {
     @Autowired
     private MyRecordRepository repository;
 
-    private MyRecord currentRecord; 
+    private MyRecord currentRecord;
 
     private String display = "none";
 
@@ -51,6 +51,7 @@ public class AccountFormBean extends UtilsBean implements Serializable {
     }
     
     public void onTypeOfTransactionChange(){
+        log.info("onTypeOfTransactionChange", currentRecord.getTypeTransaction());
         currentRecord.setThemeGeneral(null);
         currentRecord.setThemeSub(null);
         currentRecord.setBeneficiary(null);
@@ -111,18 +112,21 @@ public class AccountFormBean extends UtilsBean implements Serializable {
     public boolean showFieldCheckNumber(){
         /** The field 'checkNumber' appears if TypeOfTransaction value is in CHECK.
          * **/
+        log.info("showFieldCheckNumber()", currentRecord.getTypeTransaction());
         if(currentRecord.getTypeTransaction()==null){
             return false;
         }
         return currentRecord.getTypeTransaction().isCheckNumberRendered();
     }
     public boolean showFieldThemeGeneral(){
+        log.info("showFieldCheckNumber()", currentRecord.getTypeTransaction());
         if(currentRecord.getTypeTransaction()==null){
             return false;
         }
         return currentRecord.getTypeTransaction().isThemeGeneralRendered();
     }
     public boolean showFieldThemeSub(){
+        log.info("showFieldCheckNumber()", currentRecord.getTypeTransaction());
         if(currentRecord.getTypeTransaction()==null){
             return false;
         }
@@ -131,6 +135,7 @@ public class AccountFormBean extends UtilsBean implements Serializable {
     public boolean showFieldTenant(){
         /** The field 'tenant' appears if ThemeSub value is value is in RENT.
          * **/
+        log.info("showFieldCheckNumber()", currentRecord.getThemeSub());
         if(currentRecord.getThemeSub()==null){
             return false;
         }

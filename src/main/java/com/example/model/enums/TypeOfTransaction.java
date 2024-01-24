@@ -20,7 +20,8 @@ public enum TypeOfTransaction {
     CHECK_CASHING("Encaissement de chèque", true, false, true, Arrays.asList(CALUIRE_ET_CUIRE, OTHER)),
     CASHING("Encaissement", true, false, true, Arrays.asList(CALUIRE_ET_CUIRE, OTHER)),
     CHECK("Chèque", false, true, true,Arrays.asList(CALUIRE_ET_CUIRE,CLOTHING, FOOD, HEALTH, INCOME_TAXE, LEISURE, MEZIEU, MONTPLAT, NULL, OTHER, PRESENT, STATIONARY, TCL, TELEPHONE_SUBSCRIPTION, TRAVEL)),
-    CASH("Liquide", false, false, true, Arrays.asList(CALUIRE_ET_CUIRE,CLOTHING, FOOD, HEALTH, LEISURE, MEZIEU, MONTPLAT, NULL, OTHER, PRESENT, STATIONARY, TRAVEL));
+    CASH("Liquide", false, false, true, Arrays.asList(CALUIRE_ET_CUIRE,CLOTHING, FOOD, HEALTH, LEISURE, MEZIEU, MONTPLAT, NULL, OTHER, PRESENT, STATIONARY, TRAVEL)),
+    BALANCE("Solde", true,false, false, Arrays.asList(NULL));
 
     private @Getter String name;
     private @Getter boolean income;
