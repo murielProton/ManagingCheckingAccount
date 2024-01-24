@@ -19,7 +19,7 @@
                         List des transactions
                     </f:facet>
                     <p:column headerText="Date" field="date"
-                            sortBy="#{accountListBean.customFormatDate(record.dateOfTransaction)}" 
+                            sortBy="#{record.dateOfTransaction}" 
                             filterBy="#{record.dateOfTransaction}" filterMatchMode="between"> 
                         <f:facet name="filter">
                             <p:datePicker selectionMode="range" onchange="PF('recordsTable').filter()"/>

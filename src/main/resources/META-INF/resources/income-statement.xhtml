@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition 
+                xmlns:h="jakarta.faces.html"
+                xmlns:f="jakarta.faces.core"
+                xmlns:ui="jakarta.faces.facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pe="http://primefaces.org/ui/extensions"
+                xmlns:o="http://omnifaces.org/ui"
+                xmlns:sec="https://joinfaces.org/security"
+                template="/template.xhtml">
+    <ui:define name="content" >
+        <div class="ui-g">
+            
+            <div class="ui-g-1"></div>
+            <div class="ui-g-10">
+                <p:dataTable widgetVar="recordsTable" id="records" var="record" value="#{incomeStatementBean.listForIncomeStatement}" rowKey="#{record.id}" allowUnsorting="true" sortMode="multiple">
+                    <f:facet name="header">
+                        Balance du mois
+                    </f:facet>
+                    <p:column headerText="Date"
+                            sortBy="#{record.dateOfTransaction}">
+                        <h:outputText value="#{accountListBean.customFormatDate(record.dateOfTransaction)}" />
+                    </p:column>
+                    <p:column headerText="Type"
+                            sortBy="#{record.typeTransaction.name}"
+                            filterBy="#{record.typeTransaction.name}">
+                        <h:outputText value="#{record.typeTransaction.name}" />
+                    </p:column>
+                    <p:column headerText="Numéro de chèque"
+                            sortBy="#{record.checkNumber}"
+                            filterBy="#{record.checkNumber}">
+                        <h:outputText value="#{record.checkNumber}" />
+                    </p:column>
+                    <p:column headerText="Nom"
+                            sortBy="#{record.name}"
+                            filterBy="#{record.name}">
+                        <h:outputText value="#{record.name}" />
+                    </p:column>
+                    <p:column headerText="débit"
+                            sortBy="#{record.amount}" 
+                            filterBy="#{record.amount}">
+                        <h:outputText value="#{record.amount}" rendered="#{record.amount le 0}">
+                            <f:convertNumber pattern ="#{accountListBean.currencyPattern}"
+                                            type ="currency"
+                                            locale="#{accountListBean.localeCountry}"
+                                            currencyCode = "#{accountListBean.currencyCode}"
+                                            currencySymbol="#{accountListBean.currencySymbol}"
+                                            groupingUsed="true"/>
+                        </h:outputText>
+                        <f:facet name="footer">
+                            <h:outputText value="#{incomeStatementBean.getTotalDebit()}" />
+                        </f:facet>
+                    </p:column>
+                    <p:column headerText="crédit"
+                            sortBy="#{record.amount}" 
+                            filterBy="#{record.amount}">
+                        <h:outputText value="#{record.amount}" rendered="#{record.amount gt 0}">
+                            <f:convertNumber pattern ="#{accountListBean.currencyPattern}"
+                                            type ="currency"
+                                            locale="#{accountListBean.localeCountry}"
+                                            currencyCode = "#{accountListBean.currencyCode}"
+                                            currencySymbol="#{accountListBean.currencySymbol}"
+                                            groupingUsed="true"/>
+                        </h:outputText>
+                        <f:facet name="footer">
+                            <h:outputText value="#{incomeStatementBean.getTotalCredit()}" />
+                        </f:facet>
+                    </p:column>
+                </p:dataTable>
+            </div>
+        </div>
+    </ui:define>
+</ui:composition>
