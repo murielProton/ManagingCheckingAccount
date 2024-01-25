@@ -2,7 +2,7 @@ package com.example.controller;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,100 +29,56 @@ import lombok.extern.slf4j.Slf4j;
 public class IncomeStatementBean extends UtilsBean  implements Serializable {
     @Autowired
     private MyRecordRepository repository;
-    private LocalDate initDate = LocalDate.now().withDayOfMonth(1);
+    private LocalDate selectedMonth = LocalDate.now().withDayOfMonth(1);
+     // TODO add a form to the front so the user can choose witch month. This should be the default value.
 
     private List<MyRecord> listForIncomeStatement;
 
     @PostConstruct
     public void init(){
-        listForIncomeStatement = findAllBut(initDate);
-        log.info("init 1 IncomeStatementBean -> {} ", initDate);
+        listForIncomeStatement = initList(selectedMonth);
+        log.info("init 1 IncomeStatementBean -> {} ", selectedMonth);
     }
     public void save(){
-        listForIncomeStatement = findAllBut(initDate);
+        listForIncomeStatement = initList(selectedMonth);
     }
 
-    public List<MyRecord> findAllBut(LocalDate firstDayOfTargetedMonth){
-        List<MyRecord> listOfMyRecordToFilter = repository.findAll();
-        List<MyRecord> listOfMyRecordFiltered1 = findByMonth(listOfMyRecordToFilter, firstDayOfTargetedMonth);
-        //getOldBalance(listOfMyRecordFiltered1);
-        List<MyRecord> listOfMyRecordFiltered2 = findTheRightTypeOfTransaction(listOfMyRecordFiltered1);
-        List<MyRecord> listOfMyRecordFiltered3 = changeAmountValue(listOfMyRecordFiltered2);
-        return listOfMyRecordFiltered3;
-
-    }
-    public List<MyRecord> findByMonth(List<MyRecord> listOfMyRecordToFilter, LocalDate firstDayOfTargetedMonth){
-        LocalDate startDate = firstDayOfTargetedMonth.withDayOfMonth(1);
-        LocalDate endDate = firstDayOfTargetedMonth.withDayOfMonth(initDate.lengthOfMonth());
-        List<MyRecord> listOfMyRecordOfMonth = new ArrayList<>();
-        log.info("findByMonth -> {} ",startDate);
-        log.info("findByMonth -> {} ",endDate);
-        if(listOfMyRecordToFilter == null){
-            return null;
-        }
-        for (MyRecord curentRecord : listOfMyRecordToFilter) {
-            if (!curentRecord.getDateOfTransaction().isBefore(startDate)
-                    && !curentRecord.getDateOfTransaction().isAfter(endDate)){
-                listOfMyRecordOfMonth.add(curentRecord);
-                log.info("findByMonth for if-> {} ", curentRecord);
-            }
-        }
-        return listOfMyRecordOfMonth;
-    }
-    public List<MyRecord> findTheRightTypeOfTransaction(List<MyRecord> listOfMyRecordToFilter){
-        List<MyRecord> listOfMyRecords = new ArrayList<>();
-        if(listOfMyRecordToFilter == null){
-            return null;
-        }
-        for (MyRecord curentRecord : listOfMyRecordToFilter) {
-            if (curentRecord.getTypeTransaction() != TypeOfTransaction.CASH &&
-                    curentRecord.getTypeTransaction() != TypeOfTransaction.BALANCE){
-                listOfMyRecords.add(curentRecord);
-                log.info("findTheRightTypeOfTransaction for if-> {} ", curentRecord.getTypeTransaction());
-            }
-        }
-        return listOfMyRecords;
-    }
-    public List<MyRecord> changeAmountValue(List<MyRecord> listOfMyRecordToFilter){
-        if(listOfMyRecordToFilter == null){
-            return null;
-        }
-        for (MyRecord curentRecord : listOfMyRecordToFilter) {
-            if (!curentRecord.getTypeTransaction().isIncome()){
-                curentRecord.setAmount(curentRecord.getAmount()*-1);
-                log.info("changeAmountValue for if-> {} ", curentRecord.getAmount());
-            }
-        }
-        return listOfMyRecordToFilter;
+    public List<MyRecord> initList(LocalDate firstDayOfTargetedMonth){
+        return repository.findByMonth(firstDayOfTargetedMonth, Arrays.asList(TypeOfTransaction.CASH, TypeOfTransaction.BALANCE));
     }
 
     public Float getTotalCredit(){
         return  listForIncomeStatement.stream()
-            .filter(s -> s.getAmount()> 0)
-            .map(s -> s.getAmount())
+            .filter(s -> s.getDisplayAmount()> 0)
+            .map(s -> s.getDisplayAmount())
             .reduce(0f, (a, b) -> a + b);
     }
     public Float getTotalDebit(){
         return  listForIncomeStatement.stream()
-            .filter(s -> s.getAmount()<0)
-            .map(s -> s.getAmount())
+            .filter(s -> s.getDisplayAmount()<0)
+            .map(s -> s.getDisplayAmount())
             .reduce(0f, (a, b) -> a + b);
     }
 
-    /*
-    TODO 
-    public Float getOldBalance(List<MyRecord> monthlyListForIncomeStatement){
-        if (monthlyListForIncomeStatement!=null){
-            for (MyRecord curentRecord : monthlyListForIncomeStatement) {
-                if (curentRecord.getTypeTransaction() == TypeOfTransaction.BALANCE){
-                    return curentRecord.getAmount()f;
-                }
-            }
-        }else{
-            return 0f;
+    public Float getOldBalance(){
+        MyRecord balanceRecord = repository.findBalanceByMonth(selectedMonth);
+        if(balanceRecord == null){
+            return (float) 0;
         }
+        return balanceRecord.getDisplayAmount();
     }
+
     public Float getNewBalance(){
-        return  getOldBalance() + getTotalCredit() + getTotalDebit();
-    }*/
+        return getOldBalance() + getTotalCredit() + getTotalDebit();
+    }
+
+    public void decrementMonth() {  
+        selectedMonth = selectedMonth.minusMonths(1);
+        initList(selectedMonth);
+    }  
+    
+    public void incrementMonth() {
+        selectedMonth = selectedMonth.plusMonths(1);
+        initList(selectedMonth);
+    }
 }

@@ -58,4 +58,11 @@ public class MyRecord {
     @Enumerated(EnumType.STRING)
     private Author author;
 
+    public Float getDisplayAmount(){
+        if (!this.getTypeTransaction().isIncome()){
+            return -1*this.getAmount();
+        }
+        return this.getAmount();
+    }
+
 }

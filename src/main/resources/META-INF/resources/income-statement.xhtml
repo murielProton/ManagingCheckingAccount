@@ -11,12 +11,27 @@
                 template="/template.xhtml">
     <ui:define name="content" >
         <div class="ui-g">
+            <div class="ui-g-3"></div>
+            <div class="ui-g-6">
+                <p:commandButton actionListener="#{incomeStatementBean.decrementMonth}" id="navLeft" update="contentForm" value="-" />
+                <p:calendar id="datePicker" class="date" for="date"
+                                required="true"
+                                value="#{incomeStatementBean.selectedMonth}"
+                                inline="false" yearRange="c-10:c+10">
+                    <p:ajax update="contentForm" event="dateSelect" process="@form" listener="#{incomeStatementBean.init()}"/>
+                </p:calendar>
+                <p:commandButton actionListener="#{incomeStatementBean.incrementMonth}" id="navRight" update="contentForm" value="+" />
+            </div>
+            <div class="ui-g-3"></div>
+        </div>
+
+        <div class="ui-g">
             
             <div class="ui-g-1"></div>
             <div class="ui-g-10">
                 <p:dataTable widgetVar="recordsTable" id="records" var="record" value="#{incomeStatementBean.listForIncomeStatement}" rowKey="#{record.id}" allowUnsorting="true" sortMode="multiple">
                     <f:facet name="header">
-                        Balance du mois
+                        <p:outputLabel class="Balance du mois précédent" value="Balance du mois précédent : #{incomeStatementBean.getOldBalance()}" />
                     </f:facet>
                     <p:column headerText="Date"
                             sortBy="#{record.dateOfTransaction}">
@@ -38,9 +53,9 @@
                         <h:outputText value="#{record.name}" />
                     </p:column>
                     <p:column headerText="débit"
-                            sortBy="#{record.amount}" 
-                            filterBy="#{record.amount}">
-                        <h:outputText value="#{record.amount}" rendered="#{record.amount le 0}">
+                            sortBy="#{record.displayAmount}"
+                            filterBy="#{record.displayAmount}">
+                        <h:outputText value="#{record.displayAmount}" rendered="#{record.displayAmount le 0}">
                             <f:convertNumber pattern ="#{accountListBean.currencyPattern}"
                                             type ="currency"
                                             locale="#{accountListBean.localeCountry}"
@@ -53,9 +68,9 @@
                         </f:facet>
                     </p:column>
                     <p:column headerText="crédit"
-                            sortBy="#{record.amount}" 
-                            filterBy="#{record.amount}">
-                        <h:outputText value="#{record.amount}" rendered="#{record.amount gt 0}">
+                            sortBy="#{record.displayAmount}" 
+                            filterBy="#{record.displayAmount}">
+                        <h:outputText value="#{record.displayAmount}" rendered="#{record.displayAmount gt 0}">
                             <f:convertNumber pattern ="#{accountListBean.currencyPattern}"
                                             type ="currency"
                                             locale="#{accountListBean.localeCountry}"
@@ -68,6 +83,9 @@
                         </f:facet>
                     </p:column>
                 </p:dataTable>
+                
+                <p:outputLabel class="Balance de ce mois" value="Balance de ce mois : #{incomeStatementBean.getNewBalance()}" />
+                
             </div>
         </div>
     </ui:define>
