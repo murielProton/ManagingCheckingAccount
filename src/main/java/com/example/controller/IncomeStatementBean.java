@@ -43,7 +43,7 @@ public class IncomeStatementBean extends UtilsBean  implements Serializable {
     }
 
     public void initList(LocalDate firstDayOfTargetedMonth){
-        listForIncomeStatement = repository.findByMonth(firstDayOfTargetedMonth, Arrays.asList(TypeOfTransaction.CASH, TypeOfTransaction.BALANCE));
+        listForIncomeStatement = repository.findDebitByMonth(firstDayOfTargetedMonth, Arrays.asList(TypeOfTransaction.CASH, TypeOfTransaction.BALANCE));
     }
 
     public Float getTotalCredit(){

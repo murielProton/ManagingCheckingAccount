@@ -19,7 +19,7 @@ public interface MyRecordRepository extends CrudRepository<MyRecord, Long>{
         "MONTH(mr.dateOfTransaction) = MONTH(:givenDate) AND " +
         "YEAR(mr.dateOfTransaction) = YEAR(:givenDate) AND " +
         " (mr.typeTransaction NOT IN :excludedTypes or :excludedTypes is null)")
-    List<MyRecord> findByMonth(@Param("givenDate") LocalDate givenDate, @Param("excludedTypes") List<TypeOfTransaction> excludedTypes);
+    List<MyRecord> findDebitByMonth(@Param("givenDate") LocalDate givenDate, @Param("excludedTypes") List<TypeOfTransaction> excludedTypes);
     @Query("SELECT mr FROM MyRecord mr WHERE " +
         "MONTH(mr.dateOfTransaction) = MONTH(:givenDate) AND " +
         "YEAR(mr.dateOfTransaction) = YEAR(:givenDate) AND " +
