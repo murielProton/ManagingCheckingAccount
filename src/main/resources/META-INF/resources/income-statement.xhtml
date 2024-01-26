@@ -17,7 +17,8 @@
                 <p:calendar id="datePicker" class="date" for="date"
                                 required="true"
                                 value="#{incomeStatementBean.selectedMonth}"
-                                inline="false" yearRange="c-10:c+10">
+                                inline="false" yearRange="c-10:c+10"
+                                pattern="MMMM yyyy">
                     <p:ajax update="contentForm" event="dateSelect" process="@form" listener="#{incomeStatementBean.init()}"/>
                 </p:calendar>
                 <p:commandButton actionListener="#{incomeStatementBean.incrementMonth}" id="navRight" update="contentForm" value="+" />
@@ -29,7 +30,12 @@
             
             <div class="ui-g-1"></div>
             <div class="ui-g-10">
-                <p:dataTable widgetVar="recordsTable" id="records" var="record" value="#{incomeStatementBean.listForIncomeStatement}" rowKey="#{record.id}" allowUnsorting="true" sortMode="multiple">
+                <p:dataTable widgetVar="recordsTable" 
+                        id="records" var="record" 
+                        value="#{incomeStatementBean.listForIncomeStatement}" 
+                        rowKey="#{record.id}" 
+                        allowUnsorting="true" 
+                        sortMode="multiple">
                     <f:facet name="header">
                         <p:outputLabel class="Balance du mois précédent" value="Balance du mois précédent : #{incomeStatementBean.getOldBalance()}" />
                     </f:facet>

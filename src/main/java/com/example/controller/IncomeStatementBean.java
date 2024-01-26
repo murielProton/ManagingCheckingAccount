@@ -30,21 +30,20 @@ public class IncomeStatementBean extends UtilsBean  implements Serializable {
     @Autowired
     private MyRecordRepository repository;
     private LocalDate selectedMonth = LocalDate.now().withDayOfMonth(1);
-     // TODO add a form to the front so the user can choose witch month. This should be the default value.
 
     private List<MyRecord> listForIncomeStatement;
 
     @PostConstruct
     public void init(){
-        listForIncomeStatement = initList(selectedMonth);
+        initList(selectedMonth);
         log.info("init 1 IncomeStatementBean -> {} ", selectedMonth);
     }
     public void save(){
-        listForIncomeStatement = initList(selectedMonth);
+        initList(selectedMonth);
     }
 
-    public List<MyRecord> initList(LocalDate firstDayOfTargetedMonth){
-        return repository.findByMonth(firstDayOfTargetedMonth, Arrays.asList(TypeOfTransaction.CASH, TypeOfTransaction.BALANCE));
+    public void initList(LocalDate firstDayOfTargetedMonth){
+        listForIncomeStatement = repository.findByMonth(firstDayOfTargetedMonth, Arrays.asList(TypeOfTransaction.CASH, TypeOfTransaction.BALANCE));
     }
 
     public Float getTotalCredit(){
@@ -72,10 +71,10 @@ public class IncomeStatementBean extends UtilsBean  implements Serializable {
         return getOldBalance() + getTotalCredit() + getTotalDebit();
     }
 
-    public void decrementMonth() {  
+    public void decrementMonth() {
         selectedMonth = selectedMonth.minusMonths(1);
         initList(selectedMonth);
-    }  
+    }
     
     public void incrementMonth() {
         selectedMonth = selectedMonth.plusMonths(1);
