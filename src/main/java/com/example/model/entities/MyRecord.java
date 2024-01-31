@@ -65,4 +65,12 @@ public class MyRecord {
         return this.getAmount();
     }
 
+    public boolean isItSameMonth(LocalDate targetedMonth){
+        return this.getDateOfTransaction().getMonth() == targetedMonth.getMonth()
+        && this.getDateOfTransaction().getYear() == targetedMonth.getYear();
+    }
+    public boolean isItOfSameThemeGeneral(ThemeGeneral themeGeneral){
+        return this.getThemeGeneral() == themeGeneral;
+    }
+
 }

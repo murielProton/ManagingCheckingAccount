@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition 
+                xmlns:h="jakarta.faces.html"
+                xmlns:f="jakarta.faces.core"
+                xmlns:ui="jakarta.faces.facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pe="http://primefaces.org/ui/extensions"
+                xmlns:o="http://omnifaces.org/ui"
+                xmlns:sec="https://joinfaces.org/security"
+                template="/template.xhtml">
+    <ui:define name="content" >
+        <div class="ui-g">
+            <div class="ui-g-3"></div>
+            <div class="ui-g-6">
+                <p:commandButton actionListener="#{yearlyExpensesBean.decrementYear}" id="navLeft" update="contentForm" value="-" />
+                
+                <p:outputLabel value="#{yearlyExpensesBean.selectedYear.year}" />
+                <p:commandButton actionListener="#{yearlyExpensesBean.incrementYear}" id="navRight" update="contentForm" value="+" />
+            </div>
+            <div class="ui-g-3"></div>
+        </div>
+        <div class="ui-g">
+            <div class="ui-g-2"></div>
+            <div class="ui-g-8">
+                <table class="center">
+                    <thead><tr>
+                    <th></th>
+                    <ui:repeat var="currentTheme" value="#{yearlyExpensesBean.listOfAllThemeGeneral}">
+                        <th>
+                            <p:outputLabel value="#{currentTheme}" />
+                            <p:outputLabel value="Non attribué #{currentTheme.name.isEmpty()}" rendered="#{not (currentTheme.name.length() >=1)}" />
+                        </th>
+                    </ui:repeat>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <ui:repeat var="currentMonth" value="#{yearlyExpensesBean.monthList}">
+                        <tr>
+                            <ui:param name="mapOfMonth" value="#{yearlyExpensesBean.mapByMounthThenByThemeGeneral.get(currentMonth)}" />
+                            <td><p:outputLabel value="#{currentMonth}" /></td>
+                            <ui:repeat var="currentTheme" value="#{yearlyExpensesBean.listOfAllThemeGeneral}">
+                                <td><p:outputLabel value="#{mapOfMonth.get(currentTheme)}" /></td>
+                            </ui:repeat>
+                        </tr>
+                    </ui:repeat>
+                </tbody>
+                </table>
+            </div>
+            <div class="ui-g-2"></div>
+        </div>
+    </ui:define>
+</ui:composition>
