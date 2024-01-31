@@ -35,11 +35,20 @@ public class YearlyExpensesBean extends UtilsBean  implements Serializable {
     private LocalDate selectedYear = LocalDate.of(LocalDate.now().getYear(), 1, 1);
     private List<MyRecord> listOfMyRecors;
 
-    private List<String> monthList = Arrays.asList("JANVIER", "FEVRIER", "MARS",
-    "AVRIL", "MAI", "JUIN",
-    "JUILLET", "AOUT", "SEPTEMBRE",
-    "OCTOBRE", "NOVEMBRE", "DECEMBRE"
-    );
+    private List<String> monthList = Arrays.asList("Janvier",
+                                                        "Février",
+                                                        "Mars",
+                                                        "Avril",
+                                                        "Mai",
+                                                        "Juin",
+                                                        "Juillet",
+                                                        "Août",
+                                                        "Septembre",
+                                                        "Octobre",
+                                                        "Novembre",
+                                                        "Décembre",
+                                                        "TOTAL",
+                                                        "MOYENNE");
 
     private List<MyRecord> listForYearlyExpenses;
     private List<ThemeGeneral> listOfAllThemeGeneral; 
