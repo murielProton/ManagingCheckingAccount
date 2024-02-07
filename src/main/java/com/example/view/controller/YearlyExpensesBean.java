@@ -1,4 +1,4 @@
-package com.example.controller;
+package com.example.view.controller;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -35,25 +35,12 @@ public class YearlyExpensesBean extends UtilsBean  implements Serializable {
     private LocalDate selectedYear = LocalDate.of(LocalDate.now().getYear(), 1, 1);
     private List<MyRecord> listOfMyRecors;
 
-    private List<String> monthList = Arrays.asList("Janvier",
-                                                        "Février",
-                                                        "Mars",
-                                                        "Avril",
-                                                        "Mai",
-                                                        "Juin",
-                                                        "Juillet",
-                                                        "Août",
-                                                        "Septembre",
-                                                        "Octobre",
-                                                        "Novembre",
-                                                        "Décembre",
-                                                        "TOTAL",
-                                                        "MOYENNE");
+    private List<String> monthList = UtilsBean.listOfMonth();
 
     private List<MyRecord> listForYearlyExpenses;
     private List<ThemeGeneral> listOfAllThemeGeneral; 
 
-    private Map<String, Map<ThemeGeneral, Float>> mapByMounthThenByThemeGeneral = new HashMap<>();
+    private Map<String, Map<ThemeGeneral, Float>> mapByMonthThenByThemeGeneral = new HashMap<>();
 
     @PostConstruct
     public void init(){
@@ -84,11 +71,11 @@ public class YearlyExpensesBean extends UtilsBean  implements Serializable {
             String currentMonth = monthList.get(i);
             LocalDate targetedMonth = LocalDate.of(selectedYear.getYear(), i+1, 1);
 
-            Map<ThemeGeneral, Float> mapByThemeGeneral = mapByMounthThenByThemeGeneral.get(currentMonth);
+            Map<ThemeGeneral, Float> mapByThemeGeneral = mapByMonthThenByThemeGeneral.get(currentMonth);
             if(mapByThemeGeneral == null){
                 mapByThemeGeneral = new HashMap<>();
             }
-            mapByMounthThenByThemeGeneral.put(currentMonth, mapByThemeGeneral);
+            mapByMonthThenByThemeGeneral.put(currentMonth, mapByThemeGeneral);
 
             for(ThemeGeneral curentThemeGeneral: listOfAllThemeGeneral){
                 Float sum = Float.valueOf(0);
@@ -103,5 +90,6 @@ public class YearlyExpensesBean extends UtilsBean  implements Serializable {
             }
         }
     }
+    //TODO calculate Moyenne and Summ for the month
 
 }

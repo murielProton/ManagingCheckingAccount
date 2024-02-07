@@ -37,7 +37,7 @@
                     <tbody>
                     <ui:repeat var="currentMonth" value="#{yearlyExpensesBean.monthList}">
                         <tr>
-                            <ui:param name="mapOfMonth" value="#{yearlyExpensesBean.mapByMounthThenByThemeGeneral.get(currentMonth)}" />
+                            <ui:param name="mapOfMonth" value="#{yearlyExpensesBean.mapByMonthThenByThemeGeneral.get(currentMonth)}" />
                             <td><p:outputLabel value="#{currentMonth}" /></td>
                             <ui:repeat var="currentTheme" value="#{yearlyExpensesBean.listOfAllThemeGeneral}">
                                 <td><p:outputLabel value="#{mapOfMonth.get(currentTheme)}" /></td>

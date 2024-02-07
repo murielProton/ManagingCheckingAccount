@@ -1,8 +1,10 @@
-package com.example.controller;
+package com.example.view.controller;
 
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
+import java.util.List;
 
 import org.springframework.stereotype.Component;
 
@@ -58,6 +60,21 @@ public class UtilsBean implements Serializable {
 	    }
 	    return "";
     }
-
+    public static  List<String> listOfMonth() {
+	    return Arrays.asList("Janvier",
+                                    "Février",
+                                    "Mars",
+                                    "Avril",
+                                    "Mai",
+                                    "Juin",
+                                    "Juillet",
+                                    "Août",
+                                    "Septembre",
+                                    "Octobre",
+                                    "Novembre",
+                                    "Décembre",
+                                    "TOTAL",
+                                    "MOYENNE");
+    }
 
 }

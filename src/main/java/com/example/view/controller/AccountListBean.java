@@ -1,4 +1,4 @@
-package com.example.controller;
+package com.example.view.controller;
 
 import java.io.Serializable;
 import java.util.List;
