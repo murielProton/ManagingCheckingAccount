@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<ui:composition 
+<ui:composition
                 xmlns:h="jakarta.faces.html"
                 xmlns:f="jakarta.faces.core"
                 xmlns:ui="jakarta.faces.facelets"
@@ -23,29 +23,40 @@
         <div class="ui-g">
             <div class="ui-g-2"></div>
             <div class="ui-g-8">
-                <table class="center">
-                    <thead><tr>
-                    <th></th>
-                    <ui:repeat var="currentTheme" value="#{yearlyExpensesBean.listOfAllThemeGeneral}">
-                        <th>
-                            <p:outputLabel value="#{currentTheme}" />
-                            <p:outputLabel value="Non attribué #{currentTheme.name.isEmpty()}" rendered="#{not (currentTheme.name.length() >=1)}" />
-                        </th>
-                    </ui:repeat>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <ui:repeat var="currentMonth" value="#{yearlyExpensesBean.monthList}">
-                        <tr>
-                            <ui:param name="mapOfMonth" value="#{yearlyExpensesBean.mapByMonthThenByThemeGeneral.get(currentMonth)}" />
-                            <td><p:outputLabel value="#{currentMonth}" /></td>
-                            <ui:repeat var="currentTheme" value="#{yearlyExpensesBean.listOfAllThemeGeneral}">
-                                <td><p:outputLabel value="#{mapOfMonth.get(currentTheme)}" /></td>
-                            </ui:repeat>
-                        </tr>
-                    </ui:repeat>
-                </tbody>
-                </table>
+                <p:dataTable widgetVar="monthlyReportTable" id="reports" var="report" value="#{yearlyExpensesBean.listMonthlyReportView}" rowKey="#{record.month}" allowUnsorting="true" sortMode="multiple">
+                    <p:column headerText="Mois"
+                        sortBy="#{report.month}"
+                        filterBy="#{report.month}">
+                    <h:outputText value="#{report.month}" />
+                    </p:column>
+                    <p:column headerText="Défaut" sortBy="#{report.sumDefault}" filterBy="#{report.sumDefault}" >
+                        <h:outputText value="#{report.sumDefault}" />
+                        <f:facet name="footer">
+                            <span class="font-bold"><h:outputText value="#{yearlyExpensesBean.sumDefault}" /></span>
+                        </f:facet>
+                    </p:column>
+                    <p:column headerText="Caluire et cuire" sortBy="#{report.sumCaluireEtCuire}" filterBy="#{report.sumCaluireEtCuire}"
+                        rendered="#{yearlyExpensesBean.sumCaluireEtCuire ne 0}" >
+                        <h:outputText value="#{report.sumCaluireEtCuire}" />
+                        <f:facet name="footer">
+                            <span class="font-bold"><h:outputText value="#{yearlyExpensesBean.sumCaluireEtCuire}" /></span>
+                        </f:facet>
+                    </p:column>
+                    <p:column headerText="Meyzieu" sortBy="#{report.sumMezieu}" filterBy="#{report.sumMezieu}" rendered="#{yearlyExpensesBean.sumMezieu ne 0}" > <h:outputText value="#{report.sumMezieu}" /><f:facet name="footer"><span class="font-bold"><h:outputText value="#{yearlyExpensesBean.sumMezieu}" /></span></f:facet></p:column> 
+                    <p:column headerText="Montplat" sortBy="#{report.sumMontplat}" filterBy="#{report.sumMontplat}" rendered="#{yearlyExpensesBean.sumMontplat ne 0}" > <h:outputText value="#{report.sumMontplat}" /><f:facet name="footer"><span class="font-bold"><h:outputText value="#{yearlyExpensesBean.sumMontplat}" /></span></f:facet></p:column> 
+                    <p:column headerText="Santé" sortBy="#{report.sumHealth}" filterBy="#{report.sumHealth}" rendered="#{yearlyExpensesBean.sumHealth ne 0}" > <h:outputText value="#{report.sumHealth}" /><f:facet name="footer"><span class="font-bold"><h:outputText value="#{yearlyExpensesBean.sumHealth}" /></span></f:facet></p:column> 
+                    <p:column headerText="Alimentaire" sortBy="#{report.sumFood}" filterBy="#{report.sumFood}" rendered="#{yearlyExpensesBean.sumFood ne 0}" > <h:outputText value="#{report.sumFood}" /><f:facet name="footer"><span class="font-bold"><h:outputText value="#{yearlyExpensesBean.sumFood}" /></span></f:facet></p:column> 
+                    <p:column headerText="Loisirs" sortBy="#{report.sumLeisure}" filterBy="#{report.sumLeisure}" rendered="#{yearlyExpensesBean.sumLeisure ne 0}" > <h:outputText value="#{report.sumLeisure}" /><f:facet name="footer"><span class="font-bold"><h:outputText value="#{yearlyExpensesBean.sumLeisure}" /></span></f:facet></p:column> 
+                    <p:column headerText="Voyages" sortBy="#{report.sumTravel}" filterBy="#{report.sumTravel}" rendered="#{yearlyExpensesBean.sumTravel ne 0}" > <h:outputText value="#{report.sumTravel}" /><f:facet name="footer"><span class="font-bold"><h:outputText value="#{yearlyExpensesBean.sumTravel}" /></span></f:facet></p:column> 
+                    <p:column headerText="TCL" sortBy="#{report.sumTCL}" filterBy="#{report.sumTCL}" rendered="#{yearlyExpensesBean.sumTCL ne 0}" > <h:outputText value="#{report.sumTCL}" /><f:facet name="footer"><span class="font-bold"><h:outputText value="#{yearlyExpensesBean.sumTCL}" /></span></f:facet></p:column> 
+                    <p:column headerText="Vêtement" sortBy="#{report.sumClothing}" filterBy="#{report.sumClothing}" rendered="#{yearlyExpensesBean.sumClothing ne 0}" > <h:outputText value="#{report.sumClothing}" /><f:facet name="footer"><span class="font-bold"><h:outputText value="#{yearlyExpensesBean.sumClothing}" /></span></f:facet></p:column> 
+                    <p:column headerText="Papetterie" sortBy="#{report.sumStationary}" filterBy="#{report.sumStationary}" rendered="#{yearlyExpensesBean.sumStationary ne 0}" > <h:outputText value="#{report.sumStationary}" /><f:facet name="footer"><span class="font-bold"><h:outputText value="#{yearlyExpensesBean.sumStationary}" /></span></f:facet></p:column> 
+                    <p:column headerText="Autre" sortBy="#{report.sumOther}" filterBy="#{report.sumOther}" rendered="#{yearlyExpensesBean.sumOther ne 0}" > <h:outputText value="#{report.sumOther}" /><f:facet name="footer"><span class="font-bold"><h:outputText value="#{yearlyExpensesBean.sumOther}" /></span></f:facet></p:column> 
+                    <p:column headerText="Cadeaux" sortBy="#{report.sumPresent}" filterBy="#{report.sumPresent}" rendered="#{yearlyExpensesBean.sumPresent ne 0}" > <h:outputText value="#{report.sumPresent}" /><f:facet name="footer"><span class="font-bold"><h:outputText value="#{yearlyExpensesBean.sumPresent}" /></span></f:facet></p:column> 
+                    <p:column headerText="Impôt sur le revenu" sortBy="#{report.sumIncomeTaxe}" filterBy="#{report.sumIncomeTaxe}" rendered="#{yearlyExpensesBean.sumIncomeTaxe ne 0}" > <h:outputText value="#{report.sumIncomeTaxe}" /><f:facet name="footer"><span class="font-bold"><h:outputText value="#{yearlyExpensesBean.sumIncomeTaxe}" /></span></f:facet></p:column> 
+                    <p:column headerText="Télécom" sortBy="#{report.sumTelephoneSubscription}" filterBy="#{report.sumTelephoneSubscription}" rendered="#{yearlyExpensesBean.sumTelephoneSubscription ne 0}" > <h:outputText value="#{report.sumTelephoneSubscription}" /><f:facet name="footer"><span class="font-bold"><h:outputText value="#{yearlyExpensesBean.sumTelephoneSubscription}" /></span></f:facet></p:column> 
+                    <p:column headerText="TOTAL" ><h:outputText value="#{report.total}" /></p:column>
+                </p:dataTable>
             </div>
             <div class="ui-g-2"></div>
         </div>
