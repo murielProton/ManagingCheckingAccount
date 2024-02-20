@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition
+                xmlns:h="jakarta.faces.html"
+                xmlns:f="jakarta.faces.core"
+                xmlns:ui="jakarta.faces.facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pe="http://primefaces.org/ui/extensions"
+                xmlns:o="http://omnifaces.org/ui"
+                xmlns:sec="https://joinfaces.org/security"
+                template="/template.xhtml">
+    <ui:define name="content" >
+        <div class="ui-g">
+            <div class="ui-g-3"></div>
+            <div class="ui-g-6">
+                <p:commandButton actionListener="#{caluireEtCuireBean.decrementYear}" id="navLeft" update="contentForm" value="-" />
+                
+                <p:outputLabel value="#{caluireEtCuireBean.selectedYear.year}" />
+                <p:commandButton actionListener="#{caluireEtCuireBean.incrementYear}" id="navRight" update="contentForm" value="+" />
+            </div>
+            <div class="ui-g-3"></div>
+        </div>
+        <div class="ui-g">
+            <div class="ui-g-2"></div>
+            <div class="ui-g-8">
+                <p:dataTable widgetVar="monthlyReportTable"
+                                id="reports"
+                                var="report"
+                                value="#{caluireEtCuireBean.listOfCaluireCuireView}"
+                                rowKey="#{record.month}"
+                                allowUnsorting="true"
+                                sortMode="multiple">
+<!-- column of month -->
+                    <p:column headerText="Mois"
+                            sortBy="#{report.month}"
+                            filterBy="#{report.month}">
+                        <h:outputText value="#{report.month}" />
+                        <f:facet name="footer">
+                            <span class="font-bold">
+                                <h:outputText value="Total"/>
+                                <br/>
+                                <h:outputText value="Moyenne"/>
+                            </span>
+                        </f:facet>
+                    </p:column>
+
+<!-- columns of theme Sub -->
+                    <p:column headerText="Défaut" sortBy="#{report.sumDefault}" filterBy="#{report.sumDefault}" >
+                        <h:outputText value="#{report.sumDefault}">
+                            <f:convertNumber pattern ="#{caluireEtCuireBean.currencyPattern}"
+                                            type ="currency"
+                                            locale="#{caluireEtCuireBean.localeCountry}"
+                                            currencyCode = "#{caluireEtCuireBean.currencyCode}"
+                                            currencySymbol="#{caluireEtCuireBean.currencySymbol}"
+                                            groupingUsed="true"/>
+                            </h:outputText>
+                        <f:facet name="footer">
+                            <span class="font-bold">
+                                <h:outputText value="#{caluireEtCuireBean.sumDefault}">
+                                    <f:convertNumber pattern ="#{caluireEtCuireBean.currencyPattern}"
+                                            type ="currency"
+                                            locale="#{caluireEtCuireBean.localeCountry}"
+                                            currencyCode = "#{caluireEtCuireBean.currencyCode}"
+                                            currencySymbol="#{caluireEtCuireBean.currencySymbol}"
+                                            groupingUsed="true"/>
+                                </h:outputText>
+                                <br/>
+                                <h:outputText value="#{caluireEtCuireBean.averageDefault}">
+                                    <f:convertNumber pattern ="#{caluireEtCuireBean.currencyPattern}"
+                                                    type ="currency"
+                                                    locale="#{caluireEtCuireBean.localeCountry}"
+                                                    currencyCode = "#{caluireEtCuireBean.currencyCode}"
+                                                    currencySymbol="#{caluireEtCuireBean.currencySymbol}"
+                                                    groupingUsed="true"/>
+                                </h:outputText>
+                            </span>
+                        </f:facet>
+                    </p:column>
+                    <p:column headerText="Chaudière" sortBy="#{report.sumBoiler}" filterBy="#{report.sumBoiler}"
+                        rendered="#{caluireEtCuireBean.sumBoiler ne 0}" >
+                        <h:outputText value="#{report.sumBoiler}">
+                            <f:convertNumber pattern ="#{caluireEtCuireBean.currencyPattern}"
+                                            type ="currency"
+                                            locale="#{caluireEtCuireBean.localeCountry}"
+                                            currencyCode = "#{caluireEtCuireBean.currencyCode}"
+                                            currencySymbol="#{caluireEtCuireBean.currencySymbol}"
+                                            groupingUsed="true"/>
+                        </h:outputText>
+                        <f:facet name="footer">
+                            <span class="font-bold">
+                                <h:outputText value="#{caluireEtCuireBean.sumBoiler}">
+                                    <f:convertNumber pattern ="#{caluireEtCuireBean.currencyPattern}"
+                                                    type ="currency"
+                                                    locale="#{caluireEtCuireBean.localeCountry}"
+                                                    currencyCode = "#{caluireEtCuireBean.currencyCode}"
+                                                    currencySymbol="#{caluireEtCuireBean.currencySymbol}"
+                                                    groupingUsed="true"/>
+                                </h:outputText>
+                                <br/>
+                                <h:outputText value="#{caluireEtCuireBean.averageBoiler}">
+                                    <f:convertNumber pattern ="#{caluireEtCuireBean.currencyPattern}"
+                                                    type ="currency"
+                                                    locale="#{caluireEtCuireBean.localeCountry}"
+                                                    currencyCode = "#{caluireEtCuireBean.currencyCode}"
+                                                    currencySymbol="#{caluireEtCuireBean.currencySymbol}"
+                                                    groupingUsed="true"/>
+                                </h:outputText>
+                            </span>
+                        </f:facet>
+                    </p:column>
+                    <p:column headerText="Coûts" sortBy="#{report.sumCosts}" filterBy="#{report.sumCosts}"
+                                rendered="#{caluireEtCuireBean.sumCosts ne 0}" >
+                            <h:outputText value="#{report.sumCosts}">
+                                <f:convertNumber pattern ="#{caluireEtCuireBean.currencyPattern}"
+                                                type ="currency"
+                                                locale="#{caluireEtCuireBean.localeCountry}"
+                                                currencyCode = "#{caluireEtCuireBean.currencyCode}"
+                                                currencySymbol="#{caluireEtCuireBean.currencySymbol}"
+                                                groupingUsed="true"/>
+                            </h:outputText>
+                        <f:facet name="footer">
+                            <span class="font-bold">
+                                <h:outputText value="#{caluireEtCuireBean.sumCosts}">
+                                    <f:convertNumber pattern ="#{caluireEtCuireBean.currencyPattern}"
+                                                    type ="currency"
+                                                    locale="#{caluireEtCuireBean.localeCountry}"
+                                                    currencyCode = "#{caluireEtCuireBean.currencyCode}"
+                                                    currencySymbol="#{caluireEtCuireBean.currencySymbol}"
+                                                    groupingUsed="true"/>
+                                </h:outputText>
+                                <br/>
+                                <h:outputText value="#{caluireEtCuireBean.averageCosts}">
+                                    <f:convertNumber pattern ="#{caluireEtCuireBean.currencyPattern}"
+                                                    type ="currency"
+                                                    locale="#{caluireEtCuireBean.localeCountry}"
+                                                    currencyCode = "#{caluireEtCuireBean.currencyCode}"
+                                                    currencySymbol="#{caluireEtCuireBean.currencySymbol}"
+                                                    groupingUsed="true"/>
+                                </h:outputText>
+                            </span>
+                        </f:facet>
+                    </p:column>
+                    <p:column headerText="Electricité" sortBy="#{report.sumElectricity}"
+                                        filterBy="#{report.sumElectricity}"
+                                        rendered="#{caluireEtCuireBean.sumElectricity ne 0}" >
+                        <h:outputText value="#{report.sumElectricity}" >
+                            <f:convertNumber pattern ="#{caluireEtCuireBean.currencyPattern}"
+                                            type ="currency"
+                                            locale="#{caluireEtCuireBean.localeCountry}"
+                                            currencyCode = "#{caluireEtCuireBean.currencyCode}"
+                                            currencySymbol="#{caluireEtCuireBean.currencySymbol}"
+                                            groupingUsed="true"/>
+                        </h:outputText>
+                        <f:facet name="footer">
+                            <span class="font-bold">
+                                <h:outputText value="#{caluireEtCuireBean.sumElectricity}">
+                                    <f:convertNumber pattern ="#{caluireEtCuireBean.currencyPattern}"
+                                                    type ="currency"
+                                                    locale="#{caluireEtCuireBean.localeCountry}"
+                                                    currencyCode = "#{caluireEtCuireBean.currencyCode}"
+                                                    currencySymbol="#{caluireEtCuireBean.currencySymbol}"
+                                                    groupingUsed="true"/>
+                                </h:outputText>
+                                <br/>
+                                <h:outputText value="#{caluireEtCuireBean.averageElectricity}">
+                                    <f:convertNumber pattern ="#{caluireEtCuireBean.currencyPattern}"
+                                                    type ="currency"
+                                                    locale="#{caluireEtCuireBean.localeCountry}"
+                                                    currencyCode = "#{caluireEtCuireBean.currencyCode}"
+                                                    currencySymbol="#{caluireEtCuireBean.currencySymbol}"
+                                                    groupingUsed="true"/>
+                                </h:outputText>
+                            </span>
+                        </f:facet>
+                    </p:column>
+                    <p:column headerText="Gaz" 
+                                sortBy="#{report.sumGass}" 
+                                filterBy="#{report.sumGass}" 
+                                rendered="#{caluireEtCuireBean.sumGass ne 0}" > 
+                        <h:outputText value="#{report.sumGass}">
+                            <f:convertNumber pattern ="#{caluireEtCuireBean.currencyPattern}"
+                                            type ="currency"
+                                            locale="#{caluireEtCuireBean.localeCountry}"
+                                            currencyCode = "#{caluireEtCuireBean.currencyCode}"
+                                            currencySymbol="#{caluireEtCuireBean.currencySymbol}"
+                                            groupingUsed="true"/>
+                        </h:outputText>
+                        <f:facet name="footer">
+                            <span class="font-bold">
+                                <h:outputText value="#{caluireEtCuireBean.sumGass}">
+                                    <f:convertNumber pattern ="#{caluireEtCuireBean.currencyPattern}"
+                                                    type ="currency"
+                                                    locale="#{caluireEtCuireBean.localeCountry}"
+                                                    currencyCode = "#{caluireEtCuireBean.currencyCode}"
+                                                    currencySymbol="#{caluireEtCuireBean.currencySymbol}"
+                                                    groupingUsed="true"/>
+                                </h:outputText>
+                                <br/>
+                                <h:outputText value="#{caluireEtCuireBean.averageGass}">
+                                    <f:convertNumber pattern ="#{caluireEtCuireBean.currencyPattern}"
+                                                    type ="currency"
+                                                    locale="#{caluireEtCuireBean.localeCountry}"
+                                                    currencyCode = "#{caluireEtCuireBean.currencyCode}"
+                                                    currencySymbol="#{caluireEtCuireBean.currencySymbol}"
+                                                    groupingUsed="true"/>
+                                </h:outputText>
+                            </span>
+                        </f:facet>
+                    </p:column>
+                    <p:column headerText="Electroménager"
+                                    sortBy="#{report.sumHomeAppliance}"
+                                    filterBy="#{report.sumHomeAppliance}"
+                                    rendered="#{caluireEtCuireBean.sumHomeAppliance ne 0}" >
+                        <h:outputText value="#{report.sumHomeAppliance}">
+                            <f:convertNumber pattern ="#{caluireEtCuireBean.currencyPattern}"
+                                            type ="currency"
+                                            locale="#{caluireEtCuireBean.localeCountry}"
+                                            currencyCode = "#{caluireEtCuireBean.currencyCode}"
+                                            currencySymbol="#{caluireEtCuireBean.currencySymbol}"
+                                            groupingUsed="true"/>
+                        </h:outputText>
+                        <f:facet name="footer">
+                            <span class="font-bold">
+                                <h:outputText value="#{caluireEtCuireBean.sumHomeAppliance}">
+                                    <f:convertNumber pattern ="#{caluireEtCuireBean.currencyPattern}"
+                                                    type ="currency"
+                                                    locale="#{caluireEtCuireBean.localeCountry}"
+                                                    currencyCode = "#{caluireEtCuireBean.currencyCode}"
+                                                    currencySymbol="#{caluireEtCuireBean.currencySymbol}"
+                                                    groupingUsed="true"/>
+                                </h:outputText>
+                                <br/>
+                                <h:outputText value="#{caluireEtCuireBean.averageHomeAppliance}">
+                                    <f:convertNumber pattern ="#{caluireEtCuireBean.currencyPattern}"
+                                                    type ="currency"
+                                                    locale="#{caluireEtCuireBean.localeCountry}"
+                                                    currencyCode = "#{caluireEtCuireBean.currencyCode}"
+                                                    currencySymbol="#{caluireEtCuireBean.currencySymbol}"
+                                                    groupingUsed="true"/>
+                                </h:outputText>
+                            </span>
+                        </f:facet>
+                    </p:column>
+                    <p:column headerText="Assurance"
+                                sortBy="#{report.sumInsurance}"
+                                filterBy="#{report.sumInsurance}"
+                                rendered="#{caluireEtCuireBean.sumInsurance ne 0}" >
+                        <h:outputText value="#{report.sumInsurance}">
+                            <f:convertNumber pattern ="#{caluireEtCuireBean.currencyPattern}"
+                                            type ="currency"
+                                            locale="#{caluireEtCuireBean.localeCountry}"
+                                            currencyCode = "#{caluireEtCuireBean.currencyCode}"
+                                            currencySymbol="#{caluireEtCuireBean.currencySymbol}"
+                                            groupingUsed="true"/>
+                        </h:outputText>
+                        <f:facet name="footer">
+                            <span class="font-bold">
+                                <h:outputText value="#{caluireEtCuireBean.sumInsurance}">
+                                    <f:convertNumber pattern ="#{caluireEtCuireBean.currencyPattern}"
+                                                    type ="currency"
+                                                    locale="#{caluireEtCuireBean.localeCountry}"
+                                                    currencyCode = "#{caluireEtCuireBean.currencyCode}"
+                                                    currencySymbol="#{caluireEtCuireBean.currencySymbol}"
+                                                    groupingUsed="true"/>
+                                </h:outputText>
+                                <br/>
+                                <h:outputText value="#{caluireEtCuireBean.averageInsurance}">
+                                    <f:convertNumber pattern ="#{caluireEtCuireBean.currencyPattern}"
+                                                    type ="currency"
+                                                    locale="#{caluireEtCuireBean.localeCountry}"
+                                                    currencyCode = "#{caluireEtCuireBean.currencyCode}"
+                                                    currencySymbol="#{caluireEtCuireBean.currencySymbol}"
+                                                    groupingUsed="true"/>
+                                </h:outputText>
+                            </span>
+                        </f:facet>
+                    </p:column>
+                    <p:column headerText="Taxe Foncière"
+                                        sortBy="#{report.sumPropertyTaxes}"
+                                        filterBy="#{report.sumPropertyTaxes}"
+                                        rendered="#{caluireEtCuireBean.sumPropertyTaxes ne 0}" >
+                        <h:outputText value="#{report.sumPropertyTaxes}">
+                            <f:convertNumber pattern ="#{caluireEtCuireBean.currencyPattern}"
+                                            type ="currency"
+                                            locale="#{caluireEtCuireBean.localeCountry}"
+                                            currencyCode = "#{caluireEtCuireBean.currencyCode}"
+                                            currencySymbol="#{caluireEtCuireBean.currencySymbol}"
+                                            groupingUsed="true"/>
+                        </h:outputText>
+                        <f:facet name="footer">
+                            <span class="font-bold">
+                                <h:outputText value="#{caluireEtCuireBean.sumPropertyTaxes}" >
+                                    <f:convertNumber pattern ="#{caluireEtCuireBean.currencyPattern}"
+                                                    type ="currency"
+                                                    locale="#{caluireEtCuireBean.localeCountry}"
+                                                    currencyCode = "#{caluireEtCuireBean.currencyCode}"
+                                                    currencySymbol="#{caluireEtCuireBean.currencySymbol}"
+                                                    groupingUsed="true"/>
+                                </h:outputText>
+                                <br/>
+                                <h:outputText value="#{caluireEtCuireBean.averagePropertyTaxes}">
+                                    <f:convertNumber pattern ="#{caluireEtCuireBean.currencyPattern}"
+                                                    type ="currency"
+                                                    locale="#{caluireEtCuireBean.localeCountry}"
+                                                    currencyCode = "#{caluireEtCuireBean.currencyCode}"
+                                                    currencySymbol="#{caluireEtCuireBean.currencySymbol}"
+                                                    groupingUsed="true"/>
+                                </h:outputText>
+                            </span>
+                        </f:facet>
+                    </p:column>
+                    <p:column headerText="Loyer"
+                                        sortBy="#{report.sumRent}"
+                                        filterBy="#{report.sumRent}"
+                                        rendered="#{caluireEtCuireBean.sumRent ne 0}" >
+                        <h:outputText value="#{report.sumRent}">
+                            <f:convertNumber pattern ="#{caluireEtCuireBean.currencyPattern}"
+                                            type ="currency"
+                                            locale="#{caluireEtCuireBean.localeCountry}"
+                                            currencyCode = "#{caluireEtCuireBean.currencyCode}"
+                                            currencySymbol="#{caluireEtCuireBean.currencySymbol}"
+                                            groupingUsed="true"/>
+                        </h:outputText>
+                        <f:facet name="footer">
+                            <span class="font-bold">
+                                <h:outputText value="#{caluireEtCuireBean.sumRent}" >
+                                    <f:convertNumber pattern ="#{caluireEtCuireBean.currencyPattern}"
+                                                    type ="currency"
+                                                    locale="#{caluireEtCuireBean.localeCountry}"
+                                                    currencyCode = "#{caluireEtCuireBean.currencyCode}"
+                                                    currencySymbol="#{caluireEtCuireBean.currencySymbol}"
+                                                    groupingUsed="true"/>
+                                </h:outputText>
+                                <br/>
+                                <h:outputText value="#{caluireEtCuireBean.averageRent}">
+                                    <f:convertNumber pattern ="#{caluireEtCuireBean.currencyPattern}"
+                                                    type ="currency"
+                                                    locale="#{caluireEtCuireBean.localeCountry}"
+                                                    currencyCode = "#{caluireEtCuireBean.currencyCode}"
+                                                    currencySymbol="#{caluireEtCuireBean.currencySymbol}"
+                                                    groupingUsed="true"/>
+                                </h:outputText>
+                            </span>
+                        </f:facet>
+                    </p:column>
+                    <p:column headerText="Eau" 
+                                        sortBy="#{report.sumWater}" 
+                                        filterBy="#{report.sumWater}" 
+                                        rendered="#{caluireEtCuireBean.sumWater ne 0}" > 
+                        <h:outputText value="#{report.sumWater}">
+                            <f:convertNumber pattern ="#{caluireEtCuireBean.currencyPattern}"
+                                            type ="currency"
+                                            locale="#{caluireEtCuireBean.localeCountry}"
+                                            currencyCode = "#{caluireEtCuireBean.currencyCode}"
+                                            currencySymbol="#{caluireEtCuireBean.currencySymbol}"
+                                            groupingUsed="true"/>
+                        </h:outputText>
+                        <f:facet name="footer">
+                            <span class="font-bold">
+                                <h:outputText value="#{caluireEtCuireBean.sumWater}">
+                                    <f:convertNumber pattern ="#{caluireEtCuireBean.currencyPattern}"
+                                                    type ="currency"
+                                                    locale="#{caluireEtCuireBean.localeCountry}"
+                                                    currencyCode = "#{caluireEtCuireBean.currencyCode}"
+                                                    currencySymbol="#{caluireEtCuireBean.currencySymbol}"
+                                                    groupingUsed="true"/>
+                                </h:outputText>
+                                <br/>
+                                <h:outputText value="#{caluireEtCuireBean.averageWater}">
+                                    <f:convertNumber pattern ="#{caluireEtCuireBean.currencyPattern}"
+                                                    type ="currency"
+                                                    locale="#{caluireEtCuireBean.localeCountry}"
+                                                    currencyCode = "#{caluireEtCuireBean.currencyCode}"
+                                                    currencySymbol="#{caluireEtCuireBean.currencySymbol}"
+                                                    groupingUsed="true"/>
+                                </h:outputText>
+                            </span>
+                        </f:facet>
+                    </p:column>
+                    <!--Column of totals-->
+                    <p:column headerText="TOTAL des revenus" >
+                        <h:outputText value="#{report.total}">
+                            <f:convertNumber pattern ="#{caluireEtCuireBean.currencyPattern}"
+                                            type ="currency"
+                                            locale="#{caluireEtCuireBean.localeCountry}"
+                                            currencyCode = "#{caluireEtCuireBean.currencyCode}"
+                                            currencySymbol="#{caluireEtCuireBean.currencySymbol}"
+                                            groupingUsed="true"/>
+                        </h:outputText>
+                    </p:column>
+                </p:dataTable>
+            </div>
+            <div class="ui-g-2"></div>
+        </div>
+    </ui:define>
+</ui:composition>

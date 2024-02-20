@@ -9,6 +9,7 @@ import org.springframework.data.repository.query.Param;
 
 import com.example.model.entities.MyRecord;
 import com.example.model.enums.ThemeGeneral;
+import com.example.model.enums.ThemeSub;
 import com.example.model.enums.TypeOfTransaction;
 
 public interface MyRecordRepository extends CrudRepository<MyRecord, Long>{
@@ -32,7 +33,22 @@ public interface MyRecordRepository extends CrudRepository<MyRecord, Long>{
     MyRecord findBalanceByMonth(@Param("givenDate") LocalDate givenDate);
     @Query("SELECT DISTINCT mr.themeGeneral FROM MyRecord mr")
     List<ThemeGeneral> findAllDistinctThemeGenerals();
+    
     @Query("SELECT DISTINCT mr.themeSub FROM MyRecord mr")
-    List<ThemeGeneral> findAllDistinctThemeSubs();
+    List<ThemeSub> findAllDistinctThemeSubs();
+
+    @Query("SELECT DISTINCT mr.themeSub FROM MyRecord mr WHERE "+
+            "mr.themeSub NOT IN :excludedThemeSubList")
+    List<ThemeSub> findThemeSubsForCaluireEtCuire(
+            @Param("excludedThemeSubList") List<ThemeSub> excludedThemeSubList);
+
+    @Query("SELECT mr FROM MyRecord mr WHERE " +
+            "YEAR(mr.dateOfTransaction) = YEAR(:givenDate)" +
+            "AND mr.themeGeneral = :themeGeneral " +
+            "AND mr.themeSub NOT IN :excludedThemeSubList")
+    List<MyRecord> findRecordsByYearAndThemeAndExludingThemeSubs(
+            @Param("givenDate") LocalDate givenDate,
+            @Param("themeGeneral") ThemeGeneral themeGeneral,
+            @Param("excludedThemeSubList") List<ThemeSub> excludedThemeSubList);
 
 }

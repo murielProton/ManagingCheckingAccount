@@ -40,19 +40,45 @@ public class MonthyReportView {
     public Float getSumCaluireEtCuire(){
         return mapByThemeGeneral.get(ThemeGeneral.CALUIRE_ET_CUIRE);
     }
-    public Float getSumMezieu(){ return  mapByThemeGeneral.get(ThemeGeneral.MEZIEU);}
-    public Float getSumMontplat(){ return  mapByThemeGeneral.get(ThemeGeneral.MONTPLAT);}
-    public Float getSumHealth(){ return  mapByThemeGeneral.get(ThemeGeneral.HEALTH);}
-    public Float getSumFood(){ return  mapByThemeGeneral.get(ThemeGeneral.FOOD);}
-    public Float getSumLeisure(){ return  mapByThemeGeneral.get(ThemeGeneral.LEISURE);}
-    public Float getSumTravel(){ return  mapByThemeGeneral.get(ThemeGeneral.TRAVEL);}
-    public Float getSumTCL(){ return  mapByThemeGeneral.get(ThemeGeneral.TCL);}
-    public Float getSumClothing(){ return  mapByThemeGeneral.get(ThemeGeneral.CLOTHING);}
-    public Float getSumStationary(){ return  mapByThemeGeneral.get(ThemeGeneral.STATIONARY);}
-    public Float getSumOther(){ return  mapByThemeGeneral.get(ThemeGeneral.OTHER);}
-    public Float getSumPresent(){ return  mapByThemeGeneral.get(ThemeGeneral.PRESENT);}
-    public Float getSumIncomeTaxe(){ return  mapByThemeGeneral.get(ThemeGeneral.INCOME_TAXE);}
-    public Float getSumTelephoneSubscription(){ return  mapByThemeGeneral.get(ThemeGeneral.TELEPHONE_SUBSCRIPTION);}
+    public Float getSumMezieu(){
+        return  mapByThemeGeneral.get(ThemeGeneral.MEZIEU);
+    }
+    public Float getSumMontplat(){
+        return  mapByThemeGeneral.get(ThemeGeneral.MONTPLAT);
+    }
+    public Float getSumHealth(){
+        return  mapByThemeGeneral.get(ThemeGeneral.HEALTH);
+    }
+    public Float getSumFood(){
+        return  mapByThemeGeneral.get(ThemeGeneral.FOOD);
+    }
+    public Float getSumLeisure(){ 
+        return  mapByThemeGeneral.get(ThemeGeneral.LEISURE);
+    }
+    public Float getSumTravel(){ 
+        return  mapByThemeGeneral.get(ThemeGeneral.TRAVEL);
+    }
+    public Float getSumTCL(){ 
+        return  mapByThemeGeneral.get(ThemeGeneral.TCL);
+    }
+    public Float getSumClothing(){ 
+        return  mapByThemeGeneral.get(ThemeGeneral.CLOTHING);
+    }
+    public Float getSumStationary(){ 
+        return  mapByThemeGeneral.get(ThemeGeneral.STATIONARY);
+    }
+    public Float getSumOther(){ 
+        return  mapByThemeGeneral.get(ThemeGeneral.OTHER);
+    }
+    public Float getSumPresent(){ 
+        return  mapByThemeGeneral.get(ThemeGeneral.PRESENT);
+    }
+    public Float getSumIncomeTaxe(){ 
+        return  mapByThemeGeneral.get(ThemeGeneral.INCOME_TAXE);
+    }
+    public Float getSumTelephoneSubscription(){ 
+        return  mapByThemeGeneral.get(ThemeGeneral.TELEPHONE_SUBSCRIPTION);
+    }
 
     public Float getTotal(){
         log.info("mapByThemeGeneral.size {}", mapByThemeGeneral.size());

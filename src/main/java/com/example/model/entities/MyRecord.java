@@ -72,5 +72,7 @@ public class MyRecord {
     public boolean isItOfSameThemeGeneral(ThemeGeneral themeGeneral){
         return this.getThemeGeneral() == themeGeneral;
     }
-
+    public boolean isItSameThemeSub(ThemeSub themeSub){
+        return this.getThemeSub() == themeSub;
+    }
 }
