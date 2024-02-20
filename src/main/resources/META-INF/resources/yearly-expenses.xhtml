@@ -30,12 +30,21 @@
                                 rowKey="#{record.month}"
                                 allowUnsorting="true"
                                 sortMode="multiple">
-
+<!-- column of month -->
                     <p:column headerText="Mois"
                             sortBy="#{report.month}"
                             filterBy="#{report.month}">
                         <h:outputText value="#{report.month}" />
+                        <f:facet name="footer">
+                            <span class="font-bold">
+                                <h:outputText value="Total"/>
+                                <br/>
+                                <h:outputText value="Moyenne"/>
+                            </span>
+                        </f:facet>
                     </p:column>
+
+<!-- columns of theme general -->
                     <p:column headerText="Défaut" sortBy="#{report.sumDefault}" filterBy="#{report.sumDefault}" >
                         <h:outputText value="#{report.sumDefault}">
                             <f:convertNumber pattern ="#{yearlyExpensesBean.currencyPattern}"
@@ -44,7 +53,7 @@
                                             currencyCode = "#{yearlyExpensesBean.currencyCode}"
                                             currencySymbol="#{yearlyExpensesBean.currencySymbol}"
                                             groupingUsed="true"/>
-                        </h:outputText>
+                            </h:outputText>
                         <f:facet name="footer">
                             <span class="font-bold">
                                 <h:outputText value="#{yearlyExpensesBean.sumDefault}">
@@ -54,6 +63,15 @@
                                             currencyCode = "#{yearlyExpensesBean.currencyCode}"
                                             currencySymbol="#{yearlyExpensesBean.currencySymbol}"
                                             groupingUsed="true"/>
+                                </h:outputText>
+                                <br/>
+                                <h:outputText value="#{yearlyExpensesBean.averageDefault}">
+                                    <f:convertNumber pattern ="#{yearlyExpensesBean.currencyPattern}"
+                                                    type ="currency"
+                                                    locale="#{yearlyExpensesBean.localeCountry}"
+                                                    currencyCode = "#{yearlyExpensesBean.currencyCode}"
+                                                    currencySymbol="#{yearlyExpensesBean.currencySymbol}"
+                                                    groupingUsed="true"/>
                                 </h:outputText>
                             </span>
                         </f:facet>
@@ -78,6 +96,15 @@
                                                     currencySymbol="#{yearlyExpensesBean.currencySymbol}"
                                                     groupingUsed="true"/>
                                 </h:outputText>
+                                <br/>
+                                <h:outputText value="#{yearlyExpensesBean.averageCaluireEtCuire}">
+                                    <f:convertNumber pattern ="#{yearlyExpensesBean.currencyPattern}"
+                                                    type ="currency"
+                                                    locale="#{yearlyExpensesBean.localeCountry}"
+                                                    currencyCode = "#{yearlyExpensesBean.currencyCode}"
+                                                    currencySymbol="#{yearlyExpensesBean.currencySymbol}"
+                                                    groupingUsed="true"/>
+                                </h:outputText>
                             </span>
                         </f:facet>
                     </p:column>
@@ -93,19 +120,28 @@
                             </h:outputText>
                         <f:facet name="footer">
                             <span class="font-bold">
-                            <h:outputText value="#{yearlyExpensesBean.sumMezieu}">
-                                <f:convertNumber pattern ="#{yearlyExpensesBean.currencyPattern}"
-                                                type ="currency"
-                                                locale="#{yearlyExpensesBean.localeCountry}"
-                                                currencyCode = "#{yearlyExpensesBean.currencyCode}"
-                                                currencySymbol="#{yearlyExpensesBean.currencySymbol}"
-                                                groupingUsed="true"/>
+                                <h:outputText value="#{yearlyExpensesBean.sumMezieu}">
+                                    <f:convertNumber pattern ="#{yearlyExpensesBean.currencyPattern}"
+                                                    type ="currency"
+                                                    locale="#{yearlyExpensesBean.localeCountry}"
+                                                    currencyCode = "#{yearlyExpensesBean.currencyCode}"
+                                                    currencySymbol="#{yearlyExpensesBean.currencySymbol}"
+                                                    groupingUsed="true"/>
+                                </h:outputText>
+                                <br/>
+                                <h:outputText value="#{yearlyExpensesBean.averageMezieu}">
+                                    <f:convertNumber pattern ="#{yearlyExpensesBean.currencyPattern}"
+                                                    type ="currency"
+                                                    locale="#{yearlyExpensesBean.localeCountry}"
+                                                    currencyCode = "#{yearlyExpensesBean.currencyCode}"
+                                                    currencySymbol="#{yearlyExpensesBean.currencySymbol}"
+                                                    groupingUsed="true"/>
                                 </h:outputText>
                             </span>
                         </f:facet>
-                    </p:column> 
-                    <p:column headerText="Montplat" sortBy="#{report.sumMontplat}" 
-                                        filterBy="#{report.sumMontplat}" 
+                    </p:column>
+                    <p:column headerText="Montplat" sortBy="#{report.sumMontplat}"
+                                        filterBy="#{report.sumMontplat}"
                                         rendered="#{yearlyExpensesBean.sumMontplat ne 0}" >
                         <h:outputText value="#{report.sumMontplat}" >
                             <f:convertNumber pattern ="#{yearlyExpensesBean.currencyPattern}"
@@ -125,9 +161,18 @@
                                                     currencySymbol="#{yearlyExpensesBean.currencySymbol}"
                                                     groupingUsed="true"/>
                                 </h:outputText>
+                                <br/>
+                                <h:outputText value="#{yearlyExpensesBean.averageMontplat}">
+                                    <f:convertNumber pattern ="#{yearlyExpensesBean.currencyPattern}"
+                                                    type ="currency"
+                                                    locale="#{yearlyExpensesBean.localeCountry}"
+                                                    currencyCode = "#{yearlyExpensesBean.currencyCode}"
+                                                    currencySymbol="#{yearlyExpensesBean.currencySymbol}"
+                                                    groupingUsed="true"/>
+                                </h:outputText>
                             </span>
                         </f:facet>
-                    </p:column> 
+                    </p:column>
                     <p:column headerText="Santé" 
                                 sortBy="#{report.sumHealth}" 
                                 filterBy="#{report.sumHealth}" 
@@ -150,8 +195,18 @@
                                                     currencySymbol="#{yearlyExpensesBean.currencySymbol}"
                                                     groupingUsed="true"/>
                                 </h:outputText>
-                            </span></f:facet>
-                        </p:column>
+                                <br/>
+                                <h:outputText value="#{yearlyExpensesBean.averageHealth}">
+                                    <f:convertNumber pattern ="#{yearlyExpensesBean.currencyPattern}"
+                                                    type ="currency"
+                                                    locale="#{yearlyExpensesBean.localeCountry}"
+                                                    currencyCode = "#{yearlyExpensesBean.currencyCode}"
+                                                    currencySymbol="#{yearlyExpensesBean.currencySymbol}"
+                                                    groupingUsed="true"/>
+                                </h:outputText>
+                            </span>
+                        </f:facet>
+                    </p:column>
                     <p:column headerText="Alimentaire" 
                                     sortBy="#{report.sumFood}" 
                                     filterBy="#{report.sumFood}" 
@@ -174,8 +229,18 @@
                                                     currencySymbol="#{yearlyExpensesBean.currencySymbol}"
                                                     groupingUsed="true"/>
                                 </h:outputText>
-                            </span></f:facet>
-                        </p:column> 
+                                <br/>
+                                <h:outputText value="#{yearlyExpensesBean.averageFood}">
+                                    <f:convertNumber pattern ="#{yearlyExpensesBean.currencyPattern}"
+                                                    type ="currency"
+                                                    locale="#{yearlyExpensesBean.localeCountry}"
+                                                    currencyCode = "#{yearlyExpensesBean.currencyCode}"
+                                                    currencySymbol="#{yearlyExpensesBean.currencySymbol}"
+                                                    groupingUsed="true"/>
+                                </h:outputText>
+                            </span>
+                        </f:facet>
+                    </p:column> 
                     <p:column headerText="Loisirs" 
                                 sortBy="#{report.sumLeisure}" 
                                 filterBy="#{report.sumLeisure}" 
@@ -198,8 +263,52 @@
                                                     currencySymbol="#{yearlyExpensesBean.currencySymbol}"
                                                     groupingUsed="true"/>
                                 </h:outputText>
-                            </span></f:facet>
-                        </p:column>
+                                <br/>
+                                <h:outputText value="#{yearlyExpensesBean.averageLeisure}">
+                                    <f:convertNumber pattern ="#{yearlyExpensesBean.currencyPattern}"
+                                                    type ="currency"
+                                                    locale="#{yearlyExpensesBean.localeCountry}"
+                                                    currencyCode = "#{yearlyExpensesBean.currencyCode}"
+                                                    currencySymbol="#{yearlyExpensesBean.currencySymbol}"
+                                                    groupingUsed="true"/>
+                                </h:outputText>
+                            </span>
+                        </f:facet>
+                    </p:column>
+                    <p:column headerText="Papetterie"
+                                        sortBy="#{report.sumStationary}"
+                                        filterBy="#{report.sumStationary}"
+                                        rendered="#{yearlyExpensesBean.sumStationary ne 0}" >
+                        <h:outputText value="#{report.sumStationary}">
+                            <f:convertNumber pattern ="#{yearlyExpensesBean.currencyPattern}"
+                                            type ="currency"
+                                            locale="#{yearlyExpensesBean.localeCountry}"
+                                            currencyCode = "#{yearlyExpensesBean.currencyCode}"
+                                            currencySymbol="#{yearlyExpensesBean.currencySymbol}"
+                                            groupingUsed="true"/>
+                        </h:outputText>
+                        <f:facet name="footer">
+                            <span class="font-bold">
+                                <h:outputText value="#{yearlyExpensesBean.sumStationary}" >
+                                    <f:convertNumber pattern ="#{yearlyExpensesBean.currencyPattern}"
+                                                    type ="currency"
+                                                    locale="#{yearlyExpensesBean.localeCountry}"
+                                                    currencyCode = "#{yearlyExpensesBean.currencyCode}"
+                                                    currencySymbol="#{yearlyExpensesBean.currencySymbol}"
+                                                    groupingUsed="true"/>
+                                </h:outputText>
+                                <br/>
+                                <h:outputText value="#{yearlyExpensesBean.averageStationary}">
+                                    <f:convertNumber pattern ="#{yearlyExpensesBean.currencyPattern}"
+                                                    type ="currency"
+                                                    locale="#{yearlyExpensesBean.localeCountry}"
+                                                    currencyCode = "#{yearlyExpensesBean.currencyCode}"
+                                                    currencySymbol="#{yearlyExpensesBean.currencySymbol}"
+                                                    groupingUsed="true"/>
+                                </h:outputText>
+                            </span>
+                        </f:facet>
+                    </p:column>
                     <p:column headerText="Voyages"
                                         sortBy="#{report.sumTravel}"
                                         filterBy="#{report.sumTravel}"
@@ -215,6 +324,15 @@
                         <f:facet name="footer">
                             <span class="font-bold">
                                 <h:outputText value="#{yearlyExpensesBean.sumTravel}" >
+                                    <f:convertNumber pattern ="#{yearlyExpensesBean.currencyPattern}"
+                                                    type ="currency"
+                                                    locale="#{yearlyExpensesBean.localeCountry}"
+                                                    currencyCode = "#{yearlyExpensesBean.currencyCode}"
+                                                    currencySymbol="#{yearlyExpensesBean.currencySymbol}"
+                                                    groupingUsed="true"/>
+                                </h:outputText>
+                                <br/>
+                                <h:outputText value="#{yearlyExpensesBean.averageTravel}">
                                     <f:convertNumber pattern ="#{yearlyExpensesBean.currencyPattern}"
                                                     type ="currency"
                                                     locale="#{yearlyExpensesBean.localeCountry}"
@@ -247,37 +365,23 @@
                                                     currencySymbol="#{yearlyExpensesBean.currencySymbol}"
                                                     groupingUsed="true"/>
                                 </h:outputText>
-                            </span></f:facet>
+                                <br/>
+                                <h:outputText value="#{yearlyExpensesBean.averageTCL}">
+                                    <f:convertNumber pattern ="#{yearlyExpensesBean.currencyPattern}"
+                                                    type ="currency"
+                                                    locale="#{yearlyExpensesBean.localeCountry}"
+                                                    currencyCode = "#{yearlyExpensesBean.currencyCode}"
+                                                    currencySymbol="#{yearlyExpensesBean.currencySymbol}"
+                                                    groupingUsed="true"/>
+                                </h:outputText>
+                            </span>
+                        </f:facet>
                     </p:column>
                     <p:column headerText="Vêtement" 
-                                        sortBy="#{report.sumClothing}" 
-                                        filterBy="#{report.sumClothing}" 
-                                        rendered="#{yearlyExpensesBean.sumClothing ne 0}" > 
+                            sortBy="#{report.sumClothing}" 
+                            filterBy="#{report.sumClothing}" 
+                            rendered="#{yearlyExpensesBean.sumClothing ne 0}" > 
                         <h:outputText value="#{report.sumClothing}">
-                            <f:convertNumber pattern ="#{yearlyExpensesBean.currencyPattern}"
-                                            type ="currency"
-                                            locale="#{yearlyExpensesBean.localeCountry}"
-                                            currencyCode = "#{yearlyExpensesBean.currencyCode}"
-                                            currencySymbol="#{yearlyExpensesBean.currencySymbol}"
-                                            groupingUsed="true"/>
-                        </h:outputText>
-                    <f:facet name="footer">
-                        <span class="font-bold">
-                            <h:outputText value="#{yearlyExpensesBean.sumClothing}">
-                                <f:convertNumber pattern ="#{yearlyExpensesBean.currencyPattern}"
-                                                type ="currency"
-                                                locale="#{yearlyExpensesBean.localeCountry}"
-                                                currencyCode = "#{yearlyExpensesBean.currencyCode}"
-                                                currencySymbol="#{yearlyExpensesBean.currencySymbol}"
-                                                groupingUsed="true"/>
-                            </h:outputText>
-                        </span></f:facet>
-                    </p:column> 
-                    <p:column headerText="Papetterie" 
-                                        sortBy="#{report.sumStationary}" 
-                                        filterBy="#{report.sumStationary}" 
-                                        rendered="#{yearlyExpensesBean.sumStationary ne 0}" > 
-                        <h:outputText value="#{report.sumStationary}">
                             <f:convertNumber pattern ="#{yearlyExpensesBean.currencyPattern}"
                                             type ="currency"
                                             locale="#{yearlyExpensesBean.localeCountry}"
@@ -287,10 +391,28 @@
                         </h:outputText>
                         <f:facet name="footer">
                             <span class="font-bold">
-                                <h:outputText value="#{yearlyExpensesBean.sumStationary}" />
+                                <h:outputText value="#{yearlyExpensesBean.sumClothing}">
+                                    <f:convertNumber pattern ="#{yearlyExpensesBean.currencyPattern}"
+                                                    type ="currency"
+                                                    locale="#{yearlyExpensesBean.localeCountry}"
+                                                    currencyCode = "#{yearlyExpensesBean.currencyCode}"
+                                                    currencySymbol="#{yearlyExpensesBean.currencySymbol}"
+                                                    groupingUsed="true"/>
+                                </h:outputText>
+                                <br/>
+                                <h:outputText value="#{yearlyExpensesBean.averageClothing}">
+                                    <f:convertNumber pattern ="#{yearlyExpensesBean.currencyPattern}"
+                                                    type ="currency"
+                                                    locale="#{yearlyExpensesBean.localeCountry}"
+                                                    currencyCode = "#{yearlyExpensesBean.currencyCode}"
+                                                    currencySymbol="#{yearlyExpensesBean.currencySymbol}"
+                                                    groupingUsed="true"/>
+                                </h:outputText>
                             </span>
                         </f:facet>
                     </p:column>
+
+                    
                     <p:column headerText="Autre" sortBy="#{report.sumOther}" 
                                         filterBy="#{report.sumOther}" 
                                         rendered="#{yearlyExpensesBean.sumOther ne 0}" > 
@@ -304,7 +426,23 @@
                         </h:outputText>
                         <f:facet name="footer">
                             <span class="font-bold">
-                                <h:outputText value="#{yearlyExpensesBean.sumOther}" />
+                                <h:outputText value="#{yearlyExpensesBean.sumOther}">
+                                <f:convertNumber pattern ="#{yearlyExpensesBean.currencyPattern}"
+                                                type ="currency"
+                                                locale="#{yearlyExpensesBean.localeCountry}"
+                                                currencyCode = "#{yearlyExpensesBean.currencyCode}"
+                                                currencySymbol="#{yearlyExpensesBean.currencySymbol}"
+                                                groupingUsed="true"/>
+                                </h:outputText>
+                                <br/>
+                                <h:outputText value="#{yearlyExpensesBean.averageOther}">
+                                    <f:convertNumber pattern ="#{yearlyExpensesBean.currencyPattern}"
+                                                    type ="currency"
+                                                    locale="#{yearlyExpensesBean.localeCountry}"
+                                                    currencyCode = "#{yearlyExpensesBean.currencyCode}"
+                                                    currencySymbol="#{yearlyExpensesBean.currencySymbol}"
+                                                    groupingUsed="true"/>
+                                </h:outputText>
                             </span>
                         </f:facet>
                     </p:column>
@@ -330,12 +468,21 @@
                                                     currencySymbol="#{yearlyExpensesBean.currencySymbol}"
                                                     groupingUsed="true"/>
                                 </h:outputText>
+                                <br/>
+                                <h:outputText value="#{yearlyExpensesBean.averagePresent}">
+                                    <f:convertNumber pattern ="#{yearlyExpensesBean.currencyPattern}"
+                                                    type ="currency"
+                                                    locale="#{yearlyExpensesBean.localeCountry}"
+                                                    currencyCode = "#{yearlyExpensesBean.currencyCode}"
+                                                    currencySymbol="#{yearlyExpensesBean.currencySymbol}"
+                                                    groupingUsed="true"/>
+                                </h:outputText>
                             </span>
                         </f:facet>
-                    </p:column> 
-                    <p:column headerText="Impôt sur le revenu" sortBy="#{report.sumIncomeTaxe}" 
-                                        filterBy="#{report.sumIncomeTaxe}" 
-                                        rendered="#{yearlyExpensesBean.sumIncomeTaxe ne 0}" > 
+                    </p:column>
+                    <p:column headerText="Impôt sur le revenu" sortBy="#{report.sumIncomeTaxe}"
+                                        filterBy="#{report.sumIncomeTaxe}"
+                                        rendered="#{yearlyExpensesBean.sumIncomeTaxe ne 0}" >
                         <h:outputText value="#{report.sumIncomeTaxe}">
                             <f:convertNumber pattern ="#{yearlyExpensesBean.currencyPattern}"
                                             type ="currency"
@@ -354,9 +501,18 @@
                                                     currencySymbol="#{yearlyExpensesBean.currencySymbol}"
                                                     groupingUsed="true"/>
                                 </h:outputText>
+                                <br/>
+                                <h:outputText value="#{yearlyExpensesBean.averageIncomeTaxe}">
+                                    <f:convertNumber pattern ="#{yearlyExpensesBean.currencyPattern}"
+                                                    type ="currency"
+                                                    locale="#{yearlyExpensesBean.localeCountry}"
+                                                    currencyCode = "#{yearlyExpensesBean.currencyCode}"
+                                                    currencySymbol="#{yearlyExpensesBean.currencySymbol}"
+                                                    groupingUsed="true"/>
+                                </h:outputText>
                             </span>
                         </f:facet>
-                    </p:column> 
+                    </p:column>
                     <p:column headerText="Télécom" 
                                         sortBy="#{report.sumTelephoneSubscription}" 
                                         filterBy="#{report.sumTelephoneSubscription}" 
@@ -379,9 +535,18 @@
                                                     currencySymbol="#{yearlyExpensesBean.currencySymbol}"
                                                     groupingUsed="true"/>
                                 </h:outputText>
+                                <br/>
+                                <h:outputText value="#{yearlyExpensesBean.averageTelephoneSubscription}">
+                                    <f:convertNumber pattern ="#{yearlyExpensesBean.currencyPattern}"
+                                                    type ="currency"
+                                                    locale="#{yearlyExpensesBean.localeCountry}"
+                                                    currencyCode = "#{yearlyExpensesBean.currencyCode}"
+                                                    currencySymbol="#{yearlyExpensesBean.currencySymbol}"
+                                                    groupingUsed="true"/>
+                                </h:outputText>
                             </span>
                         </f:facet>
-                    </p:column> 
+                    </p:column>
                     <p:column headerText="TOTAL" >
                         <h:outputText value="#{report.total}">
                             <f:convertNumber pattern ="#{yearlyExpensesBean.currencyPattern}"

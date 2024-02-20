@@ -58,13 +58,13 @@ public class YearlyExpensesBean extends UtilsBean implements Serializable {
                         TypeOfTransaction.CHECK_CASHING, TypeOfTransaction.PAYMENT));
         setMapAmountMonthAndTheme();
     }
-
+// TODO factorise in UtilsBean
     public void decrementYear() {
         selectedYear = selectedYear.minusYears(1);
         log.info("New year {}", selectedYear);
         initList();
     }
-
+// TODO Factorise in UtilsBean
     public void incrementYear() {
         selectedYear = selectedYear.plusYears(1);
         log.info("New year {}", selectedYear);
@@ -118,6 +118,27 @@ public class YearlyExpensesBean extends UtilsBean implements Serializable {
     public Float getSumPresent(){ return  getSumOf(ThemeGeneral.PRESENT);}
     public Float getSumIncomeTaxe(){ return  getSumOf(ThemeGeneral.INCOME_TAXE);}
     public Float getSumTelephoneSubscription(){ return  getSumOf(ThemeGeneral.TELEPHONE_SUBSCRIPTION);}
-    // TODO calculate Moyenne and Summ for the month
 
+    // calculate averages
+
+    public Float getAverageDefault() {
+        return getSumOf(ThemeGeneral.NULL)/12;
+    }
+
+    public Float getAverageCaluireEtCuire() {
+        return getSumOf(ThemeGeneral.CALUIRE_ET_CUIRE)/12;
+    }
+    public Float getAverageMezieu(){ return  getSumOf(ThemeGeneral.MEZIEU)/12;}
+    public Float getAverageMontplat(){ return  getSumOf(ThemeGeneral.MONTPLAT)/12;}
+    public Float getAverageHealth(){ return  getSumOf(ThemeGeneral.HEALTH)/12;}
+    public Float getAverageFood(){ return  getSumOf(ThemeGeneral.FOOD)/12;}
+    public Float getAverageLeisure(){ return  getSumOf(ThemeGeneral.LEISURE)/12;}
+    public Float getAverageTravel(){ return  getSumOf(ThemeGeneral.TRAVEL)/12;}
+    public Float getAverageTCL(){ return  getSumOf(ThemeGeneral.TCL)/12;}
+    public Float getAverageClothing(){ return  getSumOf(ThemeGeneral.CLOTHING)/12;}
+    public Float getAverageStationary(){ return  getSumOf(ThemeGeneral.STATIONARY)/12;}
+    public Float getAverageOther(){ return  getSumOf(ThemeGeneral.OTHER)/12;}
+    public Float getAveragePresent(){ return  getSumOf(ThemeGeneral.PRESENT)/12;}
+    public Float getAverageIncomeTaxe(){ return  getSumOf(ThemeGeneral.INCOME_TAXE)/12;}
+    public Float getAverageTelephoneSubscription(){ return  getSumOf(ThemeGeneral.TELEPHONE_SUBSCRIPTION)/12;}
 }
