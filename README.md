@@ -102,22 +102,26 @@ CTRL + C
 src
     |--> main
         |--> java/ com/ example
+                    |-- Application.java (main)
                     |--> config
-                    |--> controller //Mapping for the HTML files URL -> file name
+                    |--> controller //Mapping for the HTML files URL -> file name 
                     |--> models
-                        |--> dto (Data Transfer Objects) //This holds the DTO classes
-                        |--> dao (Data Access Object) //This holds the Database classes
-                        |--> pojo (plain old java object)
                         |--> entities //This holds Data model classes
-                        |--> enums // This holds Data enum Type classes 
-                    |--> exception
+                        |--> enums // This holds Data enum Type classes
                     |--> repository //This holds the classes that get data from HTML
+                    |--> view
+                        |--> controller
+                            |-- containing all the Bean.java files
+                        |--> dto (Data Transfer Objects)
+                            |--- containing all .java files helping with the view of tables
         |--> resources
             |--> META-INF
+                |--> database
+                    |---data.sql
+                    |---Schema.sql
                 |--> resources
                     |--> css
-                    |--> javascript
-                    |-- and all the .xhtml files 
+                    |-- and all the .xhtml files
     |--> test/ java/ com/ example
 
 
