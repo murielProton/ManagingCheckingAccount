@@ -34,6 +34,12 @@ public class CaluireCuireView {
         sum = Float.sum(sum, curentRecord.getAmount());
         mapByThemeSub.put(curentThemeG, sum);
     }
+    public ThemeSub getThemeSub(){
+        for ( ThemeSub key : mapByThemeSub.keySet() ) {
+            return key;
+        }
+        return null;
+    }
     public Float getSumDefault(){
         return mapByThemeSub.get(ThemeSub.NULL);
     }

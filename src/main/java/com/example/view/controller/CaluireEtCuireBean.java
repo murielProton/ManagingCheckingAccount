@@ -97,10 +97,19 @@ public class CaluireEtCuireBean extends UtilsBean  implements Serializable {
         Float result = 0f;
         for (CaluireCuireView report : listOfCaluireCuireView) {
             Float toAdd = report.getMapByThemeSub().get(theme);
+           // ThemeSub key = report.getThemeSub();
             if(toAdd != null){
                 result += toAdd;
+               /* TODO if (key.equals(ThemeSub.RENT)) {
+                    // If the key is RENT, add the value to the result
+                    result += toAdd;
+                } else {
+                    // For other keys, subtract the value from the result
+                    result -= toAdd;
+                }*/
             }
         }
+        log.info("getSumOf(ThemeSub theme) -> {} ", result);
         return result;
     }
 // TODO realy get a total of revenues when income + || if not -
