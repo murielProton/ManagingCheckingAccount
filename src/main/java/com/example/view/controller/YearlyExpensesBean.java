@@ -13,7 +13,7 @@ import com.example.model.entities.MyRecord;
 import com.example.model.enums.ThemeGeneral;
 import com.example.model.enums.TypeOfTransaction;
 import com.example.repository.MyRecordRepository;
-import com.example.view.dto.MonthyReportView;
+import com.example.view.dto.MonthlyReportByThemeGeneralView;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.faces.view.ViewScoped;
@@ -39,7 +39,7 @@ public class YearlyExpensesBean extends UtilsBean implements Serializable {
     private List<MyRecord> listForYearlyExpenses;
     private List<ThemeGeneral> listOfAllThemeGeneral;
 
-    private List<MonthyReportView> listMonthlyReportView;
+    private List<MonthlyReportByThemeGeneralView> listMonthlyReportView;
 
     @PostConstruct
     public void init() {
@@ -76,7 +76,7 @@ public class YearlyExpensesBean extends UtilsBean implements Serializable {
         for (Integer i = 0; i < 12; i++) {
             String currentMonth = monthList.get(i);
             LocalDate targetedMonth = LocalDate.of(selectedYear.getYear(), i + 1, 1);
-            MonthyReportView monthlyReportView = new MonthyReportView();
+            MonthlyReportByThemeGeneralView monthlyReportView = new MonthlyReportByThemeGeneralView();
 
             monthlyReportView.setMonth(currentMonth);
             monthlyReportView.setTargetedMonth(targetedMonth);
@@ -89,7 +89,7 @@ public class YearlyExpensesBean extends UtilsBean implements Serializable {
 
     public Float getSumOf(ThemeGeneral theme) {
         Float result = 0f;
-        for (MonthyReportView report : listMonthlyReportView) {
+        for (MonthlyReportByThemeGeneralView report : listMonthlyReportView) {
             Float toAdd = report.getMapByThemeGeneral().get(theme);
             if(toAdd != null){
                 result += toAdd;

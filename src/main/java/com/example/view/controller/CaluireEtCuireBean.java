@@ -13,7 +13,7 @@ import com.example.model.entities.MyRecord;
 import com.example.model.enums.ThemeSub;
 import com.example.model.enums.TypeOfTransaction;
 import com.example.repository.MyRecordRepository;
-import com.example.view.dto.CaluireCuireView;
+import com.example.view.dto.MonthlyReportByThemeSubvView;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.faces.view.ViewScoped;
@@ -42,7 +42,7 @@ public class CaluireEtCuireBean extends UtilsBean  implements Serializable {
     private List<ThemeSub> listOfAllThemeSub;
     private List<ThemeSub> listOfThemeSubForCaluireEtCuire;
 
-    private List<CaluireCuireView> listOfCaluireCuireView;
+    private List<MonthlyReportByThemeSubvView> listOfCaluireCuireView;
 
     @PostConstruct
     public void init() {
@@ -82,7 +82,7 @@ public class CaluireEtCuireBean extends UtilsBean  implements Serializable {
         for (Integer i = 0; i < 12; i++) {
             String currentMonth = monthList.get(i);
             LocalDate targetedMonth = LocalDate.of(selectedYear.getYear(), i + 1, 1);
-            CaluireCuireView caluireCuireView = new CaluireCuireView();
+            MonthlyReportByThemeSubvView caluireCuireView = new MonthlyReportByThemeSubvView();
 
             caluireCuireView.setMonth(currentMonth);
             caluireCuireView.setTargetedMonth(targetedMonth);
@@ -95,7 +95,7 @@ public class CaluireEtCuireBean extends UtilsBean  implements Serializable {
 
     public Float getSumOf(ThemeSub theme) {
         Float result = 0f;
-        for (CaluireCuireView report : listOfCaluireCuireView) {
+        for (MonthlyReportByThemeSubvView report : listOfCaluireCuireView) {
             Float toAdd = report.getMapByThemeSub().get(theme);
            // ThemeSub key = report.getThemeSub();
             if(toAdd != null){

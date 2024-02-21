@@ -12,7 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Data
 @Slf4j
-public class CaluireCuireView {
+public class MonthlyReportByThemeSubvView {
 
     public String month;
     public LocalDate targetedMonth;
@@ -34,6 +34,7 @@ public class CaluireCuireView {
         sum = Float.sum(sum, curentRecord.getAmount());
         mapByThemeSub.put(curentThemeG, sum);
     }
+    //TODO ???
     public ThemeSub getThemeSub(){
         for ( ThemeSub key : mapByThemeSub.keySet() ) {
             return key;
@@ -58,25 +59,39 @@ public class CaluireCuireView {
     public Float getSumWater(){
         return  mapByThemeSub.get(ThemeSub.WATER);
     }
-    public Float getSumGass(){ 
+    public Float getSumGass(){
         return  mapByThemeSub.get(ThemeSub.GASS);
     }
-    public Float getSumElectricity(){ 
+    public Float getSumElectricity(){
         return  mapByThemeSub.get(ThemeSub.ELECTRICITY);
     }
-    public Float getSumFireWood(){ 
+    public Float getSumLoan(){
+        return mapByThemeSub.get(ThemeSub.LOAN);
+    }
+    public Float getSumFireWood(){
         return  mapByThemeSub.get(ThemeSub.FIRE_WOOD);
     }
-    public Float getSumInsurance(){ 
+    public Float getSumInsurance(){
         return  mapByThemeSub.get(ThemeSub.INSURANCE);
     }
-    public Float getSumBoiler(){ 
+    public Float getSumBoiler(){
         return  mapByThemeSub.get(ThemeSub.BOILER);
     }
-    public Float getSumHomeAppliance(){ 
+    public Float getSumChimneySweeping(){
+        return  mapByThemeSub.get(ThemeSub.CHIMNEY_SWEEPING);
+    }
+    public Float getSumHomeAppliance(){
         return  mapByThemeSub.get(ThemeSub.HOME_APPLIANCE);
     }
-
+    public Float getSumFurniture(){
+        return  mapByThemeSub.get(ThemeSub.FURNITURE);
+    }
+    public Float getInternetSubscription(){
+        return  mapByThemeSub.get(ThemeSub.INTERNET_SUBSCRIPTION);
+    }
+    public Float getSumStreamingMediaSubscription(){
+        return  mapByThemeSub.get(ThemeSub.STREAMING_MEDIA_SUBSCRIPTION);
+    }
     public Float getTotal(){
         log.info("mapByThemeSub.size {}", mapByThemeSub.size());
         return (float) mapByThemeSub.values().stream().mapToDouble(Float::doubleValue).sum();
