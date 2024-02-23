@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition
+                xmlns:h="jakarta.faces.html"
+                xmlns:f="jakarta.faces.core"
+                xmlns:ui="jakarta.faces.facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pe="http://primefaces.org/ui/extensions"
+                xmlns:o="http://omnifaces.org/ui"
+                xmlns:sec="https://joinfaces.org/security"
+                template="/template.xhtml">
+    <ui:define name="content" >
+        <div class="ui-g">
+            <div class="ui-g-3"></div>
+            <div class="ui-g-6">
+                <p:commandButton actionListener="#{montplatBean.decrementYear}" id="navLeft" update="contentForm" value="-" />
+                
+                <p:outputLabel value="#{montplatBean.selectedYear.year}" />
+                <p:commandButton actionListener="#{montplatBean.incrementYear}" id="navRight" update="contentForm" value="+" />
+            </div>
+            <div class="ui-g-3"></div>
+        </div>
+        <div class="ui-g">
+            <div class="ui-g-2"></div>
+            <div class="ui-g-8">
+                <p:dataTable widgetVar="monthlyReportTable"
+                                id="reports"
+                                var="report"
+                                value="#{montplatBean.listOfReportByThemeSubView}"
+                                rowKey="#{record.month}"
+                                allowUnsorting="true"
+                                sortMode="multiple">
+<!-- column of month -->
+                    <p:column headerText="Mois"
+                            sortBy="#{report.month}"
+                            filterBy="#{report.month}">
+                        <h:outputText value="#{report.month}" />
+                        <f:facet name="footer">
+                            <span class="font-bold">
+                                <h:outputText value="Total"/>
+                                <br/>
+                                <h:outputText value="Moyenne"/>
+                            </span>
+                        </f:facet>
+                    </p:column>
+
+<!-- columns of theme Sub -->
+                    <p:column headerText="Défaut" sortBy="#{report.sumDefault}" filterBy="#{report.sumDefault}" >
+                        <h:outputText value="#{report.sumDefault}">
+                            <f:convertNumber pattern ="#{utilsBean.currencyPattern}"
+                                            type ="currency"
+                                            locale="#{utilsBean.localeCountry}"
+                                            currencyCode = "#{utilsBean.currencyCode}"
+                                            currencySymbol="#{utilsBean.currencySymbol}"
+                                            groupingUsed="true"/>
+                            </h:outputText>
+                        <f:facet name="footer">
+                            <span class="font-bold">
+                                <h:outputText value="#{montplatBean.sumDefault}">
+                                    <f:convertNumber pattern ="#{utilsBean.currencyPattern}"
+                                            type ="currency"
+                                            locale="#{utilsBean.localeCountry}"
+                                            currencyCode = "#{utilsBean.currencyCode}"
+                                            currencySymbol="#{utilsBean.currencySymbol}"
+                                            groupingUsed="true"/>
+                                </h:outputText>
+                                <br/>
+                                <h:outputText value="#{montplatBean.averageDefault}">
+                                    <f:convertNumber pattern ="#{utilsBean.currencyPattern}"
+                                                    type ="currency"
+                                                    locale="#{utilsBean.localeCountry}"
+                                                    currencyCode = "#{utilsBean.currencyCode}"
+                                                    currencySymbol="#{utilsBean.currencySymbol}"
+                                                    groupingUsed="true"/>
+                                </h:outputText>
+                            </span>
+                        </f:facet>
+                    </p:column>
+                    <p:column headerText="Chaudière" sortBy="#{report.sumBoiler}" filterBy="#{report.sumBoiler}"
+                        rendered="#{montplatBean.sumBoiler ne 0}" >
+                        <h:outputText value="#{report.sumBoiler}">
+                            <f:convertNumber pattern ="#{utilsBean.currencyPattern}"
+                                            type ="currency"
+                                            locale="#{utilsBean.localeCountry}"
+                                            currencyCode = "#{utilsBean.currencyCode}"
+                                            currencySymbol="#{utilsBean.currencySymbol}"
+                                            groupingUsed="true"/>
+                        </h:outputText>
+                        <f:facet name="footer">
+                            <span class="font-bold">
+                                <h:outputText value="#{montplatBean.sumBoiler}">
+                                    <f:convertNumber pattern ="#{utilsBean.currencyPattern}"
+                                                    type ="currency"
+                                                    locale="#{utilsBean.localeCountry}"
+                                                    currencyCode = "#{utilsBean.currencyCode}"
+                                                    currencySymbol="#{utilsBean.currencySymbol}"
+                                                    groupingUsed="true"/>
+                                </h:outputText>
+                                <br/>
+                                <h:outputText value="#{montplatBean.averageBoiler}">
+                                    <f:convertNumber pattern ="#{utilsBean.currencyPattern}"
+                                                    type ="currency"
+                                                    locale="#{utilsBean.localeCountry}"
+                                                    currencyCode = "#{utilsBean.currencyCode}"
+                                                    currencySymbol="#{utilsBean.currencySymbol}"
+                                                    groupingUsed="true"/>
+                                </h:outputText>
+                            </span>
+                        </f:facet>
+                    </p:column>
+                    <p:column headerText="Coûts" sortBy="#{report.sumCosts}" filterBy="#{report.sumCosts}"
+                                rendered="#{montplatBean.sumCosts ne 0}" >
+                            <h:outputText value="#{report.sumCosts}">
+                                <f:convertNumber pattern ="#{utilsBean.currencyPattern}"
+                                                type ="currency"
+                                                locale="#{utilsBean.localeCountry}"
+                                                currencyCode = "#{utilsBean.currencyCode}"
+                                                currencySymbol="#{utilsBean.currencySymbol}"
+                                                groupingUsed="true"/>
+                            </h:outputText>
+                        <f:facet name="footer">
+                            <span class="font-bold">
+                                <h:outputText value="#{montplatBean.sumCosts}">
+                                    <f:convertNumber pattern ="#{utilsBean.currencyPattern}"
+                                                    type ="currency"
+                                                    locale="#{utilsBean.localeCountry}"
+                                                    currencyCode = "#{utilsBean.currencyCode}"
+                                                    currencySymbol="#{utilsBean.currencySymbol}"
+                                                    groupingUsed="true"/>
+                                </h:outputText>
+                                <br/>
+                                <h:outputText value="#{montplatBean.averageCosts}">
+                                    <f:convertNumber pattern ="#{utilsBean.currencyPattern}"
+                                                    type ="currency"
+                                                    locale="#{utilsBean.localeCountry}"
+                                                    currencyCode = "#{utilsBean.currencyCode}"
+                                                    currencySymbol="#{utilsBean.currencySymbol}"
+                                                    groupingUsed="true"/>
+                                </h:outputText>
+                            </span>
+                        </f:facet>
+                    </p:column>
+                    <p:column headerText="Electricité" sortBy="#{report.sumElectricity}"
+                                        filterBy="#{report.sumElectricity}"
+                                        rendered="#{montplatBean.sumElectricity ne 0}" >
+                        <h:outputText value="#{report.sumElectricity}" >
+                            <f:convertNumber pattern ="#{utilsBean.currencyPattern}"
+                                            type ="currency"
+                                            locale="#{utilsBean.localeCountry}"
+                                            currencyCode = "#{utilsBean.currencyCode}"
+                                            currencySymbol="#{utilsBean.currencySymbol}"
+                                            groupingUsed="true"/>
+                        </h:outputText>
+                        <f:facet name="footer">
+                            <span class="font-bold">
+                                <h:outputText value="#{montplatBean.sumElectricity}">
+                                    <f:convertNumber pattern ="#{utilsBean.currencyPattern}"
+                                                    type ="currency"
+                                                    locale="#{utilsBean.localeCountry}"
+                                                    currencyCode = "#{utilsBean.currencyCode}"
+                                                    currencySymbol="#{utilsBean.currencySymbol}"
+                                                    groupingUsed="true"/>
+                                </h:outputText>
+                                <br/>
+                                <h:outputText value="#{montplatBean.averageElectricity}">
+                                    <f:convertNumber pattern ="#{utilsBean.currencyPattern}"
+                                                    type ="currency"
+                                                    locale="#{utilsBean.localeCountry}"
+                                                    currencyCode = "#{utilsBean.currencyCode}"
+                                                    currencySymbol="#{utilsBean.currencySymbol}"
+                                                    groupingUsed="true"/>
+                                </h:outputText>
+                            </span>
+                        </f:facet>
+                    </p:column>
+                    <p:column headerText="Gaz"
+                                sortBy="#{report.sumGass}"
+                                filterBy="#{report.sumGass}"
+                                rendered="#{montplatBean.sumGass ne 0}" >
+                        <h:outputText value="#{report.sumGass}">
+                            <f:convertNumber pattern ="#{utilsBean.currencyPattern}"
+                                            type ="currency"
+                                            locale="#{utilsBean.localeCountry}"
+                                            currencyCode = "#{utilsBean.currencyCode}"
+                                            currencySymbol="#{utilsBean.currencySymbol}"
+                                            groupingUsed="true"/>
+                        </h:outputText>
+                        <f:facet name="footer">
+                            <span class="font-bold">
+                                <h:outputText value="#{montplatBean.sumGass}">
+                                    <f:convertNumber pattern ="#{utilsBean.currencyPattern}"
+                                                    type ="currency"
+                                                    locale="#{utilsBean.localeCountry}"
+                                                    currencyCode = "#{utilsBean.currencyCode}"
+                                                    currencySymbol="#{utilsBean.currencySymbol}"
+                                                    groupingUsed="true"/>
+                                </h:outputText>
+                                <br/>
+                                <h:outputText value="#{montplatBean.averageGass}">
+                                    <f:convertNumber pattern ="#{utilsBean.currencyPattern}"
+                                                    type ="currency"
+                                                    locale="#{utilsBean.localeCountry}"
+                                                    currencyCode = "#{utilsBean.currencyCode}"
+                                                    currencySymbol="#{utilsBean.currencySymbol}"
+                                                    groupingUsed="true"/>
+                                </h:outputText>
+                            </span>
+                        </f:facet>
+                    </p:column>
+                    <p:column headerText="Electroménager"
+                                    sortBy="#{report.sumHomeAppliance}"
+                                    filterBy="#{report.sumHomeAppliance}"
+                                    rendered="#{montplatBean.sumHomeAppliance ne 0}" >
+                        <h:outputText value="#{report.sumHomeAppliance}">
+                            <f:convertNumber pattern ="#{utilsBean.currencyPattern}"
+                                            type ="currency"
+                                            locale="#{utilsBean.localeCountry}"
+                                            currencyCode = "#{utilsBean.currencyCode}"
+                                            currencySymbol="#{utilsBean.currencySymbol}"
+                                            groupingUsed="true"/>
+                        </h:outputText>
+                        <f:facet name="footer">
+                            <span class="font-bold">
+                                <h:outputText value="#{montplatBean.sumHomeAppliance}">
+                                    <f:convertNumber pattern ="#{utilsBean.currencyPattern}"
+                                                    type ="currency"
+                                                    locale="#{utilsBean.localeCountry}"
+                                                    currencyCode = "#{utilsBean.currencyCode}"
+                                                    currencySymbol="#{utilsBean.currencySymbol}"
+                                                    groupingUsed="true"/>
+                                </h:outputText>
+                                <br/>
+                                <h:outputText value="#{montplatBean.averageHomeAppliance}">
+                                    <f:convertNumber pattern ="#{utilsBean.currencyPattern}"
+                                                    type ="currency"
+                                                    locale="#{utilsBean.localeCountry}"
+                                                    currencyCode = "#{utilsBean.currencyCode}"
+                                                    currencySymbol="#{utilsBean.currencySymbol}"
+                                                    groupingUsed="true"/>
+                                </h:outputText>
+                            </span>
+                        </f:facet>
+                    </p:column>
+                    <p:column headerText="Assurance"
+                                sortBy="#{report.sumInsurance}"
+                                filterBy="#{report.sumInsurance}"
+                                rendered="#{montplatBean.sumInsurance ne 0}" >
+                        <h:outputText value="#{report.sumInsurance}">
+                            <f:convertNumber pattern ="#{utilsBean.currencyPattern}"
+                                            type ="currency"
+                                            locale="#{utilsBean.localeCountry}"
+                                            currencyCode = "#{utilsBean.currencyCode}"
+                                            currencySymbol="#{utilsBean.currencySymbol}"
+                                            groupingUsed="true"/>
+                        </h:outputText>
+                        <f:facet name="footer">
+                            <span class="font-bold">
+                                <h:outputText value="#{montplatBean.sumInsurance}">
+                                    <f:convertNumber pattern ="#{utilsBean.currencyPattern}"
+                                                    type ="currency"
+                                                    locale="#{utilsBean.localeCountry}"
+                                                    currencyCode = "#{utilsBean.currencyCode}"
+                                                    currencySymbol="#{utilsBean.currencySymbol}"
+                                                    groupingUsed="true"/>
+                                </h:outputText>
+                                <br/>
+                                <h:outputText value="#{montplatBean.averageInsurance}">
+                                    <f:convertNumber pattern ="#{utilsBean.currencyPattern}"
+                                                    type ="currency"
+                                                    locale="#{utilsBean.localeCountry}"
+                                                    currencyCode = "#{utilsBean.currencyCode}"
+                                                    currencySymbol="#{utilsBean.currencySymbol}"
+                                                    groupingUsed="true"/>
+                                </h:outputText>
+                            </span>
+                        </f:facet>
+                    </p:column>
+                    <p:column headerText="Taxe Foncière"
+                                        sortBy="#{report.sumPropertyTaxes}"
+                                        filterBy="#{report.sumPropertyTaxes}"
+                                        rendered="#{montplatBean.sumPropertyTaxes ne 0}" >
+                        <h:outputText value="#{report.sumPropertyTaxes}">
+                            <f:convertNumber pattern ="#{utilsBean.currencyPattern}"
+                                            type ="currency"
+                                            locale="#{utilsBean.localeCountry}"
+                                            currencyCode = "#{utilsBean.currencyCode}"
+                                            currencySymbol="#{utilsBean.currencySymbol}"
+                                            groupingUsed="true"/>
+                        </h:outputText>
+                        <f:facet name="footer">
+                            <span class="font-bold">
+                                <h:outputText value="#{montplatBean.sumPropertyTaxes}" >
+                                    <f:convertNumber pattern ="#{utilsBean.currencyPattern}"
+                                                    type ="currency"
+                                                    locale="#{utilsBean.localeCountry}"
+                                                    currencyCode = "#{utilsBean.currencyCode}"
+                                                    currencySymbol="#{utilsBean.currencySymbol}"
+                                                    groupingUsed="true"/>
+                                </h:outputText>
+                                <br/>
+                                <h:outputText value="#{montplatBean.averagePropertyTaxes}">
+                                    <f:convertNumber pattern ="#{utilsBean.currencyPattern}"
+                                                    type ="currency"
+                                                    locale="#{utilsBean.localeCountry}"
+                                                    currencyCode = "#{utilsBean.currencyCode}"
+                                                    currencySymbol="#{utilsBean.currencySymbol}"
+                                                    groupingUsed="true"/>
+                                </h:outputText>
+                            </span>
+                        </f:facet>
+                    </p:column>
+                    <p:column headerText="Loyer"
+                                        sortBy="#{report.sumRent}"
+                                        filterBy="#{report.sumRent}"
+                                        rendered="#{montplatBean.sumRent ne 0}" >
+                        <h:outputText value="#{report.sumRent}">
+                            <f:convertNumber pattern ="#{utilsBean.currencyPattern}"
+                                            type ="currency"
+                                            locale="#{utilsBean.localeCountry}"
+                                            currencyCode = "#{utilsBean.currencyCode}"
+                                            currencySymbol="#{utilsBean.currencySymbol}"
+                                            groupingUsed="true"/>
+                        </h:outputText>
+                        <f:facet name="footer">
+                            <span class="font-bold">
+                                <h:outputText value="#{montplatBean.sumRent}" >
+                                    <f:convertNumber pattern ="#{utilsBean.currencyPattern}"
+                                                    type ="currency"
+                                                    locale="#{utilsBean.localeCountry}"
+                                                    currencyCode = "#{utilsBean.currencyCode}"
+                                                    currencySymbol="#{utilsBean.currencySymbol}"
+                                                    groupingUsed="true"/>
+                                </h:outputText>
+                                <br/>
+                                <h:outputText value="#{montplatBean.averageRent}">
+                                    <f:convertNumber pattern ="#{utilsBean.currencyPattern}"
+                                                    type ="currency"
+                                                    locale="#{utilsBean.localeCountry}"
+                                                    currencyCode = "#{utilsBean.currencyCode}"
+                                                    currencySymbol="#{utilsBean.currencySymbol}"
+                                                    groupingUsed="true"/>
+                                </h:outputText>
+                            </span>
+                        </f:facet>
+                    </p:column>
+                    <p:column headerText="Eau" 
+                                        sortBy="#{report.sumWater}" 
+                                        filterBy="#{report.sumWater}" 
+                                        rendered="#{montplatBean.sumWater ne 0}" > 
+                        <h:outputText value="#{report.sumWater}">
+                            <f:convertNumber pattern ="#{utilsBean.currencyPattern}"
+                                            type ="currency"
+                                            locale="#{utilsBean.localeCountry}"
+                                            currencyCode = "#{utilsBean.currencyCode}"
+                                            currencySymbol="#{utilsBean.currencySymbol}"
+                                            groupingUsed="true"/>
+                        </h:outputText>
+                        <f:facet name="footer">
+                            <span class="font-bold">
+                                <h:outputText value="#{montplatBean.sumWater}">
+                                    <f:convertNumber pattern ="#{utilsBean.currencyPattern}"
+                                                    type ="currency"
+                                                    locale="#{utilsBean.localeCountry}"
+                                                    currencyCode = "#{utilsBean.currencyCode}"
+                                                    currencySymbol="#{utilsBean.currencySymbol}"
+                                                    groupingUsed="true"/>
+                                </h:outputText>
+                                <br/>
+                                <h:outputText value="#{montplatBean.averageWater}">
+                                    <f:convertNumber pattern ="#{utilsBean.currencyPattern}"
+                                                    type ="currency"
+                                                    locale="#{utilsBean.localeCountry}"
+                                                    currencyCode = "#{utilsBean.currencyCode}"
+                                                    currencySymbol="#{utilsBean.currencySymbol}"
+                                                    groupingUsed="true"/>
+                                </h:outputText>
+                            </span>
+                        </f:facet>
+                    </p:column>
+                    <!--Column of totals-->
+                    <p:column headerText="TOTAL des revenus" >
+                        <h:outputText value="#{report.total}">
+                            <f:convertNumber pattern ="#{utilsBean.currencyPattern}"
+                                            type ="currency"
+                                            locale="#{utilsBean.localeCountry}"
+                                            currencyCode = "#{utilsBean.currencyCode}"
+                                            currencySymbol="#{utilsBean.currencySymbol}"
+                                            groupingUsed="true"/>
+                        </h:outputText>
+                    </p:column>
+                </p:dataTable>
+            </div>
+            <div class="ui-g-2"></div>
+        </div>
+    </ui:define>
+</ui:composition>
