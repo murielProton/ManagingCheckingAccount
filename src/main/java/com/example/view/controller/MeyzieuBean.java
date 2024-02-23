@@ -25,24 +25,21 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Getter
 @Setter
-public class CaluireEtCuireBean extends AbstractRepportByThemeSubBean  implements Serializable {
-    private List<ThemeSub> listOfThemeSubForCaluireEtCuire;
+public class MeyzieuBean extends AbstractRepportByThemeSubBean  implements Serializable {
+    private List<ThemeSub> listOfThemeSubForMeyzieu;
     private List<MyRecord> listMyRecord;
 
     @PostConstruct
     public void init() {
-        listOfThemeSubForCaluireEtCuire = getRepository().findDistinctThemeSubsFrom(
-                                                            Arrays.asList(ThemeSub.FIRE_WOOD,
-                                                                            ThemeSub.FURNITURE,
-                                                                            ThemeSub.INTERNET_SUBSCRIPTION,
-                                                                            ThemeSub.LOAN));
+        listOfThemeSubForMeyzieu = getRepository().findDistinctThemeSubsFrom(
+                                                            Arrays.asList(ThemeSub.RENT));
         super.init();
-        log.info("init 1 CaluireEtCuireBean -> {} ", getSelectedYear());
+        log.info("init 1 MeyzieuBean -> {} ", getSelectedYear());
     }
 
     public  void initListMyRecord(){
         listMyRecord = getRepository().findYearlyReportsByThemeGeneral(getSelectedYear(),
-                                                                        ThemeGeneral.CALUIRE_ET_CUIRE,
+                                                                        ThemeGeneral.MEZIEU,
                                                                         Arrays.asList(TypeOfTransaction.BALANCE));
     }
 }
