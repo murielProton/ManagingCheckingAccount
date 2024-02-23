@@ -31,7 +31,7 @@ public class MonthlyReportByThemeGeneralView {
 
         }
         Float sum = mapByThemeGeneral.getOrDefault(curentThemeG, 0f);
-        sum = Float.sum(sum, curentRecord.getAmount());
+        sum = Float.sum(sum, curentRecord.getDisplayAmount());
         mapByThemeGeneral.put(curentThemeG, sum);
     }
     public Float getSumDefault(){
