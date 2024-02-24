@@ -10,6 +10,24 @@
                 xmlns:sec="https://joinfaces.org/security"
                 template="/template.xhtml">
     <ui:define name="content" >
+        
+        <div class="ui-g">
+            <div class="ui-g-3"></div>
+            <div class="ui-g-6">
+                <h5>Auteur de la transaction</h5>
+                    <p:selectCheckboxMenu id="multiple"
+                                        filter="true" filterMatchMode="startsWith"
+                                        label="author" multiple="true" emptyLabel="Please select..." updateLabel="true"
+                                        style="min-width: 15rem" panelStyle="width: 30rem" scrollHeight="250"
+                                        value="#{incomeStatementBean.listOfSelectedAuthors}">
+                        <p:ajax update="contentForm"
+                                process="@form"
+                                event="change"
+                                listener="#{incomeStatementBean.onRadioButtonChange}" />
+                        <f:selectItems value="#{incomeStatementBean.authors}"/>
+                    </p:selectCheckboxMenu>
+            </div>
+        </div>
         <div class="ui-g">
             <div class="ui-g-3"></div>
             <div class="ui-g-6">

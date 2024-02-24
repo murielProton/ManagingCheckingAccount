@@ -8,6 +8,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
 import com.example.model.entities.MyRecord;
+import com.example.model.enums.Author;
 import com.example.model.enums.ThemeGeneral;
 import com.example.model.enums.ThemeSub;
 import com.example.model.enums.TypeOfTransaction;
@@ -22,6 +23,15 @@ public interface MyRecordRepository extends CrudRepository<MyRecord, Long>{
                 "YEAR(mr.dateOfTransaction) = YEAR(:givenDate) AND " +
                 " (mr.typeTransaction NOT IN :excludedTypes or :excludedTypes is null)")
         List<MyRecord> findDebitByMonth(@Param("givenDate") LocalDate givenDate, @Param("excludedTypes") List<TypeOfTransaction> excludedTypes);
+         
+        @Query("SELECT mr FROM MyRecord mr WHERE " +
+                "MONTH(mr.dateOfTransaction) = MONTH(:givenDate) AND " +
+                "YEAR(mr.dateOfTransaction) = YEAR(:givenDate) AND " +
+                "(mr.author IN (:givenAuthorList) OR :givenAuthorList IS NULL) AND " +
+                "(mr.typeTransaction NOT IN :excludedTypes OR :excludedTypes IS NULL)")
+        List<MyRecord> findMyRecordsByMonthAndAuthor(@Param("givenDate") LocalDate givenDate,
+                                                     @Param("givenAuthorList") List<Author> givenAuthorList,
+                                                     @Param("excludedTypes") List<TypeOfTransaction> excludedTypes);
         @Query("SELECT mr FROM MyRecord mr WHERE " +
         "YEAR(mr.dateOfTransaction) = YEAR(:givenDate) AND " +
         " (mr.typeTransaction NOT IN :excludedTypes or :excludedTypes is null)")
