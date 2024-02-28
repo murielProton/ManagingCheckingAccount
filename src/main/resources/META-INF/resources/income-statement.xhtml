@@ -10,27 +10,21 @@
                 xmlns:sec="https://joinfaces.org/security"
                 template="/template.xhtml">
     <ui:define name="content" >
-        
         <div class="ui-g">
             <div class="ui-g-3"></div>
-            <div class="ui-g-6">
-                <h5>Auteur de la transaction</h5>
-                    <p:selectCheckboxMenu id="multiple"
-                                        filter="true" filterMatchMode="startsWith"
-                                        label="author" multiple="true" emptyLabel="Please select..." updateLabel="true"
-                                        style="min-width: 15rem" panelStyle="width: 30rem" scrollHeight="250"
-                                        value="#{incomeStatementBean.listOfSelectedAuthors}">
-                        <p:ajax update="contentForm"
-                                process="@form"
-                                event="change"
-                                listener="#{incomeStatementBean.onRadioButtonChange}" />
-                        <f:selectItems value="#{incomeStatementBean.authors}"/>
-                    </p:selectCheckboxMenu>
+            <div class="ui-g-6" id="explanation">
+                <h1>Bilan mensuel</h1>
+                <p>Le bilan mensuel reprend toutes les transactions faites pour le mois selectioné. </p>
+                <p>Par l'obtion auteur on peut selectioner quel compte du foyer on veut analyser.</p>
             </div>
-        </div>
-        <div class="ui-g">
+            
             <div class="ui-g-3"></div>
-            <div class="ui-g-6">
+        </div>
+        <div class="ui-g" id="income-statement-form">
+
+            <div class="ui-g-3"></div>
+            <div class="ui-g-6" id="month-form">
+                <h5>Mois concerné :</h5>
                 <p:commandButton actionListener="#{incomeStatementBean.decrementMonth}" id="navLeft" update="contentForm" value="-" />
                 <p:calendar id="datePicker" class="date" for="date"
                                 required="true"
@@ -40,6 +34,15 @@
                     <p:ajax update="contentForm" event="dateSelect" process="@form" listener="#{incomeStatementBean.init()}"/>
                 </p:calendar>
                 <p:commandButton actionListener="#{incomeStatementBean.incrementMonth}" id="navRight" update="contentForm" value="+" />
+            </div>
+            
+            <div class="ui-g-3"></div>
+            <div class="ui-g-6" id="author-form">
+                <h5>Auteur de la transaction :</h5>
+                <p:selectManyCheckbox id="authorCheckbox" value="#{incomeStatementBean.listOfSelectedAuthors}">
+                    <f:selectItems value="#{incomeStatementBean.authors}" />
+                    <p:ajax update="contentForm" event="change" process="@form" listener="#{incomeStatementBean.init()}" />
+                </p:selectManyCheckbox>
             </div>
             <div class="ui-g-3"></div>
         </div>

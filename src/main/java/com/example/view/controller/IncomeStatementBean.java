@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.primefaces.event.UnselectEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -16,8 +15,6 @@ import com.example.model.enums.TypeOfTransaction;
 import com.example.repository.MyRecordRepository;
 
 import jakarta.annotation.PostConstruct;
-import jakarta.faces.application.FacesMessage;
-import jakarta.faces.context.FacesContext;
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Named;
 import lombok.Getter;
@@ -42,19 +39,22 @@ public class IncomeStatementBean extends UtilsBean  implements Serializable {
 
     @PostConstruct
     public void init(){
-        setCitiesNewArray();
+        setAuthorsNewArray();
         initList(selectedMonth,listOfSelectedAuthors);
         log.info("init 1 IncomeStatementBean -> {} ", selectedMonth);
+        log.info("init 2 IncomeStatementBean listOfSelectedAuthors -> {} ", listOfSelectedAuthors);
 
-    }
-    public void save(){
-        initList(selectedMonth,listOfSelectedAuthors);
     }
 
     public void initList(LocalDate firstDayOfTargetedMonth, List<Author> listOfSelectedAuthors){
-        listForIncomeStatement = repository.findMyRecordsByMonthAndAuthor(firstDayOfTargetedMonth,
+        if (listOfSelectedAuthors != null  && !listOfSelectedAuthors.isEmpty()){
+            listForIncomeStatement = repository.findMyRecordsByMonthAndAuthor(firstDayOfTargetedMonth,
                                                                             listOfSelectedAuthors,
                                                                             Arrays.asList(TypeOfTransaction.CASH, TypeOfTransaction.BALANCE));
+        } else {
+            listForIncomeStatement = repository.findDebitByMonth(firstDayOfTargetedMonth, Arrays.asList(TypeOfTransaction.CASH, 
+                                                                                                    TypeOfTransaction.BALANCE));
+        }
     }
 
     public Float getTotalCredit(){
@@ -91,40 +91,12 @@ public class IncomeStatementBean extends UtilsBean  implements Serializable {
         selectedMonth = selectedMonth.plusMonths(1);
         initList(selectedMonth,listOfSelectedAuthors);
     }
-    /*public void handleAuthorListChange() {
-        listOfSelectedAuthors.clear(); // Clear the list before adding selected authors
-    
-        if (listOfSelectedAuthors.contains("Muriel")) {
-            listOfSelectedAuthors.add(Author.MURIEL);
-        }if(listOfSelectedAuthors.contains("Patrick")) {
-            listOfSelectedAuthors.add(Author.PATRICK);
-        }else if(listOfSelectedAuthors.contains("Both")) {
-            listOfSelectedAuthors.add(Author.BOTH);
-        }
-    } */
-    public List<Author> getSelectedCities2() {
-        return listOfSelectedAuthors;
-    }
 
-    public void setSelectedCities2(List<Author> listOfSelectedAuthors) {
-        this.listOfSelectedAuthors = listOfSelectedAuthors;
-    }
-    public void onItemUnselect(UnselectEvent event) {
-        FacesMessage msg = new FacesMessage();
-        msg.setSummary("Item unselected: " + event.getObject().toString());
-        msg.setSeverity(FacesMessage.SEVERITY_INFO);
-
-        FacesContext.getCurrentInstance().addMessage(null, msg);
-    }
-    public void setCitiesNewArray(){
+    public void setAuthorsNewArray(){
         authors = new ArrayList<>();
         authors.add(Author.BOTH);
         authors.add(Author.MURIEL);
         authors.add(Author.PATRICK);
 
-    }
-    public void onRadioButtonChange(UnselectEvent unselectEvent) {
-        onItemUnselect(unselectEvent);
-        init(); // Assuming this method exists in your bean
     }
 }
