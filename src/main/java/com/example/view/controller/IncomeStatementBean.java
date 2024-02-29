@@ -46,13 +46,13 @@ public class IncomeStatementBean extends UtilsBean  implements Serializable {
 
     }
 
-    public void initList(LocalDate firstDayOfTargetedMonth, List<Author> listOfSelectedAuthors){
+    public void initList(LocalDate selectedMonth, List<Author> listOfSelectedAuthors){
         if (listOfSelectedAuthors != null  && !listOfSelectedAuthors.isEmpty()){
-            listForIncomeStatement = repository.findMyRecordsByMonthAndAuthor(firstDayOfTargetedMonth,
+            listForIncomeStatement = repository.findMyRecordsByMonthAndAuthor(selectedMonth,
                                                                             listOfSelectedAuthors,
                                                                             Arrays.asList(TypeOfTransaction.CASH, TypeOfTransaction.BALANCE));
         } else {
-            listForIncomeStatement = repository.findDebitByMonth(firstDayOfTargetedMonth, Arrays.asList(TypeOfTransaction.CASH, 
+            listForIncomeStatement = repository.findDebitByMonth(selectedMonth, Arrays.asList(TypeOfTransaction.CASH, 
                                                                                                     TypeOfTransaction.BALANCE));
         }
     }
@@ -84,11 +84,13 @@ public class IncomeStatementBean extends UtilsBean  implements Serializable {
 
     public void decrementMonth() {
         selectedMonth = selectedMonth.minusMonths(1);
+        log.info("decrementMonth -> {} ", selectedMonth);
         initList(selectedMonth,listOfSelectedAuthors);
     }
     
     public void incrementMonth() {
         selectedMonth = selectedMonth.plusMonths(1);
+        log.info("incrementMonth -> {} ", selectedMonth);
         initList(selectedMonth,listOfSelectedAuthors);
     }
 

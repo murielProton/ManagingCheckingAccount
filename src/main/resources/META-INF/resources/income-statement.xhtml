@@ -25,17 +25,14 @@
             <div class="ui-g-3"></div>
             <div class="ui-g-6" id="month-form">
                 <h5>Mois concerné :</h5>
-                <p:commandButton actionListener="#{incomeStatementBean.decrementMonth}" id="navLeft" update="contentForm" value="-" />
-                <p:calendar id="datePicker" class="date" for="date"
-                                required="true"
-                                value="#{incomeStatementBean.selectedMonth}"
-                                inline="false" yearRange="c-10:c+10"
-                                pattern="MMMM yyyy">
-                    <p:ajax update="contentForm" event="dateSelect" process="@form" listener="#{incomeStatementBean.init()}"/>
-                </p:calendar>
-                <p:commandButton actionListener="#{incomeStatementBean.incrementMonth}" id="navRight" update="contentForm" value="+" />
+                <p:commandButton action="#{incomeStatementBean.decrementMonth()}" id="decrement-month" update=":contentForm" value="-" />
+                <h:outputText value="#{incomeStatementBean.selectedMonth}">
+                    <f:convertDateTime type="localDate" pattern="MMMM yyyy" />
+                </h:outputText>
+                <p:commandButton action="#{incomeStatementBean.incrementMonth()}" id="increment-month" update=":contentForm" value="+" />
             </div>
-            
+            <div class="ui-g-3"></div>
+
             <div class="ui-g-3"></div>
             <div class="ui-g-6" id="author-form">
                 <h5>Auteur de la transaction :</h5>
