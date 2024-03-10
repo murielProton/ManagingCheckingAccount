@@ -106,14 +106,16 @@
                             <h:outputText value="#{incomeStatementBean.getTotalCredit()}" />
                         </f:facet>
                     </p:column>
+                    <f:facet name="footer">
+                            <p:outputLabel class="Balance de ce mois" value="Balance de ce mois : #{incomeStatementBean.getNewBalance()}" />
+                    </f:facet>
                 </p:dataTable>
                 
-                <p:outputLabel class="Balance de ce mois" value="Balance de ce mois : #{incomeStatementBean.getNewBalance()}" />
                 <p:commandButton value="xsl" styleClass="mr-2 mb-2">
                     <p:dataExporter type="xlsxstream" target="records" fileName="toto" encoding="UTF-8" />
                 </p:commandButton>
                 <p:commandButton value="pdf" styleClass="mr-2 mb-2">
-                    <p:dataExporter type="pdf" target="records" fileName="toto" encoding="UTF-8" />
+                    <p:dataExporter type="pdf" target="records" fileName="toto"  encoding="ISO-8859-1"/>
                 </p:commandButton>
             </div>
         </div>
