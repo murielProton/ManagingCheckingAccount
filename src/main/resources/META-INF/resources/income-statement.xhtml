@@ -55,7 +55,15 @@
                         allowUnsorting="true" 
                         sortMode="multiple">
                     <f:facet name="header">
-                        <p:outputLabel class="Balance du mois précédent" value="Balance du mois précédent : #{incomeStatementBean.getOldBalance()}" />
+                        <h:outputText value="Balance du mois précédent : "/>
+                        <h:outputText value="#{incomeStatementBean.getOldBalance()}" >
+                            <f:convertNumber pattern ="#{accountListBean.currencyPattern}"
+                                            type ="currency"
+                                            locale="#{accountListBean.localeCountry}"
+                                            currencyCode = "#{accountListBean.currencyCode}"
+                                            currencySymbol="#{accountListBean.currencySymbol}"
+                                            groupingUsed="true"/>
+                        </h:outputText>
                     </f:facet>
                     <p:column headerText="Date"
                             sortBy="#{record.dateOfTransaction}">
@@ -88,7 +96,14 @@
                                             groupingUsed="true"/>
                         </h:outputText>
                         <f:facet name="footer">
-                            <h:outputText value="#{incomeStatementBean.getTotalDebit()}" />
+                            <h:outputText value="#{incomeStatementBean.getTotalDebit()}">
+                                <f:convertNumber pattern ="#{accountListBean.currencyPattern}"
+                                                type ="currency"
+                                                locale="#{accountListBean.localeCountry}"
+                                                currencyCode = "#{accountListBean.currencyCode}"
+                                                currencySymbol="#{accountListBean.currencySymbol}"
+                                                groupingUsed="true"/>
+                            </h:outputText>
                         </f:facet>
                     </p:column>
                     <p:column headerText="crédit"
@@ -103,19 +118,38 @@
                                             groupingUsed="true"/>
                         </h:outputText>
                         <f:facet name="footer">
-                            <h:outputText value="#{incomeStatementBean.getTotalCredit()}" />
+                            <h:outputText value="#{incomeStatementBean.getTotalCredit()}">
+                                <f:convertNumber pattern ="#{accountListBean.currencyPattern}"
+                                                type ="currency"
+                                                locale="#{accountListBean.localeCountry}"
+                                                currencyCode = "#{accountListBean.currencyCode}"
+                                                currencySymbol="#{accountListBean.currencySymbol}"
+                                                groupingUsed="true"/>
+                            </h:outputText>
                         </f:facet>
                     </p:column>
                     <f:facet name="footer">
-                            <p:outputLabel class="Balance de ce mois" value="Balance de ce mois : #{incomeStatementBean.getNewBalance()}" />
+                        <h:outputText value="Balance de ce mois : "/>
+                        <h:outputText value="#{incomeStatementBean.getNewBalance()}" >
+                            <f:convertNumber pattern ="#{accountListBean.currencyPattern}"
+                                            type ="currency"
+                                            locale="#{accountListBean.localeCountry}"
+                                            currencyCode = "#{accountListBean.currencyCode}"
+                                            currencySymbol="#{accountListBean.currencySymbol}"
+                                            groupingUsed="true"/>
+                        </h:outputText>
                     </f:facet>
                 </p:dataTable>
                 
                 <p:commandButton value="xsl" styleClass="mr-2 mb-2">
-                    <p:dataExporter type="xlsxstream" target="records" fileName="toto" encoding="UTF-8" />
+                    <p:dataExporter type="xlsxstream" target="records" fileName="revenus-#{incomeStatementBean.selectedMonth}" encoding="UTF-8" />
                 </p:commandButton>
                 <p:commandButton value="pdf" styleClass="mr-2 mb-2">
-                    <p:dataExporter type="pdf" target="records" fileName="toto"  encoding="ISO-8859-1"/>
+                    <p:dataExporter type="pdf" 
+                                    target="records" 
+                                    fileName="revenus-#{incomeStatementBean.selectedMonth}"  
+                                    encoding="UTF-8"
+                                    fontName="Arial"/>
                 </p:commandButton>
             </div>
         </div>
