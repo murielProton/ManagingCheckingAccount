@@ -64,6 +64,11 @@
                                             currencySymbol="#{accountListBean.currencySymbol}"
                                             groupingUsed="true"/>
                         </h:outputText>
+                        <div></div>
+                        <h:outputText value="Compte(s) concerné(s) : "/>
+                        <p:dataList value="#{incomeStatementBean.listOfSelectedAuthors}" var="author">
+                            #{author}
+                        </p:dataList>
                     </f:facet>
                     <p:column headerText="Date"
                             sortBy="#{record.dateOfTransaction}">
@@ -141,15 +146,19 @@
                     </f:facet>
                 </p:dataTable>
                 
-                <p:commandButton value="xsl" styleClass="mr-2 mb-2">
+                <p:commandButton value="XLS" styleClass="mr-2 mb-2">
                     <p:dataExporter type="xlsxstream" target="records" fileName="revenus-#{incomeStatementBean.selectedMonth}" encoding="UTF-8" />
                 </p:commandButton>
-                <p:commandButton value="pdf" styleClass="mr-2 mb-2">
+                <p:commandButton value="CSV" styleClass="mr-2 mb-2">
+                    <p:dataExporter type="csv" target="records" fileName="revenus-#{incomeStatementBean.selectedMonth}" encoding="UTF-8" />
+                </p:commandButton>
+                <p:commandButton value="PDF" styleClass="mr-2 mb-2">
                     <p:dataExporter type="pdf" 
                                     target="records" 
                                     fileName="revenus-#{incomeStatementBean.selectedMonth}"  
                                     encoding="UTF-8"
-                                    fontName="Arial"/>
+                                    fontName="Arial"
+                                    landscape="true"/>
                 </p:commandButton>
             </div>
         </div>

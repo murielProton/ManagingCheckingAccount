@@ -389,6 +389,22 @@
                         </h:outputText>
                     </p:column>
                 </p:dataTable>
+
+                                
+                <p:commandButton value="XLS" styleClass="mr-2 mb-2">
+                    <p:dataExporter type="xlsxstream" target="reports" fileName="revenus-Caluire-Cuire-#{incomeStatementBean.selectedMonth}" encoding="UTF-8" />
+                </p:commandButton>
+                <p:commandButton value="CSV" styleClass="mr-2 mb-2">
+                    <p:dataExporter type="csv" target="reports" fileName="revenus-Caluire-Cuire-#{incomeStatementBean.selectedMonth}" encoding="UTF-8" />
+                </p:commandButton>
+                <p:commandButton value="PDF" styleClass="mr-2 mb-2">
+                    <p:dataExporter type="pdf" 
+                                    target="reports" 
+                                    fileName="revenus-Caluire-Cuire-#{incomeStatementBean.selectedMonth}"  
+                                    encoding="UTF-8"
+                                    fontName="Arial"
+                                    landscape="true"/>
+                </p:commandButton>
             </div>
             <div class="ui-g-2"></div>
         </div>

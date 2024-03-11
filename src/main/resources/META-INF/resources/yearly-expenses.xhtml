@@ -36,11 +36,11 @@
                             filterBy="#{report.month}">
                         <h:outputText value="#{report.month}" />
                         <f:facet name="footer">
-                            <span class="font-bold">
+                            <p:outputPanel class="font-bold">
                                 <h:outputText value="Total"/>
                                 <br/>
                                 <h:outputText value="Moyenne"/>
-                            </span>
+                            </p:outputPanel>
                         </f:facet>
                     </p:column>
 
@@ -55,7 +55,7 @@
                                             groupingUsed="true"/>
                             </h:outputText>
                         <f:facet name="footer">
-                            <span class="font-bold">
+                            <p:outputPanel class="font-bold">
                                 <h:outputText value="#{yearlyExpensesBean.sumDefault}">
                                     <f:convertNumber pattern ="#{yearlyExpensesBean.currencyPattern}"
                                             type ="currency"
@@ -73,7 +73,7 @@
                                                     currencySymbol="#{yearlyExpensesBean.currencySymbol}"
                                                     groupingUsed="true"/>
                                 </h:outputText>
-                            </span>
+                            </p:outputPanel>
                         </f:facet>
                     </p:column>
                     <p:column headerText="Caluire et cuire" sortBy="#{report.sumCaluireEtCuire}" filterBy="#{report.sumCaluireEtCuire}"
@@ -87,7 +87,7 @@
                                             groupingUsed="true"/>
                         </h:outputText>
                         <f:facet name="footer">
-                            <span class="font-bold">
+                            <p:outputPanel class="font-bold">
                                 <h:outputText value="#{yearlyExpensesBean.sumCaluireEtCuire}">
                                     <f:convertNumber pattern ="#{yearlyExpensesBean.currencyPattern}"
                                                     type ="currency"
@@ -105,7 +105,7 @@
                                                     currencySymbol="#{yearlyExpensesBean.currencySymbol}"
                                                     groupingUsed="true"/>
                                 </h:outputText>
-                            </span>
+                            </p:outputPanel>
                         </f:facet>
                     </p:column>
                     <p:column headerText="Meyzieu" sortBy="#{report.sumMezieu}" filterBy="#{report.sumMezieu}" 
@@ -119,7 +119,7 @@
                                                 groupingUsed="true"/>
                             </h:outputText>
                         <f:facet name="footer">
-                            <span class="font-bold">
+                            <p:outputPanel class="font-bold">
                                 <h:outputText value="#{yearlyExpensesBean.sumMezieu}">
                                     <f:convertNumber pattern ="#{yearlyExpensesBean.currencyPattern}"
                                                     type ="currency"
@@ -137,7 +137,7 @@
                                                     currencySymbol="#{yearlyExpensesBean.currencySymbol}"
                                                     groupingUsed="true"/>
                                 </h:outputText>
-                            </span>
+                            </p:outputPanel>
                         </f:facet>
                     </p:column>
                     <p:column headerText="Montplat" sortBy="#{report.sumMontplat}"
@@ -152,7 +152,7 @@
                                             groupingUsed="true"/>
                         </h:outputText>
                         <f:facet name="footer">
-                            <span class="font-bold">
+                            <p:outputPanel class="font-bold">
                                 <h:outputText value="#{yearlyExpensesBean.sumMontplat}">
                                     <f:convertNumber pattern ="#{yearlyExpensesBean.currencyPattern}"
                                                     type ="currency"
@@ -170,7 +170,7 @@
                                                     currencySymbol="#{yearlyExpensesBean.currencySymbol}"
                                                     groupingUsed="true"/>
                                 </h:outputText>
-                            </span>
+                            </p:outputPanel>
                         </f:facet>
                     </p:column>
                     <p:column headerText="Santé" 
@@ -186,7 +186,7 @@
                                             groupingUsed="true"/>
                         </h:outputText>
                         <f:facet name="footer">
-                            <span class="font-bold">
+                            <p:outputPanel class="font-bold">
                                 <h:outputText value="#{yearlyExpensesBean.sumHealth}">
                                     <f:convertNumber pattern ="#{yearlyExpensesBean.currencyPattern}"
                                                     type ="currency"
@@ -204,7 +204,7 @@
                                                     currencySymbol="#{yearlyExpensesBean.currencySymbol}"
                                                     groupingUsed="true"/>
                                 </h:outputText>
-                            </span>
+                            </p:outputPanel>
                         </f:facet>
                     </p:column>
                     <p:column headerText="Alimentaire" 
@@ -220,7 +220,7 @@
                                             groupingUsed="true"/>
                         </h:outputText>
                         <f:facet name="footer">
-                            <span class="font-bold">
+                            <p:outputPanel class="font-bold">
                                 <h:outputText value="#{yearlyExpensesBean.sumFood}">
                                     <f:convertNumber pattern ="#{yearlyExpensesBean.currencyPattern}"
                                                     type ="currency"
@@ -238,7 +238,7 @@
                                                     currencySymbol="#{yearlyExpensesBean.currencySymbol}"
                                                     groupingUsed="true"/>
                                 </h:outputText>
-                            </span>
+                            </p:outputPanel>
                         </f:facet>
                     </p:column> 
                     <p:column headerText="Loisirs" 
@@ -254,7 +254,7 @@
                                             groupingUsed="true"/>
                         </h:outputText>
                         <f:facet name="footer">
-                            <span class="font-bold">
+                            <p:outputPanel class="font-bold">
                                 <h:outputText value="#{yearlyExpensesBean.sumLeisure}">
                                     <f:convertNumber pattern ="#{yearlyExpensesBean.currencyPattern}"
                                                     type ="currency"
@@ -272,7 +272,7 @@
                                                     currencySymbol="#{yearlyExpensesBean.currencySymbol}"
                                                     groupingUsed="true"/>
                                 </h:outputText>
-                            </span>
+                            </p:outputPanel>
                         </f:facet>
                     </p:column>
                     <p:column headerText="Papetterie"
@@ -288,7 +288,7 @@
                                             groupingUsed="true"/>
                         </h:outputText>
                         <f:facet name="footer">
-                            <span class="font-bold">
+                            <p:outputPanel class="font-bold">
                                 <h:outputText value="#{yearlyExpensesBean.sumStationary}" >
                                     <f:convertNumber pattern ="#{yearlyExpensesBean.currencyPattern}"
                                                     type ="currency"
@@ -306,7 +306,7 @@
                                                     currencySymbol="#{yearlyExpensesBean.currencySymbol}"
                                                     groupingUsed="true"/>
                                 </h:outputText>
-                            </span>
+                            </p:outputPanel>
                         </f:facet>
                     </p:column>
                     <p:column headerText="Voyages"
@@ -322,7 +322,7 @@
                                             groupingUsed="true"/>
                         </h:outputText>
                         <f:facet name="footer">
-                            <span class="font-bold">
+                            <p:outputPanel class="font-bold">
                                 <h:outputText value="#{yearlyExpensesBean.sumTravel}" >
                                     <f:convertNumber pattern ="#{yearlyExpensesBean.currencyPattern}"
                                                     type ="currency"
@@ -340,7 +340,7 @@
                                                     currencySymbol="#{yearlyExpensesBean.currencySymbol}"
                                                     groupingUsed="true"/>
                                 </h:outputText>
-                            </span>
+                            </p:outputPanel>
                         </f:facet>
                     </p:column>
                     <p:column headerText="TCL" 
@@ -356,7 +356,7 @@
                                             groupingUsed="true"/>
                         </h:outputText>
                         <f:facet name="footer">
-                            <span class="font-bold">
+                            <p:outputPanel class="font-bold">
                                 <h:outputText value="#{yearlyExpensesBean.sumTCL}">
                                     <f:convertNumber pattern ="#{yearlyExpensesBean.currencyPattern}"
                                                     type ="currency"
@@ -374,7 +374,7 @@
                                                     currencySymbol="#{yearlyExpensesBean.currencySymbol}"
                                                     groupingUsed="true"/>
                                 </h:outputText>
-                            </span>
+                            </p:outputPanel>
                         </f:facet>
                     </p:column>
                     <p:column headerText="Vêtement" 
@@ -390,7 +390,7 @@
                                             groupingUsed="true"/>
                         </h:outputText>
                         <f:facet name="footer">
-                            <span class="font-bold">
+                            <p:outputPanel class="font-bold">
                                 <h:outputText value="#{yearlyExpensesBean.sumClothing}">
                                     <f:convertNumber pattern ="#{yearlyExpensesBean.currencyPattern}"
                                                     type ="currency"
@@ -408,7 +408,7 @@
                                                     currencySymbol="#{yearlyExpensesBean.currencySymbol}"
                                                     groupingUsed="true"/>
                                 </h:outputText>
-                            </span>
+                            </p:outputPanel>
                         </f:facet>
                     </p:column>
 
@@ -425,7 +425,7 @@
                                             groupingUsed="true"/>
                         </h:outputText>
                         <f:facet name="footer">
-                            <span class="font-bold">
+                            <p:outputPanel class="font-bold">
                                 <h:outputText value="#{yearlyExpensesBean.sumOther}">
                                 <f:convertNumber pattern ="#{yearlyExpensesBean.currencyPattern}"
                                                 type ="currency"
@@ -443,7 +443,7 @@
                                                     currencySymbol="#{yearlyExpensesBean.currencySymbol}"
                                                     groupingUsed="true"/>
                                 </h:outputText>
-                            </span>
+                            </p:outputPanel>
                         </f:facet>
                     </p:column>
                     <p:column headerText="Cadeaux" 
@@ -459,7 +459,7 @@
                                             groupingUsed="true"/>
                         </h:outputText>
                         <f:facet name="footer">
-                            <span class="font-bold">
+                            <p:outputPanel class="font-bold">
                                 <h:outputText value="#{yearlyExpensesBean.sumPresent}">
                                     <f:convertNumber pattern ="#{yearlyExpensesBean.currencyPattern}"
                                                     type ="currency"
@@ -477,7 +477,7 @@
                                                     currencySymbol="#{yearlyExpensesBean.currencySymbol}"
                                                     groupingUsed="true"/>
                                 </h:outputText>
-                            </span>
+                            </p:outputPanel>
                         </f:facet>
                     </p:column>
                     <p:column headerText="Impôt sur le revenu" sortBy="#{report.sumIncomeTaxe}"
@@ -492,7 +492,7 @@
                                             groupingUsed="true"/>
                         </h:outputText>
                         <f:facet name="footer">
-                            <span class="font-bold">
+                            <p:outputPanel class="font-bold">
                                 <h:outputText value="#{yearlyExpensesBean.sumIncomeTaxe}">
                                     <f:convertNumber pattern ="#{yearlyExpensesBean.currencyPattern}"
                                                     type ="currency"
@@ -510,7 +510,7 @@
                                                     currencySymbol="#{yearlyExpensesBean.currencySymbol}"
                                                     groupingUsed="true"/>
                                 </h:outputText>
-                            </span>
+                            </p:outputPanel>
                         </f:facet>
                     </p:column>
                     <p:column headerText="Télécom" 
@@ -526,7 +526,7 @@
                                             groupingUsed="true"/>
                         </h:outputText>
                         <f:facet name="footer">
-                            <span class="font-bold">
+                            <p:outputPanel class="font-bold">
                                 <h:outputText value="#{yearlyExpensesBean.sumTelephoneSubscription}">
                                     <f:convertNumber pattern ="#{yearlyExpensesBean.currencyPattern}"
                                                     type ="currency"
@@ -544,7 +544,7 @@
                                                     currencySymbol="#{yearlyExpensesBean.currencySymbol}"
                                                     groupingUsed="true"/>
                                 </h:outputText>
-                            </span>
+                            </p:outputPanel>
                         </f:facet>
                     </p:column>
                     <p:column headerText="TOTAL" >
@@ -558,7 +558,23 @@
                         </h:outputText>
                     </p:column>
                 </p:dataTable>
+
+                <p:commandButton value="XLS" styleClass="mr-2 mb-2">
+                    <p:dataExporter type="xlsxstream" target="reports" fileName="depenses-annuelles-#{incomeStatementBean.selectedMonth}" encoding="UTF-8" />
+                </p:commandButton>
+                <p:commandButton value="CSV" styleClass="mr-2 mb-2">
+                    <p:dataExporter type="csv" target="reports" fileName="depenses-annuelles-#{incomeStatementBean.selectedMonth}" encoding="UTF-8" />
+                </p:commandButton>
+                <p:commandButton value="PDF" styleClass="mr-2 mb-2">
+                    <p:dataExporter type="pdf" 
+                                    target="reports" 
+                                    fileName="depenses-annuelles-#{incomeStatementBean.selectedMonth}"  
+                                    encoding="UTF-8"
+                                    fontName="Arial"
+                                    landscape="true"/>
+                </p:commandButton>
             </div>
+
             <div class="ui-g-2"></div>
         </div>
     </ui:define>
