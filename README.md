@@ -109,6 +109,8 @@ src
                         |--> entities //This holds Data model classes
                         |--> enums // This holds Data enum Type classes
                     |--> repository //This holds the classes that get data from HTML
+                    |--> validation // New package for validation rules
+                        |--> YourEntityValidator.java // Validation rules for YourEntity
                     |--> view
                         |--> controller
                             |-- containing all the Bean.java files
@@ -122,7 +124,15 @@ src
                 |--> resources
                     |--> css
                     |-- and all the .xhtml files
-    |--> test/ java/ com/ example
+    |--> test
+        |--> java
+            |--> com
+                |--> example
+                    |--> controller //put your controller tests here
+                    |--> repository //put your repository tests here
+                    |--> service //if you have service layer, put service tests here
+                    |--> ...
+        |--> resources //you might have some test resources like test databases, etc.
 
 
 cf : https://github.com/joinfaces
