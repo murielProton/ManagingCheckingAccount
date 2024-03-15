@@ -138,7 +138,7 @@ public class MyRecordRepositoryTest {
         mockRecord8.setTypeTransaction(TypeOfTransaction.CHECK);
 
         mockRecord9.setAmount(23f);
-        mockRecord9.setBankAccount(BankAccount.MURIEL_SAVING_ACCOUNT);
+        mockRecord9.setBankAccount(BankAccount.MURIEL_CURRENT_ACCOUNT);
         mockRecord9.setBeneficiary("Muriel");
         mockRecord9.setCheckNumber(null);
         mockRecord9.setDateOfTransaction(dateOfTransaction);
