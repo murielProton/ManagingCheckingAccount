@@ -40,11 +40,11 @@
                     <p:inputText class="checkNumber" for="checkNumber" value="#{accountFormBean.currentRecord.checkNumber}"/>
                 </p:outputPanel>
 
-                <p:outputPanel rendered="#{accountFormBean.showFieldAuthor()}">
-                    <p:outputLabel class="author" value="Auteur de la transaction ou créditeur :" />
-                    <p:selectOneMenu id="author" value="#{accountFormBean.currentRecord.author}">
-                        <f:selectItems value="#{accountFormBean.getAllAuthor()}" var="author"
-                        itemLabel="#{author.name}" itemValue="#{author}"/>
+                <p:outputPanel rendered="#{accountFormBean.showFieldBankAccount()}">
+                    <p:outputLabel class="bank-account" value="Compte bancaire utilisé :" />
+                    <p:selectOneMenu id="bank-account" value="#{accountFormBean.currentRecord.bankAccount}">
+                        <f:selectItems value="#{accountFormBean.getAllBankAccounts()}" var="bankAccount"
+                        itemLabel="#{bankAccount.name}" itemValue="#{bankAccount}"/>
                     </p:selectOneMenu>
                 </p:outputPanel>
                 

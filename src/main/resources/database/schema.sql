@@ -48,8 +48,9 @@ CREATE TABLE account_records
                     "Patrick",
                     "Muriel"),
     tenant CHAR(50),
-    author ENUM("Muriel", 
-                "Patrick", 
-                "Both"),
+    bank_account ENUM("Muriel's current account",
+                      "Muriel's saving account",
+                      "Patrick's current account", 
+                      "Joint account"),
     PRIMARY KEY (ID_SQL)
 );

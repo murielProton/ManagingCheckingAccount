@@ -22,6 +22,10 @@
                     <li>- Validation rules
                         <ul>Les lieux comme Meyzieu Caluire et Cuir et Montplat ne peuvent pas présenter de ThemeSub null</ul>
                         <ul>Le champ BANK_ACCOUNT / compte en banque doit être obligatoire.</ul>
+                        <ul>Seul le type de transaction liquide ne peut pas avoir de BANK_ACCOUNT</ul>
+                        <ul>Virement doit pouvoir se faire pour un Theme Général Cadeau</ul>
+                        <ul>TypeOfTransaction Prélèvement automatique doit avoir Thème général et thème sub</ul>
+                        <ul>forcer le bénéficiaire et le nom doivent être identique si loyer</ul>
                     </li>
                     <li>- Toutes les pages doivent comporter un titre h1 et une explication d'au moins une phrase.</li>
                     <li>- factorise in UtilsBean public void decrementYear() and incrementYear()</li>
@@ -31,6 +35,7 @@
                     <li>- les boutons d'exports ne prennent pas en compte les valeurs des balances CSV PDF XLS</li>
                     <li>- les boutons d'exports ne prennent pas en compte les valeurs de la liste des auteurs/comptes associés CSV PDF XLS</li>
                     <li>- le boutons d'export PDF n'affiche pas les caractères spéciaux UTF-8 €éèê</li>
+                    <li>- dans le formulaire trier les listes par A->Z</li>
                     <li>- les boutons d'exports ne prennent pas en compte les moyennes et les totaux ils montrent "org.primefaces.component.outputpanel.OutputPanel@1c61181c" à la place</li>
                 </ul>
 

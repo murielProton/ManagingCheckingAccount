@@ -85,7 +85,7 @@ Tous les ans création d'une nouvelle table SQL avec Java.
 - Name String
 - Amount in € float 
 - Theme (enum)
-- Author (Patrick ou Muriel) (enum)
+- BankAccount (account of Patrick or Muriel or joint account) (enum)
 - Locataire String
 #### TypeTransaction
 - Salary
@@ -98,10 +98,11 @@ Tous les ans création d'une nouvelle table SQL avec Java.
 - Cashing
 - Check
 - Cash
-#### Author 
-- Patrick
-- Muriel
-- Both
+#### BankAccount 
+- compte joint
+- compte épargne de Muriel
+- compte courant de Muriel
+- compte épargne de Patrick
 #### Theme = General Theme + Sub Theme
 #### General Theme :
 - Caluire et Cuire 

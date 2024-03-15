@@ -2,7 +2,7 @@ package com.example.model.entities;
 
 import java.time.LocalDate;
 
-import com.example.model.enums.Author;
+import com.example.model.enums.BankAccount;
 import com.example.model.enums.ThemeGeneral;
 import com.example.model.enums.ThemeSub;
 import com.example.model.enums.TypeOfTransaction;
@@ -56,7 +56,7 @@ public class MyRecord {
 
     @Column(nullable = true, unique = false)
     @Enumerated(EnumType.STRING)
-    private Author author;
+    private BankAccount bankAccount;
 
     public Float getDisplayAmount(){
         if (!this.getTypeTransaction().isIncome()){
@@ -75,4 +75,6 @@ public class MyRecord {
     public boolean isItSameThemeSub(ThemeSub themeSub){
         return this.getThemeSub() == themeSub;
     }
+
+    
 }

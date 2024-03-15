@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.example.model.entities.MyRecord;
-import com.example.model.enums.Author;
+import com.example.model.enums.BankAccount;
 import com.example.model.enums.ThemeGeneral;
 import com.example.model.enums.ThemeSub;
 import com.example.model.enums.TypeOfTransaction;
@@ -93,10 +93,10 @@ public class AccountFormBean extends UtilsBean implements Serializable {
             .collect(Collectors.toList());
     }
 
-    public List<Author> getAllAuthor(){
-        return Arrays.asList(Author.values());
+    public List<BankAccount> getAllBankAccounts(){
+        return Arrays.asList(BankAccount.values());
     }
-    public boolean showFieldAuthor(){
+    public boolean showFieldBankAccount(){
         if(currentRecord.getTypeTransaction()==null){
             return true;
         }

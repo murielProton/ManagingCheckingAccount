@@ -1,23 +1,23 @@
 package com.example.repository;
 
-import com.example.model.entities.MyRecord;
-import com.example.model.enums.Author;
-import com.example.model.enums.ThemeGeneral;
-import com.example.model.enums.ThemeSub;
-import com.example.model.enums.TypeOfTransaction;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import com.example.model.entities.MyRecord;
+import com.example.model.enums.BankAccount;
+import com.example.model.enums.ThemeGeneral;
+import com.example.model.enums.ThemeSub;
+import com.example.model.enums.TypeOfTransaction;
 
 
 @RunWith(SpringRunner.class)
@@ -50,7 +50,7 @@ public class MyRecordRepositoryTest {
 
 
         mockRecord1.setAmount(23f);
-        mockRecord1.setAuthor(Author.MURIEL);
+        mockRecord1.setBankAccount(BankAccount.MURIEL_CURRENT_ACCOUNT);
         mockRecord1.setBeneficiary("Muriel");
         mockRecord1.setCheckNumber(null);
         mockRecord1.setDateOfTransaction(dateOfTransaction.minusMonths(1));
@@ -61,7 +61,7 @@ public class MyRecordRepositoryTest {
         mockRecord1.setTypeTransaction(TypeOfTransaction.CREDIT_CARD);
 
         mockRecord2.setAmount(800f);
-        mockRecord2.setAuthor(null);
+        mockRecord2.setBankAccount(null);
         mockRecord2.setBeneficiary("Muriel");
         mockRecord2.setCheckNumber(null);
         mockRecord2.setDateOfTransaction(dateOfTransaction);
@@ -72,7 +72,7 @@ public class MyRecordRepositoryTest {
         mockRecord2.setTypeTransaction(TypeOfTransaction.PAYMENT);
 
         mockRecord3.setAmount(23f);
-        mockRecord3.setAuthor(Author.MURIEL);
+        mockRecord3.setBankAccount(BankAccount.MURIEL_CURRENT_ACCOUNT);
         mockRecord3.setBeneficiary("Muriel");
         mockRecord3.setCheckNumber(null);
         mockRecord3.setDateOfTransaction(dateOfTransaction);
@@ -83,7 +83,7 @@ public class MyRecordRepositoryTest {
         mockRecord3.setTypeTransaction(TypeOfTransaction.CASH);
 
         mockRecord4.setAmount(100f);
-        mockRecord4.setAuthor(Author.MURIEL);
+        mockRecord4.setBankAccount(BankAccount.MURIEL_CURRENT_ACCOUNT);
         mockRecord4.setBeneficiary("Muriel");
         mockRecord4.setCheckNumber(null);
         mockRecord4.setDateOfTransaction(dateOfTransaction);
@@ -94,7 +94,7 @@ public class MyRecordRepositoryTest {
         mockRecord4.setTypeTransaction(TypeOfTransaction.BALANCE);
 
         mockRecord5.setAmount(800f);
-        mockRecord5.setAuthor(null);
+        mockRecord5.setBankAccount(null);
         mockRecord5.setBeneficiary("Muriel");
         mockRecord5.setCheckNumber(null);
         mockRecord5.setDateOfTransaction(dateOfTransaction.plusMonths(1));
@@ -105,7 +105,7 @@ public class MyRecordRepositoryTest {
         mockRecord5.setTypeTransaction(TypeOfTransaction.CHECK_CASHING);
 
         mockRecord6.setAmount(800f);
-        mockRecord6.setAuthor(null);
+        mockRecord6.setBankAccount(null);
         mockRecord6.setBeneficiary("Muriel");
         mockRecord6.setCheckNumber(null);
         mockRecord6.setDateOfTransaction(dateOfTransaction.plusYears(1));
@@ -116,7 +116,7 @@ public class MyRecordRepositoryTest {
         mockRecord6.setTypeTransaction(TypeOfTransaction.CHECK_CASHING);
 
         mockRecord7.setAmount(800f);
-        mockRecord7.setAuthor(null);
+        mockRecord7.setBankAccount(null);
         mockRecord7.setBeneficiary("Muriel");
         mockRecord7.setCheckNumber(null);
         mockRecord7.setDateOfTransaction(dateOfTransaction);
@@ -127,7 +127,7 @@ public class MyRecordRepositoryTest {
         mockRecord7.setTypeTransaction(TypeOfTransaction.AUTOMATIC_DRAWDOWN);
 
         mockRecord8.setAmount(130f);
-        mockRecord8.setAuthor(null);
+        mockRecord8.setBankAccount(null);
         mockRecord8.setBeneficiary(null);
         mockRecord8.setCheckNumber("123456789");
         mockRecord8.setDateOfTransaction(dateOfTransaction);
@@ -138,7 +138,7 @@ public class MyRecordRepositoryTest {
         mockRecord8.setTypeTransaction(TypeOfTransaction.CHECK);
 
         mockRecord9.setAmount(23f);
-        mockRecord9.setAuthor(Author.MURIEL);
+        mockRecord9.setBankAccount(BankAccount.MURIEL_SAVING_ACCOUNT);
         mockRecord9.setBeneficiary("Muriel");
         mockRecord9.setCheckNumber(null);
         mockRecord9.setDateOfTransaction(dateOfTransaction);
@@ -149,7 +149,7 @@ public class MyRecordRepositoryTest {
         mockRecord9.setTypeTransaction(TypeOfTransaction.CREDIT_CARD);
 
         mockRecord10.setAmount(720f);
-        mockRecord10.setAuthor(null);
+        mockRecord10.setBankAccount(null);
         mockRecord10.setBeneficiary("Muriel");
         mockRecord10.setCheckNumber(null);
         mockRecord10.setDateOfTransaction(dateOfTransaction);
@@ -190,10 +190,10 @@ public class MyRecordRepositoryTest {
     }
 
     @Test
-    public void testFindMyRecordsByMonthAndAuthor() throws Exception{
+    public void findMyRecordsByMonthAndBankAccounts() throws Exception{
         List<MyRecord> listOfMyRecordsToTest = new ArrayList<>();
-        listOfMyRecordsToTest = myRecordRepository.findMyRecordsByMonthAndAuthor(dateOfTransaction,
-                                                                                List.of(Author.MURIEL),
+        listOfMyRecordsToTest = myRecordRepository.findMyRecordsByMonthAndBankAccounts(dateOfTransaction,
+                                                                                List.of(BankAccount.MURIEL_CURRENT_ACCOUNT),
                                                                                 Arrays.asList(TypeOfTransaction.CASH, 
                                                                                                 TypeOfTransaction.BALANCE));
         Assert.assertEquals(listOfMyRecordsToTest.size(),1);

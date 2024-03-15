@@ -139,7 +139,7 @@ cf : https://github.com/joinfaces
 
 # Enum types
 http://localhost:8081/enummapping/TypeOfTransaction/get?typeOfTransaction=TIP
-http://localhost:8081/enummapping/Author/get?author=both
+http://localhost:8081/enummapping/BankAccount/get?bankAccountr=joint
 To ensure that the SQL dabase set the columns as ENUM types, add this tag to all the enum() fields in MyRecord.java : ```@Enumerated(EnumType.STRING)```.
 # Tests classes
 To run MyRecordHTMLCrudTest.java with success please run application server.

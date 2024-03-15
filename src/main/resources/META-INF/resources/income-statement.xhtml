@@ -34,10 +34,10 @@
             <div class="ui-g-3"></div>
 
             <div class="ui-g-3"></div>
-            <div class="ui-g-6" id="author-form">
-                <h5>Auteur de la transaction :</h5>
-                <p:selectManyCheckbox id="authorCheckbox" value="#{incomeStatementBean.listOfSelectedAuthors}">
-                    <f:selectItems value="#{incomeStatementBean.authors}" />
+            <div class="ui-g-6" id="bank-account">
+                <h5>Compte(s) concerné(s) :</h5>
+                <p:selectManyCheckbox id="bankAccountCheckbox" value="#{incomeStatementBean.listOfSelectedBankAccounts}">
+                    <f:selectItems value="#{incomeStatementBean.bankAccounts}" />
                     <p:ajax update="contentForm" event="change" process="@form" listener="#{incomeStatementBean.init()}" />
                 </p:selectManyCheckbox>
             </div>
@@ -66,8 +66,8 @@
                         </h:outputText>
                         <div></div>
                         <h:outputText value="Compte(s) concerné(s) : "/>
-                        <p:dataList value="#{incomeStatementBean.listOfSelectedAuthors}" var="author">
-                            #{author}
+                        <p:dataList value="#{incomeStatementBean.listOfSelectedBankAccounts}" var="bankAccount">
+                            #{bankAccount}
                         </p:dataList>
                     </f:facet>
                     <p:column headerText="Date"

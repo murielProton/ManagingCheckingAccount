@@ -8,4 +8,4 @@ INSERT INTO account_records (beneficiary) VALUES ('USA');
 INSERT INTO account_records (themeSub) VALUES (ThemeSub.MURIEL);
 INSERT INTO account_records (tenant) VALUES ('India');
 INSERT INTO account_records (typeTransaction) VALUES ('Brazil');
-INSERT INTO account_records (author) VALUES (Author.PATRICK);
+INSERT INTO account_records (bankAccount) VALUES (BankAccount.PATRICK);

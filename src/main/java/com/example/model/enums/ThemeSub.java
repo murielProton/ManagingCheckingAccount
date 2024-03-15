@@ -7,7 +7,7 @@ import java.util.List;
 
 import lombok.Getter;
 
-        /** The field 'Author' appears if ThemeSub value is in the folowing list : CONSTRUCTION_WORK, COSTS, PROPERTY_TAXES, WATER, GASS, 
+        /** The field 'Bank Account' appears if ThemeSub value is in the folowing list : CONSTRUCTION_WORK, COSTS, PROPERTY_TAXES, WATER, GASS, 
          * ELECTRICITY, LOAN, FIRE_WOOD, INSURANCE, BOILER, CHIMNEY_SWEEPING, HOME_APPLIANCE, FURNITURE.\
          * **/
 public enum ThemeSub {
@@ -32,13 +32,13 @@ public enum ThemeSub {
 
     private @Getter String name;
     private @Getter List<ThemeGeneral> listGenerals;
-    private @Getter boolean authorRendered;
+    private @Getter boolean bankAccountRendered;
     private @Getter boolean tenantRendered;
 
-    private ThemeSub(String name, List<ThemeGeneral> list, boolean authorRendered, boolean tenantRendered){
+    private ThemeSub(String name, List<ThemeGeneral> list, boolean bankAccountRendered, boolean tenantRendered){
         this.name = name;
         this.listGenerals = list;
-        this.authorRendered = authorRendered;
+        this.bankAccountRendered = bankAccountRendered;
         this.tenantRendered = tenantRendered;
 
     }

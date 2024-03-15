@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.example.model.entities.MyRecord;
-import com.example.model.enums.Author;
+import com.example.model.enums.BankAccount;
 import com.example.model.enums.TypeOfTransaction;
 import com.example.repository.MyRecordRepository;
 
@@ -32,24 +32,24 @@ public class IncomeStatementBean extends UtilsBean  implements Serializable {
     @Autowired
     private MyRecordRepository repository;
     private LocalDate selectedMonth = LocalDate.now().withDayOfMonth(1);
-    private List<Author> listOfSelectedAuthors = new ArrayList<>();
+    private List<BankAccount> listOfSelectedBankAccounts = new ArrayList<>();
 
     private List<MyRecord> listForIncomeStatement;
-    private List<Author> authors;
+    private List<BankAccount> bankAccounts;
 
     @PostConstruct
     public void init(){
-        setAuthorsNewArray();
-        initList(selectedMonth,listOfSelectedAuthors);
+        setBankAccountsNewArray();
+        initList(selectedMonth,listOfSelectedBankAccounts);
         log.info("init 1 IncomeStatementBean -> {} ", selectedMonth);
-        log.info("init 2 IncomeStatementBean listOfSelectedAuthors -> {} ", listOfSelectedAuthors);
+        log.info("init 2 IncomeStatementBean listOfSelectedBankAccounts -> {} ", listOfSelectedBankAccounts);
 
     }
 
-    public void initList(LocalDate selectedMonth, List<Author> listOfSelectedAuthors){
-        if (listOfSelectedAuthors != null  && !listOfSelectedAuthors.isEmpty()){
-            listForIncomeStatement = repository.findMyRecordsByMonthAndAuthor(selectedMonth,
-                                                                            listOfSelectedAuthors,
+    public void initList(LocalDate selectedMonth, List<BankAccount> listOfSelectedBankAccounts){
+        if (listOfSelectedBankAccounts != null  && !listOfSelectedBankAccounts.isEmpty()){
+            listForIncomeStatement = repository.findMyRecordsByMonthAndBankAccounts(selectedMonth,
+                                                                            listOfSelectedBankAccounts,
                                                                             Arrays.asList(TypeOfTransaction.CASH, TypeOfTransaction.BALANCE));
         } else {
             listForIncomeStatement = repository.findDebitByMonth(selectedMonth, Arrays.asList(TypeOfTransaction.CASH, 
@@ -85,20 +85,22 @@ public class IncomeStatementBean extends UtilsBean  implements Serializable {
     public void decrementMonth() {
         selectedMonth = selectedMonth.minusMonths(1);
         log.info("decrementMonth -> {} ", selectedMonth);
-        initList(selectedMonth,listOfSelectedAuthors);
+        initList(selectedMonth,listOfSelectedBankAccounts);
     }
     
     public void incrementMonth() {
         selectedMonth = selectedMonth.plusMonths(1);
         log.info("incrementMonth -> {} ", selectedMonth);
-        initList(selectedMonth,listOfSelectedAuthors);
+        initList(selectedMonth,listOfSelectedBankAccounts);
     }
 
-    public void setAuthorsNewArray(){
-        authors = new ArrayList<>();
-        authors.add(Author.BOTH);
-        authors.add(Author.MURIEL);
-        authors.add(Author.PATRICK);
+    public void setBankAccountsNewArray(){
+        bankAccounts = new ArrayList<>();
+        bankAccounts.add(BankAccount.JOINT);
+        bankAccounts.add(BankAccount.MURIEL_CURRENT_ACCOUNT);
+        bankAccounts.add(BankAccount.PATRICK_CURRENT_ACCOUNT);
+        bankAccounts.add(BankAccount.MURIEL_SAVING_ACCOUNT);
+
 
     }
 }
