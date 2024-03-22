@@ -2,10 +2,13 @@ package com.example.model.entities;
 
 import java.time.LocalDate;
 
+import javax.validation.constraints.NotEmpty;
+
 import com.example.model.enums.BankAccount;
 import com.example.model.enums.ThemeGeneral;
 import com.example.model.enums.ThemeSub;
 import com.example.model.enums.TypeOfTransaction;
+import com.example.validation.CheckNumberValidation;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -31,6 +34,7 @@ public class MyRecord {
     @Enumerated(EnumType.STRING)
     private TypeOfTransaction typeTransaction;
 
+    @NotEmpty(groups = {CheckNumberValidation.class})
     @Column(nullable = true, unique = true)
     private String checkNumber;
 

@@ -139,7 +139,13 @@
             <version>${lombok.version}</version>
             <scope>provided</scope>
         </dependency>
-
+        <!-- Validation rules-->
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+            <version>2.0.0.Final</version>
+        </dependency>
+        
         <!-- C'est pour des icones-->
         <dependency>
             <groupId>org.webjars</groupId>
