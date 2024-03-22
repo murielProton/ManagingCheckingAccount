@@ -10,9 +10,9 @@ import jakarta.validation.Payload;
 
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = CheckNumberNotNullWhenTOTOValidator.class)
-public @interface CheckNumberNotNullWhenTOTO {
-    String message() default "CheckNumber shoud TOTO";
+@Constraint(validatedBy = ValidationRuleCheckNumberValidator.class)
+public @interface ValidationRuleCheckNumber {
+    String message() default "Check Number must be filled.";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default{};
 }
