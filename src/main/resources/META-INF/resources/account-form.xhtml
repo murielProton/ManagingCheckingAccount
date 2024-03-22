@@ -16,7 +16,9 @@
             <div class="ui-g-6">
                 
                 <h2>Enter a new record</h2>
-
+                <p:messages id="messages" showDetail="true" closable="true" escape="false">
+                    <p:autoUpdate/>
+                </p:messages>
                 <p:outputLabel class="date" value="Date :" />
                 <p:datePicker class="date" for="date"  required="true"
                                 value="#{accountFormBean.currentRecord.dateOfTransaction}" inline="false"/>
@@ -78,7 +80,12 @@
                 </p:outputPanel>
 
 
-                <p:commandButton value="enregistrer une nouvelle transaction" action="#{accountFormBean.save()}" update=":contentForm"/>
+                <p:commandButton id="submitButton" 
+                                    value="enregistrer une nouvelle transaction" 
+                                    action="#{accountFormBean.save()}"
+                                    process="@this" 
+                                    update=":contentForm"
+                />
 
             </div>
             <div class="ui-g-3"></div>

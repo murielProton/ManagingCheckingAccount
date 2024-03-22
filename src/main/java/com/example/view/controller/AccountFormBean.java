@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +18,13 @@ import com.example.model.enums.TypeOfTransaction;
 import com.example.repository.MyRecordRepository;
 
 import jakarta.annotation.PostConstruct;
+import jakarta.faces.application.FacesMessage;
+import jakarta.faces.context.FacesContext;
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Named;
+import jakarta.validation.ConstraintViolation;
+import jakarta.validation.Validation;
+import jakarta.validation.Validator;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
@@ -36,7 +42,6 @@ public class AccountFormBean extends UtilsBean implements Serializable {
     private MyRecordRepository repository;
 
     private MyRecord currentRecord;
-
     private String display = "none";
 
     @PostConstruct
@@ -56,7 +61,6 @@ public class AccountFormBean extends UtilsBean implements Serializable {
         currentRecord.setThemeSub(null);
         currentRecord.setBeneficiary(null);
         currentRecord.setTenant(null);
-        
     }
     public void onThemeGeneralChange() {
       currentRecord.setThemeSub(null);
@@ -68,6 +72,15 @@ public class AccountFormBean extends UtilsBean implements Serializable {
         currentRecord.setTenant(null);
       }
     public void save(){
+        Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
+        Set<ConstraintViolation<MyRecord>> violations = validator.validate(currentRecord);
+        if (!violations.isEmpty()) {
+            String errors = violations.stream()
+            .map(ConstraintViolation::getMessage)
+            .collect(Collectors.joining("<br>"));
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Impossible de sauvegarder<br>", errors));
+            return;
+        }
         repository.save(currentRecord);
         initRecord();
     }
@@ -141,8 +154,4 @@ public class AccountFormBean extends UtilsBean implements Serializable {
         }
         return currentRecord.getThemeSub().isTenantRendered();
     }
-
-
-
-
 }
