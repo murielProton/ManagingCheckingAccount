@@ -80,12 +80,7 @@
                 </p:outputPanel>
 
 
-                <p:commandButton id="submitButton" 
-                                    value="enregistrer une nouvelle transaction" 
-                                    action="#{accountFormBean.save()}"
-                                    process="@this" 
-                                    update=":contentForm"
-                />
+                <p:commandButton value="enregistrer une nouvelle transaction" action="#{accountFormBean.save()}" update=":contentForm"/>
 
             </div>
             <div class="ui-g-3"></div>
